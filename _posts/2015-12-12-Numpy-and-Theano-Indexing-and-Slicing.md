@@ -1,7 +1,9 @@
 ---
 published: true
 title: Numpy and Theano Indexing and Slicing
+layout: post
 ---
+
 
 
 
