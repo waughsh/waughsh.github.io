@@ -5,8 +5,7 @@ permalink: /about/
 published: true
 ---
 
-
-![11666304_10204264462482243_6722541623635505812_n.jpg]({{site.baseurl}}/11666304_10204264462482243_6722541623635505812_n.jpg)
+![small_vacation_photo1.png]({{site.baseurl}}/small_vacation_photo1.png)
 
 Some information about you!
 
