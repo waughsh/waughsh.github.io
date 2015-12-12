@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Numpy and Theano Indexing and Slicing
 ---
 
