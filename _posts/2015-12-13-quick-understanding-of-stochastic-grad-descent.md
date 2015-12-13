@@ -13,4 +13,6 @@ This post is a watered-down and synthesized version of [Andrew Ng's CS229 Lectur
 
 To understand SGD, the easiest way is to understand a single-variable linear regression.
 
-When we define a linear estimator of random variable X predicting Y: $ h(X) =  \hat{y} $.
+When we define a linear estimator of random variable X predicting Y: $ h(X) =  \hat{y} $. Since we already know the form of such linear estimator:
+
+$$ h_{\theta}(x) = \theta_0 + \theta_1 x1 + \theta_2 x2 $$
