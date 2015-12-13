@@ -1,7 +1,9 @@
 ---
-published: false
+published: true
 title: "Understand Numpy Reshape, Transpose, and Theano Dimshuffle"
+layout: post
 ---
+
 
 ## A New Post
 
