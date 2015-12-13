@@ -8,6 +8,7 @@ layout: post
 
 
 
+
 As some of you might know, I've been working on Numpy and Theano for a while. I can't claim any expertise, but have found many interesting facets and had to synthesize them together, leading to this post.
 
 ## Python Double Colon Slicing
@@ -88,7 +89,7 @@ To modify `x`, we can use either `T.inc_subtensor()` or `T.set_subtensor()`.
 >> yc.eval({x: np.asarray([1,2,3,4])})
 array([ 1.,  3.,  3.,  5.])
 ```
-Also it's worth noting that since Theano is a pure expression evaluation engine, what it does is to evaluate expressions, and every variable stores an expression (probably except the "shared variables"). This leads to the immutability of the values. Even though we used `T.inc_subtensor()` on `x`, but this effect only exists for `yc`, that stores this expression (action). If we evaluate `y` afterwards, you would not see the values increased.
+Also it's worth noting that since Theano is a pure expression evaluation engine, what it does is to evaluate expressions, and every variable stores an expression (probably except the "shared variables"). This leads to the immutability of the values. Even though we used `T.inc_subtensor()` on `x`, `x` does not really exists. `x` is just a symbol, and the real calculation happens on the expression. So `T.inc_subtensor()`'s effect is only captured by `yc`, which stores this expression (action). If we evaluate `y` afterwards, you would not see the values increased.
 
 ```python
 >> y.eval({x: np.asarray([1,2,3,4])})
@@ -96,4 +97,3 @@ array([ 2.,  4.])
 ```
 
 That's all for this blog post. Hope this is helpful in some way :)
-
