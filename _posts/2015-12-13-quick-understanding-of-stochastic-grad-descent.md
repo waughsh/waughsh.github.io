@@ -21,4 +21,4 @@ $$ h_{\theta}(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 $$
 We can easily get the below vectorial representation of such linear estimator:
 $$ h(x) = \displaystyle\sum_{i=0}^{n} \theta_i x_i  $$
 
-$$ h_{\theta}(x) = \theta_0 $$
+$$ h_{\theta}(x) \= \theta_0 $$
