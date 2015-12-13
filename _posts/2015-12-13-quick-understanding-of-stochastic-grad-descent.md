@@ -29,7 +29,7 @@ As Andrew Ng has already worked out (we skip this part) for the a single trainin
 
 We get:
 
-<div> $$ \theta_j := \theta_j − \alpha \displaystyle\sum_{i=1}^{m} ( y^{(i)} - h_\theta(x^{(i)}))x^{(i)}_j  $$ </div>
+<div> $$ \theta_j := \theta_j − \alpha \displaystyle\sum_{i=1}^{m} ( y^{(i)} - h_\theta(x^{(i)})) x^{(i)}_j  $$ </div>
 
 
 
