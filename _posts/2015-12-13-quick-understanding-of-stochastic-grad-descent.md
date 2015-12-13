@@ -27,6 +27,9 @@ As Andrew Ng has already worked out (we skip this part) for the a single trainin
 
 <div> $$ \theta_j := \theta_j − \alpha \frac{\partial}{\partial \theta_j} J(\theta) $$ </div>
 
+We get:
+
+<div>  </div>
 
 
 
