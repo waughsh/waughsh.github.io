@@ -12,7 +12,7 @@ description: "A blog for NLP, ML, and programming"
 avatar: http://anie.me/images/squared_logo.png
 
 # this tells prose for media roots
-media: images
+media: "images"
 
 #
 # Flags below are optional
