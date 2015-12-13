@@ -53,7 +53,15 @@ baseurl: "http://anie.me"
 
 # this tells prose for media roots
 media: "images"
-
+metadata:
+	_posts:
+    	- name: "layout"
+        	field:
+          		value: "post"
+        - name: "title"
+            field:
+              element: "text"
+              label: "title"
 # === End of Prose.io Settings ===
 
 #
