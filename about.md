@@ -8,6 +8,7 @@ published: true
 
 
 
+
 ![small_vacation_photo1.png]({{site.baseurl}}images/small_vacation_photo1.png)
 
 Some information about you!
