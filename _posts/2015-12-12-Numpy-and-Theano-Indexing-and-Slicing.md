@@ -37,11 +37,36 @@ Numpy in many ways tries to stay consistent with Python's original way of slicin
 
 You can even do cool tricks such as `x[:, 1::2]`, which means let's select everything from the first (1st) axis, but only every other 2 elements starting at position 1 on axis 2 (what a mouthful right?).
 
-When the majority of the tricks stay the same, numpy does have its own qurkiness (which I don't like), which is the value reference:
+When the majority of the tricks stay the same, numpy does have its own qurkiness (which I don't like). That is the reference pointer:
 
 ```python
-
+import numpy as np
+A = np.array([1,1,2,3,4], dtype = 'float')
+B = A[::2]
+>> A: array([ 1.,  1.,  2.,  3.,  4.])
+>> B: array([ 1.,  2.,  4.])
 ```
+
+If you do this, you are only passing in a reference pointer to B. If you modify array B in any way, elements in A will be changed:
+
+```python
+B += 1
+>> A: array([ 2.,  1.,  3.,  3.,  5.])
+>> B: array([ 2.,  3.,  5.])
+```
+
+This does give flexibility of easy assignment and alteration for A's elements, but this can give rise to bugs, and especially to people who don't realize this.
+
+A safer way to operate is to copy A's value:
+
+```python
+B = A.copy
+B[::2] += 1
+```
+
+Yes. Numpy is so convenient, that slicing and assignment can happen within the same line.
+
+## Theano Tensor Slicing/Assigning
 
 
 
