@@ -1,6 +1,6 @@
 ---
 published: true
-title: Easier Understanding of Stochastic Gradient Descent (SGD)
+title: An Easier Understanding of Stochastic Gradient Descent (SGD)
 layout: post
 ---
 
@@ -22,6 +22,9 @@ We can easily get the below vectorial representation of such linear estimator:
 I recommend reading the "probabilistic interpretation" of the $J(\theta)$ cost function, where you actually derive the cost function, instead of "defining" it. To quickly get to the point of SGD, we can see that cost function is:
 
 <div> $$ J(\theta) = 1/2 * \displaystyle\sum_{i=1}^{m} (h_\theta(x^(i)) − y^(i))^2 $$ </div>
+
+As Andrew Ng has already worked out (we skip this part) for the a single training example $ (x, y) $, when we differentiate the actual $J(\theta)$, we can bring the differentiation sign into the summation, and differentiate each term individually, so eventually, we get:
+
 
 
 
