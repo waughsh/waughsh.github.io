@@ -23,7 +23,11 @@ I recommend reading the "probabilistic interpretation" of the $J(\theta)$ cost f
 
 <div> $$ J(\theta) = 1/2 * \displaystyle\sum_{i=1}^{m} (h_\theta(x^{(i)}) − y^{(i)})^2 $$ </div>
 
-As Andrew Ng has already worked out (we skip this part) for the a single training example $ (x, y) $, when we differentiate the actual $J(\theta)$, we can bring the differentiation sign into the summation, and differentiate each term individually, so eventually, we get:
+As Andrew Ng has already worked out (we skip this part) for the a single training example $ (x, y) $, when we differentiate the actual $J(\theta)$, we can bring the differentiation sign into the summation, and differentiate each term individually, so eventually, from our original update formula:
+
+<div> $$ \theta_j := \theta_j − \alpha {\partial}/{\partial \theta_j} J(\theta) $$ </div>
+
+
 
 
 
