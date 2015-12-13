@@ -7,9 +7,8 @@ layout: post
 
 
 
-As some of you might know, I've been working on Numpy and Theano for a while. I can't claim any expertise, but have found many interesting facets and had to synthesize them together, leading to this post.
 
-As always, you'll find a list of references (website links) at the bottom of this page.
+As some of you might know, I've been working on Numpy and Theano for a while. I can't claim any expertise, but have found many interesting facets and had to synthesize them together, leading to this post.
 
 ## Python Double Colon Slicing
 
@@ -68,6 +67,33 @@ Yes. Numpy is so convenient, that slicing and assignment can happen within the s
 
 ## Theano Tensor Slicing/Assigning
 
+Theano is trying to be similar to Numpy, but has its major difference on the reference pointer and assignment. For a shared variable, we know we have `.get_value()` and `.set_value()`, so what about tensors?
 
+But let's talk about slicing first, before diving into assignment:
 
+```python
+>> from theano import tensor as T
+>> x = T.vector()
+>> y = x[1::2]
+>> y.eval({x: np.asarray([1,2,3,4])})
+array([ 2.,  4.])
+```
+
+I have to say `.eval()` is an amazing function, and actually gives insight to a lot of the symbolic magic inside theano. What's worth notice is that `x` is not pointing to `y`'s elements in any way (different from Numpy), and any kind of modification on `x` will not affect `y` at all.
+
+To modify `x`, we can use either `T.inc_subtensor()` or `T.set_subtensor()`.
+
+```python
+>> yc = T.inc_subtensor(x[1::2], 1)
+>> yc.eval({x: np.asarray([1,2,3,4])})
+array([ 1.,  3.,  3.,  5.])
+```
+Also it's worth noting that since Theano is a pure expression evaluation engine, what it does is to evaluate expressions, and every variable stores an expression (probably except the "shared variables"). This leads to the immutability of the values. Even though we used `T.inc_subtensor()` on `x`, but this effect only exists for `yc`, that stores this expression (action). If we evaluate `y` afterwards, you would not see the values increased.
+
+```python
+>> y.eval({x: np.asarray([1,2,3,4])})
+array([ 2.,  4.])
+```
+
+That's all for this blog post. Hope this is helpful in some way :)
 
