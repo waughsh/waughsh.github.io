@@ -8,6 +8,7 @@ layout: post
 
 
 
+
 First of all, I'm not a math person. However, compared to so many "intuitions" and visualizations online, I think rigorious deduction is the best way to build up intuitions, and is much better than some visualizations.
 
 This post is a watered-down and synthesized version of [Andrew Ng's CS229 Lecture notes 1](http://cs229.stanford.edu/notes/cs229-notes1.pdf).
@@ -19,3 +20,5 @@ $$ h_{\theta}(x) = \theta_0 + \theta_1 x1 + \theta_2 x2 $$
 
 We can easily get the below vectorial representation of such linear estimator:
 $$ h(x) = \displaystyle\sum_{i=0}^{n} \theta_i x_i  $$
+
+$$a^2 + b^2 = c^2$$
