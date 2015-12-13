@@ -1,6 +1,6 @@
 ---
 published: true
-title: Quick Understanding of Stochastic Gradient Descent (SGD)
+title: Easier Understanding of Stochastic Gradient Descent (SGD)
 layout: post
 ---
 
