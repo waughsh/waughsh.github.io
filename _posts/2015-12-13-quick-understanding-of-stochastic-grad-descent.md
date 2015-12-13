@@ -16,7 +16,7 @@ To understand SGD, the easiest way is to understand a single-variable linear reg
 
 When we define a linear estimator of random variable X predicting Y: $ h(X) =  \hat{y} $. Since we already know the form of such linear estimator:
 
-$$h_{\theta}(x) = \theta_0 + \theta_1 x1 + \theta_2 x2$$
+$$ h_{\theta}(x) = \theta_0 + \theta_1 x1 + \theta_2 x2 $$
 
 We can easily get the below vectorial representation of such linear estimator:
 
