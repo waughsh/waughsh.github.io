@@ -8,8 +8,10 @@ published: true
 
 
 
+
 ![small_vacation_photo1.png]({{site.baseurl}}/images/small_vacation_photo1.png)
 
+$$a^2 + b^2 = c^2$$
 
 ### More Information
 
