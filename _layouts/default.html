@@ -50,6 +50,16 @@
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
     
+    <!-- This is the configuration of MathJax -->
+    <script type="text/javascript"> 
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+    </script>
+    
     {% include analytics.html %}
   </body>
 </html>
