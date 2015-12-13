@@ -6,7 +6,6 @@ published: true
 ---
 
 
-
 ![small_vacation_photo1.png]({{site.baseurl}}/small_vacation_photo1.png)
 
 
