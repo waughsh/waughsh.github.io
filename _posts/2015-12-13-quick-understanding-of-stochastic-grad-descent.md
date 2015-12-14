@@ -40,7 +40,7 @@ This is exactly the idea of SGD, instead of updating the parameter's value when 
 ```
 Loop {
   for i = 1 to m {
-  	$$ \theta_j := \theta_j − \alpha ( y^{(i)} - h_\theta(x^{(i)})) x^{(i)}_j $$
+  	<div>$ \theta_j := \theta_j − \alpha ( y^{(i)} - h_\theta(x^{(i)})) x^{(i)}_j $ </div>
   }
 }
 ```
