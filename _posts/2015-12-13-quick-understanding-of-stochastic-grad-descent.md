@@ -45,7 +45,6 @@ Loop {
 }
 ```
 
-
 I'm very certain this was just some crazy thought someone conjured up, because how can you prove batch gradient descent (BGD) and SGD are equivalent? 
 
 
