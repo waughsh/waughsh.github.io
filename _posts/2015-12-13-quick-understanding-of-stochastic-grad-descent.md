@@ -31,11 +31,22 @@ We get:
 
 <div> $$ \theta_j := \theta_j − \alpha \displaystyle\sum_{i=1}^{m} ( y^{(i)} - h_\theta(x^{(i)})) x^{(i)}_j $$ </div>
 
-We repeat until converge (define your own criteria) for every j (every parameter).
+We repeat until converge (define your own criteria) for every j (every parameter). This is called batch gradient descent (BGD).
 
-So yes. According to rigorous math, in order to update one parameter: $\theta_j$, we need to sum up the errors between all pairs of $ (x,y) $. However, this becomes inpractical when dataset gets large, so some genious thought about, why not just update all the parameters for every pair?
+So yes. According to the math, in order to update one parameter: $\theta_j$, we need to sum up the errors between all pairs of $ (x,y) $. However, this becomes inpractical when dataset gets large, so some genious thought about, why not just update all the parameters for every pair?
 
-This is exactly the core of SGD, instead of updating the parameter's value when we are done, we update as we go through the dataset.
+This is exactly the idea of SGD, instead of updating the parameter's value when we are done, we update as we go through the dataset:
+
+```
+Loop {
+  for i = 1 to m {
+  	$$ \theta_j := \theta_j − \alpha ( y^{(i)} - h_\theta(x^{(i)})) x^{(i)}_j $$
+  }
+}
+```
+
+
+I'm very certain this was just some crazy thought someone conjured up, because how can you prove batch gradient descent (BGD) and SGD are equivalent? 
 
 
 
