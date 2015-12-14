@@ -9,6 +9,7 @@ layout: post
 
 
 
+
 As some of you might know, I've been working on Numpy and Theano for a while. I can't claim any expertise, but have found many interesting facets and had to synthesize them together, leading to this post.
 
 ## Python Double Colon Slicing
@@ -31,9 +32,13 @@ When using double colon to slice, the syntax looks like `a[x::y]`, which means y
 >> even = a[::2]  # because index starts at 0
 ```
 
+It's also noting, when you are doing `a[::-1]`, this is slightly different from slicing. `[::-1]` reverses the array from the last element to first, and creates a copy of the original array, which is different from `a.reverse()`, since `.reverse()` does not have a return value.
+
 ## Numpy Array Slicing
 
-Numpy in many ways tries to stay consistent with Python's original way of slicing, but with a few tricks: reference pointer and axis. So in numpy, you can combine the slicing (selecting) by comma such as `a[1,2]` for a 2D array. Such comma combination is not possible in normal python.
+Numpy in many ways tries to stay consistent with Python's original way of slicing, but with a few differences: reference pointer and axis. For the first difference, when slicing, in original Python, you always get a new array independent of the old one, but in Numpy, you always get a reference pointer that every element in your new array is a pointer to the old array's cell.
+
+For the second difference, in numpy, you can combine the slicing (selecting) by comma such as `a[1,2]` for a 2D array. Such comma combination is not possible in normal python.
 
 You can even do cool tricks such as `x[:, 1::2]`, which means let's select everything from the first (1st) axis, but only every other 2 elements starting at position 1 on axis 2 (what a mouthful right?).
 
