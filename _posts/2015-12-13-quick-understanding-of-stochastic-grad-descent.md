@@ -35,6 +35,8 @@ repeat till converge {
 
 So yes. According to rigorous math, in order to update one parameter: $\theta_j$, we need to sum up the errors between all pairs of $ (x,y) $. However, this becomes inpractical when dataset gets large, so some genious thought about, why not just update all the parameters for every pair?
 
+This is exactly the core of SGD, instead of updating the parameter's value when we are done, we update as we go through the dataset.
+
 
 
 
