@@ -29,7 +29,9 @@ As Andrew Ng has already worked out (we skip this part) for the a single trainin
 
 We get:
 
-<div> $$ \theta_j := \theta_j − \alpha \displaystyle\sum_{i=1}^{m} ( y^{(i)} - h_\theta(x^{(i)})) x^{(i)}_j  $$ </div>
+repeat till converge { 
+<div> $$ \theta_j := \theta_j − \alpha \displaystyle\sum_{i=1}^{m} ( y^{(i)} - h_\theta(x^{(i)})) x^{(i)}_j (for every j) $$ </div>
+}
 
 So yes. According to rigorous math, in order to update one parameter: $\theta_j$, we need to sum up the errors between all pairs of $ (x,y) $. However, this becomes inpractical when dataset gets large, so some genious thought about, why not just update all the parameters for every pair?
 
