@@ -11,6 +11,7 @@ layout: post
 
 
 
+
 As some of you might know, I've been working on Numpy and Theano for a while. I can't claim any expertise, but have found many interesting facets and had to synthesize them together, leading to this post.
 
 ## Python Double Colon Slicing
@@ -159,11 +160,8 @@ By utilizing another Python magic: list replication
 
 We can do exactly what we want with the three tricks without knowing variable `x`'s dimension:
 
-```
->> python
-x[tuple([slice(1:-1)] * x.ndim)]
+```python
+>> x[tuple([slice(1:-1)] * x.ndim)]
 # x = [0, 1, 2, 3, 4], w = 2  -> y = [2]
 # x = [[1, 2, 3], [4, 5, 6], [7, 8, 9]], w =1 -> y = [[5]]
 ```
-
-
