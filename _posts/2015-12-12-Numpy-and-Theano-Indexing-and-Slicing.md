@@ -122,9 +122,48 @@ In order to use syntax like `a[...]`, a `__getitem__(self, key)` method is defin
 
 ```python
 >> 1,2
->> (1, 2)
+(1, 2)
 ```
 
-But you can manually create a tuple by using the built-in `tuple()` function. Remember the `a[1:2]` type of syntax? In Python, `1:2` creates a data structure called `Slice`.
+But you can manually create a tuple by using the built-in `tuple()` function. Remember the `a[1:2]` type of syntax? You would think, given the tuple creation above, `1:2` would create a data structure called `Slice`. However, this is NOT the case. you have to invoke `slice(start, stop[, step])` or `slice(stop)` to create a slice.
+
+```python
+>> 3:5
+  File "<stdin>", line 1
+    3:5
+     ^
+SyntaxError: invalid syntax
+>> slice(3,5)
+slice(3, 5, None)
+```
+
+So by combining tuple with slice, we can get this:
+(Note: ordinary Python list's `__getitem__` only accepts integer as key, but Numpy accepts tuple as key.
+
+```python
+>> a = np.asarray([1,2,3,4,5])
+>> a[tuple([slice(3,5)])]
+array([4, 5])
+```
+
+## Back to Task
+
+Our task (which is similar to Jon Goodfellow's Theano [exercises](https://github.com/goodfeli/theano_exercises/blob/master/01_basics/03_advanced_expressions/02_nd_indexing.py)) is to define an extraction that can get applied to every dimension/axis of this multidimensional array.
+
+By utilizing another Python magic: list replication
+
+```python
+>> [3] * 3
+[3, 3, 3]
+```
+
+We can do exactly what we want with the three tricks without knowing variable `x`'s dimension:
+
+```
+>> python
+x[tuple([slice(1:-1)] * x.ndim)]
+# x = [0, 1, 2, 3, 4], w = 2  -> y = [2]
+# x = [[1, 2, 3], [4, 5, 6], [7, 8, 9]], w =1 -> y = [[5]]
+```
 
 
