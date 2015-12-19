@@ -107,7 +107,7 @@ Theano, like Numpy, supports a tuple-based indexing schema. For a Numpy array of
 
 Sometimes, your array's shape is unknown, but you want to apply the same operation to all the dimensions, here is some Python magic kicking in. 
 
-### __getitem__ Tuple
+### \_\_getitem\_\_ Tuple
 In order to use syntax like `a[...]`, a `__getitem__(self, key)` method is defined on the class. The `key` would correspond to a tuple value, which is created 
 
 
