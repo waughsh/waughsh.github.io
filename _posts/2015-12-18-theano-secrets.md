@@ -1,8 +1,9 @@
 ---
-published: false
+published: true
 title: A Composite of Theano Tricks
 layout: post
 ---
+
 
 
 This post will be continuously updated.
@@ -37,7 +38,3 @@ Theano can do very similar trick:
 >> rng_factory.binomial(p=p, size=p.shape, n=1)
 array([ 0.,  0.,  0.,  1.,  0.,  1.,  0.,  1.,  1.,  0.,  1.])
 ```
-
-
-
-
