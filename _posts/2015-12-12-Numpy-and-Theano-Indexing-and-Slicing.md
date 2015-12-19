@@ -10,6 +10,7 @@ layout: post
 
 
 
+
 As some of you might know, I've been working on Numpy and Theano for a while. I can't claim any expertise, but have found many interesting facets and had to synthesize them together, leading to this post.
 
 ## Python Double Colon Slicing
@@ -100,5 +101,13 @@ Also it's worth noting that since Theano is a pure expression evaluation engine,
 >> y.eval({x: np.asarray([1,2,3,4])})
 array([ 2.,  4.])
 ```
+## Advanced Multidimensional Indexing
 
-That's all for this blog post. Hope this is helpful in some way :)
+Theano, like Numpy, supports a tuple-based indexing schema. For a Numpy array of shape (3,3,3), selecting the one element could be written as: `a[1,1,1]`, this way you get one element `1.0` returned to you. However, if you want to keep the structure (and dimensions), you can call `a[1:2,1:2,1:2]`, then you get `array([[[ 1.]]])` of shape `(1, 1, 1)` returned.
+
+Sometimes, your array's shape is unknown, but you want to apply the same operation to all the dimensions, here is some Python magic kicking in. 
+
+### __getitem__ Tuple
+In order to use syntax like `a[...]`, a `__getitem__(self, key)` method is defined on the class. The `key` would correspond to a tuple value, which is created 
+
+
