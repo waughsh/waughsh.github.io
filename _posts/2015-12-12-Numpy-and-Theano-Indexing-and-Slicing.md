@@ -105,6 +105,16 @@ array([ 2.,  4.])
 
 Theano, like Numpy, supports a tuple-based indexing schema. For a Numpy array of shape (3,3,3), selecting the one element could be written as: `a[1,1,1]`, this way you get one element `1.0` returned to you. However, if you want to keep the structure (and dimensions), you can call `a[1:2,1:2,1:2]`, then you get `array([[[ 1.]]])` of shape `(1, 1, 1)` returned.
 
+```python
+>> a[1,1,1]
+1.0
+>> b = a[1:2,1:2,1:2]
+>> b
+array([[[ 1.]]])
+>> b.shape
+>> (1, 1, 1)
+```
+
 Sometimes, your array's shape is unknown, but you want to apply the same operation to all the dimensions, here is some Python magic kicking in. 
 
 ### \_\_getitem\_\_ Tuple
