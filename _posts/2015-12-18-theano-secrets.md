@@ -1,8 +1,9 @@
 ---
-published: true
+published: false
 title: A Composite of Theano Tricks
 layout: post
 ---
+
 
 
 
