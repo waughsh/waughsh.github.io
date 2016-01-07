@@ -1,7 +1,7 @@
 ---
 published: false
-layout: post
 title: Numpy Tricks
+layout: post
 ---
 
 
