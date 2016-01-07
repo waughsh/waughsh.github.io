@@ -5,8 +5,6 @@ layout: post
 ---
 
 
-
-
 This post will be continuously updated.
 
 # Trick 1: Always try a list!
