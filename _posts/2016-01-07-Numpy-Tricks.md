@@ -5,6 +5,5 @@ layout: post
 ---
 
 
-## A New Post
+Numpy Array overrides many operations, so deciphering them could be uneasy. Here are a collection of what I would consider gotcha moments from Numpy.
 
-Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
