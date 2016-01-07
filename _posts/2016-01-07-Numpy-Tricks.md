@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Numpy Tricks
 layout: post
 ---
