@@ -1,6 +1,9 @@
 ---
 published: false
+layout: post
+title: Numpy Tricks
 ---
+
 
 ## A New Post
 
