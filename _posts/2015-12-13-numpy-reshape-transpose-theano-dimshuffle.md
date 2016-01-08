@@ -5,6 +5,7 @@ layout: post
 ---
 
 
+
 When you work with Numpy, you work with multidimensional arrays (or tensors). I have to admit such concept was not too easy for me to grasp in the beginning, but after some delibration, it became relatively easy. This post uses the term  tensor/multidimensional array interchangeably.
 
 for a tensor of shape `(4,3,2,4)` is a 4D tensor. Think of a 4D tensor as a tree, root connects with 4 leaves, and each leaf has 3 children, and each such children has 2 children, and each such children has 4 concrete elements: yes, the last number of the shape indicates the length of a list/array, such as `array([1., 2., 3., 4.])`.
@@ -42,5 +43,14 @@ numpy.reshape(a, newshape, order='C')
 >> np.reshape(a, (3,5,-1)).shape
 (3, 5, 4)
 ```
+Reshape can also be used (or it's commonly used) to flatten some dimension but not all of them. For certain algorithms (like simple KNN), layered informations aren't needed, so we can flat out those information:
 
-
+```python
+>> print(X_train.shape)
+(5000, 32, 32, 3)
+# we have 5000 examples, pixel 32X32, RGB color 3 channels
+# but for KNN, we don't need this layered information, so we just flatten out the later 3 dimensions:
+>> X_train = np.reshape(X_train, (X_train.shape[0], -1))
+>> print(X_train.shape)
+(5000, 3072)
+```
