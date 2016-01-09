@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Numpy Tricks
 layout: post
 ---
@@ -37,6 +37,20 @@ train = np.random.randn(10,5)
 # for another matrix shape of (5,5), assume this is our training example
 # 5 examples, each example has 5 data points
 test = np.random.randn(5,5)
+# We want to form a matrix of (5, 10), each data point on every row is the 
+# difference between sum of test-data[j] and train-data[i].
+train = np.sum(train, axis=1)
+test = np.sum(test, axis=1)
 
-
+# duplicate train data of shape (10,) 5 times
+expanded_train = np.tile(train, [test.shape[0],1])
+# (5,10)
+expanded_test = np.tile(test, [train.shape[0],1])
+# (10, 5)
+expanded_test = expanded_test.T
+# (5,10) -> transpose it so we can do subtraction
+result = expanded_train - expanded_test
+# (5,10)
 ```
+
+# Trick 3: Smart Use of vstack and hstack
