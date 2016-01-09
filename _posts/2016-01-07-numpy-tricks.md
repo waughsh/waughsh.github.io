@@ -1,8 +1,9 @@
 ---
-published: true
+published: false
 title: Numpy Tricks
 layout: post
 ---
+
 
 
 
@@ -28,5 +29,14 @@ idxs = np.flatnonzero(y_train == 5)
 
 Sometimes when you want to add two matrices together, and have to manually align/broadcast them, you can use np.tile(). This copy the current matrix and broadcast into the shape you want. Keep the lowest dimension as 1 so your matrix/vector stay the same.
 
+Any for-loop can be written in `np.tile()` and enjoy the advantage of vectorized operation:
+
+```
+# for a matrix shape of (10,5), assume this is our training example
+train = np.random.randn(10,5)
+# for another matrix shape of (5,5), assume this is our training example
+# 5 examples, each example has 5 data points
+test = np.random.randn(5,5)
 
 
+```
