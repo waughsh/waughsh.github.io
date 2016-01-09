@@ -53,4 +53,3 @@ result = expanded_train - expanded_test
 # (5,10)
 ```
 
-# Trick 3: Smart Use of vstack and hstack
