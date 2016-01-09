@@ -25,7 +25,7 @@ idxs = np.flatnonzero(y_train == 5)
 
 `np.flatnonzero()` takes an array as input. Boolean array in Python has the property of `True` mapping to 1 and `False` mapping to 0, so `flatnonzero()` can easily pick out the index of those examples that are of class 5.
 
-# Trick 2: Vectorization with `np.tile()`
+# Trick 2: Vectorization/Loop-elimination with `np.tile()`
 
 Sometimes when you want to add two matrices together, and have to manually align/broadcast them, you can use np.tile(). This copy the current matrix and broadcast into the shape you want. Keep the lowest dimension as 1 so your matrix/vector stay the same.
 
