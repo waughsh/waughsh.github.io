@@ -6,6 +6,7 @@ layout: post
 
 
 
+
 Numpy Array overrides many operations, so deciphering them could be uneasy. Here are a collection of what I would consider tricky/handy moments from Numpy.
 
 # Trick 1: Collection1 == Collection2
@@ -22,3 +23,10 @@ idxs = np.flatnonzero(y_train == 5)
 ```
 
 `np.flatnonzero()` takes an array as input. Boolean array in Python has the property of `True` mapping to 1 and `False` mapping to 0, so `flatnonzero()` can easily pick out the index of those examples that are of class 5.
+
+# Trick 2: Vectorization with `np.tile()`
+
+Sometimes when you want to add two matrices together, and have to manually align/broadcast them, you can use np.tile(). This copy the current matrix and broadcast into the shape you want. Keep the lowest dimension as 1 so your matrix/vector stay the same.
+
+
+
