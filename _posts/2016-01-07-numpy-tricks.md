@@ -16,12 +16,12 @@ Numpy Array overrides many operations, so deciphering them could be uneasy. Here
 The `==` in Numpy, when applied to two collections mean element-wise comparison, and the returned result is an array. This trick can be neatly combined with other operations that take in array result.
 
 ```python
-X_train, y_train, X_test, y_test = load_CIFAR10(cifar10_dir)
+>> X_train, y_train, X_test, y_test = load_CIFAR10(cifar10_dir)
 # Training labels (y_train) shape:  (50000,)
 # to pick out correct y examples for one class (assuming that class is indexed at 5)
-print(y_train == 5)
+>> print(y_train == 5)
 # array([False, False, False, ..., False, False, False], dtype=bool)
-idxs = np.flatnonzero(y_train == 5)
+>> idxs = np.flatnonzero(y_train == 5)
 ```
 
 `np.flatnonzero()` takes an array as input. Boolean array in Python has the property of `True` mapping to 1 and `False` mapping to 0, so `flatnonzero()` can easily pick out the index of those examples that are of class 5.
@@ -34,26 +34,31 @@ Any for-loop can be written in `np.tile()` and enjoy the advantage of vectorized
 
 ```python
 # for a matrix shape of (10,5), assume this is our training example
-train = np.random.randn(10,5)
+>> train = np.random.randn(10,5)
 # for another matrix shape of (5,5), assume this is our training example
 # 5 examples, each example has 5 data points
-test = np.random.randn(5,5)
+>> test = np.random.randn(5,5)
 # We want to form a matrix of (5, 10), each data point on every row is the 
 # difference between sum of test-data[j] and train-data[i].
-train = np.sum(train, axis=1)
-test = np.sum(test, axis=1)
+>> train = np.sum(train, axis=1)
+>> test = np.sum(test, axis=1)
 
 # duplicate train data of shape (10,) 5 times
-expanded_train = np.tile(train, [test.shape[0],1])
+>> expanded_train = np.tile(train, [test.shape[0],1])
 # (5,10)
-expanded_test = np.tile(test, [train.shape[0],1])
+>> expanded_test = np.tile(test, [train.shape[0],1])
 # (10, 5)
-expanded_test = expanded_test.T
+>> expanded_test = expanded_test.T
 # (5,10) -> transpose it so we can do subtraction
-result = expanded_train - expanded_test
+>> result = expanded_train - expanded_test
 # (5,10)
 ```
 
 # Trick 3: Using Array for Pair-wise Slicing
 
+Numpy array's slicing often offers many pleasant surprises. This suprise comes from the context of SVM's max() hinge-loss vectorization. SVM's multi-class loss function requires wrong class scores to subtract correct class scores. When you dot product weight matrix and training matrix, you get a matrix shape of (num_train, num_classes). However, how do you get the score of correct classes out without looping (given y_labels of shape (num_train,))? At this situation, pair-wise selection could be helpful:
+
+```python
+>> X = np.random
+```
 
