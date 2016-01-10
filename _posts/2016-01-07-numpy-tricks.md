@@ -59,6 +59,20 @@ Any for-loop can be written in `np.tile()` and enjoy the advantage of vectorized
 Numpy array's slicing often offers many pleasant surprises. This suprise comes from the context of SVM's max() hinge-loss vectorization. SVM's multi-class loss function requires wrong class scores to subtract correct class scores. When you dot product weight matrix and training matrix, you get a matrix shape of (num_train, num_classes). However, how do you get the score of correct classes out without looping (given y_labels of shape (num_train,))? At this situation, pair-wise selection could be helpful:
 
 ```python
->> X = np.random
+>> X = np.random.randn(500, 3073)
+>> num_train = X.shape[0]
+>> y_label = np.random.randint(10, (500,))
+>> W = np.random.randn(3073, 10)
+>> scores = X.dot(W)
+>> correct_scores = scores[range(num_train),y_dev]
 ```
 
+If a numpy array's `[]` operation has two arguments which both are arrays, then Numpy will run this pair-wise operations, like the example below:
+
+```python
+>> a = np.asarray([1,2,3])
+>> b = np.asarray([1,2,3])
+>> correct_scores = scores[a, b]
+```
+
+It will select the [1,1], [2,2], [3,3] value from scores matrix.
