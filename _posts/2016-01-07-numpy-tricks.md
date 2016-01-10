@@ -1,8 +1,9 @@
 ---
 published: true
-title: Numpy Tricks
+title: A Collection of Numpy Tricks
 layout: post
 ---
+
 
 
 
@@ -31,7 +32,7 @@ Sometimes when you want to add two matrices together, and have to manually align
 
 Any for-loop can be written in `np.tile()` and enjoy the advantage of vectorized operation:
 
-```
+```python
 # for a matrix shape of (10,5), assume this is our training example
 train = np.random.randn(10,5)
 # for another matrix shape of (5,5), assume this is our training example
@@ -52,4 +53,7 @@ expanded_test = expanded_test.T
 result = expanded_train - expanded_test
 # (5,10)
 ```
+
+# Trick 3: Using Array for Pair-wise Slicing
+
 
