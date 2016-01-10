@@ -9,6 +9,7 @@ layout: post
 
 
 
+
 Numpy Array overrides many operations, so deciphering them could be uneasy. Here are a collection of what I would consider tricky/handy moments from Numpy.
 
 # Trick 1: Collection1 == Collection2
@@ -64,7 +65,7 @@ Numpy array's slicing often offers many pleasant surprises. This suprise comes f
 >> y_label = np.random.randint(10, (500,))
 >> W = np.random.randn(3073, 10)
 >> scores = X.dot(W)
->> correct_scores = scores[range(num_train),y_dev]
+>> correct_scores = scores[range(num_train),y_label]
 ```
 
 If a numpy array's `[]` operation has two arguments which both are arrays, then Numpy will run this pair-wise operations, like the example below:
@@ -75,4 +76,13 @@ If a numpy array's `[]` operation has two arguments which both are arrays, then 
 >> correct_scores = scores[a, b]
 ```
 
-It will select the [1,1], [2,2], [3,3] value from scores matrix.
+It will select the [1,1], [2,2], [3,3] value from scores matrix. Another way to reversely use this is to assign value. So if we want to clean out the correct_label's score for the loss function, we can:
+
+```python
+>> scores[range(X.shape[0]), y_label] = 0
+```
+
+With this, all the correct label's score are set to be 0, then when we sum them up, the correct_label will not affect the overall cost at all.
+
+
+
