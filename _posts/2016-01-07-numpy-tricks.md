@@ -10,6 +10,7 @@ layout: post
 
 
 
+
 Numpy Array overrides many operations, so deciphering them could be uneasy. Here are a collection of what I would consider tricky/handy moments from Numpy.
 
 # Trick 1: Collection1 == Collection2
@@ -55,6 +56,8 @@ Any for-loop can be written in `np.tile()` and enjoy the advantage of vectorized
 # (5,10)
 ```
 
+`np.tile()` can also be used to expand arrays and allow element-wise multiplication/division/addision, however such functionality can be easily (or better) replaced by `np.expand_dims()` because `expand_dims()` will automatically figure out which dimension to expand on, and does not require a final transpose (which is often the case for `np.tile`).
+
 # Trick 3: Using Array for Pair-wise Slicing
 
 Numpy array's slicing often offers many pleasant surprises. This suprise comes from the context of SVM's max() hinge-loss vectorization. SVM's multi-class loss function requires wrong class scores to subtract correct class scores. When you dot product weight matrix and training matrix, you get a matrix shape of (num_train, num_classes). However, how do you get the score of correct classes out without looping (given y_labels of shape (num_train,))? At this situation, pair-wise selection could be helpful:
@@ -83,6 +86,3 @@ It will select the [1,1], [2,2], [3,3] value from scores matrix. Another way to 
 ```
 
 With this, all the correct label's score are set to be 0, then when we sum them up, the correct_label will not affect the overall cost at all.
-
-
-
