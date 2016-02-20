@@ -15,6 +15,7 @@ layout: post
 
 
 
+
 Numpy Array overrides many operations, so deciphering them could be uneasy. Here are a collection of what I would consider tricky/handy moments from Numpy.
 
 # Trick 1: Collection1 == Collection2
@@ -117,3 +118,37 @@ W = np.linspace(0, 1, num=V*D).reshape(V, D)  # (V, D)
 out = W[x]  # (N, T, D)
 ```
 Numpy uses the underlying value of x as index to extract values from W.
+
+# Trick 6: Unfunc `at`
+
+Numpy has a special group of "functions" called [unfunc](http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.ufunc.at.html). Turns out numpy.add, numpy.subtract and so on belong to this special group of functions.
+
+Numpy has predefined methods for those functions such as `at`! This function performs the operation (let it be `add` or `subtract`) on a specific location (or locations).
+
+`unfunc.at()` takes 3 arguments, first one is the matrix you intend to modify, second argument is the indices of the matrix you want to modify, third argument is the value you want to change (depending on what the `unfunc` function is).
+
+A simple example is:
+
+```python
+>>> a = np.array([1, 2, 3, 4])
+>>> np.add.at(a, [0, 1, 2, 2], 1)
+>>> print(a)
+array([2, 3, 5, 4])
+```
+
+However, this example is too simple and almost useless. This kind of useless examples permeate the whole Numpy documentation. Let's look at a more advanced example: use this trick to update a word embedding matrix!
+
+```python
+# dout: Upstream gradients of shape (N, T, D)
+# x: from example in Trick 5 (N, T), indices
+# V: the length of total vocabulary
+# D: weight matrix dimension
+# task here is to build a dW to modify
+# the original weight matrix
+
+dW = np.zeros((V, D), dtype=dout.dtype)
+np.add.at(dW, x, dout)
+```
+Notice that Numpy converts `x`, a matrix into individual indicies, and use it to assign values from dout to dW. `np.add.at()` flattened dout so the dimension becomes (N*T, D). Iterating through such flattened array is the same order as iterating through `x`, which is also of shape (N, T).
+
+
