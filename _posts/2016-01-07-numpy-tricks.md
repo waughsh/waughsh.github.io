@@ -149,6 +149,5 @@ However, this example is too simple and almost useless. This kind of useless exa
 dW = np.zeros((V, D), dtype=dout.dtype)
 np.add.at(dW, x, dout)
 ```
-Notice that Numpy converts `x`, a matrix into individual indicies, and use it to assign values from dout to dW. `np.add.at()` flattened dout so the dimension becomes (N*T, D). Iterating through such flattened array is the same order as iterating through `x`, which is also of shape (N, T).
-
+Notice that Numpy converts `x`, a matrix into individual indicies, and use it to assign values from dout to dW. `np.add.at()` flattened dout so the dimension becomes `(N*T, D)`. It will be checked against `x`'s dimension (N, T), and see if the product of x's dimension and `N*T` will match. Only when this happens, you will assign the same amount of `D` arrays as you are instrcuted in `x`, to `dW`, which also happens to take `D` arrays.
 
