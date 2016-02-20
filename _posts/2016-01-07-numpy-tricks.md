@@ -100,7 +100,7 @@ for t in xrange(T):
 
 You can use it to extract values or assign values!
 
-# Trick 5: Array indexing
+# Trick 5: Use Array as Slicing index
 
 In previous posts, we already explored how Numpy array takes slicing of pairs (such as `x[range(x.shape[0]), y]`), however, Numpy can also take another array as slicing. Assume x is an index array of shape (N, T), each element index
 of x is in the range 0 <= idx < V, and we want to convert such index array into array with real weights, from a weight matrix w of shape (V, D), we can simply do:
