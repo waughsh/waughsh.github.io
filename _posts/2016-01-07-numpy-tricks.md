@@ -13,6 +13,7 @@ layout: post
 
 
 
+
 Numpy Array overrides many operations, so deciphering them could be uneasy. Here are a collection of what I would consider tricky/handy moments from Numpy.
 
 # Trick 1: Collection1 == Collection2
@@ -108,9 +109,9 @@ of x is in the range 0 <= idx < V, and we want to convert such index array into 
 ```python
 N, T, V, D = 2, 4, 5, 3
 
-x = np.asarray([[0, 3, 1, 2], [2, 1, 0, 3]])
-W = np.linspace(0, 1, num=V*D).reshape(V, D)
+x = np.asarray([[0, 3, 1, 2], [2, 1, 0, 3]])  # (N, T)
+W = np.linspace(0, 1, num=V*D).reshape(V, D)  # (V, D)
 
 # this is the only required line
-out = W[x]
+out = W[x]  # (N, T, D)
 ```
