@@ -18,6 +18,10 @@ Sutskever's model constitutes end-to-end (sequence-to-sequence) training (with p
 
 A huge drawback of these two initial models are they both use a fixed-length vector to represent the meaning of a source sentence. The dimension of this fixed-length vector can get too small to summarize a long sequence.
 
-Bahdanau observed this phenomenon in his paper in 2015:, which became the second milestone paper for RNN encoder-decoder ([NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE](http://arxiv.org/pdf/1409.0473v6.pdf)). He proposed a variable length vector C to summarize the context of the source sentence, and the most infamous **attention** mechanism. 
+Bahdanau observed this phenomenon in his paper in 2015:, which became the second milestone paper for RNN encoder-decoder ([NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE](http://arxiv.org/pdf/1409.0473v6.pdf)). He proposed a variable length vector C to summarize the context of the source sentence, and the most infamous **attention** mechanism. It's interesting to notice that the so-called "attention" is used interchangeably as "alignment" in Bahdanau's paper, because attention mechanism is analogous to alignment in traditional machien translation literature.
+
+
+
+
 
 
