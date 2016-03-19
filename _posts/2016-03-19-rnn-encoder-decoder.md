@@ -22,6 +22,9 @@ Bahdanau observed this phenomenon in his paper in 2015:, which became the second
 
 This brings us to another paper, also published in 2015, that sheds light on global vs. local attention (i.e., soft vs. hard attention in Computer Vision), in Luong's paper ([Effective Approaches to Attention-based Neural Machine Translation](http://arxiv.org/pdf/1508.04025v5.pdf)). Local attention is inferred using a Gaussian distribution.
 
-At last, let's mention NLI: Natural Language Inference. With the [SNLI corpus](http://nlp.stanford.edu/projects/snli/), NLI shares many common features as MT system, as pointed out in Bill McCartney's paper: [A Phrase-Based Alignment Model for Natural Language Inference](http://nlp.stanford.edu/~wcmac/papers/nli-alignment-emnlp08.pdf)
+At last, let's mention NLI: Natural Language Inference. With the [SNLI corpus](http://nlp.stanford.edu/projects/snli/), NLI shares many common features as MT system, as pointed out in Bill McCartney's paper: [A Phrase-Based Alignment Model for Natural Language Inference](http://nlp.stanford.edu/~wcmac/papers/nli-alignment-emnlp08.pdf), and one of them is alignment.
 
+The RNN encoder-decoder scheme is first used in NLI by Rocktaschel in his paper: 
+[Reasoning about Entailment with Neural Attention](http://arxiv.org/pdf/1509.06664v1.pdf) in 2015, then Cheng proposed a different model: shallow attention fusion vs. deep attention fusion in the paper [Long Short-Term Memory-Networks for Machine Reading](http://arxiv.org/pdf/1601.06733v3.pdf), with the main difference that shallow attention fusion only summarize attention information at the last time step of the decoder (obviously the wrong way), and deep fusion summarizes attention information at each step, and merge hidden state of the encoder into the decoder at each time step, and such merging process is a weighted sum based on how much attention given decoder time step has to each time step from the encoder.
 
+We expect to see more development of this scheme in 2016, and this article will be properly updated :)
