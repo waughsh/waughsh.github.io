@@ -18,4 +18,4 @@ Sutskever's model constitutes end-to-end (sequence-to-sequence) training (with p
 
 A huge drawback of these two initial models are they both use a fixed-length vector to represent the meaning of a source sentence. The dimension of this fixed-length vector can get too small to summarize a long sequence.
 
-Bahdanau observed this phenomenon in his paper in 2015: NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE, which became the second milestone paper for RNN encoder-decoder (http://arxiv.org/pdf/1409.0473v6.pdf).
+Bahdanau observed this phenomenon in his paper in 2015:, which became the second milestone paper for RNN encoder-decoder ([ NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE](http://arxiv.org/pdf/1409.0473v6.pdf)).
