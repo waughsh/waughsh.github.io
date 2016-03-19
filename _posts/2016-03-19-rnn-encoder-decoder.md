@@ -20,8 +20,8 @@ A huge drawback of these two initial models are they both use a fixed-length vec
 
 Bahdanau observed this phenomenon in his paper in 2015:, which became the second milestone paper for RNN encoder-decoder ([NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE](http://arxiv.org/pdf/1409.0473v6.pdf)). He proposed a variable length vector C to summarize the context of the source sentence, and the most infamous **attention** mechanism. It's interesting to notice that the so-called "attention" is used interchangeably as "alignment" in Bahdanau's paper, because attention mechanism is analogous to alignment in traditional machien translation literature.
 
+This brings us to another paper, also published in 2015, that sheds light on global vs. local attention (i.e., soft vs. hard attention in Computer Vision), in Luong's paper ([Effective Approaches to Attention-based Neural Machine Translation](http://arxiv.org/pdf/1508.04025v5.pdf)). Local attention is inferred using a Gaussian distribution.
 
-
-
+At last, let's mention NLI: Natural Language Inference. With the [SNLI corpus](http://nlp.stanford.edu/projects/snli/), NLI shares many common features as MT system, as pointed out in Bill McCartney's paper: [A Phrase-Based Alignment Model for Natural Language Inference](http://nlp.stanford.edu/~wcmac/papers/nli-alignment-emnlp08.pdf)
 
 
