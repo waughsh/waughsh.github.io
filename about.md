@@ -6,13 +6,13 @@ published: true
 ---
 
 
+
 ![small_vacation_photo1.png]({{site.baseurl}}/images/small_vacation_photo1.png)
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+I'm currently a first year master student at Stanford University. My main area is Natural Language Processing, and somewhat more interestingly, I start to ponder how NLP and CV can be combined and get to be something more advanced.
 
 ### Contact me
 
-
-[email@domain.com](mailto:email@domain.com)
+[anie@stanford.edu](mailto:anie@stanford.edu)
