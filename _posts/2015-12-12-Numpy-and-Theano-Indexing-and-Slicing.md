@@ -12,6 +12,7 @@ layout: post
 
 
 
+
 As some of you might know, I've been working on Numpy and Theano for a while. I can't claim any expertise, but have found many interesting facets and had to synthesize them together, leading to this post.
 
 ## Python Double Colon Slicing
@@ -89,7 +90,7 @@ array([ 2.,  4.])
 
 I have to say `.eval()` is an amazing function, and actually gives insight to a lot of the symbolic magic inside theano. What's worth notice is that `x` is not pointing to `y`'s elements in any way (different from Numpy), and any kind of modification on `x` will not affect `y` at all.
 
-To modify `x`, we can use either `T.inc_subtensor()` or `T.set_subtensor()`.
+To modify `x`, we can use either `T.inc_subtensor()` or `T.set_subtensor()`. Remember all Theano functions (I think) are immutable, so you need to assign the update expression to a variable `yc`!
 
 ```python
 >> yc = T.inc_subtensor(x[1::2], 1)
