@@ -5,20 +5,9 @@ layout: post
 ---
 
 
-
-
-
-
-
-
-
-
-
-
-
 Numpy Array overrides many operations, so deciphering them could be uneasy. Here are a collection of what I would consider tricky/handy moments from Numpy.
 
-# Trick 1: Collection1 == Collection2
+## Trick 1: Collection1 == Collection2
 
 The `==` in Numpy, when applied to two collections mean element-wise comparison, and the returned result is an array. This trick can be neatly combined with other operations that take in array result.
 
@@ -33,7 +22,7 @@ The `==` in Numpy, when applied to two collections mean element-wise comparison,
 
 `np.flatnonzero()` takes an array as input. Boolean array in Python has the property of `True` mapping to 1 and `False` mapping to 0, so `flatnonzero()` can easily pick out the index of those examples that are of class 5.
 
-# Trick 2: Vectorization/Loop-elimination with `np.tile()`
+## Trick 2: Vectorization/Loop-elimination with `np.tile()`
 
 Sometimes when you want to add two matrices together, and have to manually align/broadcast them, you can use np.tile(). This copy the current matrix and broadcast into the shape you want. Keep the lowest dimension as 1 so your matrix/vector stay the same.
 
@@ -45,7 +34,7 @@ Any for-loop can be written in `np.tile()` and enjoy the advantage of vectorized
 # for another matrix shape of (5,5), assume this is our training example
 # 5 examples, each example has 5 data points
 >> test = np.random.randn(5,5)
-# We want to form a matrix of (5, 10), each data point on every row is the 
+# We want to form a matrix of (5, 10), each data point on every row is the
 # difference between sum of test-data[j] and train-data[i].
 >> train = np.sum(train, axis=1)
 >> test = np.sum(test, axis=1)
@@ -63,7 +52,7 @@ Any for-loop can be written in `np.tile()` and enjoy the advantage of vectorized
 
 `np.tile()` can also be used to expand arrays and allow element-wise multiplication/division/addision, however such functionality can be easily (or better) replaced by `np.expand_dims()` because `expand_dims()` will automatically figure out which dimension to expand on, and does not require a final transpose (which is often the case for `np.tile`).
 
-# Trick 3: Using Array for Pair-wise Slicing
+## Trick 3: Using Array for Pair-wise Slicing
 
 Numpy array's slicing often offers many pleasant surprises. This suprise comes from the context of SVM's max() hinge-loss vectorization. SVM's multi-class loss function requires wrong class scores to subtract correct class scores. When you dot product weight matrix and training matrix, you get a matrix shape of (num_train, num_classes). However, how do you get the score of correct classes out without looping (given y_labels of shape (num_train,))? At this situation, pair-wise selection could be helpful:
 
@@ -92,7 +81,7 @@ It will select the [1,1], [2,2], [3,3] value from scores matrix. Another way to 
 
 With this, all the correct label's score are set to be 0, then when we sum them up, the correct_label will not affect the overall cost at all.
 
-# Trick 4: Smart use of ':' to extract the right shape
+## Trick 4: Smart use of ':' to extract the right shape
 
 Sometimes you encounter a 3-dim array that is of shape (N, T, D), while your function requires a shape of (N, D). At a time like this, `reshape()` will do more harm than good, so you are left with one simple solution:
 
@@ -103,7 +92,7 @@ for t in xrange(T):
 
 You can use it to extract values or assign values!
 
-# Trick 5: Use Array as Slicing index
+## Trick 5: Use Array as Slicing index
 
 In previous posts, we already explored how Numpy array takes slicing of pairs (such as `x[range(x.shape[0]), y]`), however, Numpy can also take another array as slicing. Assume x is an index array of shape (N, T), each element index
 of x is in the range 0 <= idx < V, and we want to convert such index array into array with real weights, from a weight matrix w of shape (V, D), we can simply do:
@@ -119,7 +108,7 @@ out = W[x]  # (N, T, D)
 ```
 Numpy uses the underlying value of x as index to extract values from W.
 
-# Trick 6: Unfunc `at`
+## Trick 6: Unfunc `at`
 
 Numpy has a special group of "functions" called [unfunc](http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.ufunc.at.html). Turns out numpy.add, numpy.subtract and so on belong to this special group of functions.
 
@@ -150,4 +139,3 @@ dW = np.zeros((V, D), dtype=dout.dtype)
 np.add.at(dW, x, dout)
 ```
 Notice that Numpy converts `x`, a matrix into individual indicies, and use it to assign values from dout to dW. `np.add.at()` flattened dout so the dimension becomes `(N*T, D)`. It will be checked against `x`'s dimension (N, T), and see if the product of x's dimension and `N*T` will match. Only when this happens, you will assign the same amount of `D` arrays as you are instrcuted in `x`, to `dW`, which also happens to take `D` arrays.
-
