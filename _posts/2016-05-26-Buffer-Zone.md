@@ -7,6 +7,7 @@ I have been busy lately, and a lot of great papers have been crawling on my brow
 Dynamic Memory Network Implementation: [http://yerevann.github.io/2016/02/23/playground-for-babi-tasks/](http://yerevann.github.io/2016/02/23/playground-for-babi-tasks/) and [http://yerevann.github.io/2016/02/05/implementing-dynamic-memory-networks/#next-steps](http://yerevann.github.io/2016/02/05/implementing-dynamic-memory-networks/#next-steps)
 (Actual Git repo: [https://github.com/YerevaNN/Dynamic-memory-networks-in-Theano](https://github.com/YerevaNN/Dynamic-memory-networks-in-Theano))
 
+This blog post has all ICLR papers (they are all pretty amazing): [http://nuit-blanche.blogspot.com/2016/02/iclr-2016-list-of-accepted-papers.html](http://nuit-blanche.blogspot.com/2016/02/iclr-2016-list-of-accepted-papers.html)
 
 Stochastic Variance Reduction for Nonconvex optimization: [http://suvrit.de/papers/nonconvex_svrg.pdf](http://suvrit.de/papers/nonconvex_svrg.pdf)
 
