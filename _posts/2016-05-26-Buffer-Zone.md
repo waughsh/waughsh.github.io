@@ -11,6 +11,14 @@ This blog post has all ICLR papers (they are all pretty amazing): [http://nuit-b
 
 Stochastic Variance Reduction for Nonconvex optimization: [http://suvrit.de/papers/nonconvex_svrg.pdf](http://suvrit.de/papers/nonconvex_svrg.pdf)
 
+Geometric optimization:
+
+This MIT professor: [http://suvrit.de/](http://suvrit.de/)
+
+Papers on Geometric optimization: [http://suvrit.de/gopt.html](http://suvrit.de/gopt.html)
+
+Stephen Boyd's tutorial on Geometric optimization: [https://stanford.edu/~boyd/papers/pdf/gp_tutorial.pdf](https://stanford.edu/~boyd/papers/pdf/gp_tutorial.pdf)
+
 ICML Workshop on Non-convex optimization (Percy Liang being an organizer): [https://sites.google.com/site/noncvxicml16/](https://sites.google.com/site/noncvxicml16/)
 
 Quoc Le's Neural Programmer - embedding arithmetic computation into neural network: [http://arxiv.org/pdf/1511.04834v2.pdf](http://arxiv.org/pdf/1511.04834v2.pdf)
