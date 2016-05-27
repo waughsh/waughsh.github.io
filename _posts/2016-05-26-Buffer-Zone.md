@@ -17,7 +17,7 @@ Quoc Le's Neural Programmer - embedding arithmetic computation into neural netwo
 
 Quoc Le, Luke Vilnis: introducing Gaussian gradient noise to improve deep network learning [http://arxiv.org/pdf/1511.06807v1.pdf](http://arxiv.org/pdf/1511.06807v1.pdf)
 
-Jiwei's diversity promoting conversational model, where it makes sense to impose not only P(Target|Source) but also P(Source|Target) - non-conventional loss function: [http://arxiv.org/pdf/1510.03055v2.pdf](http://arxiv.org/pdf/1510.03055v2.pdf)
+Jiwei's diversity promoting conversational model, where it makes sense to impose not only $P(Target|Source)$ but also $P(Source|Target)$ - non-conventional loss function: [http://arxiv.org/pdf/1510.03055v2.pdf](http://arxiv.org/pdf/1510.03055v2.pdf)
 
 Jiwei's reommendation, also latest paper on using reinforcement learning to incoroporate non-conventional loss functions (such as train on BLEU score that can't be worked into the cost in a normal way): [http://arxiv.org/pdf/1511.06732v7.pdf](http://arxiv.org/pdf/1511.06732v7.pdf)
 
