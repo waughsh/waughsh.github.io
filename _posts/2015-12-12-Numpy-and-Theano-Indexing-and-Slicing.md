@@ -68,7 +68,7 @@ This does give flexibility of easy assignment and alteration for A's elements, b
 A safer way to operate is to copy A's value:
 
 ```python
-B = A.copy
+B = A.copy()
 B[::2] += 1
 ```
 
