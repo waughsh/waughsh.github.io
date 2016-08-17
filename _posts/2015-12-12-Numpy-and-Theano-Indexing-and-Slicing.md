@@ -4,15 +4,6 @@ title: Numpy and Theano Indexing and Slicing
 layout: post
 ---
 
-
-
-
-
-
-
-
-
-
 As some of you might know, I've been working on Numpy and Theano for a while. I can't claim any expertise, but have found many interesting facets and had to synthesize them together, leading to this post.
 
 ## Python Double Colon Slicing
@@ -117,7 +108,7 @@ array([[[ 1.]]])
 >> (1, 1, 1)
 ```
 
-Sometimes, your array's shape is unknown, but you want to apply the same operation to all the dimensions, here is some Python magic kicking in. 
+Sometimes, your array's shape is unknown, but you want to apply the same operation to all the dimensions, here is some Python magic kicking in.
 
 ### \_\_getitem\_\_ Tuple and Slice
 In order to use syntax like `a[...]`, a `__getitem__(self, key)` method is defined on the class. The `key` would correspond to a tuple value, which is created by the `,` syntax in Python.

@@ -1,6 +1,7 @@
 #
 # This file contains configuration flags to customize your site
 # (to deploy this locally): jekyll server -w --baseurl '' --port 4000
+# to test locally: jekyll serve --baseurl ''
 
 # Name of your site (displayed in the header)
 name: Allen Nie
