@@ -8,3 +8,7 @@ This is an article providing another perspective on understanding Lagrangian and
 ## Lagrangian
 
 In convex optimization, unlike other fields of machine learning, we can add constraints. Convex problems have a form of the following:
+
+'''
+
+'''
