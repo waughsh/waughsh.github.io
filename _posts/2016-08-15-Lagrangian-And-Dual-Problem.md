@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 layout: post
 title: A Geometric Interpretation of Lagrangian and Dual Problem
 ---
