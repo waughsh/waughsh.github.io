@@ -10,6 +10,8 @@ This is an article providing another perspective on understanding Lagrangian and
 ## Lagrangian
 
 In convex optimization, unlike other fields of machine learning, we can add constraints. Convex problems have a form of the following:
+
+
 $$
 \begin{equation*}
 \begin{aligned}
@@ -23,9 +25,15 @@ $$
 \end{equation*}
 \label{eq:1}
 $$
+
+
 We define $f_i(x)$ being convex functions, and $h_i(x)$ being affine functions. If you are  familiar with convex optimization or other optimization problem, this formula should look familar. The constraints listed under `subject to` are considered **hard** constraints, and those constraints do not normally appear in traditonal machine learning cost functions. One way to distinguish them is that, cost functions in Machine Learning does not need to have a realistic meaning (objective can be an abstract measurement of progress), where in convex optimization, objective is something you want to find (like how much fuel the rocket will need).
 
+
+
 However, it has been quite difficult to optimize with these hard constraints. Typical methods include solving for a Newton step:
+
+
 $$
 \begin{bmatrix}
     \nabla^2f(x)  & A \\
@@ -40,7 +48,11 @@ $$
     0
   \end{bmatrix}
 $$
+
+
 Solving for $\Delta x_{nt}$ and we get our central-path (feasible) Newton method of satisfying equality constraint as well as optimizing our overall objective. As to why it has such effect, refer to the book.
+
+
 
 As to satisfy the inequality constraint, we can use **barrier method**, which adds the inequality constraints as a logarithmic barrier, so instead of optimizing the original problem, we can have:
 
@@ -57,7 +69,11 @@ $$
 $$
 The logarithmic barrier punishes the objective logarithmically when it's approaching 0 from the negative side.
 
+
+
 So what do those two "implementation" details have to do with Lagrangian? The reason is simple: Lagrangian is simply a way, not unlike equality Newton step or barrier method, to incoroporate constraints into the overall objective. It turns the **hard** constraints into **soft** constraints, constraints that you (or the optimization) can violate. 
+
+
 
 Let's look back to $\ref{eq:1}$. 
 
