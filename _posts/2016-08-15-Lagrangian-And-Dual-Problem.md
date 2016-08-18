@@ -23,6 +23,8 @@ $$
 & & h_i(x) = 0, \; i = 1, \ldots, p.
 \end{aligned}
 \end{equation*}
+\tag{1}
+\label{original}
 $$
 
 
@@ -76,5 +78,15 @@ So what do those two "implementation" details have to do with Lagrangian? The re
 
 
 
-Let's look back to.
+Let's look back to equation $\ref{original}$: we can formulate its Lagrangian as: 
 
+
+$$
+L(x, \lambda, \nu) = f_0(x) + \sum_{i=1}^m \lambda_i f_i(x) + \sum_{i=1}^p \nu_i h_i(x)
+
+\label{lagrangian}
+\tag{2}
+$$
+
+
+Now it's as if we are telling the God of optimization that, you can go ahead and violate our constraints as much as you can, and we are going to introduce two new variables $\lambda$ and $\nu$ to help you do that. These two variables are called dual variables. $\lambda$ is referred as inequality constraint dual variable, and not surprisingly $\nu$ is the equality constraint dual variable. 
