@@ -23,7 +23,6 @@ $$
 & & h_i(x) = 0, \; i = 1, \ldots, p.
 \end{aligned}
 \end{equation*}
-\label{eq:1}
 $$
 
 
@@ -67,6 +66,8 @@ $$
 \end{aligned}
 \end{equation*}
 $$
+
+
 The logarithmic barrier punishes the objective logarithmically when it's approaching 0 from the negative side.
 
 
@@ -75,5 +76,5 @@ So what do those two "implementation" details have to do with Lagrangian? The re
 
 
 
-Let's look back to $\ref{eq:1}$. 
+Let's look back to.
 
