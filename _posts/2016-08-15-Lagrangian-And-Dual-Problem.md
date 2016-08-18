@@ -84,9 +84,41 @@ Let's look back to equation $\ref{original}$: we can formulate its Lagrangian as
 $$
 L(x, \lambda, \nu) = f_0(x) + \sum_{i=1}^m \lambda_i f_i(x) + \sum_{i=1}^p \nu_i h_i(x)
 
-\label{lagrangian}
 \tag{2}
 $$
 
 
 Now it's as if we are telling the God of optimization that, you can go ahead and violate our constraints as much as you can, and we are going to introduce two new variables $\lambda$ and $\nu$ to help you do that. These two variables are called dual variables. $\lambda$ is referred as inequality constraint dual variable, and not surprisingly $\nu$ is the equality constraint dual variable. 
+
+
+
+##  Dual Problem
+
+After all these long and tedious definition of things (hopefully you aren't too bored with them), we get to one last bit of information: dual problem. We can form a dual problem from the Lagrangian. What is a dual problem? Dual problem, simply put, is like you looking into the mirror. It's you in the mirror, but the image is flipped. A deeper interpretation of dual problem is that it allows us to explore the effects of constraints on our original objective. Keep in mind that by forming Lagrangian, we allow the constraints to be soft, to add artibitrary large or small "penalty" to the original objective, but how would these constraints add penalization to the objective? dual variables provide the answer.
+
+
+
+We first must get rid of the effect of $x$. Since we want to minimize the new objective (the Lagrangian), we can use the operator **inf**, it can give us the minimum value of the function over a chosen variable, and in here we choose $x$:
+
+
+$$
+g(\lambda, \nu) = \inf_{x \in D} L(x, \lambda, \nu) = \inf_{x \in D} \Big(f_0(x) + \sum_{i=1}^m \lambda_i f_i(x) + \sum_{i=1}^p \nu_i h_i(x) \Big)
+$$
+
+
+By doing this, we reduce the first term $f_0(x)$, $f_i(x)$, and $h_i(x)$ to constants, and the infimum over a family of affine functions is a concave function (go through chapter 2 of the convex book for more details on this). Thus our dual objective is concave. Then we can quite awesomely form the following dual problem:
+
+
+$$
+\begin{equation*}
+\begin{aligned}
+& \text{maximize}
+& & g(\lambda, \nu) \\
+& \text{subject to}
+& & \lambda \succeq 0
+\end{aligned}
+\end{equation*}
+$$
+
+
+A nicer understanding of this is that: by fixing $x$ (we shall now call it **primal** variable out of no reason…it's actually to draw contrast to dual variables), we are driving the Lagrangian's value down (as well as $f_0(x)$'s value), however, we must be violating constraints! So now, maybe it's the time for the constraints to punish our objective, and we want the penalty as **high** as possible. Thus, by maximizing $g(\lambda, \nu)$, we can figure out a set of values for $\lambda$ and $\nu$ that will make the penalty as **large** as possible for the original Lagrangian. 
