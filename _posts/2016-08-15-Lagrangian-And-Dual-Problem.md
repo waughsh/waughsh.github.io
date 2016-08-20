@@ -149,15 +149,15 @@ $$
 \end{equation*}
 $$
 
-We form the following Lagrangian: $L(x, \nu) = f(x) + \nu h(x)​$. Notice the condition of optimality for the original problem is when $\nabla f(x) = 0​$, and the optimality condition for the new Lagrangian is changed to: $\nabla f(x) + \nu \nabla h(x) = 0​$, if we take derivative of x. 
+We form the following Lagrangian: $L(x, \nu) = f(x) + \nu h(x)$. Notice the condition of optimality for the original problem is when $\nabla f(x) = 0$, and the optimality condition for the new Lagrangian is changed to: $\nabla f(x) + \nu \nabla h(x) = 0$, if we take derivative of x. 
 
 
 
-![lagrangian_equality](http://anie.me/images/lagrangian_equality.png)
 
 
 
-From the Lagrangian optimality condition, we can get $\nabla f(x) = -\nu \nabla h(x)$. Assume our final udpate to $x$ is $\Delta x$, meaning we move from our curent position $x$ to $x + \Delta x$, then in order to stay on the plane, $\Delta x$ must be orthogonal to the gradient vector of the plane ($h(x) = 0$), thus we get $\Delta x^T \nabla h(x) = 0$, and 
+
+From the Lagrangian optimality condition, we can get $\nabla f(x) = -\nu \nabla h(x)$. Assume our final udpate to $x$ is $\Delta x$, meaning we move from our curent position $x$ to $x + \Delta x$, then in order to stay on the plane, $\Delta x$ must be orthogonal to the gradient vector of the plane ($h(x) = 0$), thus we get $\Delta x^T \nabla h(x) = 0$, and $\Delta x^T \nabla f(x) < 0$. Keep doing this, eventually, at the optimality point, we naturally have two gradient vectors pointing at opposite directions but are parallel to each other (or "anti-parallel" if you want).
 
 
 
