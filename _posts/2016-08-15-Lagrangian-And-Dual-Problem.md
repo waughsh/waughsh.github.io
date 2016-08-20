@@ -1,11 +1,15 @@
 ---
 published: true
 layout: post
-title: A Geometric Interpretation of Lagrangian and Dual Problem
+title: A Geometric Interpretation of Lagrangian, Dual Problem, and KKT
 ---
 ## Preface
 
-This is an article providing another perspective on understanding Lagrangian and dual problem. These two topics are essential to convex and non-convex optimization. Since it is a blog post, the proper background to understand this article is kept rather low. If you need to brush up on convex knowledge, or wish to be introduced to the subject, there is a handout from Stanford CS229 website, and it's written in a very concise and clear way: [Convex Optimization (I)](http://cs229.stanford.edu/section/cs229-cvxopt.pdf) and [Convex Optimization (II)](http://cs229.stanford.edu/section/cs229-cvxopt2.pdf). However, you don't need to understand convex sets, functions in order to follow this post. If you are like me, who took Stanford EE364A, then you might find this post more interesting. The post randomly jumps between Chapter 5 and Chapter 9, 10, and 11 ([Convex Optimization book by Stephen Boyd](http://stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf )). This post is also partially inspired by an office hour conversation with [Nicholas Moehle](http://stanford.edu/~moehle/).
+This is an article providing another perspective on understanding Lagrangian and dual problem. These two topics are essential to convex and non-convex optimization. Since it is a blog post, the proper background to understand this article is kept rather low. If you need to brush up on convex knowledge, or wish to be introduced to the subject, there is a handout from Stanford CS229 website, and it's written in a very concise and clear way: [Convex Optimization (I)](http://cs229.stanford.edu/section/cs229-cvxopt.pdf) and [Convex Optimization (II)](http://cs229.stanford.edu/section/cs229-cvxopt2.pdf). However, you don't need to understand convex sets, functions in order to follow this post. If you are like me, who took Stanford EE364A, then you might find this post more interesting. The post randomly jumps between Chapter 5 and Chapter 9, 10, and 11 ([Convex Optimization book by Stephen Boyd](http://stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf )). This post is also inspired by an office hour conversation with [Nicholas Moehle](http://stanford.edu/~moehle/).
+
+
+
+The post also diverges from the geometric interpretation from the book, which focuses on strong and weak duality of the dual problem. However, it's more important to explore the geometric property of the Lagrangian, since it gives rise to complementary slackness and KKT conditions. 
 
 ## Lagrangian
 
@@ -28,7 +32,7 @@ $$
 $$
 
 
-We define $f_i(x)$ being convex functions, and $h_i(x)$ being affine functions. If you are  familiar with convex optimization or other optimization problem, this formula should look familar. The constraints listed under `subject to` are considered **hard** constraints, and those constraints do not normally appear in traditonal machine learning cost functions. One way to distinguish them is that, cost functions in Machine Learning does not need to have a realistic meaning (objective can be an abstract measurement of progress), where in convex optimization, objective is something you want to find (like how much fuel the rocket will need).
+We define $f_i(x)​$ being convex functions, and $h_i(x)​$ being affine functions. If you are  familiar with convex optimization or other optimization problem, this formula should look familar. The constraints listed under `subject to` are considered **hard** constraints, and those constraints do not normally appear in traditonal machine learning cost functions. One way to distinguish them is that, cost functions in Machine Learning does not need to have a realistic meaning (objective can be an abstract measurement of progress), where in convex optimization, objective is something you want to find (like how much fuel the rocket will need).
 
 
 
@@ -74,7 +78,7 @@ The logarithmic barrier punishes the objective logarithmically when it's approac
 
 
 
-So what do those two "implementation" details have to do with Lagrangian? The reason is simple: Lagrangian is simply a way, not unlike equality Newton step or barrier method, to incoroporate constraints into the overall objective. It turns the **hard** constraints into **soft** constraints, constraints that you (or the optimization) can violate. 
+So what do those two "implementation" details have to do with Lagrangian? The reason is simple: Lagrangian is simply a way, not unlike equality Newton step or barrier method, to incoroporate constraints into the overall objective. It turns the **hard** constraints into **soft** constraints. **Soft** constraints that you (or the optimization) can violate. 
 
 
 
@@ -120,5 +124,34 @@ $$
 \end{equation*}
 $$
 
+A nicer understanding of this is that: by fixing $x$ (we shall now call it **primal** variable out of no reason…it's actually to draw contrast to dual variables), we are driving the Lagrangian's value down (as well as $f_0(x)$'s value), however, we must be violating constraints! So now, maybe it's the time for the constraints to punish our objective, and we want the penalty to be as **high** as possible. Thus, by maximizing $g(\lambda, \nu)$, we can figure out a set of values for $\lambda$ and $\nu$ that will make the penalty as **large** as possible for the Lagrangian objective, hence the maximizing over $\lambda$ and $\nu$ on function $g$. 
 
-A nicer understanding of this is that: by fixing $x$ (we shall now call it **primal** variable out of no reason…it's actually to draw contrast to dual variables), we are driving the Lagrangian's value down (as well as $f_0(x)$'s value), however, we must be violating constraints! So now, maybe it's the time for the constraints to punish our objective, and we want the penalty as **high** as possible. Thus, by maximizing $g(\lambda, \nu)$, we can figure out a set of values for $\lambda$ and $\nu$ that will make the penalty as **large** as possible for the original Lagrangian. 
+
+
+## Geometric Analysis of Lagrangian
+
+Now we can start our geometric interpretation of these dual variables. The geometric intuition is simple, yet intuitive. We should begin with the simplest example (as many explaination would start). You can easily extend them (mathematically, and mentally) to more complex problems.
+
+
+
+We first assume the simplest convex optimization problem, and we start with one equality constraint. 
+
+
+
+$$
+\begin{equation*}
+\begin{aligned}
+& \text{minimize}
+& & f(x) \\
+& \text{subject to}
+& & h(x) = 0
+\end{aligned}
+\end{equation*}
+$$
+
+
+We form the following Lagrangian: $L(x, \nu) = f(x) + \nu h(x)$. Notice the condition of optimality for the original problem is when $\nabla f(x) = 0$, and the optimality condition for the new Lagrangian is changed to: $\nabla f(x) + \nu \nabla h(x) = 0$, if we take derivative of x. 
+
+
+
+The rise of KKT conditions and complementary slackness (two concepts that are often hard to grasp as first-timers) comes from the seemingly discordance between the original and Lagrangian optimality conditions. 
