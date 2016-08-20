@@ -153,7 +153,11 @@ We form the following Lagrangian: $L(x, \nu) = f(x) + \nu h(x)$. Notice the cond
 
 
 
-![lagrangian_equality](http://anie.me/images/lagrangian_equality.jpeg){: .center-image}
+![lagrangian_equality](http://anie.me/images/lagrangian_equality.jpeg)
+
+
+
+From the Lagrangian optimality condition, we can get $\nabla f(x) = -\nu \nabla h(x)$. Assume our final udpate to $x$ is $\Delta x$, meaning we move from our curent position $x$ to $x + \Delta x$, then in order to stay on the plane, $\Delta x$ must be orthogonal to the gradient vector of the plane ($h(x) = 0$), thus we get $\Delta x^T \nabla h(x) = 0$, and 
 
 
 
