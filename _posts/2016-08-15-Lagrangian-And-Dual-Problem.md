@@ -149,11 +149,11 @@ $$
 \end{equation*}
 $$
 
-We form the following Lagrangian: $L(x, \nu) = f(x) + \nu h(x)$. Notice the condition of optimality for the original problem is when $\nabla f(x) = 0$, and the optimality condition for the new Lagrangian is changed to: $\nabla f(x) + \nu \nabla h(x) = 0$, if we take derivative of x. 
+We form the following Lagrangian: $L(x, \nu) = f(x) + \nu h(x)​$. Notice the condition of optimality for the original problem is when $\nabla f(x) = 0​$, and the optimality condition for the new Lagrangian is changed to: $\nabla f(x) + \nu \nabla h(x) = 0​$, if we take derivative of x. 
 
 
 
-![lagrangian_equality](http://anie.me/images/lagrangian_equality.jpeg)
+![lagrangian_equality](http://anie.me/images/lagrangian_equality.png)
 
 
 
