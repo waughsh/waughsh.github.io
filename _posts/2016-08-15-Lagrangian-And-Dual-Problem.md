@@ -223,7 +223,7 @@ $$
 $$
 
 
-Notice that we are taking derivative of $g(\lambda^*, \nu^*)$, the $\inf_x L(x, \lambda^*, \nu^*)$. So the dual variable is the partial derivative of dual objective with respect to the constraints. Based on what we've learned from the last section, it's not too difficult to reason that if $\lambda_i = 0$, the $i$th inequality constraint is not constraining the objective. The larger $\lambda$ or $\nu$ is, the more constraining such constraint will be, a small change to tighten the constraint will cause a negative effect on the overall objective.
+Notice that we are taking derivative of $g(\lambda^*, \nu^*)$ , the $\inf_x L(x, \lambda^*, \nu^*)$ . So the dual variable is the partial derivative of dual objective with respect to the constraints. Based on what we've learned from the last section, it's not too difficult to reason that if $\lambda_i = 0$, the $i$ th inequality constraint is not constraining the objective. The larger $\lambda$ or $\nu$ is, the more constraining such constraint will be, a small change to tighten the constraint will cause a negative effect on the overall objective.
 
 
 
