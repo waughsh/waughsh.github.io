@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 title: An Easier Understanding of Stochastic Gradient Descent (SGD)
 layout: post
 ---
