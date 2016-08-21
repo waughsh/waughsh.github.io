@@ -124,13 +124,13 @@ $$
 \end{equation*}
 $$
 
-A nicer understanding of this is that: by fixing $x$ (we shall now call it **primal** variable out of no reason…it's actually to draw contrast to dual variables), we are driving the Lagrangian's value down (as well as $f_0(x)$'s value), however, we must be violating constraints! So now, maybe it's the time for the constraints to punish our objective, and we want the penalty to be as **high** as possible. Thus, by maximizing $g(\lambda, \nu)$, we can figure out a set of values for $\lambda$ and $\nu$ that will make the penalty as **large** as possible for the Lagrangian objective, hence the maximizing over $\lambda$ and $\nu$ on function $g$. 
+A nicer understanding of this is that: by fixing $x$ (we shall now call it **primal** variable out of no reason…it's actually to draw contrast to dual variables), we are driving the Lagrangian's value down (as well as $f_0(x)$'s value), however, we must be violating constraints! So now, maybe it's the time for the constraints to punish our objective, and we want the penalty to be as **high** as possible. Thus, by maximizing $g(\lambda, \nu)$, we can figure out a set of values for $\lambda$ and $\nu$ that will make the penalty as **large** as possible for the Lagrangian objective, hence the maximizing over $\lambda$ and $\nu$ on function $g$. We will show  why $\lambda \geq 0$ is the constraint in the next section.
 
 
 
 ## Geometric Analysis of Lagrangian
 
-Now we can start our geometric interpretation of these dual variables. The geometric intuition is simple, yet intuitive. We should begin with the simplest example (as many explaination would start). You can easily extend them (mathematically, and mentally) to more complex problems.
+Now we can start our geometric interpretation of these dual variables. The geometric interpretation is simple, yet intuitive.  We should begin with the simplest example (as many explaination would start). You can easily extend them (mathematically, and mentally) to more complex problems.
 
 
 
@@ -153,7 +153,7 @@ We form the following Lagrangian: $L(x, \nu) = f(x) + \nu h(x)$. Notice the cond
 
 
 
-![](http://anie.me/images/lagrangian_fig1.png)
+![](http://anie.me/images/lagrangian_post_fig1.png)
 
 
 
@@ -161,4 +161,22 @@ From the Lagrangian optimality condition, we can get $\nabla f(x) = -\nu \nabla 
 
 
 
-We get slightly more interesting result from examining the inequality constraint case. We can see the rise of KKT conditions and complementary slackness (two concepts that are often hard to grasp as first-timers) comes from the seemingly discordance between the original and Lagrangian optimality conditions. 
+We get slightly more interesting result from examining the inequality constraint case. We can see the rise of KKT conditions and complementary slackness (two concepts that are often hard to grasp as first-timers) from the seemingly discordance between the original and Lagrangian optimality conditions. 
+
+
+$$
+\begin{equation*}
+\begin{aligned}
+& \text{minimize}
+& & f(x) \\
+& \text{subject to}
+& & g(x) \leq 0
+\end{aligned}
+\end{equation*}
+$$
+
+
+We formulate the simplest convex problem with one inequality constraint. The Lagrangian is $L(x, \lambda) = f(x) + \lambda g(x)$. The optimality condition for Lagrangian is $\nabla f(x) + \lambda \nabla g(x) = 0$. Now this case is slightly different from the equality case. We should first take a look at an illustration:
+
+
+
