@@ -1,15 +1,13 @@
 ---
 published: true
 layout: post
-title: A Geometric Interpretation of Lagrangian, Dual Problem, and KKT
+title: A Geometric Analysis of Lagrangian, Dual Problem, and KKT Conditions
 ---
 ## Preface
 
-This is an article providing another perspective on understanding Lagrangian and dual problem. These two topics are essential to convex and non-convex optimization. Since it is a blog post, the proper background to understand this article is kept rather low. If you need to brush up on convex knowledge, or wish to be introduced to the subject, there is a handout from Stanford CS229 website, and it's written in a very concise and clear way: [Convex Optimization (I)](http://cs229.stanford.edu/section/cs229-cvxopt.pdf) and [Convex Optimization (II)](http://cs229.stanford.edu/section/cs229-cvxopt2.pdf). However, you don't need to understand convex sets and functions in order to follow this post. If you are like me, who took Stanford EE364A, then you might find this post more interesting. The post randomly jumps between Chapter 5, Chapter 10, and 11 in the book ([Convex Optimization book by Stephen Boyd](http://stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf )). This post is also inspired by an office hour conversation with [Nicholas Moehle](http://stanford.edu/~moehle/).
+This is an article providing another perspective on understanding Lagrangian and dual problem. These two topics are essential to convex and non-convex optimization. Since it is a blog post, the proper background to understand this article is kept rather low. If you need to brush up on convex knowledge, or wish to be introduced to the subject, there is a handout from Stanford CS229 website, and it's written in a very concise and clear way: [Convex Optimization (I)](http://cs229.stanford.edu/section/cs229-cvxopt.pdf) and [Convex Optimization (II)](http://cs229.stanford.edu/section/cs229-cvxopt2.pdf). However, you don't need to understand convex sets and functions in order to follow this post. If you are like me, who took Stanford EE364A, then you might find this post more interesting. The post randomly jumps between Chapter 5, Chapter 10, and 11 in the book ([Convex Optimization book by Stephen Boyd](http://stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf )), but mostly focus on presenting Chapter 5. This post is also inspired by an office hour conversation with [Nicholas Moehle](http://stanford.edu/~moehle/).
 
 
-
-The post also diverges from the geometric interpretation from the book, which focuses on strong and weak duality of the dual problem. However, it's more important to explore the geometric property of the Lagrangian, since it gives rise to complementary slackness and KKT conditions.  This later part is the main focus of this post.
 
 ## Lagrangian
 
@@ -215,3 +213,24 @@ Another fun fact is that, dual variables $\lambda$ and $\nu$, if KKT conditions 
 
 ## Sensitivity Analysis
 
+At last, we briefly mention sensitivity analysis. This portion was presented in a very confusing manner from the book (including powerpoint slides). If we take derivative of the Lagrangian with respect to the constraint:
+
+
+$$
+\lambda_i = - \frac{\partial g(\lambda^*, \nu^*)}{\partial f_i}
+\text{,     }
+\nu_i = - \frac{\partial g(\lambda^*, \nu^*)}{\partial h_i}
+$$
+
+
+Notice that we are taking derivative of $g(\lambda^*, \nu^*)$, the $\inf_x L(x, \lambda^*, \nu^*)$. So the dual variable is the partial derivative of dual objective with respect to the constraints. Based on what we've learned from the last section, it's not too difficult to reason that if $\lambda_i = 0$, the $i$th inequality constraint is not constraining the objective. The larger $\lambda$ or $\nu$ is, the more constraining such constraint will be, a small change to tighten the constraint will cause a negative effect on the overall objective.
+
+
+
+Dual variable $\lambda$ and $\nu$ are also known as shadow prices in economics.
+
+
+
+## Conclusion
+
+This is the geometric intuition that slowly builds up the complementary slackness and the KKT condition. On first sight, KKT condition could be very daunting or confusing, same with complementary slackness. But a nice and solid grasp on directional gradient vectors will help provide a much cleaner understanding.
