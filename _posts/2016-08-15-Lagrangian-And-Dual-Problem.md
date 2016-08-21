@@ -217,13 +217,13 @@ At last, we briefly mention sensitivity analysis. This portion was presented in 
 
 
 $$
-\lambda_i = - \frac{\partial g(\lambda^*, \nu^*)}{\partial f_i}
+\lambda_i = - \frac{\partial g(\lambda^\star, \nu^\star)}{\partial f_i}
 \text{,     }
-\nu_i = - \frac{\partial g(\lambda^*, \nu^*)}{\partial h_i}
+\nu_i = - \frac{\partial g(\lambda^\star, \nu^\star)}{\partial h_i}
 $$
 
 
-Notice that we are taking derivative of $g(\lambda^*, \nu^*)$. So the dual variable is the partial derivative of dual objective with respect to the constraints. Based on what we've learned from the last section, it's not too difficult to reason that if $\lambda_i = 0$, the $i$ th inequality constraint is not constraining the objective. The larger $\lambda$ or $\nu$ is, the more constraining such constraint will be, a small change to tighten the constraint will cause a negative effect on the overall objective.
+Notice that we are taking derivative of $g(\lambda^\star, \nu^\star)$. So the dual variable is the partial derivative of dual objective with respect to the constraints. Based on what we've learned from the last section, it's not too difficult to reason that if $\lambda_i = 0$, the $i$ th inequality constraint is not constraining the objective. The larger $\lambda$ or $\nu$ is, the more constraining such constraint will be, a small change to tighten the constraint will cause a negative effect on the overall objective.
 
 
 
