@@ -5,11 +5,11 @@ title: A Geometric Interpretation of Lagrangian, Dual Problem, and KKT
 ---
 ## Preface
 
-This is an article providing another perspective on understanding Lagrangian and dual problem. These two topics are essential to convex and non-convex optimization. Since it is a blog post, the proper background to understand this article is kept rather low. If you need to brush up on convex knowledge, or wish to be introduced to the subject, there is a handout from Stanford CS229 website, and it's written in a very concise and clear way: [Convex Optimization (I)](http://cs229.stanford.edu/section/cs229-cvxopt.pdf) and [Convex Optimization (II)](http://cs229.stanford.edu/section/cs229-cvxopt2.pdf). However, you don't need to understand convex sets, functions in order to follow this post. If you are like me, who took Stanford EE364A, then you might find this post more interesting. The post randomly jumps between Chapter 5 and Chapter 9, 10, and 11 ([Convex Optimization book by Stephen Boyd](http://stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf )). This post is also inspired by an office hour conversation with [Nicholas Moehle](http://stanford.edu/~moehle/).
+This is an article providing another perspective on understanding Lagrangian and dual problem. These two topics are essential to convex and non-convex optimization. Since it is a blog post, the proper background to understand this article is kept rather low. If you need to brush up on convex knowledge, or wish to be introduced to the subject, there is a handout from Stanford CS229 website, and it's written in a very concise and clear way: [Convex Optimization (I)](http://cs229.stanford.edu/section/cs229-cvxopt.pdf) and [Convex Optimization (II)](http://cs229.stanford.edu/section/cs229-cvxopt2.pdf). However, you don't need to understand convex sets and functions in order to follow this post. If you are like me, who took Stanford EE364A, then you might find this post more interesting. The post randomly jumps between Chapter 5, Chapter 10, and 11 in the book ([Convex Optimization book by Stephen Boyd](http://stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf )). This post is also inspired by an office hour conversation with [Nicholas Moehle](http://stanford.edu/~moehle/).
 
 
 
-The post also diverges from the geometric interpretation from the book, which focuses on strong and weak duality of the dual problem. However, it's more important to explore the geometric property of the Lagrangian, since it gives rise to complementary slackness and KKT conditions. 
+The post also diverges from the geometric interpretation from the book, which focuses on strong and weak duality of the dual problem. However, it's more important to explore the geometric property of the Lagrangian, since it gives rise to complementary slackness and KKT conditions.  This later part is the main focus of this post.
 
 ## Lagrangian
 
@@ -124,17 +124,17 @@ $$
 \end{equation*}
 $$
 
-A nicer understanding of this is that: by fixing $x$ (we shall now call it **primal** variable out of no reason…it's actually to draw contrast to dual variables), we are driving the Lagrangian's value down (as well as $f_0(x)$'s value), however, we must be violating constraints! So now, maybe it's the time for the constraints to punish our objective, and we want the penalty to be as **high** as possible. Thus, by maximizing $g(\lambda, \nu)$, we can figure out a set of values for $\lambda$ and $\nu$ that will make the penalty as **large** as possible for the Lagrangian objective, hence the maximizing over $\lambda$ and $\nu$ on function $g$. We will show  why $\lambda \geq 0$ is the constraint in the next section.
+A nicer understanding of this is that: by fixing $x$ (we shall now call it **primal** variable out of no reason…it's actually to draw contrast to dual variables), we are driving the Lagrangian's value down (as well as $f_0(x)$'s value), however, we must be violating constraints! So now, maybe it's the time for the constraints to punish our objective, and we want the penalty to be as **high** as possible. Thus, by maximizing $g(\lambda, \nu)$, we can figure out a set of values for $\lambda$ and $\nu$ that will make the penalty as **large** as possible for the Lagrangian objective, hence the maximizing over $\lambda$ and $\nu$ on function $g$. 
 
 
 
 ## Geometric Analysis of Lagrangian
 
-Now we can start our geometric interpretation of these dual variables. The geometric interpretation is simple, yet intuitive.  We should begin with the simplest example (as many explaination would start). You can easily extend them (mathematically, and mentally) to more complex problems.
+Now we can start our geometric interpretation of the Lagrangian. The problem rises when we alter the primal problem to form the lagrangian. We repeatedly ask ourself this question: does the newly formed Lagrangian become different from the primal problem in any way? If so, how can we avoid such    primal-dual discordance by adding constraints? (Spoiler alert, these constraints become the famous KKT conditions). 
 
 
 
-We first assume the simplest convex optimization problem, and we start with one equality constraint. 
+We begin with the simplest example (as many explaination would start). You can easily extend them (mathematically, and mentally) to more complex problems. We first assume the simplest convex optimization problem, and we start with one equality constraint. 
 
 
 
@@ -149,7 +149,7 @@ $$
 \end{equation*}
 $$
 
-We form the following Lagrangian: $L(x, \nu) = f(x) + \nu h(x)$. Notice the condition of optimality for the original problem is when $\nabla f(x) = 0$, and the optimality condition for the new Lagrangian is changed to: $\nabla f(x) + \nu \nabla h(x) = 0$, if we take derivative of x. 
+We form the following Lagrangian: $L(x, \nu) = f(x) + \nu h(x)$. Notice the condition of optimality for the original problem is when $\nabla f(x) = 0$, and the optimality condition for the new Lagrangian is seemingly changed: $\nabla f(x) + \nu \nabla h(x) = 0$. We ask the question: will the change in optimality condition affect us from reaching the same goal (objective) as the original objective?  
 
 
 
@@ -157,7 +157,7 @@ We form the following Lagrangian: $L(x, \nu) = f(x) + \nu h(x)$. Notice the cond
 
 
 
-From the Lagrangian optimality condition, we can get $\nabla f(x) = -\nu \nabla h(x)$. Assume our final udpate to $x$ is $\Delta x$, meaning we move from our curent position $x$ to $x + \Delta x$, then in order to stay on the plane, $\Delta x$ must be orthogonal to the gradient vector of the plane ($h(x) = 0$), thus we get $\Delta x^T \nabla h(x) = 0$, and $\Delta x^T \nabla f(x) < 0$. Keep doing this, eventually, at the optimality point, we naturally have two gradient vectors being parallel (or anti-parallel, meaning pointing at different directions) becoming the end result when optimal solution is found. Notice we don't require $\nabla f(x)$ and $\nabla h(x)$ to point at different directions.
+From the Lagrangian optimality condition, we can easily get $\nabla f(x) = -\nu \nabla h(x)$. Assume our final udpate to $x$ is $\Delta x$, meaning we move from our curent position $x$ to $x + \Delta x$, then in order to stay on the plane, $\Delta x$ must be orthogonal to the gradient vector of the plane ($h(x) = 0$), thus we get $\Delta x^T \nabla h(x) = 0$, and $\Delta x^T \nabla f(x) < 0$. Keep doing this, eventually, at the optimality point, we naturally have two gradient vectors being parallel (or anti-parallel, meaning pointing at different directions) becoming the end result when optimal solution is found. Notice we don't require $\nabla f(x)$ and $\nabla h(x)$ to point at different directions, meaning $\nu$ doesn't need to be positive or negative. Per our analysis, Lagrangian optimal condition captured what we would have wanted in the primal problem very nicely, we don't need to add other constraints/conditions.
 
 
 
@@ -182,4 +182,36 @@ We formulate the simplest convex problem with one inequality constraint. The Lag
 
 
 
-The shaded area including the surface when $g(x) = 0$ are the regions $x$ is allowed to be, satisfying our constraint. 
+The shaded area including the surface when $g(x) = 0$ are the regions $x$ is allowed to be, satisfying our constraint. Like before, we can slightly reformulate the optimality condition to be: $\nabla f(x) = - \lambda \nabla g(x)$. We consider two cases. First, when $x$ is on the surface of $g(x) = 0$, meaning $x$ is on the boundary condition. When this is the case, it can only happen if $\nabla f(x)$ and $\nabla g(x)$ are pointing at opposite directions (notice gradient vector always points at the direction that increases function values), our desired direction is $-\nabla f(x)$. If not, meaning $\nabla f(x)$ and $\nabla g(x)$ are pointing at the same direction, all we need to do is to go to direction $-\nabla f(x)$, and we will decrease primal objective value as well as decreasing the value of $g(x)$, staying within $g(x) \leq 0$. To conclude, in order to have inequality constraint working, we must specify $\lambda > 0$. 
+
+
+
+Now we consider a second case, when $x$ is at $x^*$ position (below constraint surface). If the inequality constraint is satisfied, it should be effectively removed from the lagrangian equation, so that we are only optimizing under the primal optimal condition: $\nabla f(x) = 0$, thus $\lambda = 0$. 
+
+
+
+This is normally called "complementary slackness", if $g(x) = 0$, then $\lambda > 0$, like our first case, and if $g(x) < 0$, then $\lambda = 0$, like our second case.
+
+
+
+Now we are free to use what we have analyzed before, the conditions that will keep primal objective and Lagrangian the same:
+
+
+
+1. Primal constraints: $f_i(x) \leq 0, i=1,…,m$, $h_i(x) = 0, i=1,…,p$
+2. Dual constraints: $\lambda \succeq 0$
+3. Complementary Slackness: $\lambda_i f_i(x) = 0, i =1,…,m $
+4. Gradient of Lagnragian w.r.t $x$ vanishes: $\nabla f_0(x) + \sum_{i=1}^m \lambda_i \nabla f_i(x) + \sum_{i=1}^p \nu_i \nabla h_i(x) = 0$
+
+
+
+These are also known as the **KKT** conditions. As we have pointed out before, if these conditions are satisfied, then Lagrangian and the primal problem are equivalent, meaning the primal problem has strong duality (refer to the book for more details).
+
+
+
+Another fun fact is that, dual variables $\lambda$ and $\nu$, if KKT conditions are satisfied, (or if the primal problem has strong duality), then the dual variables are Lagrange multipliers.
+
+
+
+## Sensitivity Analysis
+
