@@ -153,7 +153,7 @@ We form the following Lagrangian: $L(x, \nu) = f(x) + \nu h(x)$. Notice the cond
 
 
 
-
+![](http://anie.me/images/lagrangian_fig1.png)
 
 
 
@@ -161,4 +161,4 @@ From the Lagrangian optimality condition, we can get $\nabla f(x) = -\nu \nabla 
 
 
 
-The rise of KKT conditions and complementary slackness (two concepts that are often hard to grasp as first-timers) comes from the seemingly discordance between the original and Lagrangian optimality conditions. 
+We get slightly more interesting result from examining the inequality constraint case. We can see the rise of KKT conditions and complementary slackness (two concepts that are often hard to grasp as first-timers) comes from the seemingly discordance between the original and Lagrangian optimality conditions. 
