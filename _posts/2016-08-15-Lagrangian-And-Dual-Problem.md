@@ -153,11 +153,11 @@ We form the following Lagrangian: $L(x, \nu) = f(x) + \nu h(x)$. Notice the cond
 
 
 
-![](http://anie.me/images/lagrangian_post_fig1.png)
+![lagrangian_post_fig1](http://anie.me/images/lagrangian_post_fig1.png)
 
 
 
-From the Lagrangian optimality condition, we can get $\nabla f(x) = -\nu \nabla h(x)$. Assume our final udpate to $x$ is $\Delta x$, meaning we move from our curent position $x$ to $x + \Delta x$, then in order to stay on the plane, $\Delta x$ must be orthogonal to the gradient vector of the plane ($h(x) = 0$), thus we get $\Delta x^T \nabla h(x) = 0$, and $\Delta x^T \nabla f(x) < 0$. Keep doing this, eventually, at the optimality point, we naturally have two gradient vectors pointing at opposite directions but are parallel to each other (or "anti-parallel" if you want).
+From the Lagrangian optimality condition, we can get $\nabla f(x) = -\nu \nabla h(x)$. Assume our final udpate to $x$ is $\Delta x$, meaning we move from our curent position $x$ to $x + \Delta x$, then in order to stay on the plane, $\Delta x$ must be orthogonal to the gradient vector of the plane ($h(x) = 0$), thus we get $\Delta x^T \nabla h(x) = 0$, and $\Delta x^T \nabla f(x) < 0$. Keep doing this, eventually, at the optimality point, we naturally have two gradient vectors being parallel (or anti-parallel, meaning pointing at different directions) becoming the end result when optimal solution is found. Notice we don't require $\nabla f(x)$ and $\nabla h(x)$ to point at different directions.
 
 
 
@@ -178,5 +178,8 @@ $$
 
 We formulate the simplest convex problem with one inequality constraint. The Lagrangian is $L(x, \lambda) = f(x) + \lambda g(x)$. The optimality condition for Lagrangian is $\nabla f(x) + \lambda \nabla g(x) = 0$. Now this case is slightly different from the equality case. We should first take a look at an illustration:
 
+![lagrangian_post_fig2](http://anie.me/images/lagrangian_post_fig2.png)
 
 
+
+The shaded area including the surface when $g(x) = 0$ are the regions $x$ is allowed to be, satisfying our constraint. 
