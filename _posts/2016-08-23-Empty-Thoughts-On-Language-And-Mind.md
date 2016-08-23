@@ -1,6 +1,7 @@
 ---
 published: false
 layout: post
+title: Empty Thoughts on Mind And Language
 ---
 ## A New Post
 
