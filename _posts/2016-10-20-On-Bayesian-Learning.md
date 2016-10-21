@@ -1,5 +1,6 @@
 ---
 published: true
+layout: post
 title: On Statistical Learning
 ---
 ## A New Post
