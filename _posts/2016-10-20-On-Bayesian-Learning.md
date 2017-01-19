@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 layout: post
 title: On Statistical Learning
 ---
@@ -36,7 +36,6 @@ $$
 f_{X|Y}(x|y) = \frac{f_{Y|X}(y|x)f_X(x)}{f_Y(y)}
 $$
 
-
 As you can easily see, $$f_{Y|X}(y|x)$$ describes the probability density function of our noisy channel, $$f_X(x)$$ corresponds to the distribution of our original signal, so this is supposed to be the perfect estimator. So we can easily know the best this estomator can do, is $$\hat{X}(Y) = E(X|Y)$$. If you are unfamiliar with the continuous probability densitify function notation ($$f$$), you can treat them like $$p$$, or read this [wikipedia article](https://en.wikipedia.org/wiki/Probability_density_function). 
 
 
@@ -49,4 +48,7 @@ So as we said before, we can use a function to approximate our estimator, the fu
 
 
 
-We can assume a relationship, a non-linear function that takes in observations $Y$ and parameter vector $$\theta$$, $f(Y, \theta)$. We assume the parameters $\theta$ can be induced from 
+We can assume a relationship, a non-linear function that takes in observations $Y$ and parameter vector $\theta$, $f(Y, \theta)$. We assume the parameters $\theta$ can be induced from 
+
+![Noisy Channel Decoder](http://anie.me/images/noisy_channel_decoder.jpg)
+
