@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 layout: post
 title: On Statistical Learning
 ---
@@ -34,6 +34,3 @@ But what if, you say, the estimate is not a continuous number, what if it's a di
 
 
 ![Noisy Channel Decoder](http://anie.me/images/noisy_channel_decoder.jpg)
-
-
-
