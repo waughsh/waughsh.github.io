@@ -1,6 +1,7 @@
 ---
 published: false
 layout: post
+title: Understanding Gradient as Error Signals
 ---
 ## A New Post
 
