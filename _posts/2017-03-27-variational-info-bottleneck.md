@@ -34,6 +34,7 @@ $$
 \tag{2}
 \label{info_bottleneck}
 $$
+
 We can apply a factor $\alpha$ to $I(X;T)$ if we want to control the rate of compression. IB principle assumes markov chain to be $Y - X - \hat{X}$. We can extend this to multilayer neural network $Y - X - h_1 - h_2 - … - h_n - \hat{X}$. And formulate our IB training objective as $I(X; h_1, …, h_n) - \beta I(Y; h_1, …, h_n)$. However, with simple deduction we can show that:
 
 
