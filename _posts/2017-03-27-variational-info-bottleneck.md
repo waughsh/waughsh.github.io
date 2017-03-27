@@ -82,7 +82,7 @@ This is equivalent to create sub-networks and enforce the $L_2$ norm of each hid
 
 
 
-This is similar to the style of stochastic depth network, but in a more principled way. We encourage each layer to maximally compress $X$ that will maximize the chance of predicting the correct label. This is quite different form the architecture of DenseNet[^4].
+This is similar to the style of stochastic depth network, but in a more principled way. We encourage each layer to maximally compress $X$ that will maximize the chance of predicting the correct label. This is quite different form the architecture of DenseNet [[^4]].
 
 
 
