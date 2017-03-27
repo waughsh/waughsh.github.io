@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 layout: post
 title: Information Bottleneck and Neural Network Regularization
 visible: 1
