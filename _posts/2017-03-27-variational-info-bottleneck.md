@@ -4,6 +4,7 @@ layout: post
 title: Information Bottleneck and Neural Network Regularization
 visible: 1
 hidden: true
+draft: true
 ---
 
 Through information bottleneck method, we know the goal of a learning system is to minimize $I(X;T)$ to encourage maximal compression which can be narrowly interpreted as feature selection, or the gathering of the minimum sufficient statistics: $Y - X - S(X) - T(X)$ [[^1]] so that $I(X; Y) = I(S(X); Y) = I(T(X); Y)$. The other objective of an optimal learning system, according to Tishby, is to encourage the extracted reprerensetation to share its statistical distribution to the label space $Y$ by maximizing $I(Y; T)$. 
