@@ -60,7 +60,7 @@ However, Blahut-Arimoto algorithm cannot be computed exactly under integration, 
 
 
 
-With an understanding that the bound can be arbitrarily loose, and with monte carlo sampling, Alemi et al derived that $I(X;T) \leq \text{KL}[p(T|X), r(T)]$, 
+With an understanding that the bound can be arbitrarily loose, and with monte carlo sampling, Alemi et al derived that $I(X;T) \leq \text{KL}[p(T\|X), r(T)]$, 
 
 
 
