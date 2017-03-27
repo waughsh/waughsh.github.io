@@ -1,6 +1,8 @@
 ---
 published: false
 layout: post
+title: Information Bottleneck and Neural Network
+visible: 1
 ---
 ## A New Post
 
