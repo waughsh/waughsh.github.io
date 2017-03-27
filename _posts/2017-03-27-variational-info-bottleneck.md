@@ -20,6 +20,7 @@ $$
 \tag{1}
 \label{original}
 $$
+
 We can reformulate to allow this to have a soft objective as:
 
 
@@ -86,4 +87,3 @@ This is similar to the style of stochastic depth network, but in a more principl
 [^2]: The information bottleneck method https://arxiv.org/pdf/physics/0004057.pdf
 [^3]: Deep Variational Information Bottleneck https://arxiv.org/pdf/1612.00410.pdf
 [^4]: Densely Connected Convolutional Networks https://arxiv.org/abs/1608.06993
-
