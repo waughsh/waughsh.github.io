@@ -19,7 +19,6 @@ $$
 & & I(Y;T) \\
 \end{aligned}
 \end{equation*}
-\tag{1}
 \label{original}
 $$
 
@@ -33,7 +32,6 @@ $$
 \{I(X;T) - \beta I(T;Y)\}  \\
 \end{aligned}
 \end{equation*}
-\tag{2}
 \label{info_bottleneck}
 $$
 
@@ -49,7 +47,6 @@ I(h_1, h_2 ; X) &= H(X) - H(h_1, h_2)  \\
  & =  I(X; h_1)
 \end{aligned}
 \end{equation*}
-\tag{1}
 \label{mutual_info}
 $$
 
