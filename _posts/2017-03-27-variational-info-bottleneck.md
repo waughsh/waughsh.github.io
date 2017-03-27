@@ -5,7 +5,7 @@ title: Information Bottleneck and Neural Network Regularization
 visible: 1
 ---
 
-Through information bottleneck method, we know the goal of a learning system is to minimize $I(X;T)$ to encourage maximal compression which can be narrowly interpreted as feature selection, or the gathering of the minimum sufficient statistics: $Y - X - S(X) - T(X)$[[^1]] so that $I(X; Y) = I(S(X); Y) = I(T(X); Y)$. The other objective of an optimal learning system, according to Tishby, is to encourage the extracted reprerensetation to share its statistical distribution to the label space $Y$ by maximizing $I(Y; T)$. 
+Through information bottleneck method, we know the goal of a learning system is to minimize $I(X;T)$ to encourage maximal compression which can be narrowly interpreted as feature selection, or the gathering of the minimum sufficient statistics: $Y - X - S(X) - T(X)$ [[^1]] so that $I(X; Y) = I(S(X); Y) = I(T(X); Y)$. The other objective of an optimal learning system, according to Tishby, is to encourage the extracted reprerensetation to share its statistical distribution to the label space $Y$ by maximizing $I(Y; T)$. 
 
 
 $$
@@ -52,11 +52,11 @@ I(h_1, h_2 ; X) &= H(X) - H(h_1, h_2)  \\
 $$
 
 
-This means we can only treat the output of a neural network as a random variable and we do not need intermediate stochastic representation if our algorithm is optimal. In fact, Tishby[^2] has shown that under an theooptimal algorithm:  The Blahut–Arimoto algorithm, the problem can be solved exactly. 
+This means we can only treat the output of a neural network as a random variable and we do not need intermediate stochastic representation if our algorithm is optimal. In fact, Tishby [[^2]] has shown that under an theooptimal algorithm:  The Blahut–Arimoto algorithm, the problem can be solved exactly. 
 
 
 
-However, Blahut-Arimoto algorithm cannot be computed exactly under integration, and we have to approximate both $I(X; T)$ and $I(Y; T)$. Preliminary studies have shown a simple way to approximate an upper bound of $I(X; T) - \beta I(T; Y)$ by using the non-negativity of mutual information for continuous random variables[^3]. Alemi, et al has shown that in order to apply this principle to supervised learning, beyond rate distortion theory or compression, we want to be lenient to the rate of compression but be demanding on the mutual information between hidden representation and label, thus recasting the equation to be $\beta I(X;T) - I(T; Y)$. 
+However, Blahut-Arimoto algorithm cannot be computed exactly under integration, and we have to approximate both $I(X; T)$ and $I(Y; T)$. Preliminary studies have shown a simple way to approximate an upper bound of $I(X; T) - \beta I(T; Y)$ by using the non-negativity of mutual information for continuous random variables [[^3]]. Alemi, et al has shown that in order to apply this principle to supervised learning, beyond rate distortion theory or compression, we want to be lenient to the rate of compression but be demanding on the mutual information between hidden representation and label, thus recasting the equation to be $\beta I(X;T) - I(T; Y)$. 
 
 
 
