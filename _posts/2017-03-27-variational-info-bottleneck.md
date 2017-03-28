@@ -99,7 +99,7 @@ $$
 
 This formulation is equivalent to Zoneout when applied stochastically with slight modification. Intuitively, it will help the current hidden states to extract information that's more relevant to the future.
 
----
+***
 
 [^1]: Opening the blackbox of Neural Network via Information https://arxiv.org/pdf/1703.00810.pdf
 [^2]: The information bottleneck method https://arxiv.org/pdf/physics/0004057.pdf
