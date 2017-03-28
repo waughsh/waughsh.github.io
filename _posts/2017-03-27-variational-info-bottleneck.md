@@ -81,9 +81,31 @@ This is equivalent to create sub-networks and enforce the $L_2$ norm of each hid
 
 This is similar to the style of stochastic depth network, but in a more principled way. We encourage each layer to maximally compress $X$ that will maximize the chance of predicting the correct label. This is quite different form the architecture of DenseNet [[^4]].
 
+Now we bridge the gap between a normal feedforward neural network and recurrent neural network. If we follow Yarin Gal's derivation [[^5]] [[^6]], we can recognize dropout as a special type of Bayesian approximation with tighter bounds than reparameterization trick. Then recurrent dropout, where dropout is applied to recurrent connections, can be seen as that recurrent hidden states in RNN are stochastic layers, without the need of adding a stochastic layer on top of a deterministic layer, which is what has been proposed by Fraccaro et al [[^7]]. 
+
+
+
+![](http://anie.me/images/rnn_model.png)
+
+
+
+With recent regularization techniques such as Zoneout [[^8]], we can see the essence of it being forcing previous hidden state to predict the current timestep's outcome. Using what we have derived in information bottleneck objective, we can see it as $I(Y_i; T_{i-1})$, so Zoneout does not link to bayesian approximation like other dropout methods would, but it does link to mutual information-based training objective, thus one can argue whether the stochasticity of Zoneout is needed or not. We can formulate a training objective for RNN more deterministically:
+
+
+$$
+L_{RNN} = [\sum_{i=1}^n I(Y; T_i)] + [\sum_{i=1}^n\sum_{s=1}^k I(Y_{i+s};T_i)] + I(X;T_1) + \sum_{i=2}^n I(T_{i-1}; T_i)
+$$
+
+
+This formulation is equivalent to Zoneout when applied stochastically with slight modification. Intuitively, it will help the current hidden states to extract information that's more relevant to the future.
+
 
 
 [^1]: Opening the blackbox of Neural Network via Information https://arxiv.org/pdf/1703.00810.pdf
 [^2]: The information bottleneck method https://arxiv.org/pdf/physics/0004057.pdf
 [^3]: Deep Variational Information Bottleneck https://arxiv.org/pdf/1612.00410.pdf
 [^4]: Densely Connected Convolutional Networks https://arxiv.org/abs/1608.06993
+[^5]: Yarin Gal's Thesis Chapter 3 http://mlg.eng.cam.ac.uk/yarin/thesis/3_bayesian_deep_learning.pdf
+[^6]: Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning https://arxiv.org/pdf/1506.02142.pdf
+[^7]: Sequential Neural Models with Stochastic Layers https://arxiv.org/pdf/1605.07571.pdf
+[^8]: Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations https://arxiv.org/abs/1606.01305
