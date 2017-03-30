@@ -107,7 +107,7 @@ Thus we are able to reformulate the cost for a multi-layer stochastic neural net
 $$
 L_{MIB} = [\sum_{i=1}^n I(Y; T_i)] + I(X;T_1) + \sum_{i=2}^n I(T_{i-1}; T_i)
 $$
-This is equivalent to create sub-networks and enforce the $L_2$ norm of each hidden representations to be small (due to the KL divergence between layers and a spherical gaussian distribution). 
+This is equivalent to create sub-networks and add the $L_2$ norm of each layer to the cost (this term is equivalent to the KL divergence between layers and a spherical gaussian distribution). 
 
 
 
@@ -115,11 +115,11 @@ This is equivalent to create sub-networks and enforce the $L_2$ norm of each hid
 
 
 
-This is similar to the style of stochastic depth network, but in a more principled way. We encourage each layer to maximally compress $X$ that will maximize the chance of predicting the correct label. This is quite different form the architecture of DenseNet[^4].
+This is similar to the style of stochastic depth network (SDN)[^9], but in a more principled way. We encourage each layer to maximally compress $X$ and maximally increase the chance of predicting the correct label. This is quite different form the architecture of DenseNet[^4], which is applying residual connections between earlier layers and later layers.
 
 
 
-Now we bridge the gap between a normal feedforward neural network and recurrent neural network. If we follow Yarin Gal's derivation [^5][^6], we can recognize dropout as a special type of Bayesian approximation with tighter bounds than reparameterization trick. Then recurrent dropout, where dropout is applied to recurrent connections, can be seen as that recurrent hidden states in RNN are stochastic layers, without the need of adding a stochastic layer on top of a deterministic layer, which is what has been proposed by Fraccaro et al [^7]. 
+Now we bridge the gap between a normal feedforward neural network and recurrent neural network. If we follow Yarin Gal's derivation [^5][^6], we can realize dropout is a special type of Bayesian approximation with tighter bounds than the reparameterization trick. Thus recurrent dropout, where dropout is applied to recurrent connections, can be seen as that recurrent hidden states in RNN being stochastic layers, without the need of adding a stochastic layer on top of a deterministic layer, which is what has been proposed by Fraccaro et al [^7]. 
 
 
 
@@ -149,3 +149,4 @@ This formulation is equivalent to Zoneout when applied stochastically with sligh
 [^6]: Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning https://arxiv.org/pdf/1506.02142.pdf
 [^7]: Sequential Neural Models with Stochastic Layers https://arxiv.org/pdf/1605.07571.pdf
 [^8]: Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations https://arxiv.org/abs/1606.01305
+[^9]: Deep Networks with Stochastic Depth https://arxiv.org/abs/1603.09382
