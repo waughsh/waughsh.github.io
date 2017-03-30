@@ -58,7 +58,7 @@ I(T;Y) = \int p(y, t) \log \frac{p(y \vert t)}{p(y)} dy dt
 $$
 
 
-The difficult part is to evaluate $p(y\vert t)$, and we use a variational approximation to this value.  With an understanding that the bound can be arbitrarily loose, and with monte carlo sampling, Alemi et al derived that $I(X; T) \leq \mathrm{KL}[p(T \vert X), r(T)]$, with $r$ being an arbitrary distribution: spherical gaussian $\mathcal{N} \sim (0, I)$. And $-I(Y;T) \leq \mathbb{E}_{\epsilon \sim p(\epsilon)}[-\log q(Y  f(X\vert, \epsilon))]$ where $q(Y \vert f(X,  \epsilon))$ is our model. 
+The difficult part is to evaluate $p(y\vert t)$, and we use a variational approximation to this value.  With an understanding that the bound can be arbitrarily loose, and with monte carlo sampling, Alemi et al derived that $I(X; T) \leq \mathrm{KL}[p(T \vert X), r(T)]$, with $r$ being an arbitrary distribution: spherical gaussian $\mathcal{N} \sim (0, I)$. And $-I(Y;T) \leq \mathbb{E}_{\epsilon \sim p(\epsilon)}[-\log q(Y \vert f(X, \epsilon))]$ where $q(Y \vert f(X,  \epsilon))$ is our model. 
 
 
 
