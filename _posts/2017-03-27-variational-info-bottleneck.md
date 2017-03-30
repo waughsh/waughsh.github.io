@@ -107,8 +107,8 @@ Thus we are able to reformulate the cost for a multi-layer stochastic neural net
 $$
 L_{MIB} = [\sum_{i=1}^n I(Y; T_i)] + I(X;T_1) + \sum_{i=2}^n I(T_{i-1}; T_i)
 $$
-This is equivalent to create sub-networks and add the $L_2$ norm of each layer to the cost (this term is equivalent to the KL divergence between layers and a spherical gaussian distribution). 
 
+This is equivalent to create sub-networks and add the $L_2$ norm of each layer to the cost (this term is equivalent to the KL divergence between layers and a spherical gaussian distribution). 
 
 
 ![](http://anie.me/images/mutual_y_h.png)
