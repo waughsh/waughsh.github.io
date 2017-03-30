@@ -144,6 +144,7 @@ This formulation is equivalent to Zoneout when applied stochastically with sligh
 This brings us to the next topic: how to properly model the future in a dynamical system. Reinforcement learning has been working on this front for more than a decade. Markov reward process (MRP) can be considered a prediction-based process, where it does not take actions, but only predict the future outcome given current observations. 
 
 
+## Footnotes
 
 [^1]: Opening the blackbox of Neural Network via Information https://arxiv.org/pdf/1703.00810.pdf
 [^2]: The information bottleneck method https://arxiv.org/pdf/physics/0004057.pdf
