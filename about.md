@@ -11,7 +11,13 @@ published: true
 
 ### Author
 
-I'm currently a first year master student at Stanford University. My main area is Natural Language Processing, and somewhat more interestingly, I start to ponder how NLP and CV can be combined and get to be something more advanced.
+I'm currently a second year Symbolic Systems master student at Stanford University. My main area is Natural Language Processing, but I work in other areas such as deep reinforcement learning, applied machine learning, information theory as well.
+
+I spent a year in Andrew Ng's Stanford Machine Learning Group working on recurrent neural network regularizations, data augmentation, and sequence-to-sequence generative models. 
+
+I recently accepted the offer to become a full-time engineering research scientist at Stanford Electrical Engineering Department working with James Zou. I also do consulting work at a newly founded startup (hey, they are still in stealth!). 
+
+Anyway, if you have cool ideas or need advice, send me an email or ask me to lunch!
 
 ### Contact me
 
