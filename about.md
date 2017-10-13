@@ -15,9 +15,9 @@ I'm currently a second year Symbolic Systems master student at Stanford Universi
 
 I spent a year in Andrew Ng's Stanford Machine Learning Group working on recurrent neural network regularizations, data augmentation, and sequence-to-sequence generative models. 
 
-I recently accepted the offer to become a full-time engineering research scientist at Stanford Electrical Engineering Department working with James Zou. I also do consulting work at a newly founded startup (hey, they are still in stealth!). 
+I recently accepted the offer to become a full-time engineering research scientist at Stanford Electrical Engineering and Biomedical Data Science Department to work with James Zou. I also do consulting work at a newly founded startup (hey, they are still in stealth!). 
 
-Anyway, if you have cool ideas or need advice, send me an email or ask me to lunch!
+Anyway, if you have cool ideas or need advice, send me an email!
 
 ### Contact me
 
