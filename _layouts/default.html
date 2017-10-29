@@ -46,12 +46,12 @@
       </div>
     </div>
 
-    <script type="text/javascript"
+<!--     <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
+    </script> -->
     
     <!-- This is the configuration of MathJax -->
-    <script type="text/javascript"> 
+<!--     <script type="text/javascript"> 
     MathJax.Hub.Config({
       tex2jax: {
         inlineMath: [['$','$'], ['\\(','\\)']],
@@ -60,6 +60,26 @@
         skipTags: ["script","noscript","style","textarea"]
       }
     });
+    </script> -->
+    <script type="text/x-mathjax-config"> 
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$']],
+        processEscapes: true,
+        skipTags: ["script","noscript","style","textarea"]
+      }
+    });
+    </script>
+    <script
+      type="text/javascript"
+      charset="utf-8"
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script
+      type="text/javascript"
+      charset="utf-8"
+      src="https://vincenttam.github.io/javascripts/MathJaxLocal.js">
     </script>
     
     {% include analytics.html %}
