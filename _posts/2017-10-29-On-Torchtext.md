@@ -81,6 +81,12 @@ We first define a `Field`, this is a class that contains information on how you 
 
 
 ```python
+import spacy
+spacy_en = spacy.load('en')
+
+def tokenizer(text): # create a tokenizer function
+    return [tok.text for tok in spacy_en.tokenizer(text)]
+
 TEXT = data.Field(sequential=True, tokenize=tokenizer, lower=True, fix_length=150)
 LABEL = data.Field(sequential=False, use_vocab=False)
 ```
