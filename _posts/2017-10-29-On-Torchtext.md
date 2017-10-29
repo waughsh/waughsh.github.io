@@ -1,10 +1,8 @@
 ---
 published: true
-title: A Very Short Tutorial on Torchtext
+title: A Short Tutorial on Torchtext
 layout: post
 ---
-## A Very Short Tutorial on Torchtext
-
 About 2-3 months ago, I encountered this library: [Torchtext](https://github.com/pytorch/text). I nonchalantly scanned through the README file and realize I have no idea how to use it or what kind of problem is it solving. I moved on.
 
 
@@ -160,4 +158,3 @@ When we call `len(vocab)`, we are getting the total vocabulary size, and then we
 
 [An (old) Torchtext Tutorial]: https://github.com/mjc92/TorchTextTutorial/blob/master/01.%20Getting%20started.ipynb
 [Randomly Initializing Word Embeddings]: https://github.com/pytorch/text/issues/32
-
