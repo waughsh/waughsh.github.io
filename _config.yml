@@ -7,7 +7,7 @@
 name: Allen Nie
 
 # Short bio or description (displayed in the header)
-description: "A blog for NLP, ML, and programming"
+description: "A blog for NLP, ML, and Programming"
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: http://anie.me/images/squared_logo.png
@@ -62,6 +62,7 @@ kramdown:
   input: GFM
   # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
   syntax_highlighter: rouge
+  hard_wrap: false
   syntax_highlighter_opts:
     # Use existing pygments syntax highlighting css
     css_class: 'highlight'
