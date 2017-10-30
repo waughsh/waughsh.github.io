@@ -162,5 +162,6 @@ self.embed.weight.data.copy_(vocab.vectors)
 
 When we call `len(vocab)`, we are getting the total vocabulary size, and then we just copy over pretrained word vectors by calling `vocab.vectors`! It would normally take me half a day to write a preprocessing script that handles all of these, but with **Torchtext**, I was able to finish the whole classifier in 1 hour. I hope people would find this post useful, and here are a list of references I've used:
 
+
 [An (old) Torchtext Tutorial]: https://github.com/mjc92/TorchTextTutorial/blob/master/01.%20Getting%20started.ipynb
 [Randomly Initializing Word Embeddings]: https://github.com/pytorch/text/issues/32
