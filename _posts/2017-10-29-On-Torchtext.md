@@ -11,15 +11,15 @@ Last week, there was a paper deadline, and I was tasked to build a multiclass te
 
 
 
-Turns out, it is possible to use this library within 3 hours if you are willing to dig into the codebase and not afraid to use code analysis tools like PyCharm :P But that seems to be the main way to understand the library. Besides a slightly outdated and unfinished "tutorial" I can find on Google, there's no other tutorial or explanatory documentation for this library.
+Turns out, it is possible to use this library within 3 hours if you are willing to dig into the codebase and not afraid to use code analysis tools like PyCharm :P Besides a slightly outdated and unfinished "tutorial" I can find on Google, there's no other tutorial or explanatory documentation for this library.
 
 
 
-Isn't this a perfect opportunity to write a blog post on it?
+That means it's a perfect opportunity to write a blog post :) that will save many people the trouble of going through the source code!
 
 
 
-**Torchtext** is a very powerful library that solves the preprocessing of text very well, but we need to know what it can do and what it can't, and understand how each API is mapped to our inherent understanding of what should be done. An additional perk is that **Torchtext** is designed in a way that it does not just work with PyTorch, but with any deep learning library (for example: Tensorflow). 
+**Torchtext** is a very powerful library that solves the preprocessing of text very well, but we need to know what it can and can't do, and understand how each API is mapped to our inherent understanding of what should be done. An additional perk is that **Torchtext** is designed in a way that it does not just work with PyTorch, but with any deep learning library (for example: Tensorflow). 
 
 
 
