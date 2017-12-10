@@ -1,6 +1,6 @@
 ---
 published: true
-title: A Short Tutorial on Torchtext
+title: A Tutorial on Torchtext
 layout: post
 ---
 About 2-3 months ago, I encountered this library: [Torchtext](https://github.com/pytorch/text). I nonchalantly scanned through the README file and realize I have no idea how to use it or what kind of problem is it solving. I moved on.
@@ -11,15 +11,17 @@ Last week, there was a paper deadline, and I was tasked to build a multiclass te
 
 
 
-Turns out, it is possible to use this library within 3 hours if you are willing to dig into the codebase and not afraid to use code analysis tools like PyCharm :P But that seems to be the main way to understand the library. Besides a slightly outdated and unfinished "tutorial" I can find on Google, there's no other tutorial or explanatory documentation for this library.
+Turns out, it is possible to use this library within 3 hours if you are willing to dig into the codebase and not afraid to use code analysis tools like PyCharm. Besides a slightly outdated and unfinished "tutorial" I can find on Google, there's no other tutorial or explanatory documentation for this library.
 
 
 
-Isn't this a perfect opportunity to write a blog post on it?
+This means it's a perfect opportunity to write a blog post :) that will save many people the trouble of going through the source code!
 
 
+## Basics
 
-**Torchtext** is a very powerful library that solves the preprocessing of text very well, but we need to know what it can do and what it can't, and understand how each API is mapped to our inherent understanding of what should be done. An additional perk is that **Torchtext** is designed in a way that it does not just work with PyTorch, but with any deep learning library (for example: Tensorflow). 
+
+**Torchtext** is a very powerful library that solves the preprocessing of text very well, but we need to know what it can and can't do, and understand how each API is mapped to our inherent understanding of what should be done. An additional perk is that **Torchtext** is designed in a way that it does not just work with PyTorch, but with any deep learning library (for example: Tensorflow). 
 
 
 
@@ -81,6 +83,12 @@ We first define a `Field`, this is a class that contains information on how you 
 
 
 ```python
+import spacy
+spacy_en = spacy.load('en')
+
+def tokenizer(text): # create a tokenizer function
+    return [tok.text for tok in spacy_en.tokenizer(text)]
+
 TEXT = data.Field(sequential=True, tokenize=tokenizer, lower=True, fix_length=150)
 LABEL = data.Field(sequential=False, use_vocab=False)
 ```
@@ -134,11 +142,11 @@ train_iter, val_iter, test_iter = data.Iterator.splits(
 
 
 
-Note that if you are runing on CPU, you must set `device` to be `-1`, otherwise you can leave it to `0` for GPU. Note that you can use `next(train_iter)` to examine the result, you can realize that Torchtext uses dynamic padding, meaning that the padded length of your batch is dependent on the longest sequence in your batch. This is a no-brainer must-do, but I have seen quite a few github repos/tutorials fail to accomplish.
+Note that if you are runing on CPU, you must set `device` to be `-1`, otherwise you can leave it to `0` for GPU. Note that you can easily examine the result, and realize that Torchtext already uses dynamic padding, meaning that the padded length of your batch is dependent on the longest sequence in your batch. This is a no-brainer must-do, but I've seen quite a few github repos/tutorials fail to cover.
 
 
 
-Note that all these iterators are **infinite** iterators, so you must keep track of epoch (one epoch = when you've iterated through the entire dataset for once), and use other stop training strategies (early stopping, etc.) to determine when to stop. Also each batch is of type ``torch.LongTensor``, they are the **numericalized** batch, but there is no loading of the pretrained vectors.
+TorchText `Iterator` is different from a normal Python iterator. They accept several keywords which we will walk through in the later advanced section. Keep in mind that each batch is of type ``torch.LongTensor``, they are the **numericalized** batch, but there is no loading of the pretrained vectors.
 
 
 
@@ -154,7 +162,149 @@ self.embed.weight.data.copy_(vocab.vectors)
 
 
 
-When we call `len(vocab)`, we are getting the total vocabulary size, and then we just copy over pretrained word vectors by calling `vocab.vectors`! It would normally take me half a day to write a preprocessing script that handles all of these, but with **Torchtext**, I was able to finish the whole classifier in 1 hour. I hope people would find this post useful, and here are a list of references I've used:
+When we call `len(vocab)`, we are getting the total vocabulary size, and then we just copy over pretrained word vectors by calling `vocab.vectors`! It would normally take me half a day to write a preprocessing script that handles all of these, but with **Torchtext**, I was able to finish the whole classifier in 1 hour. 
 
-[An (old) Torchtext Tutorial]: https://github.com/mjc92/TorchTextTutorial/blob/master/01.%20Getting%20started.ipynb
-[Randomly Initializing Word Embeddings]: https://github.com/pytorch/text/issues/32
+## Reversible Tokenization
+
+In quite many situations, you would want to examine your output, and try to interpret your model's actions. Then you need to map a batch of your serialized tokens like `[[0, 5, 15, ...], [152, 0, 50, ...] ]` back to strings! Typically this is difficult to do, because standard tokenization tools like Spacy or NLTK only tokenize but do not map back for you. Even though mapping these batches would not be too difficult, Torchtext has an easy solution for it: RevTok.
+
+RevTok is a simple Python tokenizer, which (may) run relatively slower compared to industry-ready implementations like Spacy, but it's integrated into TorchText. You can download the source code from: https://github.com/jekbradbury/revtok and install as follows:
+
+```
+cd revtok/
+python setup.py install
+```
+
+You cannot install revtok from `pip install revtok` because it is not the latest version of revtok (at the time this article is written), and it will break.
+
+Once you installed revtok, you can easily use it in TorchText using:
+
+```python
+TEXT = data.ReversibleField(sequential=True, lower=True, include_lengths=True)
+```
+
+When you need to revert back to your string tokens from numericalized tokens, you can:
+
+```python
+    for data in valid_iter:
+        (x, x_lengths), y = data.Text, data.Description
+        orig_text = TEXT.reverse(x.data)
+```
+
+Here's a bit of juicy / advanced material for you, `ReversibleField` can only be used jointly with revtok. This is perhaps a bug in Torchtext. If you believe your discrete data only needs simple tokenization or normal splitting, then you can build your own customized Reversible Field like the following:
+
+```python
+from torchtext.data import Field
+class SplitReversibleField(Field):
+
+    def __init__(self, **kwargs):
+        if kwargs.get('tokenize') is list:
+            self.use_revtok = False
+        else:
+            self.use_revtok = True
+        if kwargs.get('tokenize') not in ('revtok', 'subword', list):
+            kwargs['tokenize'] = 'revtok'
+        if 'unk_token' not in kwargs:
+            kwargs['unk_token'] = ' UNK '
+        super(SplitReversibleField, self).__init__(**kwargs)
+
+    def reverse(self, batch):
+        if self.use_revtok:
+            try:
+                import revtok
+            except ImportError:
+                print("Please install revtok.")
+                raise
+        if not self.batch_first:
+            batch = batch.t()
+        with torch.cuda.device_of(batch):
+            batch = batch.tolist()
+        batch = [[self.vocab.itos[ind] for ind in ex] for ex in batch]  # denumericalize
+
+        def trim(s, t):
+            sentence = []
+            for w in s:
+                if w == t:
+                    break
+                sentence.append(w)
+            return sentence
+
+        batch = [trim(ex, self.eos_token) for ex in batch]  # trim past frst eos
+
+        def filter_special(tok):
+            return tok not in (self.init_token, self.pad_token)
+
+        batch = [filter(filter_special, ex) for ex in batch]
+        if self.use_revtok:
+            return [revtok.detokenize(ex) for ex in batch]
+        return [' '.join(ex) for ex in batch]
+```
+
+## TorchText Iterators for masked BPTT
+
+In the basic part of the tutorial, we have already used Torchtext Iterators, but the customizable parts of the Torchtext Iterator that are truly helpful, compared to their competitors like Keras' Preprocessing library.
+
+We talk about three main keywords: `sort`, `sort_within_batch` and `repeat`. 
+
+First, PyTorch's current solution for masked BPTT is slightly bizzare, it requires you to pack the PyTorch variables into a padded sequences. Note that not all PyTorch RNN libraries support padded sequence, for example, [SRU](https://github.com/taolei87/sru) does not, and even though I haven't seen issues being raised, but possibly current implementation of [QRNN](https://github.com/salesforce/pytorch-qrnn) doesn't support padded sequence class either.
+
+The code to incorporate padded sequence for RNN is simple:
+
+```python
+TEXT = data.ReversibleField(sequential=True, lower=True, include_lengths=True)
+```
+
+We first add `include_lengths` argument for the Field. Then, we build our iterator like:
+
+```python
+train, val, test = data.TabularDataset.splits(
+        path='./data/', train='train.tsv',
+        validation='val.tsv', test='test.tsv', format='tsv',
+        fields=[('Text', TEXT), ('Label', LABEL)])
+        
+train_iter, val_iter, test_iter = data.Iterator.splits(
+        (train, val, test), sort_key=lambda x: len(x.Text), 
+        batch_sizes=(32, 256, 256), device=args.gpu, 
+        sort_within_batch=True, repeat=False)
+```
+
+So in here, we look at a couple of arguments: `sort_key` is the sorting function Torchtext will call when it attempts to sort your dataset. If you leave this blank, no sorting will happen (I could be wrong, but on my simple "experiment", it seems to be the case). 
+
+`sort` argument sorts through your entire dataset. You might want to avoid this for training set because the order of your traning examples will have an impact on your network, and my experiments have shown negative impact.
+
+`sort_within_batch` must be flagged True if you want to use PyTorch's padded sequence class.
+
+So in your model's `forward` method, you can write:
+
+```python
+
+ def forward(self, input, lengths=None):
+        embed_input = self.embed(input)
+
+        packed_emb = embed_input
+        if lengths is not None:
+            lengths = lengths.view(-1).tolist()
+            packed_emb = nn.utils.rnn.pack_padded_sequence(embed_input, lengths)
+
+        output, hidden = self.encoder(packed_emb)  # embed_input
+
+        if lengths is not None:
+            output = unpack(output)[0]
+```
+
+
+And in your main training loop you can pass your variable in like this:
+
+```python
+(x, x_lengths), y = data.Text, data.Description
+output = model(x, x_lengths)
+```
+
+I hope people would find this post useful, and here are a list of references I've used for basic tutorial:
+
+
+An (old) Torchtext Tutorial: [https://github.com/mjc92/TorchTextTutorial/blob/master/01.%20Getting%20started.ipynb](https://github.com/mjc92/TorchTextTutorial/blob/master/01.%20Getting%20started.ipynb)
+
+
+Randomly Initializing Word Embeddings: [https://github.com/pytorch/text/issues/32](https://github.com/pytorch/text/issues/32)
+
