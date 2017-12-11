@@ -26,11 +26,11 @@ Anyway, if you have cool ideas or need advice, send me an email!
 
 ### Publications
 
-- **Nie, A.**, Mongia, M., & Zou, J., (2017). **From Information Bottleneck to Activation Norm Penalty** (in review). International Conference of Learning Representation (ICLR). Vancouver, BC, Canda.
-- **Nie, A.**, Bennett, E.D., Goodman, N.D., (2017). **DisSent: Semi-Supervised Sentence Representation Learning with Discourse Prediction**. arXiv preprint.
-- Ziang, X., Sida W., Jiwei L., Levy, D., **Nie A.**, Jurafsky, Dan & Ng, Andrew, (2016). **Data Noising as Smoothing in Neural Network Sequence Models**. 5th International Conference on Learning Representations (ICLR). Toulon, France. (Oral at BayLearn 2016)
-- Thorstad, R., **Nie, A.**, & Wolff, P. (2015). **Representations of Time Affect Willingness to Wait for Future Rewards**. 37th Annual Conference of the Cognitive Science Society. Pasadena, California.
-- **Nie, A.**, Sheppard, J., Choi, J., Copley, B., Wolff, P., (2015). **Computational Exploration to Linguistic Structures of Future, Classification and Categorization**. The North American Chapter of the Association for Computational Linguistics: Human Language Technologies. Denver, Colorado.
+- **From Information Bottleneck to Activation Norm Penalty** (in review). **Nie, A.**, Mongia, M., & Zou, J., (2017). International Conference of Learning Representation (ICLR). Vancouver, BC, Canda.
+- **DisSent: Semi-Supervised Sentence Representation Learning with Discourse Prediction**. **Nie, A.**, Bennett, E.D., Goodman, N.D., (2017). arXiv preprint.
+- **Data Noising as Smoothing in Neural Network Sequence Models**. Ziang, X., Sida W., Jiwei L., Levy, D., **Nie A.**, Jurafsky, Dan & Ng, Andrew, (2016). 5th International Conference on Learning Representations (ICLR). Toulon, France. (Oral at BayLearn 2016)
+- **Representations of Time Affect Willingness to Wait for Future Rewards**. Thorstad, R., **Nie, A.**, & Wolff, P. (2015). 37th Annual Conference of the Cognitive Science Society. Pasadena, California.
+- **Computational Exploration to Linguistic Structures of Future, Classification and Categorization**. **Nie, A.**, Sheppard, J., Choi, J., Copley, B., Wolff, P., (2015). The North American Chapter of the Association for Computational Linguistics: Human Language Technologies. Denver, Colorado.
 
 
 ### Teaching
