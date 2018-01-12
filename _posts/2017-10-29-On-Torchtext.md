@@ -277,7 +277,6 @@ So in here, we look at a couple of arguments: `sort_key` is the sorting function
 So in your model's `forward` method, you can write:
 
 ```python
-
  def forward(self, input, lengths=None):
         embed_input = self.embed(input)
 
