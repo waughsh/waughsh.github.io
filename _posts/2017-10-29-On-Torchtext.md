@@ -301,7 +301,7 @@ output = model(x, x_lengths)
 
 ## Initialize Unknown Words Randomly
 
-If most of your vocabulary are OOV, then you might want to initialize them into a random vector. There isn't a good way to do this, at least not in the current version of Torchtext, which only initializes every unk token to 0. I wrote a custom function that initializes unknown word embeddings to be a random vector with variance equal to the average norm of pretrained vectors, which is `5/dim_vector`.
+If most of your vocabulary are OOV, then you might want to initialize them into a random vector. There isn't a good way to do this, at least not in the current version of Torchtext, which only initializes every unk token to 0. I wrote a custom function that initializes unknown word embeddings to be a random vector with norm equal to the average norm of pretrained vectors, which means your variance should be set as `average_norm / dim_vector`.
 
 ```python
 def init_emb(vocab, init="randn", num_special_toks=2):
@@ -312,9 +312,9 @@ def init_emb(vocab, init="randn", num_special_toks=2):
     total_words = 0
     for i in range(num_special_toks, sweep_range):
         if len(emb_vectors[i, :].nonzero()) == 0:
-            # std = 0.5 is based on the norm of average GloVE word vectors
+            # std = 0.05 is based on the norm of average GloVE 100-dim word vectors
             if init == "randn":
-                torch.nn.init.normal(emb_vectors[i], mean=0, std=0.5)
+                torch.nn.init.normal(emb_vectors[i], mean=0, std=0.05)
         else:
             num_non_zero += 1
             running_norm += torch.norm(emb_vectors[i])
