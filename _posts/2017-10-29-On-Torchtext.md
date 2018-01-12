@@ -332,5 +332,8 @@ An (old) Torchtext Tutorial: [https://github.com/mjc92/TorchTextTutorial/blob/ma
 
 Randomly Initializing Word Embeddings: [https://github.com/pytorch/text/issues/32](https://github.com/pytorch/text/issues/32)
 
+------------
+
 Update 1: Added the section of masked BPTT
+
 Update 2: Fixed typos, etc., add some code to randomly initialize unknown vectors.
