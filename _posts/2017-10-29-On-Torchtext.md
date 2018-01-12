@@ -42,7 +42,7 @@ Let's compile a list of tasks that text preprocessing must be able to handle. Al
 
 
 
-From a more visual explanation, what we are doing is this process:
+Here is a visual explanation on what we are doing in this process:
 
 
 
@@ -307,4 +307,3 @@ An (old) Torchtext Tutorial: [https://github.com/mjc92/TorchTextTutorial/blob/ma
 
 
 Randomly Initializing Word Embeddings: [https://github.com/pytorch/text/issues/32](https://github.com/pytorch/text/issues/32)
-
