@@ -70,7 +70,7 @@ Here is a visual explanation on what we are doing in this process:
 
  
 
-This process is actually quite easy to mess up, especially for tokenization. Researchers would spend a lot time writing custom code for this, and in Tensorflow (not Keras), this process is excruiating because you would create some **preprocessing** script that handles everything before the **Batching** step, which was the recommended way in Tensorflow.
+This process is actually quite easy to mess up, especially for tokenization. Researchers would spend a lot of time writing custom code for this, and in Tensorflow (not Keras), this process is excruiating because you would create some **preprocessing** script that handles everything before the **Batching** step, which was the recommended way in Tensorflow.
 
 
 
