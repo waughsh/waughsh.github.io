@@ -242,7 +242,7 @@ class SplitReversibleField(Field):
 
 ## TorchText Iterators for masked BPTT
 
-In the basic part of the tutorial, we have already used Torchtext Iterators, but the customizable parts of the Torchtext Iterator that are truly helpful, compared to their competitors like Keras' Preprocessing library.
+In the basic part of the tutorial, we have already used Torchtext Iterators, but the customizable parts of the Torchtext Iterator that are truly helpful.
 
 We talk about three main keywords: `sort`, `sort_within_batch` and `repeat`. 
 
@@ -300,6 +300,31 @@ And in your main training loop you can pass your variable in like this:
 output = model(x, x_lengths)
 ```
 
+## Initialize Unknown Words Randomly
+
+If most of your vocabulary are OOV, then you might want to initialize them into a random vector. There isn't a good way to do this, at least not in the current version of Torchtext, which only initializes every unk token to 0. I wrote a custom function that initializes unknown word embeddings to be a random vector with variance equal to the average norm of pretrained vectors, which is `5/dim_vector`.
+
+```python
+def init_emb(vocab, init="randn", num_special_toks=2):
+    emb_vectors = vocab.vectors
+    sweep_range = len(vocab)
+    running_norm = 0.
+    num_non_zero = 0
+    total_words = 0
+    for i in range(num_special_toks, sweep_range):
+        if len(emb_vectors[i, :].nonzero()) == 0:
+            # std = 0.5 is based on the norm of average GloVE word vectors
+            if init == "randn":
+                torch.nn.init.normal(emb_vectors[i], mean=0, std=0.5)
+        else:
+            num_non_zero += 1
+            running_norm += torch.norm(emb_vectors[i])
+        total_words += 1
+    logger.info("average GloVE norm is {}, number of known words are {}, total number of words are {}".format(
+        running_norm / num_non_zero, num_non_zero, total_words))
+```
+
+
 I hope people would find this post useful, and here are a list of references I've used for basic tutorial:
 
 
@@ -307,3 +332,6 @@ An (old) Torchtext Tutorial: [https://github.com/mjc92/TorchTextTutorial/blob/ma
 
 
 Randomly Initializing Word Embeddings: [https://github.com/pytorch/text/issues/32](https://github.com/pytorch/text/issues/32)
+
+Update 1: Added the section of masked BPTT
+Update 2: Fixed typos, etc., add some code to randomly initialize unknown vectors.
