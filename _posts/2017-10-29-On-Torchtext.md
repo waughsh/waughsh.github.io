@@ -89,13 +89,13 @@ spacy_en = spacy.load('en')
 def tokenizer(text): # create a tokenizer function
     return [tok.text for tok in spacy_en.tokenizer(text)]
 
-TEXT = data.Field(sequential=True, tokenize=tokenizer, lower=True, fix_length=150)
+TEXT = data.Field(sequential=True, tokenize=tokenizer, lower=True)
 LABEL = data.Field(sequential=False, use_vocab=False)
 ```
 
 
 
-I have preprocessed the label to be numerical integers, thus I used `use_vocab=False`. Torchtext probably allows you use to text as labels, but I have not used it yet. As you can see, we can fix the length of input as well as map all words to lowercase.
+I have preprocessed the label to be integers, so I used `use_vocab=False`. Torchtext probably allows you use to text as labels, but I have not used it yet. As you can see, we can let the input to be variable length, and TorchText will dynamically pad each sequence to the longest in the batch.
 
 
 
