@@ -112,7 +112,7 @@ train, val, test = data.TabularDataset.splits(
 
  
 
-This is quite straightforward, in `fields`, the amusing part is that `tsv` file parsing is order-based, in my raw `tsv` file, I do not have any header, and this script seems to run just fine, but I would imagine if there is a header, then the first element `Text` should match the column header.
+This is quite straightforward, in `fields`, the amusing part is that `tsv` file parsing is order-based. In my raw `tsv` file, I do not have any header, and this script seems to run just fine. I  imagine if there is a header, the first element `Text` might need to match the column header.
 
 
 
