@@ -29,14 +29,14 @@ Let's compile a list of tasks that text preprocessing must be able to handle. Al
 
 
 
-* [ ] **Train/Val/Test Split**: seperate your data into a fixed train/val/test set (not used for k-fold validation)
-* [x] **File Loading**: load in the corpus from various formats 
-* [x] **Tokenization**: break sentences into list of words
-* [x] **Vocab**: generate a vocabulary list
-* [x] **Numericalize/Indexify**: Map words into integer numbers for the entire corpus
-* [x] **Word Vector**: either initialize vocabulary randomly or load in from a pretrained embedding, this embedding must be "trimmed", meaning we only store words in our vocabulary into memory.
-* [x] **Batching**: generate batches of training sample (padding is normally happening here)
-* [ ] **Embedding Lookup**: map each sentence (which contains word indices) to fixed dimension word vectors
+- [ ] **Train/Val/Test Split**: seperate your data into a fixed train/val/test set (not used for k-fold validation)
+- [x] **File Loading**: load in the corpus from various formats 
+- [x] **Tokenization**: break sentences into list of words
+- [x] **Vocab**: generate a vocabulary list
+- [x] **Numericalize/Indexify**: Map words into integer numbers for the entire corpus
+- [x] **Word Vector**: either initialize vocabulary randomly or load in from a pretrained embedding, this embedding must be "trimmed", meaning we only store words in our vocabulary into memory.
+- [x] **Batching**: generate batches of training sample (padding is normally happening here)
+- [ ] **Embedding Lookup**: map each sentence (which contains word indices) to fixed dimension word vectors
 
 
 
@@ -112,7 +112,7 @@ train, val, test = data.TabularDataset.splits(
 
  
 
-This is quite straightforward, in `fields`, the amusing part is that `tsv` file parsing is order-based. In my raw `tsv` file, I do not have any header, and this script seems to run just fine. I  imagine if there is a header, the first element `Text` might need to match the column header.
+This is quite straightforward, in `fields`, the amusing part is that `tsv` file parsing is order-based. In my raw `tsv` file, I do not have any header, and this script seems to run just fine. ~~I  imagine if there is a header, the first element `Text` might need to match the column header.~~ (check out comment from Keita Kurita, who pointed out current `TabularDataset` does not align features with column headers) 
 
 
 
