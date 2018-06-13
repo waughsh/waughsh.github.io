@@ -365,3 +365,10 @@ Randomly Initializing Word Embeddings: [https://github.com/pytorch/text/issues/3
 Update 1: Added the section of masked BPTT
 
 Update 2: Fixed typos, etc., add some code to randomly initialize unknown vectors.
+
+-------------
+
+I'm also including a list of tools that I find helpful and can be used in conjunction with TorchText:
+Ftfy: [https://ftfy.readthedocs.io/en/latest/](https://ftfy.readthedocs.io/en/latest/) (apparently this fixes your text encoding problems for you, and normalize many strange artifacts in text)
+BPE (Byte-pair encoding): [https://github.com/rsennrich/subword-nmt](https://github.com/rsennrich/subword-nmt) (use this to generate BPE for reduced vocabulary)
+
