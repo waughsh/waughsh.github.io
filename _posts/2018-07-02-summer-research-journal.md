@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 layout: post
 visible: 0
 title: Summer Research Journal
