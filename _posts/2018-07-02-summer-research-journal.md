@@ -5,9 +5,9 @@ visible: 0
 title: Summer Research Journal
 draft: true
 ---
-## Project Outlines
+## Project 1: Treating CSU/PP Corpra as Testbeds for Unsupervised NLP Methods
 
-Insights/Problems from DeepTag Projects: 
+Insights/Problems from DeepTag Projects: comparison on the effectiveness of Unsupervised Learning Methods in NLP, applied to a clinical setting.
 
 It is a **perfect test bed for a few unsupervised learning algorithms** in NLP and see which one actually works well in an industry setting.
 
@@ -15,3 +15,4 @@ It is a **perfect test bed for a few unsupervised learning algorithms** in NLP a
 2. **Word embedding** training only (fixed embedding) (on large corpora)
 3. **Meta-learning** the LSTM optimizer, apply to see if it improves and make test domain shift smaller.
 
+## Project 2
