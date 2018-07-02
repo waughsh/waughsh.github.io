@@ -21,6 +21,8 @@ It is a **perfect test bed for a few unsupervised learning algorithms** in NLP a
 
 Roadmap
 
-## Project 3: Interactive Machine Learning
+## Project 3: Interactive Natural Language Processing
+
+
 
 
