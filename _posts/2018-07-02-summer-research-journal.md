@@ -23,5 +23,10 @@ Roadmap
 
 ## Project 3: Interactive Natural Language Processing
 
-At least it will allow people to write conditional arguments to shape classifier's behavior, but that's the power of filter (parser)...(regex-lite) (it's irrelevant to underlying system).
+At least it will allow people to write conditional arguments to shape classifier's behavior, but that's the power of filter (parser)...(regex-lite) (it's irrelevant to underlying system). 
+
+The difference is that this system allow: 
+1). Delete (modify) patterns/extracts that are wrong
+2). Add new patterns (already doable) 
+3). Retraining the model (LSTM or anything) using human-modified patterns as bootstrapping signals 
 
