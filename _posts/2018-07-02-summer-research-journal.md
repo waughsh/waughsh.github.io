@@ -23,6 +23,5 @@ Roadmap
 
 ## Project 3: Interactive Natural Language Processing
 
-
-
+At least it will allow people to write conditional arguments to shape classifier's behavior, but that's the power of filter (parser)...(regex-lite) (it's irrelevant to underlying system).
 
