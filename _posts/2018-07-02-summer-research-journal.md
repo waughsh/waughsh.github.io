@@ -19,6 +19,7 @@ It is a **perfect test bed for a few unsupervised learning algorithms** in NLP a
 
 Last year many sentence embedding models are proposed (ELMO, GenSent, InferSent, TransformerLM, DisSent, etc.). We can interpret the model's computational process and induce latent structures from them.
 
+We have a sequence of tokens $(x_1, x_2, ..., x_T)$
 
 
 ## Project 3: Interactive Natural Language Processing
@@ -28,5 +29,5 @@ At least it will allow people to write conditional arguments to shape classifier
 The difference is that this system allow: 
 1. Delete (modify) patterns/extracts that are wrong
 2. Add new patterns (already doable) 
-3. Retraining the model (LSTM or anything) using human-modified patterns as bootstrapping signals 
+3. Retraining the model (LSTM or anything) using human-modified patterns as regularization signals (penalize gating function or attention) (Need to extend Murdoch's algorithm to cover attention)
 
