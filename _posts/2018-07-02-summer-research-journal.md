@@ -21,6 +21,24 @@ Last year many sentence embedding models are proposed (ELMO, GenSent, InferSent,
 
 We have a sequence of tokens $(x_1, x_2, ..., x_T)$, the task is to find the correct order to combine the tokens, where LSTM/RNN assumes left-to-right processing, CNN assumes independence between time steps (each scan is uninfluenced by other patches). The relaxed version of both inductive biases is Attention-is-all model.
 
+We can first show that [Attention-is-all](https://arxiv.org/abs/1706.03762) model is a continuous relaxation of a harder combinatorial discrete optimization problem.
+
+### Inducing the structure
+
+1. For CNN (can trace how representation gets selected -- receptive field analysis)
+2. For LSTM (using interpretation scheme from Contextual decomposition)
+3. For Attention-is-all (just look at attention weights)
+
+All of these share a small problem that is the induced structures might not be a tree. Tree requires children to have exclusive parents. We can further put constraints to prune this graph and mold into a tree. 
+
+Build recursive neural network using induced structures, learn new weight matrices, and see if it outperforms **constituency tree recursive neural network** and the **SPINN model**.
+
+### Learning the structure
+
+Meta-learning that tweaks architecture sometimes involves a `controller`. SPINN model's shift-reduce operation can be regarded as a controller that decides how to assemble a sentence. 
+
+Then the [DART](https://arxiv.org/abs/1806.09055) paper proposed an iterative algorithm for a controller-free optimizing weights and model selection jointly with a relaxed softmax version of connection schemes. 
+
 
 ## Project 3: Interactive Natural Language Processing
 
@@ -30,4 +48,9 @@ The difference is that this system allow:
 1. Delete (modify) patterns/extracts that are wrong
 2. Add new patterns (already doable) 
 3. Retraining the model (LSTM or anything) using human-modified patterns as regularization signals (penalize gating function or attention) (Need to extend Murdoch's algorithm to cover attention)
+
+## Other Ideas
+
+1. NLP for long documents (DeepTag project reveals most EHR documents are long. Most NLP methods are for short sentences) (Long documents can be treated as multi-sentence processing) (Jonathan Berant recently released this paper 
+
 
