@@ -29,7 +29,7 @@ We can first show that [Attention-is-all](https://arxiv.org/abs/1706.03762) mode
 2. For LSTM (using interpretation scheme from Contextual decomposition)
 3. For Attention-is-all (just look at attention weights)
 
-All of these share a small problem that is the induced structures might not be a tree. Tree requires children to have exclusive parents. We can further put constraints to prune this graph and mold into a tree. 
+All of these share a small problem that is the induced structures might not be a tree. Tree requires children to have exclusive parents. We can further put constraints to prune this graph and mold into a tree.
 
 Build recursive neural network using induced structures, learn new weight matrices, and see if it outperforms **constituency tree recursive neural network** and the **SPINN model**.
 
@@ -39,6 +39,7 @@ Meta-learning that tweaks architecture sometimes involves a `controller`. SPINN 
 
 Then the [DART](https://arxiv.org/abs/1806.09055) paper proposed an iterative algorithm for a controller-free optimizing weights and model selection jointly with a relaxed softmax version of connection schemes. 
 
+Or technically Attention-is-all model can be regarded as having implicit controllers? The controller is the one of the $W$ matrices that generate keys.
 
 ## Project 3: Interactive Natural Language Processing
 
