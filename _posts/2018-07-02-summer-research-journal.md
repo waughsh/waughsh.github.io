@@ -39,7 +39,7 @@ Meta-learning that tweaks architecture sometimes involves a `controller`. SPINN 
 
 Then the [DART](https://arxiv.org/abs/1806.09055) paper proposed an iterative algorithm for a controller-free optimizing weights and model selection jointly with a relaxed softmax version of connection schemes. 
 
-Or technically Attention-is-all model can be regarded as having implicit controllers? The controller is the one of the $W$ matrices that generate keys.
+Or technically Attention-is-all model can be regarded as having implicit controllers? The controller is the one of the $W$ matrices that generate keys. Then we won't have a train/val/test problem. 
 
 ## Project 3: Interactive Natural Language Processing
 
