@@ -17,9 +17,9 @@ It is a **perfect test bed for a few unsupervised learning algorithms** in NLP a
 
 ## Project 2: Learning/Inducing latent structure from Sentence Embedding Models
 
+Last year many sentence embedding models are proposed (ELMO, GenSent, InferSent, TransformerLM, DisSent, etc.). We can interpret the model's computational process and induce latent structures from them.
 
 
-Roadmap
 
 ## Project 3: Interactive Natural Language Processing
 
