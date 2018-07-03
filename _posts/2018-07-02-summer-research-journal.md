@@ -33,6 +33,8 @@ All of these share a small problem that is the induced structures might not be a
 
 Build recursive neural network using induced structures, learn new weight matrices, and see if it outperforms **constituency tree recursive neural network** and the **SPINN model**.
 
+As qualitative analysis, can also look at induced patterns from InferSent, DisSent, compare them to SPINN model patterns, and see how much they overlap, whether induced patterns are more consistent (vs. SPINN model), and whether InferSent and DisSent (or other models) generate different induced patterns.
+
 ### Learning the structure
 
 Meta-learning that tweaks architecture sometimes involves a `controller`. SPINN model's shift-reduce operation can be regarded as a controller that decides how to assemble a sentence. 
@@ -40,6 +42,11 @@ Meta-learning that tweaks architecture sometimes involves a `controller`. SPINN 
 Then the [DART](https://arxiv.org/abs/1806.09055) paper proposed an iterative algorithm for a controller-free optimizing weights and model selection jointly with a relaxed softmax version of connection schemes. 
 
 Or technically Attention-is-all model can be regarded as having implicit controllers? The controller is the one of the $W$ matrices that generate keys. Then we won't have a train/val/test problem. 
+
+Roadmap (TODO list)
+1. Run SPINN model on SST
+2. Find a good Attention model
+3. 
 
 ## Project 3: Interactive Natural Language Processing
 
