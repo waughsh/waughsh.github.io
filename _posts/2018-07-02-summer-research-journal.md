@@ -19,7 +19,7 @@ It is a **perfect test bed for a few unsupervised learning algorithms** in NLP a
 
 Last year many sentence embedding models are proposed (ELMO, GenSent, InferSent, TransformerLM, DisSent, etc.). We can interpret the model's computational process and induce latent structures from them.
 
-We have a sequence of tokens $(x_1, x_2, ..., x_T)$
+We have a sequence of tokens $(x_1, x_2, ..., x_T)$, the task is to find the correct order to combine the tokens, where LSTM/RNN assumes left-to-right processing, CNN assumes independence between time steps (each scan is uninfluenced by other patches). The relaxed version of both inductive biases is Attention-is-all model.
 
 
 ## Project 3: Interactive Natural Language Processing
