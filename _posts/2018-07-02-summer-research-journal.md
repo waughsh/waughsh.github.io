@@ -59,6 +59,5 @@ The difference is that this system allow:
 
 ## Other Ideas
 
-1. NLP for long documents (DeepTag project reveals most EHR documents are long. Most NLP methods are for short sentences) (Long documents can be treated as multi-sentence processing) (Jonathan Berant recently released this paper 
-
-
+1. NLP for long documents (DeepTag project reveals most EHR documents are long. Most NLP methods are for short sentences) (Long documents can be treated as multi-sentence processing) (Jonathan Berant recently released this paper
+2. Coming up with effective regularization schemes for Attention-is-all model (adding entropy regularization to Attention) (eliminate the learning rate warmup schedule -- it's unintuitive, and the reason is probably because of early commit) (Need to find the right dataset)
