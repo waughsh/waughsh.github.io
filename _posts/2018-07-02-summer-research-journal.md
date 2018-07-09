@@ -56,6 +56,7 @@ The difference is that this system allow:
 1. Delete (modify) patterns/extracts that are wrong
 2. Add new patterns (already doable) 
 3. Retraining the model (LSTM or anything) using human-modified patterns as regularization signals (penalize gating function or attention) (Need to extend Murdoch's algorithm to cover attention)
+   - Similar to SQuAD, which only asks the model to pick out words (an attention assignments over the paragraph), human-added keywords can serve similar functionality -- predicting the highlight mask can be a semi-supervised task for the training of model.
 
 ## Other Ideas
 
