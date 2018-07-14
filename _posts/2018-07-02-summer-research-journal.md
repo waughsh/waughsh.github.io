@@ -35,6 +35,8 @@ Build recursive neural network using induced structures, learn new weight matric
 
 As qualitative analysis, can also look at induced patterns from InferSent, DisSent, compare them to SPINN model patterns, and see how much they overlap, whether induced patterns are more consistent (vs. SPINN model), and whether InferSent and DisSent (or other models) generate different induced patterns.
 
+Contextual decomposition requires label to be present.
+
 ### Learning the structure
 
 Meta-learning that tweaks architecture sometimes involves a `controller`. SPINN model's shift-reduce operation can be regarded as a controller that decides how to assemble a sentence. 
@@ -63,3 +65,4 @@ The difference is that this system allow:
 1. NLP for long documents (DeepTag project reveals most EHR documents are long. Most NLP methods are for short sentences) (Long documents can be treated as multi-sentence processing) (Jonathan Berant recently released this paper
 2. Coming up with effective regularization schemes for Attention-is-all model (adding entropy regularization to Attention) (eliminate the learning rate warmup schedule -- it's unintuitive, and the reason is probably because of early commit) (Need to find the right dataset)
 3. Tree-LSTM can be a more generalized form of [Gumble-Tree](https://arxiv.org/pdf/1707.02786.pdf) (instead of same weight matrix, maybe introduce more options)
+
