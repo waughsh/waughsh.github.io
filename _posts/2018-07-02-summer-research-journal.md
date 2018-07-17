@@ -45,7 +45,7 @@ Then the [DART](https://arxiv.org/abs/1806.09055) paper proposed an iterative al
 
 Or technically Attention-is-all model can be regarded as having implicit controllers? The controller is the one of the $W$ matrices that generate keys. Then we won't have a train/val/test problem. 
 
-Gumbel-softmax [paper](https://arxiv.org/pdf/1707.02786.pdf) uses a query vector $q$ to compute how the tree should be combined (by testing for consecutive pairs). In fact, in printing out the stack trace of LSTM, we can see that 
+Gumbel-softmax [paper](https://arxiv.org/pdf/1707.02786.pdf) uses a query vector $q$ to compute how the tree should be combined (by testing for consecutive pairs). In fact, in printing out the stack trace of LSTM, we can see that the sequence tokens get combined in much more complex ways than recursive neural network can handle. 
 
 Roadmap (TODO list)
 1. Run SPINN model on SST
