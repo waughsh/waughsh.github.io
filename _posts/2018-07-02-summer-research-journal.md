@@ -45,6 +45,8 @@ Then the [DART](https://arxiv.org/abs/1806.09055) paper proposed an iterative al
 
 Or technically Attention-is-all model can be regarded as having implicit controllers? The controller is the one of the $W$ matrices that generate keys. Then we won't have a train/val/test problem. 
 
+Gumbel-softmax [paper](https://arxiv.org/pdf/1707.02786.pdf) uses a query vector $q$ to compute how the tree should be combined (by testing for consecutive pairs). In fact, in printing out the stack trace of LSTM, we can see that 
+
 Roadmap (TODO list)
 1. Run SPINN model on SST
 2. Find a good Attention model
@@ -67,4 +69,3 @@ The difference is that this system allow:
   - Attention-is-all model is inherently bad for classification (MR, CR, etc.) (LSTM is surprisingly good at those tasks) (Can plot out the hidden sentence representation evolution of both models and see how they change)
   - Propose a more effective Attention-is-all Classification model.
 3. Tree-LSTM can be a more generalized form of [Gumble-Tree](https://arxiv.org/pdf/1707.02786.pdf) (instead of same weight matrix, maybe introduce more options)
-
