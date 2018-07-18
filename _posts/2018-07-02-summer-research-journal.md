@@ -16,6 +16,7 @@ It is a **perfect test bed for a few unsupervised learning algorithms** in NLP a
 
 Progress:
 1. Yuhui finished processing Sage
+2. Need to train the language model
 
 ## Project 2: Interpretability
 
