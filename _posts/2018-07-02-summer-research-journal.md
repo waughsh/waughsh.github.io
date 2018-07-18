@@ -75,6 +75,9 @@ The difference is that this system allow:
 3. Retraining the model (LSTM or anything) using human-modified patterns as regularization signals (penalize gating function or attention) (or auxiliary task)
    - Similar to SQuAD, which only asks the model to pick out words (an attention assignments over the paragraph), human-added keywords can serve similar functionality -- predicting the highlight mask can be a semi-supervised task for the training of model.
 
+Plans:
+1. 
+
 ## Other Ideas
 
 1. NLP for long documents (DeepTag project reveals most EHR documents are long. Most NLP methods are for short sentences) (Long documents can be treated as multi-sentence processing) (Jonathan Berant recently released this paper
