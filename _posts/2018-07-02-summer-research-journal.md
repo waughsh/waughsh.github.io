@@ -32,7 +32,7 @@ For attention, we can conduct a similar analysis, but it wouldn't yield any more
 
 Problems:
 1. Need to successfully rebut contextual decomposition (one thing CD does not capture is interaction between selected time steps with previous time steps. It does capture internal interactions) (Go through the calculation again)
-2. Need to add more content to paper in order to beef up: i.e., say this technique is specially useful for sentence embedding models (due to how they are trained), so the experiment section will include: Experiment 1 - ClinGen dataset; 2 - SST with InferSent and DisSent. 
+2. Need to add more content to paper in order to beef up: i.e., say this technique is specially useful for sentence embedding models (due to how they are trained), so the experiment section will include: Experiment 1 - ClinGen dataset; 2 - SST with InferSent and DisSent. Then may want to include Noah.
 
 ## Project 3: Learning/Inducing latent structure from Sentence Embedding Models
 
