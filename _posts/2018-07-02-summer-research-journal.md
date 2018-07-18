@@ -13,15 +13,15 @@ It is a **perfect test bed for a few unsupervised learning algorithms** in NLP a
 
 1. **Unsupervised LM** in medical domain to improve downstream supervised learning tasks. (LM gives both word embedding and a sentence model) (Can fix LM or unfix during domain fitting)
 2. **Word embedding** training only (fixed embedding) (on large corpora)
-3. **Meta-learning** the LSTM optimizer, apply to see if it improves and make test domain shift smaller. (Also Chelsea Finn's MAML might also work).
+
+Progress:
+1. Yuhui finished processing Sage
 
 ## Project 2: Learning/Inducing latent structure from Sentence Embedding Models
 
 Last year many sentence embedding models are proposed (ELMO, GenSent, InferSent, TransformerLM, DisSent, etc.). We can interpret the model's computational process and induce latent structures from them.
 
 We have a sequence of tokens $(x_1, x_2, ..., x_T)$, the task is to find the correct order to combine the tokens, where LSTM/RNN assumes left-to-right processing, CNN assumes independence between time steps (each scan is uninfluenced by other patches). The relaxed version of both inductive biases is Attention-is-all model.
-
-We can first show that [Attention-is-all](https://arxiv.org/abs/1706.03762) model is a continuous relaxation of a harder combinatorial discrete optimization problem.
 
 ### Inducing the structure
 
@@ -47,11 +47,6 @@ Or technically Attention-is-all model can be regarded as having implicit control
 
 Gumbel-softmax [paper](https://arxiv.org/pdf/1707.02786.pdf) uses a query vector $q$ to compute how the tree should be combined (by testing for consecutive pairs). In fact, in printing out the stack trace of LSTM, we can see that the sequence tokens get combined in much more complex ways than recursive neural network can handle. Can propose a model where not only a combination is proposed, but also different/multiple operations are proposed.
 
-Roadmap (TODO list)
-1. Run SPINN model on SST
-2. Find a good Attention model
-3. 
-
 ## Project 3: Interpretability
 
 We can extend the [first Murdoch](https://arxiv.org/pdf/1702.02540.pdf) paper that deals the RNN hidden states using the telescoping sum.
@@ -71,7 +66,7 @@ At least it will allow people to write conditional arguments to shape classifier
 The difference is that this system allow: 
 1. Delete (modify) patterns/extracts that are wrong
 2. Add new patterns (already doable) 
-3. Retraining the model (LSTM or anything) using human-modified patterns as regularization signals (penalize gating function or attention) (Need to extend Murdoch's algorithm to cover attention)
+3. Retraining the model (LSTM or anything) using human-modified patterns as regularization signals (penalize gating function or attention) (or auxiliary task)
    - Similar to SQuAD, which only asks the model to pick out words (an attention assignments over the paragraph), human-added keywords can serve similar functionality -- predicting the highlight mask can be a semi-supervised task for the training of model.
 
 ## Other Ideas
