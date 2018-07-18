@@ -56,7 +56,9 @@ Roadmap (TODO list)
 
 We can extend the [first Murdoch](https://arxiv.org/pdf/1702.02540.pdf) paper that deals the RNN hidden states using the telescoping sum.
 
-The trick is to decompose $h_T$ into: $h_T = h_0 + h_2 - h_1 + ... + h_T - h_{T-1}$, then we still have $T$ difference vectors and we can compute how important they are by multiplying them with the label vector.
+The trick is to decompose $h_T$ into: $h_T = h_0 + h_2 - h_1 + ... + h_T - h_{T-1}$, then we still have $T$ difference vectors and we can compute how important they are by multiplying them with the label embedding vector.
+
+For global max pooling, what we can do is that for a vector of dimension $d$, we can find $d$ trajectories that makes up $d$. Assume for a dimension $i$, where it picks from time step $j$, then we can decompose $h_s^i = h_0 + h_2 - h_1 +...+h_j - h_{j-1}$. 
 
 ## Project 4: Interactive Natural Language Processing
 
