@@ -35,6 +35,9 @@ Problems:
 2. Need to add more content to paper in order to beef up: i.e., say this technique is specially useful for sentence embedding models (due to how they are trained), so the experiment section will include: Experiment 1 - ClinGen dataset; 2 - SST with InferSent and DisSent. Then may want to include Noah.
 3. But all these techniques can be implemented very easily and all contribute to Project 4.
 
+Steps:
+1. Need to think about how to implement d trajectories of max pooling (fast, don't spend too much time)
+
 ## Project 3: Learning/Inducing latent structure from Sentence Embedding Models
 
 Last year many sentence embedding models are proposed (ELMO, GenSent, InferSent, TransformerLM, DisSent, etc.). We can interpret the model's computational process and induce latent structures from them.
@@ -76,7 +79,7 @@ The difference is that this system allow:
    - Similar to SQuAD, which only asks the model to pick out words (an attention assignments over the paragraph), human-added keywords can serve similar functionality -- predicting the highlight mask can be a semi-supervised task for the training of model.
 
 Plans:
-1. 
+1. Implement neural rationale model, CD, additive decomposition, and max-pooling decomposition.
 
 ## Other Ideas
 
