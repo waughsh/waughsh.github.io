@@ -60,6 +60,8 @@ The trick is to decompose $h_T$ into: $h_T = h_0 + h_2 - h_1 + ... + h_T - h_{T-
 
 For global max pooling, what we can do is that for a vector of dimension $d$, we can find $d$ trajectories that makes up $d$. Assume for a dimension $i$, where it picks from time step $j$, then we can decompose $h_s^i = h_0 + h_2 - h_1 +...+h_j - h_{j-1}$. This gives us $d$ unique trajectories (because dimensions are different), and that can be interpreted as semantic superposition (the trajectory is the same, but dimension is different). Then we have a much more complex way of interpreting the sentence (compared to a simple sum of difference) when max pooling is used, which might explain why global max pooling is better?
 
+For attention, we can conduct a similar analysis, but it wouldn't yield any more insights.
+
 ## Project 4: Interactive Natural Language Processing
 
 At least it will allow people to write conditional arguments to shape classifier's behavior, but that's the power of filter (parser)...(regex-lite) (it's irrelevant to underlying system). 
