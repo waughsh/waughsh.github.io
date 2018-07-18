@@ -52,7 +52,11 @@ Roadmap (TODO list)
 2. Find a good Attention model
 3. 
 
-## Project 3: Interactive Natural Language Processing
+## Project 3: Interpretability
+
+We can extend the [first Murdoch](https://arxiv.org/pdf/1702.02540.pdf) paper that deals the RNN hidden states using the telescoping sum.
+
+## Project 4: Interactive Natural Language Processing
 
 At least it will allow people to write conditional arguments to shape classifier's behavior, but that's the power of filter (parser)...(regex-lite) (it's irrelevant to underlying system). 
 
