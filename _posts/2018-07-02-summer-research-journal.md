@@ -17,7 +17,19 @@ It is a **perfect test bed for a few unsupervised learning algorithms** in NLP a
 Progress:
 1. Yuhui finished processing Sage
 
-## Project 2: Learning/Inducing latent structure from Sentence Embedding Models
+## Project 2: Interpretability
+
+We can extend the [first Murdoch](https://arxiv.org/pdf/1702.02540.pdf) paper that deals the RNN hidden states using the telescoping sum.
+
+The trick is to decompose $h_T$ into: $h_T = h_0 + h_2 - h_1 + ... + h_T - h_{T-1}$, then we still have $T$ difference vectors and we can compute how important they are by multiplying them with the label embedding vector.
+
+For global max pooling, what we can do is that for a vector of dimension $d$, we can find $d$ trajectories that makes up $d$. Assume for a dimension $i$, where it picks from time step $j$, then we can decompose $h_s^i = h_0 + h_2 - h_1 +...+h_j - h_{j-1}$. This gives us $d$ unique trajectories (because dimensions are different), and that can be interpreted as semantic superposition (the trajectory is the same, but dimension is different). Then we have a much more complex way of interpreting the sentence (compared to a simple sum of difference) when max pooling is used, which might explain why global max pooling is better?
+
+These trajectories, depending on the final sum, has a specific direction (based on normalization), so the difference needs to be reaching that goal?? Or actually, not really...the difference vectors can have their own agenda. Think about this slightly more before James comes back.
+
+For attention, we can conduct a similar analysis, but it wouldn't yield any more insights.
+
+## Project 3: Learning/Inducing latent structure from Sentence Embedding Models
 
 Last year many sentence embedding models are proposed (ELMO, GenSent, InferSent, TransformerLM, DisSent, etc.). We can interpret the model's computational process and induce latent structures from them.
 
@@ -46,18 +58,6 @@ Then the [DART](https://arxiv.org/abs/1806.09055) paper proposed an iterative al
 Or technically Attention-is-all model can be regarded as having implicit controllers? The controller is the one of the $W$ matrices that generate keys. Then we won't have a train/val/test problem. 
 
 Gumbel-softmax [paper](https://arxiv.org/pdf/1707.02786.pdf) uses a query vector $q$ to compute how the tree should be combined (by testing for consecutive pairs). In fact, in printing out the stack trace of LSTM, we can see that the sequence tokens get combined in much more complex ways than recursive neural network can handle. Can propose a model where not only a combination is proposed, but also different/multiple operations are proposed.
-
-## Project 3: Interpretability
-
-We can extend the [first Murdoch](https://arxiv.org/pdf/1702.02540.pdf) paper that deals the RNN hidden states using the telescoping sum.
-
-The trick is to decompose $h_T$ into: $h_T = h_0 + h_2 - h_1 + ... + h_T - h_{T-1}$, then we still have $T$ difference vectors and we can compute how important they are by multiplying them with the label embedding vector.
-
-For global max pooling, what we can do is that for a vector of dimension $d$, we can find $d$ trajectories that makes up $d$. Assume for a dimension $i$, where it picks from time step $j$, then we can decompose $h_s^i = h_0 + h_2 - h_1 +...+h_j - h_{j-1}$. This gives us $d$ unique trajectories (because dimensions are different), and that can be interpreted as semantic superposition (the trajectory is the same, but dimension is different). Then we have a much more complex way of interpreting the sentence (compared to a simple sum of difference) when max pooling is used, which might explain why global max pooling is better?
-
-These trajectories, depending on the final sum, has a specific direction (based on normalization), so the difference needs to be reaching that goal?? Or actually, not really...the difference vectors can have their own agenda. Think about this slightly more before James comes back.
-
-For attention, we can conduct a similar analysis, but it wouldn't yield any more insights.
 
 ## Project 4: Interactive Natural Language Processing
 
