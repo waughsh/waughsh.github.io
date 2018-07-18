@@ -56,6 +56,8 @@ Roadmap (TODO list)
 
 We can extend the [first Murdoch](https://arxiv.org/pdf/1702.02540.pdf) paper that deals the RNN hidden states using the telescoping sum.
 
+The trick is to decompose $h_T$ into: $h_T = h_0 + h_2 - h_1 + ... + h_T - h_{T-1}$
+
 ## Project 4: Interactive Natural Language Processing
 
 At least it will allow people to write conditional arguments to shape classifier's behavior, but that's the power of filter (parser)...(regex-lite) (it's irrelevant to underlying system). 
