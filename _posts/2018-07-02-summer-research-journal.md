@@ -88,3 +88,7 @@ Plans:
   - Attention-is-all model is inherently bad for classification (MR, CR, etc.) (LSTM is surprisingly good at those tasks) (Can plot out the hidden sentence representation evolution of both models and see how they change)
   - Propose a more effective Attention-is-all Classification model.
 3. Tree-LSTM can be a more generalized form of [Gumble-Tree](https://arxiv.org/pdf/1707.02786.pdf) (instead of same weight matrix, maybe introduce more options)
+
+## Smaller notes
+
+1. To summarize, currently the biggest worthwhile efforts still are: 1). Build trees from interpretation and check if they are better than recursive neural networks; 2). Interactive NLP
