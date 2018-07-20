@@ -21,7 +21,7 @@ B) Breathing on foamroller (Opening the chest and shoulder) 4 minutes
 
 C) Hip Hinge 3 sets of 10
 
-- 保持身体直立，臀部后移，像要有根绳牵着一样
+- 找到那个圆环状物，放到膝盖上方（不是膝盖部位，而是膝盖上一点的大腿肌肉旁），腿往外推圆环（用力推），只脚后跟着地，然后提高臀部（臀部提起），缓慢提起，然后缓慢（控制住）降下。
 
 D) Glutebridges 3 sets of 10 (Remember to keep feet activated)
 
