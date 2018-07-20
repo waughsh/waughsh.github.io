@@ -79,7 +79,10 @@ The difference is that this system allow:
    - Similar to SQuAD, which only asks the model to pick out words (an attention assignments over the paragraph), human-added keywords can serve similar functionality -- predicting the highlight mask can be a semi-supervised task for the training of model.
 4. Auxiliary tasks:
    - Predicting mask
-   - Language modeling (supervised fine-tuning) loss
+   - Language modeling (supervised fine-tuning) loss (reweight the language token loss to reflect interpretation)
+5. Datasets:
+   - RACE (Reading Comprehension) 
+   - CSU / PP
 
 Plans:
 1. Implement neural rationale model, neural concrete rationale, LRP, CD, additive decomposition, and max-pooling decomposition.
