@@ -77,6 +77,9 @@ The difference is that this system allow:
 2. Add new patterns (already doable) 
 3. Retraining the model (LSTM or anything) using human-modified patterns as regularization signals (penalize gating function or attention) (or auxiliary task)
    - Similar to SQuAD, which only asks the model to pick out words (an attention assignments over the paragraph), human-added keywords can serve similar functionality -- predicting the highlight mask can be a semi-supervised task for the training of model.
+4. Auxiliary tasks:
+   - Predicting mask
+   - Language modeling (supervised fine-tuning) loss
 
 Plans:
 1. Implement neural rationale model, neural concrete rationale, LRP, CD, additive decomposition, and max-pooling decomposition.
