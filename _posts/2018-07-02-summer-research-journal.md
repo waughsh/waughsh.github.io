@@ -83,6 +83,7 @@ The difference is that this system allow:
 5. Datasets:
    - RACE (Reading Comprehension) 
    - CSU / PP
+   - SST (since training w/o subtree is very hard, this might work, or not)
 
 Plans:
 1. Implement neural rationale model, neural concrete rationale, LRP, CD, additive decomposition, and max-pooling decomposition.
