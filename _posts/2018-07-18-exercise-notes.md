@@ -21,7 +21,7 @@ B) Breathing on foamroller (Opening the chest and shoulder) 4 minutes
 
 C) Glutebridges 3 sets of 10
 
-- 找到那个圆环状物，放到膝盖上方（不是膝盖部位，而是膝盖上一点的大腿肌肉旁），腿往外推圆环（用力推），只脚后跟着地，然后提高臀部（臀部提起），缓慢提起，然后缓慢（控制住）降下。
+- 找到那个圆环状物，放到膝盖上方（不是膝盖部位，而是膝盖上一点的大腿肌肉旁），腿往外推圆环（用力推），只脚后跟着地，然后提高臀部（臀部提起），缓慢提起，然后缓慢（控制住）降下。记住脚要尽量靠近臀部，然后脚后跟着力（脚尖离地），不要用背的力量，臀部收紧就可以不用背部力量。要举高。
 
 D) Activating feet 3 sets of 10 (Remember to keep feet activated)
 
