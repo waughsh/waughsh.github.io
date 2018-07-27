@@ -1,6 +1,17 @@
 ---
-published: false
+published: true
+layout: post
+visible: 0
+title: Interpreting LSTM
+draft: true
 ---
-## A New Post
+### Outline
 
-Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
+1. Intro
+2. Linearization technique (and it's following equations)
+3. Connection to SHAPLEY
+4. 
+
+
+
+Many advancements have been made in interpreting/understanding blackbox models such as neural networks. When it comes to interpreting sequences, 
