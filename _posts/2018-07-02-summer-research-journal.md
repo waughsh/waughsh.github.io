@@ -95,7 +95,7 @@ Plans:
   - Attention-is-all model is inherently bad for classification (MR, CR, etc.) (LSTM is surprisingly good at those tasks) (Can plot out the hidden sentence representation evolution of both models and see how they change)
   - Propose a more effective Attention-is-all Classification model.
 3. Tree-LSTM can be a more generalized form of [Gumble-Tree](https://arxiv.org/pdf/1707.02786.pdf) (instead of same weight matrix, maybe introduce more options)
-4. Numbers should be embedded jointly, by type/category. For example "$120" should be embedded differently than "20m". When numbers are embedded by types, then we can define a distance between the vectors to be proportional to the true numerical value (scalar). So each type of number will be embedded jointly, but each single instance of number will be a scalar (of sort) or distance penalty of the other numbers. (See earlier work in: How Much is 131 Million Dollars? Putting Numbers in Perspective with Compositional Descriptions) (Cognitive Science: https://www.scientificamerican.com/article/our-brains-have-a-map-for-numbers/)
+4. Numbers should be embedded jointly, by type/category. For example "$120" should be embedded differently than "20m". When numbers are embedded by types, then we can define a distance between the vectors to be proportional to the true numerical value (scalar). So each type of number will be embedded jointly, but each single instance of number will be a scalar (of sort) or distance penalty of the other numbers. (See earlier work in: How Much is 131 Million Dollars? Putting Numbers in Perspective with Compositional Descriptions) (Cognitive Science: [https://www.scientificamerican.com/article/our-brains-have-a-map-for-numbers/](Brain Map for Numbers))
 
 ## Smaller notes
 
