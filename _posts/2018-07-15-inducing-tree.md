@@ -5,6 +5,10 @@ visible: 0
 title: Inducing Tree from LSTM
 draft: true
 ---
+## Aug 3. Reading List
+
+1. 
+
 ## Inducing Compositional Structures from LSTM
 
 Some observations
@@ -48,4 +52,4 @@ Steps:
 1. Demonstrate that terms like [x1, x5] (non-adjacent composition) has low weights or low importance, so that we can safely ignore them or not (even if they have high importance, it's a finding, it's very interesting)
 2. If we only consider adjacent composition, then the list is quite small
 3. Decompose into: [relaxed_adjacent_terms] + non_adj_terms (one vector) + irev (biases); we can change the criteria to get non_adj_terms, and play with it [f (f(x1 x3) x4)] 
-4. 
+4.
