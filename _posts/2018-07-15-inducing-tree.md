@@ -62,20 +62,36 @@ Four points:
 1). Only one of these models outperform conventional tree-structured models on sentence classification
 
  - The LSTM result in Table 1 is very effective. Contradicts the original SPINN paper result. "Suggests there is little value in using the correct syntactic structure".
- - 
+ - RL-SPINN matches SPINN model (with trained correct parses)
 
 2). Its parsing strategies are not especially consistent across random restarts (obviously, due to RL constraints) (DL interpretation approah will be much better)
+
+- Table 2 provides this result
+
+3). The parse is shallower than PTB parses.
+
+4). The parse do not resemble those of PTB
+
+- Section 6. Table 3. SPINN/SPINN-NC are trained with PTB parses so the F1 is high with PTB. Howeer, ST-Gumbel and RL-SPINN are not similar to PTB, and below random trees.
 
 Observations:
 
 1. They use Leaf LSTM/GRU, which provides local "context" information. Meaning the parsing is done not on words, but on hidden states / outputs of a RNN already. :rage: :rage:
-2. 
+
+Code Paper link:
+
+1. TreeLSTM = SPINN-PI-NT (uses gold parse for both train and test); SPINN-NC is equivalent to TreeLSTM but with an additional prediction function, so not exactly the same
+2. SPINN-NC: `use_tracking_in_composition=False` (No connection from tracking to composition)
+3. SPINN-PI-NT: `tracking_lstm_hidden_dim=None` (set to None to avoid using tracker)
+4. Use this [script](https://github.com/nyu-mll/spinn/blob/master/python/spinn/models/base.py) to check various CLI flags
 
 
 
 ## Project outline
 
 Overall goal: whether LSTM or Bidirectional LSTM have **latent tree representations**, and whether these representations are **more computationally efficient** than trees produced by PCFG parsing.
+
+Strategy: Use CD on LSTM to build trees. Have a few strategies for tree building. Compare whether the tree is similar to 
 
 
 
