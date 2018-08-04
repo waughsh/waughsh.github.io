@@ -5,9 +5,79 @@ visible: 0
 title: Inducing Tree from LSTM
 draft: true
 ---
-## Aug 3. Reading List
+## August 4
 
-1. 
+Todo:
+
+1. Run SPINN on SentEval
+2. Run Stanford CoreNLP constituency parser
+3. Integrate Yuhui's Recursive NN with SentEval
+
+## August 3
+
+Task: Trying to find a high-level reasoning on why you think this is important.
+
+The goal is to capture high-level idea, why is this task is interesting and important, and how to solve it in a satisfactory way to linguists.
+
+Reading list:
+
+1. Chris Potts' new commentary [link](http://web.stanford.edu/~cgpotts/temp/pater-commentary-by-potts.pdf)
+2. Jacob Andreas' blog post  [link](http://blog.jacobandreas.net/meaning-belief.html)
+3. Sam Bowman's paper [link](https://arxiv.org/pdf/1709.01121.pdf)
+
+Todo:
+
+1. You need to port SPINN to evaluate on SentEval dataset (look at how Bowman's other paper uses SPINN to generate trees, replicate that!!)
+
+#### Chris Potts' commentary: A case for deep learning in semantics
+
+He proposes a sketching of what a DL-based semantics would be like, and advocates that semanticists need to engage and help shape DL people's agenda.
+
+He believes that the tree structures we are assuming are not correct that they get in the way. Data-driven techniques can help us discover the right trees.
+
+He gave a case in Socher et al. (2013) where they analyzed "A but B condeds that A and argues that B", and in a learned DL model, the model consistently predicts that the sentiment of "A but B" is largely determined by the sentiment of B. However, looking at the paper, first, they trained on phrase label to begin with, thus it's a guided result, not a natural discovery. Second, in 131 cases, RNTN only obtained 41%  of the cases correct. 
+
+Potts wrote "a learned DL model to support a nuanced generalization about meaning".
+
+Logics ("formal systems") are defined independently of particular users or instances of use.  It seperates semantics from all aspects of learning and cognitive representation, and it discourages work on items that are tied to interactive language use: disfluencies, swears, honorifics, interjections, etc.
+
+A question on whether any utterance has a unique semantic interpretation. The question of resolution of multiple possibilities. Potts believes that many recent DL theories involve simultaneously representing multiple possible architectures and use attention mechanism.
+
+(Can consider a sampling-based attention mechanism? Is it Gumbel-Tree?)
+
+Potts mentions that compositionality is a methodology on how to proceed, while generalization is something we can measure. 
+
+DL theories discourage firm boudnaries between semantics and pragmatics.
+
+A problem in DL theories of semantics is that it fails to capture functional vocabulary. Every meaning, whether lexical or phrasal, is a vector, it's monotyped. However, **quantificational determiner** meanings are more complex than noun meanings. So any theory that puts them in the same meaning space is unlikely to do justice to determiners. This has a deep consequence the success of a model.
+
+#### Sam Bowman's paper 
+
+High level ideas: investigate whether RL-based SPINN model learns syntax or not (whether it systematically parses or not)
+
+He regards SPINN or Gumbel-ST as "Latent Tree Learning" model. We can argue that LSTM is approximating latent tree learning, and use interpretation methods to extract such tree.
+
+Four points: 
+
+1). Only one of these models outperform conventional tree-structured models on sentence classification
+
+ - The LSTM result in Table 1 is very effective. Contradicts the original SPINN paper result. "Suggests there is little value in using the correct syntactic structure".
+ - 
+
+2). Its parsing strategies are not especially consistent across random restarts (obviously, due to RL constraints) (DL interpretation approah will be much better)
+
+Observations:
+
+1. They use Leaf LSTM/GRU, which provides local "context" information. Meaning the parsing is done not on words, but on hidden states / outputs of a RNN already. :rage: :rage:
+2. 
+
+
+
+## Project outline
+
+Overall goal: whether LSTM or Bidirectional LSTM have **latent tree representations**, and whether these representations are **more computationally efficient** than trees produced by PCFG parsing.
+
+
 
 ## Inducing Compositional Structures from LSTM
 
