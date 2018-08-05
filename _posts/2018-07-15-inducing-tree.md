@@ -91,9 +91,37 @@ Code Paper link:
 
 Overall goal: whether LSTM or Bidirectional LSTM have **latent tree representations**, and whether these representations are **more computationally efficient** than trees produced by PCFG parsing.
 
-Strategy: Use CD on LSTM to build trees. Have a few strategies for tree building. Compare whether the tree is similar to 
+Strategy: Use CD on LSTM to build trees. Have a few strategies for tree building. 
 
+We have various tree generation algorithms:
 
+SPINN, SPINN-NC, RL-SPINN, Gumbel-ST (Bowman 2018)
+
+We have vanilla algorithms:
+
+LSTM, BLSTM. (Optional: Transformer, CNN)
+
+We also have various sentence embedding models:
+
+InferSent, DisSent, [GenSen](https://github.com/Maluuba/gensen) (3 major sentence-based, LSTM/GRU based encoding algorithm)
+
+ELMo, TransformerLM (language-model based)
+
+Tree inducing algorithm:
+
+ACD (agglomerative contextual decomposition) (greedy)
+
+(other etc.)
+
+Experiments:
+
+1. Do LSTM/BLSTM learn consistent trees? (RL-SPINN, SPINN do not) (Table 2) (Gumbel-ST does agree with self a lot) (Measure by Self-F1)
+2. Sentence classification performance
+   - When inducing from sentence embedding models, do recursive neural network (SPINN-PI-NT) outperform vanilla trained LSTM? 
+   - Is sentence embedding model the ceiling of recursive neural network?
+   - Curcial: Does recursive NN trained from BiLSTM grammar outperform consistuency parsing grammar (Stanford CoreNLP) (Bowman's result showing training on CoreNLP grammar = training on learned grammar) (we can show improvements)
+3. Does the grammar match SST, SNLI, MultiNLI, and then maybe PTB? (Table 4)
+4. Qualitative studies on these grammars
 
 ## Inducing Compositional Structures from LSTM
 
