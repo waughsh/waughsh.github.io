@@ -5,6 +5,11 @@ visible: 0
 title: Inducing Tree from LSTM
 draft: true
 ---
+## August 11
+
+Trained on ACD trees with length < 20, compare with regular TreeLSTM.
+Result:
+
 ## August 4
 
 Todo:
