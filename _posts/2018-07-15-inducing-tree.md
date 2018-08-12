@@ -8,7 +8,17 @@ draft: true
 ## August 11
 
 Trained on ACD trees with length < 20, compare with regular TreeLSTM.
+
+The dataset is essentially smaller than a regular dataset.
+
 Result:
+
+| Model       | SST Dev | SST Test |
+| ----------- | ------- | -------- |
+| ACD         | 0.6930  | 0.6866   |
+| Consistency | 0.7052  | 0.6809   |
+
+Currently the LSTM model is very bad. So the tree quality is expected low and intermediate labels are possibly not correct. When we train w/ intermediate labels, TreeLSTM outperform LSTM by a large margin; when we train w/o intermediate labels, they perform similarly.
 
 ## August 4
 
