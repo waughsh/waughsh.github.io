@@ -2,16 +2,14 @@
 published: true
 layout: post
 visible: 0
-title: Inducing Tree from LSTM
+title: Inducing Trees from LSTM
 draft: true
 ---
 ## August 4
 
 Todo:
 
-1. Run SPINN on SentEval
-2. Run Stanford CoreNLP constituency parser
-3. Integrate Yuhui's Recursive NN with SentEval
+1. Try to run ACD code on Jupyter Notebook
 
 ## August 3
 
