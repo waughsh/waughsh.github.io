@@ -46,5 +46,5 @@ In 2017 Winter, I accepted an offer to become a full-time research engineer at S
 
 (assistant)
 - 2018 Spring: CS224U Natural Language Understanding
-- 2017 Winter: CS224N Natural Language Processing
 - 2017 Spring: CS224S Spoken Language Processing
+- 2016 Winter: CS224N Natural Language Processing
