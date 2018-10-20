@@ -15,7 +15,7 @@ Three Stanford departments I've been affiliated with:
 
 1. Computer Science Department (anie@cs.stanford.edu)
 2. Symbolic Systems Program (anie@stanford.edu)
-3. Stanford Biomedical Data Science Department (BDS)
+3. Department of Biomedical Data Science (BDS)
 
 I studied Psycholinguistics from Phillip Wolff in Emory University with a degree in Psychology (focusing on cognitive science and neuroscience / animal behavior).
 
