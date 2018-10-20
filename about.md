@@ -23,7 +23,7 @@ I earned my master of science degree from Symbolic Systems Program at Stanford U
 
 In 2016, I spent my first year working in Andrew Ng's [Stanford Machine Learning Group](https://stanfordmlgroup.github.io/) with Ziang Xie. The project centered around recurrent neural network regularizations and data augmentation. I became affiliated with Computer Science Department and received my CS email address during this time. 
 
-In 2017 Summer, I worked with Noah Goodman in CocoLab on using discourse markers to automatically construct supervised learning datasets. In the summer, I was a machine learning intern at a fast growing startup [Cresta AI](https://www.cresta.ai/) working with Zayd Enum (founder and Stanford EE PhD in Sebastian Thrun's group) and Russell Stewart (co-founder and Stanford CS PhD in Stefano Ermon's group).
+In 2017 Summer, I worked with Noah Goodman in [CocoLab](https://cocolab.stanford.edu/) on using discourse markers to automatically construct supervised learning datasets. In the summer, I was a machine learning intern at a fast growing startup [Cresta AI](https://www.cresta.ai/) working with Zayd Enum (founder and Stanford EE PhD in Sebastian Thrun's group) and Russell Stewart (co-founder and Stanford CS PhD in Stefano Ermon's group).
 
 In 2017 Winter, I accepted an offer to become a full-time research engineer at Stanford Biomedical Data Science Department in Medical School working with [James Zou](https://sites.google.com/site/jamesyzou/home). James Zou's primary area of focus is mathematical modeling of genetics, but he also worked on NLP fairness and medical AI problems. 
 
