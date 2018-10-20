@@ -11,13 +11,22 @@ published: true
 
 ### Author
 
-I'm currently a second year Symbolic Systems master student at Stanford University. My main area is Natural Language Processing, but I work in other areas such as deep reinforcement learning, applied machine learning, information theory as well.
+Three Stanford departments I've been affiliated with:
 
-I spent a year in Andrew Ng's Stanford Machine Learning Group working on recurrent neural network regularizations, data augmentation, and sequence-to-sequence generative models. 
+1. Computer Science Department (anie@cs.stanford.edu)
+2. Symbolic Systems Program (anie@stanford.edu)
+3. Stanford Biomedical Data Science Department (BDS)
 
-I recently accepted the offer to become a full-time engineering research scientist at Stanford Electrical Engineering and Biomedical Data Science Department to work with James Zou. I also do consulting work at a newly founded startup (hey, they are still in stealth!). 
+I studied Psycholinguistics from Phillip Wolff in Emory University with a degree in Psychology (focusing on cognitive science and neuroscience / animal behavior).
 
-Anyway, if you have cool ideas or need advice, send me an email!
+I earned my master of science degree from Symbolic Systems Program at Stanford University. My main area of focus is Natural Language Processing, but I work in other areas such as deep reinforcement learning, applied machine learning, information theory as well.
+
+In 2016, I spent my first year working in Andrew Ng's [Stanford Machine Learning Group](https://stanfordmlgroup.github.io/) with Ziang Xie. The project centered around recurrent neural network regularizations and data augmentation. 
+
+In 2017 Summer, I worked with Noah Goodman in CocoLab on using discourse markers to automatically construct supervised learning datasets. In the summer, I was a machine learning intern at a fast growing startup [Cresta AI](https://www.cresta.ai/) working with Zayd Enum (founder and Stanford EE PhD in Sebastian Thrun's group) and Russell Stewart (co-founder and Stanford CS PhD in Stefano Ermon's group).
+
+In 2017 Winter, I accepted an offer to become a full-time research engineer at Stanford Biomedical Data Science Department in Medical School working with [James Zou](https://sites.google.com/site/jamesyzou/home). James Zou's primary area of focus is mathematical modeling of genetics, but he also worked on NLP fairness and medical AI problems. In 2018 Spring, I worked on a medical AI project that learns to automatically infer diagnostic codes in veterinary EHR.
+
 
 ### Contact me
 
@@ -26,11 +35,11 @@ Anyway, if you have cool ideas or need advice, send me an email!
 
 ### Publications
 
-- **DeepTag: inferring diagnoses from veterinary clinical notes.**, **A Nie**, A Zehnder, RL Page, AL Pineda, MA Rivas, CD Bustamante, J Zou., (2018). Nature (npj) Digital Medicine. To appear.
-- **DisSent: Sentence Representation Learning from Explicit Discourse Relations**. **Nie, A.**, Bennett, E.D., Goodman, N.D., (2017). arXiv preprint.
-- **Data Noising as Smoothing in Neural Network Sequence Models**. Ziang, X., Sida W., Jiwei L., Levy, D., **Nie A.**, Jurafsky, Dan & Ng, Andrew, (2016). 5th International Conference on Learning Representations (ICLR). Toulon, France. (Oral at BayLearn 2016)
-- **Representations of Time Affect Willingness to Wait for Future Rewards**. Thorstad, R., **Nie, A.**, & Wolff, P. (2015). 37th Annual Conference of the Cognitive Science Society. Pasadena, California.
-- **Computational Exploration to Linguistic Structures of Future, Classification and Categorization**. **Nie, A.**, Sheppard, J., Choi, J., Copley, B., Wolff, P., (2015). The North American Chapter of the Association for Computational Linguistics: Human Language Technologies. Denver, Colorado.
+- **DeepTag: inferring diagnoses from veterinary clinical notes.**, **A Nie**, A Zehnder, RL Page, AL Pineda, MA Rivas, CD Bustamante, J Zou., (2018). Nature (npj) Digital Medicine. To appear. \[[link](https://arxiv.org/abs/1806.10722)\]
+- **DisSent: Sentence Representation Learning from Explicit Discourse Relations**. **Nie, A.**, Bennett, E.D., Goodman, N.D., (2017). arXiv preprint. \[[link](https://arxiv.org/abs/1710.04334)\]
+- **Data Noising as Smoothing in Neural Network Sequence Models**. Ziang, X., Sida W., Jiwei L., Levy, D., **Nie A.**, Jurafsky, Dan & Ng, Andrew, (2016). 5th International Conference on Learning Representations (ICLR). Toulon, France. (Oral at BayLearn 2016) \[[link](https://arxiv.org/abs/1703.02573)\]
+- **Representations of Time Affect Willingness to Wait for Future Rewards**. Thorstad, R., **Nie, A.**, & Wolff, P. (2015). 37th Annual Conference of the Cognitive Science Society. Pasadena, California. \[[link](http://psychology.emory.edu/cognition/wolff/papers/ThorstadNieWolff2015.pdf)\]
+- **Computational Exploration to Linguistic Structures of Future, Classification and Categorization**. **Nie, A.**, Sheppard, J., Choi, J., Copley, B., Wolff, P., (2015). The North American Chapter of the Association for Computational Linguistics: Human Language Technologies. Denver, Colorado. \[[link](http://www.aclweb.org/anthology/N15-2#page=178)\]
 
 
 ### Teaching
