@@ -9,7 +9,7 @@ published: true
 
 ![small_vacation_photo1.png]({{site.baseurl}}/images/small_vacation_photo1.png)
 
-### My Life's Story
+### A Disambiguation Page of Me
 
 Three Stanford departments I've been affiliated with:
 
