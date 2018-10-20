@@ -29,7 +29,7 @@ In 2017 Winter, I accepted an offer to become a full-time research engineer at S
 
 In 2018 Spring, I worked on a medical AI project that learns to automatically infer diagnostic codes in veterinary EHR. I presented this work at WeCNLP Summit later in the Fall.
 
-I'm constantly working on new projects and seeking to connect with people! Drop me an email if you want to talk about research or life in general!
+I'm constantly working on new projects and seeking to connect with people! Drop me an email if you want to talk about research or academic/industry life!
 
 
 ### Contact me
