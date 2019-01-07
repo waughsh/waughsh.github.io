@@ -5,6 +5,13 @@ visible: 0
 title: Summer Research Journal
 draft: true
 ---
+
+## Spring 2019 Ideas
+
+1. Examine if using BERT as the ground-truth vector space, can we build efficient VAE on top of it?? So that given any vector, we can generate a sentence? Probably has to be reversible...
+
+
+
 ## Project 1: Treating CSU/PP Corpra as Testbeds for Unsupervised NLP Methods
 
 Rethinking about the problems from the DeepTag Project: comparing on the effectiveness of Unsupervised Learning Methods in NLP, applied to a clinical setting, and improve PP performance.
