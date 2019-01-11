@@ -9,7 +9,7 @@ published: true
 
 ![small_vacation_photo1.png]({{site.baseurl}}/images/small_vacation_photo1.png)
 
-### A Disambiguation Page of Me
+### A Disambiguation Page of Allen Nie
 
 Three Stanford departments I've been affiliated with:
 
