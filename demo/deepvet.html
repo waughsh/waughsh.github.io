@@ -80,7 +80,13 @@
                 <option>Genitourinary disorder example</option>
                 </select>
                 <br>
-                <button type="button" class="btn btn-primary" id="submitButton">Submit</button>
+                <div class="row ml-auto" id="submitButtonRow">
+                  <button type="button" class="btn btn-primary" id="submitButton">Submit</button>
+                  <!--<div class="spinner-border text-danger ml-3" role="status">-->
+                    <!--<span class="sr-only">Loading...</span>-->
+                  <!--</div>-->
+                </div>
+
               </div>
           </div>
         </div>
@@ -228,6 +234,9 @@
         }
     });
 
+    var spinning_wheel_html = "<div class=\"spinner-border text-danger ml-3\" role=\"status\" id=\"spinWheel\"><span class=\"sr-only\">Loading...</span></div>";
+
+
     // Submission
     $("#submitButton").click(function() {
       var text = $("#clinicalNotes").val();
@@ -240,6 +249,10 @@
           dataType: 'json',
           async: true,
           success: function(msg) {
+
+              //also remove spin wheel
+              $("#spinWheel").remove()
+
               //first we reset
               if ($("#predictionResult").children().length > 0) {
                   $("#predictionResult").empty()
