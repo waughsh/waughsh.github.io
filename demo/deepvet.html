@@ -233,7 +233,7 @@
       var text = $("#clinicalNotes").val();
       var inp = {text: text};
       $.ajax({
-          url: 'http://127.0.0.1:5000/api/predict',  //real server address: http://18.222.239.24
+          url: 'http://18.222.239.24/api/predict',  //real server address: http://18.222.239.24
           type: 'POST',
           data: JSON.stringify(inp),
           contentType: 'application/json; charset=utf-8',
