@@ -241,6 +241,10 @@
     $("#submitButton").click(function() {
       var text = $("#clinicalNotes").val();
       var inp = {text: text};
+
+      // add loading spinning
+      $("#submitButtonRow").append(spinning_wheel_html);
+
       $.ajax({
           url: 'https://cors-anywhere.herokuapp.com/http://18.222.239.24/api/predict',  //real server address: http://18.222.239.24
           type: 'POST',
