@@ -122,7 +122,7 @@
     <section class="bg-gray">
       <div class="row">
         <div class="col-4 justify-content-around ml-auto">
-          <img src="img/best-abstainsion-2.jpg" class="img-fluid" alt="">
+          <img src="/assets/img/best-abstainsion-2.jpg" class="img-fluid" alt="">
         </div>
          <div class="section-heading text-left col-4 mx-auto">
           <h3>Automatic Abstention</h3>
@@ -233,7 +233,7 @@
       var text = $("#clinicalNotes").val();
       var inp = {text: text};
       $.ajax({
-          url: 'http://18.222.239.24/api/predict',  //real server address: http://18.222.239.24
+          url: 'https://cors-anywhere.herokuapp.com/http://18.222.239.24/api/predict',  //real server address: http://18.222.239.24
           type: 'POST',
           data: JSON.stringify(inp),
           contentType: 'application/json; charset=utf-8',
