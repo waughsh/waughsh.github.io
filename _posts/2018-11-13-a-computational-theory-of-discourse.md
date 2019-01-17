@@ -56,24 +56,20 @@ $$
 
 For any word, if we compute the corresponding vector $u$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A$. 
 
-<p>Here I provide a (slightly) more detailed proof on how this equality is shown. Readers who find it elementary or advanced can skip this block to experiments. The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} | w \in s)$. </p>
-
+Here I provide a (slightly) more detailed proof on how this equality is shown. Readers who find it elementary or advanced can skip this block to experiments. The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} | w \in s)$. 
 
 $$
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
 $$
 
-
 <p> This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(\|c\|^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\|c\|^2 = c^Tc = c^T I c$, and the log-linear model we assumed for $p(w|c) = \exp(c \cdot v_w)$. Then the following steps are easy to see: </p>
-
 
 $$
 p(c|w) \propto p(w|c)p(c) \\
 \propto \frac{1}{Z_c} \exp(v_w \cdot c - c^T(\frac{1}{2} \Sigma^{-1} + I)c)
 $$
 
-
-After obtaining the probability density function of $c|w$, we can think about what kind of random variable this pdf suggests. 
+After obtaining the probability density function of $c|w​$, we can think about what kind of random variable this pdf suggests. 
 
 ### Application to Word Senses
 
