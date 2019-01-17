@@ -62,6 +62,8 @@ Here I provide a (slightly) more detailed proof on how this equality is shown. R
 $$
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
 $$
+
+
 This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(||c||^2)$[^4].
 
 ### Application to Word Senses
