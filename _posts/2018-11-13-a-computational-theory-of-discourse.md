@@ -63,7 +63,7 @@ $$
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
 $$
 
-<p>This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(\vert\vert c \vert\vert^2)$<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>, the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\vert\vert c \vert\vert^2 = c^Tc = c^T I c$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v_w)$. Then the following steps are easy to see:</p>
+This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c \vert w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z\_c \approx Z \exp(\vert\vert c \vert\vert^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\vert\vert c \vert\vert^2 = c^Tc = c^T I c$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v\_w)$. Then the following steps are easy to see:
 
 $$
 \begin{align*}
@@ -115,6 +115,7 @@ $$
  (\Sigma^{-1} + 2I)^{-1} v_w \approx (\Sigma^{-1} + 2nI)^{-1} \sum_{i=1}^n v_{w_i}
 $$
 
+Therefore, we know that the matrix $A$ that we set out to find is now solvable by re-arranging the terms in above equations: $A = n(\Sigma^{-1} + 2I) (\Sigma^{-1} + 2nI)^{-1}$.
 
 (**Optional Ends**)
 
