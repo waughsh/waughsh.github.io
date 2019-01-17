@@ -119,9 +119,11 @@ Therefore, we know that the matrix $A$ that we set out to find is now solvable b
 
 ### Application to Word Senses
 
-Intuitively, Theorem 1 dictates that a word has a **linear relationship** (fulfilled by matrix $A$) to the average of all the context vectors this word appears in. This relationship is fully specified by $\Sigma$, the covariance of discourse random vector $c​$. 
+Intuitively, Theorem 1 dictates that a word has a **linear relationship** (fulfilled by matrix $A$) to the average of all the context vectors this word appears in: $v\_w = A \sum_s c_s$. This relationship is fully specified by $\Sigma$, the covariance of discourse random vector $c$. 
 
 ### Relations to Language Modeling
+
+
 
 ### Implicit Solutions 
 
