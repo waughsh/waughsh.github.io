@@ -43,7 +43,7 @@ Theorem 1 of Arora et al. (2018)[^3] paper can be understood by introducing a ve
 
 <p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-theorem1-u.jpg?raw=true" style="width:35%"> <br> <b>Figure 2</b> </p>
 
-For this word $w$, it must appear in different spans of words across the entire document. A random variable of a window of $n$ words can be introduced as $s$, a span. Computationally, the vector $u$ for the word $w$ can be computed as follow:
+For this word $w$, it must appear in different spans of words across the entire document. A random variable of a window of $n$ words can be introduced as $s$, a span. Computationally, the vector $u$ for the word $w​$ can be computed as follow:
 
 $$
 u = \frac{1}{k} \sum_{s \in \{s_1, ..., s_k\}} \frac{1}{n} \sum_{w_i \in s} v_{w_i}
@@ -56,9 +56,11 @@ $$
 
 For any word, if we compute the corresponding vector $u$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A$. 
 
-Here I provide a more detailed proof on how this equality is shown. Readers who find it elementary or advanced can skip this block to experiments. The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} | w \in s)$. 
+Here I provide a (slightly) more detailed proof on how this equality is shown. Readers who find it elementary or advanced can skip this block to experiments. The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}[\frac{1}{n} \sum_{w_i \in s} v\_{w_i} | w \in s]$. 
+
+
 $$
-a
+\mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
 $$
 
 
