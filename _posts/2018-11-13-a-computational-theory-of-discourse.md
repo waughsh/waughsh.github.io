@@ -97,7 +97,7 @@ It is somewhat transparent that on the RHS (right hand side), $A$ needs to disap
 
 My stats PhD friend told me, if I saw a pdf in the form of $w^Tx - \frac{1}{2} x^TB^{-1}x$, then I can actually skip the above algebra and directly "see" this distribution of $x$ as mean $Bw$, with variance $B$. 
 
-So now, we know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)​$ where $B = (\Sigma^{-1} + 2I)^{-1}​$, the posterior distribution of $c​$ after conditioning on a single word in the sequence. Thus  $\mathbb{E}(c|w) = (\Sigma^{-1} + 2I)^{-1} v_w​$.
+So now, we know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)$ where $B = (\Sigma^{-1} + 2I)^{-1}$, the posterior distribution of $c$ after conditioning on a single word in the sequence. Thus  $\mathbb{E}(c \vert w) = (\Sigma^{-1} + 2I)^{-1} v_w$.
 
 <p>Then we want to get the pdf that describes $c|w_1, ..., w_n​$. This part is relatively straightforward, no algebra trick / insight is required. The work mostly hinges on the following expression: </p>
 
