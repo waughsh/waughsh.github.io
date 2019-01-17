@@ -99,15 +99,16 @@ My stats PhD friend told me, if I saw a pdf in the form of $w^Tx - \frac{1}{2} x
 
 So now, we know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)​$ where $B = (\Sigma^{-1} + 2I)^{-1}​$, the posterior distribution of $c​$ after conditioning on a single word in the sequence. Thus  $\mathbb{E}(c|w) = (\Sigma^{-1} + 2I)^{-1} v_w​$.
 
-Then we want to get the pdf that describes $c|w\_1, ..., w\_n$. This part is relatively straightforward, no algebra trick / insight is required. The work mostly hinges on the following expression:
+Then we want to get the pdf that describes $c|w_1, ..., w_n$. This part is relatively straightforward, no algebra trick / insight is required. The work mostly hinges on the following expression:
 $$
 p(c|w_1, ..., w_n) \propto p(w_1,...,w_n|c) p(c) \propto p(c) \prod_{i=1}^n p(w_i|c) \\
 = \frac{1}{Z^n} \exp(\sum_{i=1}^n v_{w_i}^Tc - \frac{1}{2} c^T(\Sigma^{-1} + 2nI)c)
 $$
 
-The generation of words are independent with each other conditioned on $c​$. We already know the general expression of $p(w \vert c)​$. So the above equation evaluates to a form that we have already worked out above. We can skip the algebra and know that $\mathbb{E}[c \vert w\_1, ..., w\_n] \approx (\Sigma^{-1} + 2nI)^{-1} \sum_{i=1}^n v\_{w\_i}​$.
+<p>The generation of words are independent with each other conditioned on $c​$. We already know the general expression of $p(w \vert c)​$. So the above equation evaluates to a form that we have already worked out above. We can skip the algebra and know that $\mathbb{E}[c \vert w_1, ..., w_n] \approx (\Sigma^{-1} + 2nI)^{-1} \sum_{i=1}^n v\_{w_i}​$.</p>
 
 If you still recall the LHS and RHS of the law of total expectation (iterated expectation) expansion we did much earlier, then all that needs to be done to conclude the proof is to plug in the LHS and RHS based on the equations we derived. Feel free to refer to the paper since it offers a cleaner/shorter presentation.
+
 $$
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]] \\
  (\Sigma^{-1} + 2I)^{-1} v_w \approx (\Sigma^{-1} + 2nI)^{-1} \sum_{i=1}^n v_{w_i}
