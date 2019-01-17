@@ -64,11 +64,16 @@ $$
 $$
 
 
-This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(\|c\|^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, and $\|c\|^2 = c^Tc = c^T I c$. Then the following steps are easy to see:
-$$
+This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(\|c\|^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\|c\|^2 = c^Tc = c^T I c$, and the log-linear model we assumed for $p(w|c) = \exp(c \cdot v_w)$. Then the following steps are easy to see:
+
 
 $$
+p(c|w) \propto p(w|c)p(c) \\
+\propto \frac{1}{Z_c} \exp(v_w \cdot c - c^T(\frac{1}{2} \Sigma^{-1} + I)c)
+$$
 
+
+After obtaining the probability density function of $c|w$, we can think about what kind of random variable this pdf suggests. 
 
 ### Application to Word Senses
 
