@@ -1,8 +1,8 @@
 ---
-published: false
+published: true
 layout: post
 draft: true
-visible: 1
+visible: 0
 title: A Computational Theory of Discourse
 ---
 ## A Computational Theory of Discourse
