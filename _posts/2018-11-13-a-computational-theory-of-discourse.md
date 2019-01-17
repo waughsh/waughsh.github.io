@@ -54,11 +54,11 @@ $$
 v_w = A u
 $$
 
-For any word, if we compute the corresponding vector $u$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A$. 
+For any word, if we compute the corresponding vector $u$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A$. I provide some algebra walk through the proof of Theorem 1 in the paper. Readers who find it elementary or advanced can skip this block straight to the next section. 
 
 (**Optional**)
 
-Here I provide a (slightly) more detailed algegra on how this equality is shown. Readers who find it elementary or advanced can skip this block to experiments. The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)​$. 
+The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)$. 
 $$
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
 $$
@@ -117,13 +117,9 @@ $$
 
 Therefore, we know that the matrix $A$ that we set out to find is now solvable by re-arranging the terms in above equations: $A = n(\Sigma^{-1} + 2I) (\Sigma^{-1} + 2nI)^{-1}$.
 
-(**Optional Ends**)
-
-
-
 ### Application to Word Senses
 
-For most word embedding training (easier to just use Word2Vec as the general example), 
+Intuitively, Theorem 1 dictates that a word has a **linear relationship** (fulfilled by matrix $A$) to the average of all the context vectors this word appears in. This relationship is fully specified by $\Sigma$, the covariance of discourse random vector $c​$. 
 
 ### Relations to Language Modeling
 
