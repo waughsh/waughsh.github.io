@@ -49,7 +49,7 @@ $$
 u = \frac{1}{k} \sum_{s \in \{s_1, ..., s_k\}} \frac{1}{n} \sum_{w_i \in s} v_{w_i}
 $$
 
-To even make this statement simpler, assume the above figure represents a tensor $S \in \mathcal{R}^{n \times k \times d}$, we can easily run the following Tensorflow operation to obtain $u$: `u = np.mean(np.mean(S, axis=0), axis=1)`. After knowing how $u$ is computed, then we can understand Theorem 1:
+To even make this statement simpler, assume the above figure represents a tensor $S \in \mathcal{R}^{n \times k \times d}​$, we can easily run the following Numpy operation to obtain $u​$: `u = np.mean(np.mean(S, axis=0), axis=1)`. After knowing how $u​$ is computed, then we can understand Theorem 1:
 $$
 v_w = A u
 $$
@@ -58,12 +58,12 @@ For any word, if we compute the corresponding vector $u$, the word embedding of 
 
 (**Optional**)
 
-Here I provide a (slightly) more detailed algegra on how this equality is shown. Readers who find it elementary or advanced can skip this block to experiments. The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)$. 
+Here I provide a (slightly) more detailed algegra on how this equality is shown. Readers who find it elementary or advanced can skip this block to experiments. The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)​$. 
 $$
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
 $$
 
-This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(\|c\|^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\|c\|^2 = c^Tc = c^T I c$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v_w)​$. Then the following steps are easy to see:
+This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(\vert\vert c \vert\vert^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\vert\vert c \vert\vert^2 = c^Tc = c^T I c$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v_w)$. Then the following steps are easy to see:
 
 $$
 \begin{align}
@@ -76,7 +76,7 @@ After obtaining the probability density function of $c \vert w$, we can think ab
 
 First, we ignore the covariance determinant term as it is a constant and in Arora's setting, the covariance matrix will be invertible -- "if the word vectors as random variables are isotropic to some extent, it will make the covariance matrix identifiable" (identifiable is equivalent to determinant not equal to 0). The assumption "isotropic word embedding" here means that word embedding dimensions should not be correlated with each other ($w \sim \mathcal{N}(0, \sigma I)$).
 
-Then, all we need to do is to make $p(c \vert w)$ appear in the form of $\exp(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu))$. Since the form $c^T(\frac{1}{2} \Sigma^{-1} + I)c$ looks very similar to the quadratic form that we need, we can let $A^{-1} = \frac{1}{2} \Sigma^{-1} + I$ and let $A$ be our new covariance matrix for $c \vert w$. We can work out the equations from two side. We first assume $\mu​$ is the mean we want to solve:
+Then, all we need to do is to make $p(c \vert w)​$ appear in the form of $\exp(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu))​$. Since the form $c^T(\frac{1}{2} \Sigma^{-1} + I)c​$ looks very similar to the quadratic form that we need, we can let $A^{-1} = \frac{1}{2} \Sigma^{-1} + I​$ and let $A​$ be our new covariance matrix for $c \vert w​$. We can work out the equations from two side. We first assume $\mu​$ is the mean we want to solve:
 
 $$
 \begin{align}
@@ -87,17 +87,17 @@ p(c|w) &\propto \frac{1}{Z} \exp(v_w \cdot c - c^T(\frac{1}{2} \Sigma^{-1} + I)c
 \end{align}
 $$
 
-Now we have two expressions of $p(c \vert w)$. We can match the terms between two equations, one term already appears in both, but not $-2 v_w \cdot c$. There are however two terms with negative signs in the top expansion. An algebraic trick that applies here is to just make them equal and hope things to work out -- we solve for $\mu$:
+Now we have two expressions of $p(c \vert w)​$. We can match the terms between two equations, one term already appears in both, but not $-2 v_w \cdot c​$. There are however two terms with negative signs in the top expansion. An algebraic trick that applies here is to just make them equal and hope things to work out -- we solve for $\mu​$:
 
 $$
 -2 v_w \cdot c = - cA^{-1}\mu - \mu^TA^{-1}c
 $$
 
-It is somewhat transparent that on the RHS (right hand side), $A$ needs to disappear since the LHS (left hand side) does not contain any $A$. To do that, $\mu$ should at least contain $A$ so that it cancels out with $A^{-1}$. Also the LHS has $v_w$ while RHS has none. Then the answer should be transparent: $\mu = A v_w$. If you plug this in, the above equation holds.
+It is somewhat transparent that on the RHS (right hand side), $A​$ needs to disappear since the LHS (left hand side) does not contain any $A​$. To do that, $\mu​$ should at least contain $A​$ so that it cancels out with $A^{-1}​$. Also the LHS has $v_w​$ while RHS has none. Then the answer should be transparent: $\mu = A v_w​$. If you plug this in, the above equation holds.
 
 (**Optional Ends**)
 
-So now, we know the 
+So now, we know that $c \vert w \sim \mathcal{N}(A^{-1}v_w, A)​$ where $A = (\frac{1}{2} \Sigma^{-1} + I)^{-1}​$, the posterior distribution of $c​$ after conditioning on a single word in the sequence. Then we want to get the pdf that describes $c|w_1, ..., w_n​$. 
 
 ### Application to Word Senses
 
