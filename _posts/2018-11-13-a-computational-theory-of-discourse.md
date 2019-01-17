@@ -3,6 +3,7 @@ published: false
 layout: post
 draft: true
 visible: 0
+title: A Computational Theory of Discourse
 ---
 ## A Computational Theory of Discourse
 
@@ -54,8 +55,4 @@ For any word, if we compute the corresponding vector $u$, the word embedding of 
 
 [^1]: In the scope of this post, we can assume it's an embedding. This is a very narrow interpretation that is ignoring decades of linguistic work on sentence representations. Interested readers can take a look at Kemp's Discourse Representation Theory framework.
 [^2]: In most of Arora et al.'s work, "sentence meaning", "discourse", and "context" are used almost interchangeably. They all refer to a vector representation of a span of words, usually within a fixed window.
-[^3]:Linear Algebraic Structure of Word Senses, with Applications to Polysemy. 
-
-
-
- 
+[^3]:Linear Algebraic Structure of Word Senses, with Applications to Polysemy.
