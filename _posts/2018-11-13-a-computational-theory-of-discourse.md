@@ -72,32 +72,32 @@ p(c|w) &\propto p(w|c)p(c) \\
 \end{align}
 $$
 
-After obtaining the probability density function of $c \vert w$, we can think about what kind of random variable this pdf suggests. Since there is a covariance matrix inverse $\Sigma^{-1}$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)$ (note this is for a specific word), we need to know what is the mean of this new distribution.
+After obtaining the probability density function of $c \vert w​$, we can think about what kind of random variable this pdf suggests. Since there is a covariance matrix inverse $\Sigma^{-1}​$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)​$ (note this is for a specific word), we need to know what is the mean of this new distribution.
 
 First, we ignore the covariance determinant term as it is a constant and in Arora's setting, the covariance matrix will be invertible -- "if the word vectors as random variables are isotropic to some extent, it will make the covariance matrix identifiable" (identifiable is equivalent to determinant not equal to 0). The assumption "isotropic word embedding" here means that word embedding dimensions should not be correlated with each other ($w \sim \mathcal{N}(0, \sigma I)$).
 
-Then, all we need to do is to make $p(c \vert w)​$ appear in the form of $\exp(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu))​$. Since the form $c^T(\frac{1}{2} \Sigma^{-1} + I)c​$ looks very similar to the quadratic form that we need, we can let $A^{-1} = \frac{1}{2} \Sigma^{-1} + I​$ and let $A​$ be our new covariance matrix for $c \vert w​$. We can work out the equations from two side. We first assume $\mu​$ is the mean we want to solve:
+Then, all we need to do is to make $p(c \vert w)$ appear in the form of $\exp(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu))$. Since the form $c^T(\frac{1}{2} \Sigma^{-1} + I)c$ looks very similar to the quadratic form that we need, we can let $B^{-1} = \frac{1}{2} \Sigma^{-1} + I$ and let $B$ be our new covariance matrix for $c \vert w$. We can work out the equations from two side. We first assume $\mu$ is the mean we want to solve:
 
 $$
 \begin{align}
-p(c|w) &\propto \exp(-\frac{1}{2} (c-\mu)^T A^{-1} (c-\mu)) \\
-&= \exp(-\frac{1}{2}(c^T A^{-1} c - cA^{-1}\mu - \mu^TA^{-1}c + \mu^TA^{-1}\mu))\\
+p(c|w) &\propto \exp(-\frac{1}{2} (c-\mu)^T B^{-1} (c-\mu)) \\
+&= \exp(-\frac{1}{2}(c^T B^{-1} c - cB^{-1}\mu - \mu^TB^{-1}c + \mu^TB^{-1}\mu))\\
 p(c|w) &\propto \frac{1}{Z} \exp(v_w \cdot c - c^T(\frac{1}{2} \Sigma^{-1} + I)c) \\
-&= \frac{1}{Z} \exp(-\frac{1}{2}(-2 v_w \cdot c + c^TA^{-1}c))
+&= \frac{1}{Z} \exp(-\frac{1}{2}(-2 v_w \cdot c + c^TB^{-1}c))
 \end{align}
 $$
 
 Now we have two expressions of $p(c \vert w)​$. We can match the terms between two equations, one term already appears in both, but not $-2 v_w \cdot c​$. There are however two terms with negative signs in the top expansion. An algebraic trick that applies here is to just make them equal and hope things to work out -- we solve for $\mu​$:
 
 $$
--2 v_w \cdot c = - cA^{-1}\mu - \mu^TA^{-1}c
+-2 v_w \cdot c = - cB^{-1}\mu - \mu^TB^{-1}c
 $$
 
-It is somewhat transparent that on the RHS (right hand side), $A​$ needs to disappear since the LHS (left hand side) does not contain any $A​$. To do that, $\mu​$ should at least contain $A​$ so that it cancels out with $A^{-1}​$. Also the LHS has $v_w​$ while RHS has none. Then the answer should be transparent: $\mu = A v_w​$. If you plug this in, the above equation holds.
+It is somewhat transparent that on the RHS (right hand side), $A​$ needs to disappear since the LHS (left hand side) does not contain any $B​$. To do that, $\mu​$ should at least contain $A​$ so that it cancels out with $B^{-1}​$. Also the LHS has $v_w​$ while RHS has none. Then the answer should be transparent: $\mu = Bv_w​$. If you plug this in, the above equation holds.
 
 (**Optional Ends**)
 
-So now, we know that $c \vert w \sim \mathcal{N}(A^{-1}v_w, A)​$ where $A = (\frac{1}{2} \Sigma^{-1} + I)^{-1}​$, the posterior distribution of $c​$ after conditioning on a single word in the sequence. Then we want to get the pdf that describes $c|w_1, ..., w_n​$. 
+So now, we know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)$ where $B = (\frac{1}{2} \Sigma^{-1} + I)^{-1}$, the posterior distribution of $c$ after conditioning on a single word in the sequence. Then we want to get the pdf that describes $c|w_1, ..., w_n$. 
 
 ### Application to Word Senses
 
