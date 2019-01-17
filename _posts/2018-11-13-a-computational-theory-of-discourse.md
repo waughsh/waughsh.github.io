@@ -64,7 +64,11 @@ $$
 $$
 
 
-This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(||c||^2)$[^4].
+This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(\|c\|^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, and $||c||^2 = c^Tc = c^T I c$. Then the following steps are easy to see:
+$$
+
+$$
+
 
 ### Application to Word Senses
 
@@ -77,5 +81,5 @@ Unwittingly at first, Word2Vec is quickly shown to be an implicit solution to a 
 [^1]: In the scope of this post, we can assume it's an embedding. This is a very narrow interpretation that is ignoring decades of linguistic work on sentence representations. Interested readers can take a look at Kemp's Discourse Representation Theory framework.
 [^2]: In most of Arora et al.'s work, "sentence meaning", "discourse", and "context" are used almost interchangeably. They all refer to a vector representation of a span of words, usually within a fixed window. 
 [^3]:Linear Algebraic Structure of Word Senses, with Applications to Polysemy.
-[^4]: This is proven in A Latent Variable Model Approach to PMI-based Word Embeddings, Lemma 2.1. They proved a concentration bound of this partition function under the Bayesian priors specified in the model of Figure 1.
+[^4]: This is proven in A Latent Variable Model Approach to PMI-based Word Embeddings, Lemma 2.1. They proved a concentration bound of this partition function under the Bayesian priors specified in the model of Figure 1. 
 
