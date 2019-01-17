@@ -63,7 +63,7 @@ $$
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
 $$
 
-This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(\vert\vert c \vert\vert^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\vert\vert c \vert\vert^2 = c^Tc = c^T I c$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v_w)$. Then the following steps are easy to see:
+<p>This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(\vert\vert c \vert\vert^2)$<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>, the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\vert\vert c \vert\vert^2 = c^Tc = c^T I c$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v_w)$. Then the following steps are easy to see:</p>
 
 $$
 \begin{align}
@@ -93,11 +93,21 @@ $$
 -2 v_w \cdot c = - cB^{-1}\mu - \mu^TB^{-1}c
 $$
 
-It is somewhat transparent that on the RHS (right hand side), $A​$ needs to disappear since the LHS (left hand side) does not contain any $B​$. To do that, $\mu​$ should at least contain $A​$ so that it cancels out with $B^{-1}​$. Also the LHS has $v_w​$ while RHS has none. Then the answer should be transparent: $\mu = Bv_w​$. If you plug this in, the above equation holds.
+It is somewhat transparent that on the RHS (right hand side), $A$ needs to disappear since the LHS (left hand side) does not contain any $B$. To do that, $\mu$ should at least contain $A$ so that it cancels out with $B^{-1}$. Also the LHS has $v_w$ while RHS has none. Then the answer should be transparent: $\mu = Bv_w$. If you plug this in, the above equation holds, shows that this is our $\mu$. 
+
+My stats PhD friend told me, if I saw a pdf in the form of $w^Tx - x^TB^{-1}x$, then I can actually skip the above algebra and directly "see" this distribution of $x$ as mean $Bw$, with variance $B$. 
+
+So now, we know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)$ where $B = (\frac{1}{2} \Sigma^{-1} + I)^{-1}$, the posterior distribution of $c$ after conditioning on a single word in the sequence. Then we want to get the pdf that describes $c|w_1, ..., w_n$. This part is relatively straightforward, no algebra trick / insight is required. The work mostly hinges on the following expression:
+
+$$
+p(c|w_1, ..., w_n) \propto p(w_1,...,w_n|c) p(c) \propto p(c) \prod_{i=1}^n p(w_i|c)
+$$
+
+The generation of words are independent with each other conditioned on $c$. We already know the general expression of $p(w \vert c)$. So the above equation evaluates to a form that we have already worked out above.
 
 (**Optional Ends**)
 
-So now, we know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)$ where $B = (\frac{1}{2} \Sigma^{-1} + I)^{-1}$, the posterior distribution of $c$ after conditioning on a single word in the sequence. Then we want to get the pdf that describes $c|w_1, ..., w_n$. 
+
 
 ### Application to Word Senses
 
