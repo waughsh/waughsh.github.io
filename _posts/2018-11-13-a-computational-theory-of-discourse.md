@@ -99,7 +99,8 @@ My stats PhD friend told me, if I saw a pdf in the form of $w^Tx - \frac{1}{2} x
 
 So now, we know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)​$ where $B = (\Sigma^{-1} + 2I)^{-1}​$, the posterior distribution of $c​$ after conditioning on a single word in the sequence. Thus  $\mathbb{E}(c|w) = (\Sigma^{-1} + 2I)^{-1} v_w​$.
 
-Then we want to get the pdf that describes $c|w_1, ..., w_n$. This part is relatively straightforward, no algebra trick / insight is required. The work mostly hinges on the following expression:
+<p>Then we want to get the pdf that describes $c|w_1, ..., w_n​$. This part is relatively straightforward, no algebra trick / insight is required. The work mostly hinges on the following expression: </p>
+
 $$
 p(c|w_1, ..., w_n) \propto p(w_1,...,w_n|c) p(c) \propto p(c) \prod_{i=1}^n p(w_i|c) \\
 = \frac{1}{Z^n} \exp(\sum_{i=1}^n v_{w_i}^Tc - \frac{1}{2} c^T(\Sigma^{-1} + 2nI)c)
