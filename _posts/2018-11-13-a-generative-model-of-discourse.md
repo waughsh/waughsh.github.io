@@ -3,9 +3,9 @@ published: true
 layout: post
 draft: true
 visible: 0
-title: A Computational Theory of Discourse
+title: A Generative Model of Discourse
 ---
-## A Computational Theory of Discourse
+## A Generative Model of Discourse
 
 Note: to people who are infinitely more well-versed in linguistics than I am, here I use "discourse" to indicate the meaning representation of a sentence. 
 
