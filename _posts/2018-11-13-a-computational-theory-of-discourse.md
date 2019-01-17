@@ -95,21 +95,26 @@ $$
 
 It is somewhat transparent that on the RHS (right hand side), $A$ needs to disappear since the LHS (left hand side) does not contain any $B$. To do that, $\mu$ should at least contain $A$ so that it cancels out with $B^{-1}$. Also the LHS has $v_w$ while RHS has none. Then the answer should be transparent: $\mu = Bv_w$. If you plug this in, the above equation holds, shows that this is our $\mu$. 
 
-My stats PhD friend told me, if I saw a pdf in the form of $w^Tx - x^TB^{-1}x$, then I can actually skip the above algebra and directly "see" this distribution of $x$ as mean $Bw$, with variance $B$. 
+My stats PhD friend told me, if I saw a pdf in the form of $w^Tx - \frac{1}{2} x^TB^{-1}x$, then I can actually skip the above algebra and directly "see" this distribution of $x$ as mean $Bw$, with variance $B$. 
 
-So now, we know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)$ where $B = (\frac{1}{2} \Sigma^{-1} + I)^{-1}$, the posterior distribution of $c$ after conditioning on a single word in the sequence. Then we want to get the pdf that describes $c|w_1, ..., w_n$. This part is relatively straightforward, no algebra trick / insight is required. The work mostly hinges on the following expression:
+So now, we know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)​$ where $B = (\frac{1}{2} \Sigma^{-1} + I)^{-1}​$, the posterior distribution of $c​$ after conditioning on a single word in the sequence. Then we want to get the pdf that describes $c|w\_1, ..., w\_n​$. This part is relatively straightforward, no algebra trick / insight is required. The work mostly hinges on the following expression:
 
 $$
-p(c|w_1, ..., w_n) \propto p(w_1,...,w_n|c) p(c) \propto p(c) \prod_{i=1}^n p(w_i|c)
+p(c|w_1, ..., w_n) \propto p(w_1,...,w_n|c) p(c) \propto p(c) \prod_{i=1}^n p(w_i|c) \\
+= \frac{1}{Z^n} \exp(\sum_{i=1}^n v_{w_i}^Tc - \frac{1}{2} c^T(\Sigma^{-1} + 2nI)c)
 $$
 
-The generation of words are independent with each other conditioned on $c$. We already know the general expression of $p(w \vert c)$. So the above equation evaluates to a form that we have already worked out above.
+The generation of words are independent with each other conditioned on $c$. We already know the general expression of $p(w \vert c)$. So the above equation evaluates to a form that we have already worked out above. We can skip the algebra and know that $\mathbb{E}[c \vert w\_1, ..., w\_n] \approx (\Sigma^{-1} + 2nI)^{-1} \sum_{i=1}^n v\_{w\_i}$.
+
+
 
 (**Optional Ends**)
 
 
 
 ### Application to Word Senses
+
+For most word embedding training (easier to just use Word2Vec as the general example), 
 
 ### Relations to Language Modeling
 
