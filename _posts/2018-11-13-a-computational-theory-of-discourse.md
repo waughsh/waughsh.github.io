@@ -66,25 +66,25 @@ $$
 <p>This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(\vert\vert c \vert\vert^2)$<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>, the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\vert\vert c \vert\vert^2 = c^Tc = c^T I c$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v_w)$. Then the following steps are easy to see:</p>
 
 $$
-\begin{align}
+\begin{align*}
 p(c|w) &\propto p(w|c)p(c) \\
 &\propto \frac{1}{Z} \exp(v_w \cdot c - c^T(\frac{1}{2} \Sigma^{-1} + I)c) \\
-\end{align}
+\end{align*}
 $$
 
 After obtaining the probability density function of $c \vert w​$, we can think about what kind of random variable this pdf suggests. Since there is a covariance matrix inverse $\Sigma^{-1}​$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)​$ (note this is for a specific word), we need to know what is the mean of this new distribution.
 
 First, we ignore the covariance determinant term as it is a constant and in Arora's setting, the covariance matrix will be invertible -- "if the word vectors as random variables are isotropic to some extent, it will make the covariance matrix identifiable" (identifiable is equivalent to determinant not equal to 0). The assumption "isotropic word embedding" here means that word embedding dimensions should not be correlated with each other ($w \sim \mathcal{N}(0, \sigma I)$).
 
-Then, all we need to do is to make $p(c \vert w)$ appear in the form of $\exp(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu))$. Since the form $c^T(\frac{1}{2} \Sigma^{-1} + I)c$ looks very similar to the quadratic form that we need, we can let $B^{-1} = \frac{1}{2} \Sigma^{-1} + I$ and let $B$ be our new covariance matrix for $c \vert w$. We can work out the equations from two side. We first assume $\mu$ is the mean we want to solve:
+Then, all we need to do is to make $p(c \vert w)​$ appear in the form of $\exp(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu))​$. Since the form $c^T(\frac{1}{2} \Sigma^{-1} + I)c​$ looks very similar to the quadratic form that we need, we can let $B^{-1} = \frac{1}{2} \Sigma^{-1} + I​$ and let $B​$ be our new covariance matrix for $c \vert w​$. We can work out the equations from two side. We first assume $\mu​$ is the mean we want to solve:
 
 $$
-\begin{align}
+\begin{align*}
 p(c|w) &\propto \exp(-\frac{1}{2} (c-\mu)^T B^{-1} (c-\mu)) \\
 &= \exp(-\frac{1}{2}(c^T B^{-1} c - cB^{-1}\mu - \mu^TB^{-1}c + \mu^TB^{-1}\mu))\\
 p(c|w) &\propto \frac{1}{Z} \exp(v_w \cdot c - c^T(\frac{1}{2} \Sigma^{-1} + I)c) \\
 &= \frac{1}{Z} \exp(-\frac{1}{2}(-2 v_w \cdot c + c^TB^{-1}c))
-\end{align}
+\end{align*}
 $$
 
 Now we have two expressions of $p(c \vert w)​$. We can match the terms between two equations, one term already appears in both, but not $-2 v_w \cdot c​$. There are however two terms with negative signs in the top expansion. An algebraic trick that applies here is to just make them equal and hope things to work out -- we solve for $\mu​$:
