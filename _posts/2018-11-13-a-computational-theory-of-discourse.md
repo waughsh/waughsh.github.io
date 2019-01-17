@@ -49,13 +49,13 @@ $$
 u = \frac{1}{k} \sum_{s \in \{s_1, ..., s_k\}} \frac{1}{n} \sum_{w_i \in s} v_{w_i}
 $$
 
-To even make this statement simpler, assume the above figure represents a tensor $S \in \mathcal{R}^{n \times k \times |v_{w_i}|}$, we can easily run the following Tensorflow operation to obtain $u$: `u = tf.reduce_mean(tf.reduce_mean(S, axis=0), axis=1)`. After knowing how $u$ is computed, then we can understand Theorem 1:
+To even make this statement simpler, assume the above figure represents a tensor $S \in \mathcal{R}^{n \times k \times |v\_{w_i}|}$, we can easily run the following Tensorflow operation to obtain $u$: `u = tf.reduce_mean(tf.reduce_mean(S, axis=0), axis=1)`. After knowing how $u$ is computed, then we can understand Theorem 1:
 
 $$
 v_w = A u
 $$
 
-For any word, if we compute the corresponding vector $u$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A$. 
+For any word, if we compute the corresponding vector $u​$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A​$. 
 
 ### Application to Word Senses
 
