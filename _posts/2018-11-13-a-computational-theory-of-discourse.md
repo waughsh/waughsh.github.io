@@ -49,20 +49,20 @@ $$
 u = \frac{1}{k} \sum_{s \in \{s_1, ..., s_k\}} \frac{1}{n} \sum_{w_i \in s} v_{w_i}
 $$
 
-To even make this statement simpler, assume the above figure represents a tensor $S \in \mathcal{R}^{n \times k \times d}$, we can easily run the following Tensorflow operation to obtain $u$: `u = np.mean ( np.mean ( S, axis=0), axis=1)`. After knowing how $u$ is computed, then we can understand Theorem 1:
+To even make this statement simpler, assume the above figure represents a tensor $S \in \mathcal{R}^{n \times k \times d}$, we can easily run the following Tensorflow operation to obtain $u$: `u = np.mean(np.mean(S, axis=0), axis=1)`. After knowing how $u$ is computed, then we can understand Theorem 1:
 $$
 v_w = A u
 $$
 
 For any word, if we compute the corresponding vector $u$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A$. 
 
-Here I provide a (slightly) more detailed proof on how this equality is shown. Readers who find it elementary or advanced can skip this block to experiments. The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}[\frac{1}{n} \sum_{w_i \in s} v\_{w_i} | w \in s]$. 
+Here I provide a (slightly) more detailed proof on how this equality is shown. Readers who find it elementary or advanced can skip this block to experiments. The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} | w \in s )$. 
 
 
 $$
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
 $$
-This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp()$
+This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(||c||^2)$[^4].
 
 ### Application to Word Senses
 
@@ -75,3 +75,5 @@ Unwittingly at first, Word2Vec is quickly shown to be an implicit solution to a 
 [^1]: In the scope of this post, we can assume it's an embedding. This is a very narrow interpretation that is ignoring decades of linguistic work on sentence representations. Interested readers can take a look at Kemp's Discourse Representation Theory framework.
 [^2]: In most of Arora et al.'s work, "sentence meaning", "discourse", and "context" are used almost interchangeably. They all refer to a vector representation of a span of words, usually within a fixed window. 
 [^3]:Linear Algebraic Structure of Word Senses, with Applications to Polysemy.
+[^4]: This is proven in A Latent Variable Model Approach to PMI-based Word Embeddings, Lemma 2.1. They proved a concentration bound of this partition function under the Bayesian priors specified in the model of Figure 1.
+
