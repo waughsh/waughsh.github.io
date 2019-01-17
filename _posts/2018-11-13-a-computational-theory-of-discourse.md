@@ -56,20 +56,48 @@ $$
 
 For any word, if we compute the corresponding vector $u$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A$. 
 
-Here I provide a (slightly) more detailed proof on how this equality is shown. Readers who find it elementary or advanced can skip this block to experiments. The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} | w \in s)$. 
+(**Optional**)
 
+Here I provide a (slightly) more detailed algegra on how this equality is shown. Readers who find it elementary or advanced can skip this block to experiments. The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)$. 
 $$
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
 $$
 
-<p> This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(\|c\|^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\|c\|^2 = c^Tc = c^T I c$, and the log-linear model we assumed for $p(w|c) = \exp(c \cdot v_w)$. Then the following steps are easy to see: </p>
+This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c|w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z_c \approx Z \exp(\|c\|^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\|c\|^2 = c^Tc = c^T I c$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v_w)​$. Then the following steps are easy to see:
 
 $$
-p(c|w) \propto p(w|c)p(c) \\
-\propto \frac{1}{Z_c} \exp(v_w \cdot c - c^T(\frac{1}{2} \Sigma^{-1} + I)c)
+\begin{align}
+p(c|w) &\propto p(w|c)p(c) \\
+&\propto \frac{1}{Z} \exp(v_w \cdot c - c^T(\frac{1}{2} \Sigma^{-1} + I)c) \\
+\end{align}
 $$
 
-After obtaining the probability density function of $c|w​$, we can think about what kind of random variable this pdf suggests. 
+After obtaining the probability density function of $c \vert w$, we can think about what kind of random variable this pdf suggests. Since there is a covariance matrix inverse $\Sigma^{-1}$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)$ (note this is for a specific word), we need to know what is the mean of this new distribution.
+
+First, we ignore the covariance determinant term as it is a constant and in Arora's setting, the covariance matrix will be invertible -- "if the word vectors as random variables are isotropic to some extent, it will make the covariance matrix identifiable" (identifiable is equivalent to determinant not equal to 0). The assumption "isotropic word embedding" here means that word embedding dimensions should not be correlated with each other ($w \sim \mathcal{N}(0, \sigma I)$).
+
+Then, all we need to do is to make $p(c \vert w)$ appear in the form of $\exp(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu))$. Since the form $c^T(\frac{1}{2} \Sigma^{-1} + I)c$ looks very similar to the quadratic form that we need, we can let $A^{-1} = \frac{1}{2} \Sigma^{-1} + I$ and let $A$ be our new covariance matrix for $c \vert w$. We can work out the equations from two side. We first assume $\mu​$ is the mean we want to solve:
+
+$$
+\begin{align}
+p(c|w) &\propto \exp(-\frac{1}{2} (c-\mu)^T A^{-1} (c-\mu)) \\
+&= \exp(-\frac{1}{2}(c^T A^{-1} c - cA^{-1}\mu - \mu^TA^{-1}c + \mu^TA^{-1}\mu))\\
+p(c|w) &\propto \frac{1}{Z} \exp(v_w \cdot c - c^T(\frac{1}{2} \Sigma^{-1} + I)c) \\
+&= \frac{1}{Z} \exp(-\frac{1}{2}(-2 v_w \cdot c + c^TA^{-1}c))
+\end{align}
+$$
+
+Now we have two expressions of $p(c \vert w)$. We can match the terms between two equations, one term already appears in both, but not $-2 v_w \cdot c$. There are however two terms with negative signs in the top expansion. An algebraic trick that applies here is to just make them equal and hope things to work out -- we solve for $\mu$:
+
+$$
+-2 v_w \cdot c = - cA^{-1}\mu - \mu^TA^{-1}c
+$$
+
+It is somewhat transparent that on the RHS (right hand side), $A$ needs to disappear since the LHS (left hand side) does not contain any $A$. To do that, $\mu$ should at least contain $A$ so that it cancels out with $A^{-1}$. Also the LHS has $v_w$ while RHS has none. Then the answer should be transparent: $\mu = A v_w$. If you plug this in, the above equation holds.
+
+(**Optional Ends**)
+
+So now, we know the 
 
 ### Application to Word Senses
 
@@ -82,5 +110,5 @@ Unwittingly at first, Word2Vec is quickly shown to be an implicit solution to a 
 [^1]: In the scope of this post, we can assume it's an embedding. This is a very narrow interpretation that is ignoring decades of linguistic work on sentence representations. Interested readers can take a look at Kemp's Discourse Representation Theory framework.
 [^2]: In most of Arora et al.'s work, "sentence meaning", "discourse", and "context" are used almost interchangeably. They all refer to a vector representation of a span of words, usually within a fixed window. 
 [^3]:Linear Algebraic Structure of Word Senses, with Applications to Polysemy.
-[^4]: This is proven in A Latent Variable Model Approach to PMI-based Word Embeddings, Lemma 2.1. They proved a concentration bound of this partition function under the Bayesian priors specified in the model of Figure 1. 
+[^4]: This is proven in A Latent Variable Model Approach to PMI-based Word Embeddings, Lemma 2.1. They proved a concentration bound of this partition function under the Bayesian priors specified in the model of Figure 1. It seems to be a general bound linked to the self-normalizing property of log-linear models.
 
