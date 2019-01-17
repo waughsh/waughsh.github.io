@@ -39,9 +39,9 @@ Note that $v_{w_i}$ indicates the actual vector representation of $w_i$, and thi
 
 Based on this very simple model, a very interesting theorem can be proved. Here, I write out the actual proof (with more details than the one provided in the paper, as well as an easy illustration on what's going on).
 
-Theorem 1 of Arora et al. (2018)[^3] paper can be understood by introducing a vector $u$, and a matrix $A$.  For a given word $w$ and its corresponding word vector $v_w$, we can compute a vector $u$. 
+Theorem 1 of Arora et al. (2018)[^3] paper can be understood by introducing a vector $u​$, and a matrix $A​$.  For a given word $w​$ and its corresponding word vector $v_w​$, we can compute a vector $u​$. 
 
-<img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-theorem1-u.jpg?raw=true" width=35%>
+<img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-theorem1-u.jpg?raw=true" style="width:35%">
 
 For this word $w$, it must appear in different spans of words across the entire document. A random variable of a window of n words can be introduced as $s$. Computationally, the vector $u$ for the word $w$ can be computed as follow:
 
