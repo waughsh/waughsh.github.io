@@ -119,7 +119,7 @@ Therefore, we know that the matrix $A$ that we set out to find is now solvable b
 
 ### Application to Word Senses
 
-Intuitively, Theorem 1 dictates that a word has a **linear relationship** (fulfilled by matrix $A$) to the average of all the context vectors this word appears in: $v\_w = A \sum_s c_s$. This relationship is fully specified by $\Sigma$, the covariance of discourse random vector $c$. 
+Intuitively, Theorem 1 dictates that a word has a **linear relationship** (fulfilled by matrix $A$) to the average of all the context vectors this word appears in: $v\_w = A \sum_s c_s$. This relationship is fully specified by $\Sigma$, the covariance of discourse random vector $c$. Theorem 2 of the paper can be interpreted as: $v\_w \approx \alpha v\_{s\_1} + \beta v\_{s\_2}$, a linear combination of 2 senses (each sense is represented as a vector). We can see the parallel between this linear decomposition and the transformed average of all context that word $w$ appears in.
 
 ### Relations to Language Modeling
 
