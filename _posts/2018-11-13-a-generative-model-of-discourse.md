@@ -131,11 +131,11 @@ $$
 
 The paper tried to fit GloVe embeddings using linear transformation and use SIF[^5] to generate context vector $c\_w$. As we can see the practical fit is good in Table 2.
 
-<p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-table2.png?raw=true" style="width:50%"></p>
+<p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-table2.png?raw=true" style="width:50%"> <br> <b>Figure 3</b> </p>
 
 ### Application to Word Senses
 
-Intuitively, Theorem 1 dictates that a word has a **linear relationship** (fulfilled by matrix $A$) to the average of all the context vectors this word appears in: $v\_w = A \sum_s c_s$. This relationship is fully specified by $\Sigma$, the covariance of discourse random vector $c$. Theorem 2 of the paper can be interpreted as: $v\_w \approx \alpha v\_{s\_1} + \beta v\_{s\_2}$, a linear combination of 2 senses (each sense is represented as a vector). We can see the parallel between this linear decomposition and the transformed average of all context that word $w$ appears in. The proof of Theorem 2 essentially expresses that if there are 2 senses for a given word, then with high probability, $\alpha$% of the context vectors should be similar to each other as they are all this word expressed in sense 1, $\beta$% of the context vectors should be similar/grouped together as they are all expressed as sense 2.
+Intuitively, Theorem 1 dictates that a word has a **linear relationship** (fulfilled by matrix $A​$) to the average of all the context vectors this word appears in: $v\_w = A \sum_s c_s​$. This relationship is fully specified by $\Sigma​$, the covariance of discourse random vector $c​$. Theorem 2 of the paper can be interpreted as: $v\_w \approx \alpha v\_{s\_1} + \beta v\_{s\_2}​$, a linear combination of 2 senses (each sense is represented as a vector). We can see the parallel between this linear decomposition and the transformed average of all context that word $w​$ appears in. The proof of Theorem 2 essentially expresses that if there are 2 senses for a given word, then with high probability, $\alpha​$% of the context vectors should be similar to each other as they are all this word expressed in sense 1, $\beta​$% of the context vectors should be similar/grouped together as they are all expressed as sense 2.
 
 Since we do not observe the frequency ($\alpha$, $\beta$), nor do we know how many senses are in there, Arora proposed to discover senses using **sparse coding**[^6], finding a set of unit vectors $A\_1, ...,A\_m$, that for any word $v\_w$, it can be expressed by a small number of these unit vectors. These unit vectors are referred as the **Atoms of Discourse**.
 
@@ -181,7 +181,7 @@ Assumption (3) seems least objectionable, but people might hope that discourse o
 
 So what does Theorem 1 really provide for us? Well, it obviously directly leads to Theorem 2, word embeddings under these assumptions are additive combination of senses. Also, learning matrix $A$ can find a semantic meaning for $u$, the averaged context vectors. Arora et al. described an algorithm that is referenced from Reisinger and Mooney (2010)[^7]: compute $c\_1, ..., c\_m$, for a word $w$ appears in $m$ contexts. Cluster these vectors and average them. The cluster center originally are not near meaningful words that suggest the sense this cluster tries to represent, but by applying $A​$ to the cluster center, we obtain meaningful nearest words again:
 
-<p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-table1.png?raw=true" style="width:50%"></p>
+<p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-table1.png?raw=true" style="width:50%"> <br> <b>Figure 4</b> </p>
 
 A few differences between $c$ and what we normally refer as sentence embedding: 
 
@@ -198,7 +198,7 @@ p(x_1,...,x_n) = \prod_{t=1}^n p(x_t | x_{<t})
 $$
 A cursory look at the graphical model of Arora's model and language model reminded me of the confounding variable diagram below:
 
-<p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-figA.png?raw=true" style="width:50%"></p>
+<p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-figA.png?raw=true" style="width:50%"> <br> <b>Figure 5</b> </p>
 
 When there is a hidden variable (confounding variable) $c$ that governs the behavior of $a$ and $b$, without knowing the existence of $c$, we (the algorithm) can often make the mistake of inferring a correlational relationship between variable $a$ and $b​$. Does the left figure look very much like a language model, and the right figure very similar to what Arora et al. has proposed? This is not to suggest that there is no dependence between words -- there clearly is, but modeling language well by conditioning on previous words should not exclude us from hypothesizing a different kind of generative model.
 
