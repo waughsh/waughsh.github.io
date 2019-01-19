@@ -129,7 +129,7 @@ $$
 
 The paper tried to fit GloVe embeddings using linear transformation and use SIF[^5] to generate context vector $c\_w$. As we can see the practical fit is good in Table 2.
 
-<img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-table2.png?raw=true" style="width:50%">
+<p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-table2.png?raw=true" style="width:50%"></p>
 
 ### Application to Word Senses
 
