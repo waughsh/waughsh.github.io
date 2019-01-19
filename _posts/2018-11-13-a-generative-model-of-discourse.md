@@ -119,7 +119,9 @@ $$
  (\Sigma^{-1} + 2I)^{-1} v_w \approx (\Sigma^{-1} + 2nI)^{-1} \sum_{i=1}^n v_{w_i}
 $$
 
-Therefore, we know that the matrix $A$ that we set out to find is now solvable by re-arranging the terms in above equations: $A = n(\Sigma^{-1} + 2I) (\Sigma^{-1} + 2nI)^{-1}​$.
+Therefore, we know that the matrix $A$ that we set out to find is now solvable by re-arranging the terms in above equations: $A = n(\Sigma^{-1} + 2I) (\Sigma^{-1} + 2nI)^{-1}$.
+
+(**Optional End**)
 
 ### Finding Linear Transformation
 
@@ -157,13 +159,13 @@ Arora et al.'s proof above assumed SIF sentence embeddings. SIF algorithm uses a
 
 We can list out the assumptions used in Arora et al.'s model:
 
-1. $p(w \vert c)$ is a log-linear model
+1. $p(w \vert c)​$ is a log-linear model
 2. Words $w$ in a window are generated independently by $c$.
 3. $p(c)$, the prior of discourse vector $c$ is Gaussian with mean 0 and invertible covariance matrix $\Sigma$.
 
-Each assumption has some flaws. Assumption (1) assumes a very simplistic model on how words are generated from meaning. However, if this assumption is not made, then we have two issues: 1). we immediately lose the concentration of partition function $Z\_c$; 2). the introduction of any extra term besides the dot product, such as bilinear transformation $p(w \vert c) \propto \exp(v\_w^T H c)$, will break how we find $\mu$ for $p(c \vert w)​$. 
+Each assumption has some flaws. Assumption (1) assumes a very simplistic model on how words are generated from meaning. However, if this assumption is not made, we will have two problems: 1). we immediately lose the concentration of the partition function $Z\_c$; 2). the introduction of any extra term besides the dot product, even bilinear transformation $p(w \vert c) \propto \exp(v\_w^T H c)$, will break how we solve $\mu$ for $p(c \vert w)$. 
 
-Assumption (2) is a very serious offense for syntax in language. Words definitely depend on one another, otherwise we will have no grammar. `The drink is cold`, the choice of `is` is clearly influenced by the plurality of the subject. However, if we don't have this assumption, then we won't get equation:
+Assumption (2) is a very serious offense for syntax in language. Words definitely depend on one another -- grammatical structure naturally emerges from word-to-word dependencies. `The drink is cold`, the choice of `is` is clearly influenced by the plurality of the subject. However, if we drop this assumption, we won't be able to get the following factorization:
 
 $$
 \begin{align}
@@ -175,22 +177,17 @@ Instead, what we get is:
 $$
 p(w_1,...,w_n|c) \propto \prod_{i=1}^n p(w_i|c, w_{<i})
 $$
-This will not enable us to reuse the $p(w\vert c)$ expression we derived before, breaking the equality in Equation (1). 
+This will not enable us to reuse the $p(w\vert c)$ expression that we derived, breaking the equality in Equation (1). 
 
-Assumption (3) seems least objectionable, but people might hope that discourse or meaning of sentence is  a mixture of Gaussian (multimodal), then the prior of $c$ cannot be zero-centered. This will also have ripple effect of finding out the expectation of $p(c \vert w)$. 
+Assumption (3) seems least objectionable, but people might hope that discourse or meaning vector of a sentence is a mixture of Gaussian (multimodal). This will also have a ripple effect on how we can analytically solve for the expectation of $p(c \vert w)$. 
 
-So what does Theorem 1 really provide for us? Well, it obviously directly leads to Theorem 2, word embeddings under these assumptions are additive combination of senses. Also, learning matrix $A$ can find a semantic meaning for $u$, the averaged context vectors. Arora et al. described an algorithm that is referenced from Reisinger and Mooney (2010)[^7]: compute $c\_1, ..., c\_m$, for a word $w$ appears in $m$ contexts. Cluster these vectors and average them. The cluster center originally are not near meaningful words that suggest the sense this cluster tries to represent, but by applying $A​$ to the cluster center, we obtain meaningful nearest words again:
+So what does Theorem 1 really provide for us? Well, it obviously leads to Theorem 2, word embeddings under these assumptions are additive combination of senses. Also, learning matrix $A$ can find a semantic meaning for $u$, the averaged context vectors. Arora et al. described an algorithm that is referenced from Reisinger and Mooney (2010)[^7]: compute $c\_1, ..., c\_m$, for a word $w$ appears in $m$ contexts. Cluster these vectors and average them. The cluster center originally are not near meaningful words that suggest the sense this cluster tries to represent, but by applying $A$ to the cluster center, we obtain meaningful nearest words again:
 
 <p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-table1.png?raw=true" style="width:50%"> <br> <b>Figure 4</b> </p>
 
-A few differences between $c$ and what we normally refer as sentence embedding: 
+### What about Sentence Embedding Training Objectives?
 
-1. $c$ is better viewed as a SIF-averaged fixed-window span of words, but this is not a problem due to large window size (20 words).
-2. The equality is in expectation, so $A​$ can only be applied to averaged of multiple context vectors $c​$.
-
-### How about Sentence Embedding Training Objectives?
-
-Well, we want the theory to have suggestive power for applications. Many sentence embedding models have been proposed and many of them have different objectives: InferSent, DisSent[^8] trained on a specific semantic task (predicting inference or discourse relation); OpenAI GPT[^9] and ELMo[^10] trains with language modeling; BERT[^11] trains with word cloze task (using context to predict center word).
+In many cases, we want the theory to have suggestive power for applications. Many sentence embedding models have been proposed and many of them have different objectives: InferSent, DisSent[^8] trained on a specific semantic task (predicting inference or discourse relation); OpenAI GPT[^9] and ELMo[^10] trains with language modeling; BERT[^11] trains with word cloze task (using context to predict center word).
 
 From a very high-level view, Theorem 1 seems to be proposing a relationship between averaged context and a word that appeared in those contexts: **a word can be "recovered" through applying a linear transformation to the averaged context vectors that contains this word**. This is very different from the language-modeling objective:
 $$
@@ -207,6 +204,12 @@ BERT objective, using context to predict the prescence of a word seems quite sim
 DisSent is very similar to BERT due to the nature of predicting word using context, even though it is narrow in scope (only predicting a small number of words).
 
 There is one last type of sentence embedding objective that has not been thoughly investigated -- sequence auto-encoding. Sequence auto-encoding objective compresses the whole sequence into a context representation, and the model is required to reconstruct each word from this context representation[^12]. I have not seen many paper on this objective, but maybe it is worth a shot given its approximity to Arora et al.'s proposal model.
+
+### Word Recovering Through Context
+
+Theorem 1 can be operationalized as **"can a word's vector be recovered from its context"**? We might be able to use it as a test for sentence embedding models. 
+
+ 
 
 ### Closing Thoughts
 
