@@ -190,17 +190,17 @@ A few differences between $c$ and what we normally refer as sentence embedding:
 
 ### How about Sentence Embedding Training Objectives?
 
-Well, we want the theory to have suggestive power for reality. Many sentence embedding models have been proposed and many of them have different objectives: InferSent, DisSent[^8] trained on a specific semantic task (predicting inference or discourse relation); OpenAI GPT[^9] and ELMo[^10] trains with language modeling; BERT[^11] trains with word cloze task (using context to predict center word).
+Well, we want the theory to have suggestive power for applications. Many sentence embedding models have been proposed and many of them have different objectives: InferSent, DisSent[^8] trained on a specific semantic task (predicting inference or discourse relation); OpenAI GPT[^9] and ELMo[^10] trains with language modeling; BERT[^11] trains with word cloze task (using context to predict center word).
 
-From a very high-level view, Theorem 1 seems to be proposing a relationship between averaged context and a word that appeared in those contexts: this word can be "recovered" through applying a linear transformation to the averaged context it belongs to. This is very different from the language-modeling objective:
+From a very high-level view, Theorem 1 seems to be proposing a relationship between averaged context and a word that appeared in those contexts: **a word can be "recovered" through applying a linear transformation to the averaged context vectors that contains this word**. This is very different from the language-modeling objective:
 $$
 p(x_1,...,x_n) = \prod_{t=1}^n p(x_t | x_{<t})
 $$
-Language modeling is focusing on predicting the next word. It is quite different from this Arora et al.'s model. I do believe that words have dependencies, but predicting a full sentence from a few words seem like a bizzare notion. Also, in causal inference, a confounding variable describes the following relationship:
+A cursory look at the graphical model of Arora's model and language model reminded me of the confounding variable diagram below:
 
 <p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-figA.png?raw=true" style="width:50%"></p>
 
-When there is a hidden variable (confounding variable) $c$ that governs the behavior of $a$ and $b$, without knowing the existence of $c$, we (the algorithm) will often make the mistake of deducing a correlational relationship between variable $a$ and $b$. Does the left figure look very much like a language model, and the right figure very similar to what Arora et al. has proposed?
+When there is a hidden variable (confounding variable) $c$ that governs the behavior of $a$ and $b$, without knowing the existence of $c$, we (the algorithm) can often make the mistake of inferring a correlational relationship between variable $a$ and $b​$. Does the left figure look very much like a language model, and the right figure very similar to what Arora et al. has proposed? This is not to suggest that there is no dependence between words -- there clearly is, but modeling language well by conditioning on previous words should not exclude us from hypothesizing a different kind of generative model.
 
 BERT objective, using context to predict the prescence of a word seems quite similar to what Theorem 1 seems to suggest, allowing a word to be recovered through its context. However BERT does mask the word itself (as it makes sense), and the prediction happens on each sentence, instead of averaged context.
 
