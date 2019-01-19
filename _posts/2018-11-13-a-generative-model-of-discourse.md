@@ -190,13 +190,23 @@ A few differences between $c$ and what we normally refer as sentence embedding:
 
 ### How about Sentence Embedding Training Objectives?
 
-Well, we want the theory to have suggestive power for reality. Many sentence embedding models have been proposed and many of them have different objectives: InferSent, DisSent[^8] trained on a specific semantic task (predicting inference or discourse relation); OpenAI GPT[^9] trains with language modeling; BERT[^10] trains with word cloze task (using context to predict center word).
+Well, we want the theory to have suggestive power for reality. Many sentence embedding models have been proposed and many of them have different objectives: InferSent, DisSent[^8] trained on a specific semantic task (predicting inference or discourse relation); OpenAI GPT[^9] and ELMo[^10] trains with language modeling; BERT[^11] trains with word cloze task (using context to predict center word).
 
-From a very high-level view, Theorem 1 suggests that a word can still be "recovered" through applying a linear transformation to the averaged context it belongs to. This is very different from the language-modeling objective:
+From a very high-level view, Theorem 1 seems to be proposing a relationship between averaged context and a word that appeared in those contexts: this word can be "recovered" through applying a linear transformation to the averaged context it belongs to. This is very different from the language-modeling objective:
 $$
 p(x_1,...,x_n) = \prod_{t=1}^n p(x_t | x_{<t})
 $$
-Language modeling is focusing on predicting next word. It is quite different from this model. However, I do 
+Language modeling is focusing on predicting the next word. It is quite different from this Arora et al.'s model. I do believe that words have dependencies, but predicting a full sentence from a few words seem like a bizzare notion. Also, in causal inference, a confounding variable describes the following relationship:
+
+<p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-figA.png?raw=true" style="width:50%"></p>
+
+When there is a hidden variable (confounding variable) $c$ that governs the behavior of $a$ and $b$, without knowing the existence of $c$, we (the algorithm) will often make the mistake of deducing a correlational relationship between variable $a$ and $b$. Does the left figure look very much like a language model, and the right figure very similar to what Arora et al. has proposed?
+
+BERT objective, using context to predict the prescence of a word seems quite similar to what Theorem 1 seems to suggest, allowing a word to be recovered through its context. However BERT does mask the word itself (as it makes sense), and the prediction happens on each sentence, instead of averaged context.
+
+DisSent is very similar to BERT due to the nature of predicting word using context, even though it is narrow in scope (only predicting a small number of words).
+
+There is one last type of sentence embedding objective that has not been thoughly investigated -- sequence auto-encoding. Sequence auto-encoding objective compresses the whole sequence into a context representation, and the model is required to reconstruct each word from this context representation[^12]. I have not seen many paper on this objective, but maybe it is worth a shot given its approximity to Arora et al.'s proposal model.
 
 ### Closing Thoughts
 
@@ -212,5 +222,7 @@ Unwittingly at first, Word2Vec is quickly shown to be an implicit solution to a 
 [^7]: Multi-Prototype Vector-Space Models of Word Meaning
 [^8]: InferSent: Supervised Learning of Universal Sentence Representations from Natural Language Inference Data; DisSent: Sentence Representation Learning from Explicit Discourse Relations.
 [^9]: Improving Language Understanding by Generative Pre-Training
-[^10]: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
+[^10]: Deep contextualized word representations
+[^11]: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
+[^12]: https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html
 
