@@ -58,12 +58,14 @@ For any word, if we compute the corresponding vector $u$, the word embedding of 
 
 (**Optional**)
 
-The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)$. 
+The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}(c_s | w \in s) = \mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)$. By "iterated expectation" or "law of total expectation", we can expand the left-hand side (LHS) as:
 $$
+\begin{equation}
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
+\end{equation}
 $$
 
-This step is by "iterated expectation" or "law of total expectation". And the following step to show the pdf (probability density function) of $c \vert w$ is straightforward. The paper mentioned/set up the following equality that we can substitute: $Z\_c \approx Z \exp(\vert\vert c \vert\vert^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\vert\vert c \vert\vert^2 = c^Tc = c^T I c$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v\_w)$. Then the following steps are easy to see:
+The following step is to find the probability density function (pdf) of $c \vert w$: $p(c \vert w)$. In the earlier portion of the paper, we have the following equalities that we can substitute: $Z\_c \approx Z \exp(\vert\vert c \vert\vert^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\vert\vert c \vert\vert^2 = c^Tc = c^T I c$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v\_w)$. We can expand $p(c\vert w)​$ using Bayes rule and substitute these terms in and obtain:
 
 $$
 \begin{align*}
@@ -72,11 +74,11 @@ p(c|w) &\propto p(w|c)p(c) \\
 \end{align*}
 $$
 
-After obtaining the probability density function of $c \vert w​$, we can think about what kind of random variable this pdf suggests. Since there is a covariance matrix inverse $\Sigma^{-1}​$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)​$ (note this is for a specific word), we need to know what is the mean of this new distribution.
+After obtaining the probability density function of $c \vert w​$, we can think about what kind of random variable this pdf suggests, because eventually we want to know what is $\mathbb{E}(c \vert w)​$, the left hand side of equation (1). Since there is a covariance matrix inverse $\Sigma^{-1}​$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)​$, we need to know what is the mean of this new distribution.
 
-First, we ignore the covariance determinant term as it is a constant and in Arora's setting, the covariance matrix will be invertible -- "if the word vectors as random variables are isotropic to some extent, it will make the covariance matrix identifiable" (identifiable is equivalent to determinant not equal to 0). The assumption "isotropic word embedding" here means that word embedding dimensions should not be correlated with each other ($w \sim \mathcal{N}(0, \sigma I)$).
+First, we ignore the covariance determinant term as it is a constant and in Arora's setting, the covariance matrix is invertible -- "if the word vectors as random variables are isotropic to some extent, it will make the covariance matrix identifiable" (identifiable = invertible). The assumption "isotropic word embedding" here means that word embedding dimensions should not be correlated with each other.
 
-Then, all we need to do is to make $p(c \vert w)​$ appear in the form of $\exp(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu))​$. Since the form $c^T(\frac{1}{2} \Sigma^{-1} + I)c​$ looks very similar to the quadratic form that we need, we can let $B^{-1} = \frac{1}{2} \Sigma^{-1} + I​$ and let $B​$ be our new covariance matrix for $c \vert w​$. We can work out the equations from two side. We first assume $\mu​$ is the mean we want to solve:
+Then, all we need to do is to rearrange the terms in $p(c \vert w)​$ to appear in the form of $\exp(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu))​$. By doing so, we will be able to find our $\mu​$, the expectation of this pdf. Since the form $c^T(\frac{1}{2} \Sigma^{-1} + I)c​$ looks very similar to the quadratic form that we need, we can let $B^{-1} = \frac{1}{2} \Sigma^{-1} + I​$ and let $B​$ be our new covariance matrix for $c \vert w​$. We can work out the equations from both sides. We let $\mu​$ be the mean we want and solve for it:
 
 $$
 \begin{align*}
@@ -87,17 +89,17 @@ p(c|w) &\propto \frac{1}{Z} \exp(v_w \cdot c - c^T(\frac{1}{2} \Sigma^{-1} + I)c
 \end{align*}
 $$
 
-Now we have two expressions of $p(c \vert w)​$. We can match the terms between two equations, one term already appears in both, but not $-2 v_w \cdot c​$. There are however two terms with negative signs in the top expansion. An algebraic trick that applies here is to just make them equal and hope things to work out -- we solve for $\mu​$:
+Now we have two expressions of $p(c \vert w)$. We can match the terms between two equations, one term $c^TB^{-1}c$ already appears in both, but not $-2 v_w \cdot c$. However, there are two terms with negative signs in the top expansion. A trick that applies here is to just make them equal and hope things to work out -- we solve for $\mu$:
 
 $$
 -2 v_w \cdot c = - cB^{-1}\mu - \mu^TB^{-1}c
 $$
 
-It is somewhat transparent that on the RHS (right hand side), $A$ needs to disappear since the LHS (left hand side) does not contain any $B$. To do that, $\mu$ should at least contain $A$ so that it cancels out with $B^{-1}$. Also the LHS has $v_w$ while RHS has none. Then the answer should be transparent: $\mu = Bv_w$. If you plug this in, the above equation holds, shows that this is our $\mu$. 
+It is somewhat transparent that on the RHS (right hand side), $B$ needs to disappear since the LHS (left hand side) does not contain any $B$. To do that, $\mu$ should at least contain $B$ so that it cancels out with $B^{-1}$. Also the LHS has $v_w$ while RHS has none. Then the answer should be apparent: $\mu = Bv_w$. If you plug this in, the above equality works, shows that this is our $\mu​$. 
 
-My stats PhD friend told me, if I saw a pdf in the form of $w^Tx - \frac{1}{2} x^TB^{-1}x$, then I can actually skip the above algebra and directly "see" this distribution of $x$ as mean $Bw$, with variance $B$. 
+My stats PhD friend told me, if I saw a pdf in the form of $w^Tx - \frac{1}{2} x^TB^{-1}x​$, then I can actually skip the above algebra and directly "see" this distribution of $x​$ as mean $Bw​$, with variance $B​$. 
 
-So now, we know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)$ where $B = (\Sigma^{-1} + 2I)^{-1}$, the posterior distribution of $c$ after conditioning on a single word in the sequence. Thus  $\mathbb{E}(c \vert w) = (\Sigma^{-1} + 2I)^{-1} v_w$.
+So now, we know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)​$ where $B = (\Sigma^{-1} + 2I)^{-1}​$, the posterior distribution of $c​$ after conditioning on a single word in the sequence. Thus  $\mathbb{E}(c \vert w) = (\Sigma^{-1} + 2I)^{-1} v_w​$.
 
 <p>Then we want to get the pdf that describes $c|w_1, ..., w_n​$. This part is relatively straightforward, no algebra trick / insight is required. The work mostly hinges on the following expression: </p>
 
@@ -106,20 +108,38 @@ p(c|w_1, ..., w_n) \propto p(w_1,...,w_n|c) p(c) \propto p(c) \prod_{i=1}^n p(w_
 = \frac{1}{Z^n} \exp(\sum_{i=1}^n v_{w_i}^Tc - \frac{1}{2} c^T(\Sigma^{-1} + 2nI)c)
 $$
 
-<p>The generation of words are independent with each other conditioned on $c​$. We already know the general expression of $p(w \vert c)​$. So the above equation evaluates to a form that we have already worked out above. We can skip the algebra and know that $\mathbb{E}[c \vert w_1, ..., w_n] \approx (\Sigma^{-1} + 2nI)^{-1} \sum_{i=1}^n v\_{w_i}​$.</p>
+<p>The generation of words are independent with each other conditioned on $c​$. We already know the expression of $p(w \vert c)​$. So the above equation evaluates to a form that we have already worked out before. We can skip the algebra and know that $\mathbb{E}[c \vert w_1, ..., w_n] \approx (\Sigma^{-1} + 2nI)^{-1} \sum_{i=1}^n v\_{w_i}​$.</p>
 
-If you still recall the LHS and RHS of the law of total expectation (iterated expectation) expansion we did much earlier, then all that needs to be done to conclude the proof is to plug in the LHS and RHS based on the equations we derived. Feel free to refer to the paper since it offers a cleaner/shorter presentation.
+If you still recall the LHS and RHS of the Equation (1), then what we have left to conclude the proof is to plug  what we have derived into the LHS and RHS. Feel free to refer to the paper since it offers a cleaner/shorter presentation.
 
 $$
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]] \\
  (\Sigma^{-1} + 2I)^{-1} v_w \approx (\Sigma^{-1} + 2nI)^{-1} \sum_{i=1}^n v_{w_i}
 $$
 
-Therefore, we know that the matrix $A$ that we set out to find is now solvable by re-arranging the terms in above equations: $A = n(\Sigma^{-1} + 2I) (\Sigma^{-1} + 2nI)^{-1}$.
+Therefore, we know that the matrix $A$ that we set out to find is now solvable by re-arranging the terms in above equations: $A = n(\Sigma^{-1} + 2I) (\Sigma^{-1} + 2nI)^{-1}​$.
+
+### Finding Linear Transformation
+
+If we suppose that $u$ is the averaged discourse vectors, then iterating through the vocabulary, we should be able to find matrix $A$. 
 
 ### Application to Word Senses
 
-Intuitively, Theorem 1 dictates that a word has a **linear relationship** (fulfilled by matrix $A$) to the average of all the context vectors this word appears in: $v\_w = A \sum_s c_s$. This relationship is fully specified by $\Sigma$, the covariance of discourse random vector $c$. Theorem 2 of the paper can be interpreted as: $v\_w \approx \alpha v\_{s\_1} + \beta v\_{s\_2}$, a linear combination of 2 senses (each sense is represented as a vector). We can see the parallel between this linear decomposition and the transformed average of all context that word $w$ appears in.
+Intuitively, Theorem 1 dictates that a word has a **linear relationship** (fulfilled by matrix $A​$) to the average of all the context vectors this word appears in: $v\_w = A \sum_s c_s​$. This relationship is fully specified by $\Sigma​$, the covariance of discourse random vector $c​$. Theorem 2 of the paper can be interpreted as: $v\_w \approx \alpha v\_{s\_1} + \beta v\_{s\_2}​$, a linear combination of 2 senses (each sense is represented as a vector). We can see the parallel between this linear decomposition and the transformed average of all context that word $w​$ appears in. The proof of Theorem 2 essentially falls in this line, if there are 2 senses for a given word, then with high probability, $\alpha​$% of the context vectors should be similar to each other as they are all this word expressed in sense 1, $\beta​$% of the context vectors should be similar/grouped together as they are all expressed as sense 2.
+
+Since we do not observe the frequency ($\alpha$, $\beta$), nor do we know how many senses are in there, Arora proposed to discover senses using **sparse coding**[^5], finding a set of unit vectors $A\_1, ...,A\_m$, that for any word $v\_w$, it can be expressed by a small number of these unit vectors. These unit vectors are referred as the **Atoms of Discourse**.
+
+Sparse coding objective and description can be found in the paper, overall, given a set of word vectors, two integers k, m with k << m, find a set of unit vectors $A\_1, ...,A\_m$ such that:
+
+$$
+v_w = \sum_{j=1}^m \alpha_{w,j}A_j + \eta_w
+$$
+
+where at most k of the coefficients $\alpha$ are nonzero.  The goal is to minimize the reconstruction error term $\sum\_w \eta\_w$.
+
+$$
+\sum_w ||v_w - \sum_{j=1}^m \alpha_{w,j} A_j||_2^2
+$$
 
 ### Relations to Language Modeling
 
@@ -133,4 +153,6 @@ Unwittingly at first, Word2Vec is quickly shown to be an implicit solution to a 
 [^2]: In most of Arora et al.'s work, "sentence meaning", "discourse", and "context" are used almost interchangeably. They all refer to a vector representation of a span of words, usually within a fixed window. 
 [^3]:Linear Algebraic Structure of Word Senses, with Applications to Polysemy.
 [^4]: This is proven in A Latent Variable Model Approach to PMI-based Word Embeddings, Lemma 2.1. They proved a concentration bound of this partition function under the Bayesian priors specified in the model of Figure 1. It seems to be a general bound linked to the self-normalizing property of log-linear models.
+
+[^5]: http://ufldl.stanford.edu/wiki/index.php/Sparse_Coding
 
