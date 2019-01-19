@@ -54,7 +54,7 @@ $$
 v_w = A u
 $$
 
-For any word, if we compute the corresponding vector $u$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A$. I provide some algebra walk through the proof of Theorem 1 in the paper. Readers who find it elementary or advanced can skip this block straight to the next section. 
+For any word, if we compute the corresponding vector $u​$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A​$. I provide some algebra walk through the proof of Theorem 1 in the paper. Readers who find it elementary or advanced can skip this block straight to the next section. 
 
 (**Optional**)
 
@@ -62,10 +62,12 @@ The proof stands as long as the generative model in Figure 1 holds. We set to sh
 $$
 \begin{equation}
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
+\label{first-eq}
+\tag{1}
 \end{equation}
 $$
 
-The following step is to find the probability density function (pdf) of $c \vert w$: $p(c \vert w)$. In the earlier portion of the paper, we have the following equalities that we can substitute: $Z\_c \approx Z \exp(\|c \|^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\| c \|^2 = c^Tc = c^T I c$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v\_w)$. We can expand $p(c\vert w)$ using Bayes rule and substitute these terms in and obtain:
+The following step is to find the probability density function (pdf) of $c \vert w$: $p(c \vert w)$. In the earlier portion of the paper, we have the following equalities that we can substitute: $Z\_c \approx Z \exp(\|c \|^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\| c \|^2 = c^Tc = c^T I c$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v\_w)$. We can expand $p(c\vert w)​$ using Bayes rule and substitute these terms in and obtain:
 
 $$
 \begin{align*}
@@ -74,7 +76,7 @@ p(c|w) &\propto p(w|c)p(c) \\
 \end{align*}
 $$
 
-After obtaining the probability density function of $c \vert w​$, we can think about what kind of random variable this pdf suggests, because eventually we want to know what is $\mathbb{E}(c \vert w)​$, the left hand side of equation (1). Since there is a covariance matrix inverse $\Sigma^{-1}​$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)​$, we need to know what is the mean of this new distribution.
+After obtaining the probability density function of $c \vert w$, we can think about what kind of random variable this pdf suggests, because eventually we want to know what is $\mathbb{E}(c \vert w)$, the left hand side of equation (1). Since there is a covariance matrix inverse $\Sigma^{-1}$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)$, we need to know what is the mean of this new distribution.
 
 First, we ignore the covariance determinant term as it is a constant and in Arora's setting, the covariance matrix is invertible -- "if the word vectors as random variables are isotropic to some extent, it will make the covariance matrix identifiable" (identifiable = invertible). The assumption "isotropic word embedding" here means that word embedding dimensions should not be correlated with each other.
 
@@ -89,7 +91,7 @@ p(c|w) &\propto \frac{1}{Z} \exp(v_w \cdot c - c^T(\frac{1}{2} \Sigma^{-1} + I)c
 \end{align*}
 $$
 
-Now we have two expressions of $p(c \vert w)$. We can match the terms between two equations, one term $c^TB^{-1}c$ already appears in both, but not $-2 v_w \cdot c$. However, there are two terms with negative signs in the top expansion. A trick that applies here is to just make them equal and hope things to work out -- we solve for $\mu$:
+Now we have two expressions of $p(c \vert w)​$. We can match the terms between two equations, one term $c^TB^{-1}c​$ already appears in both, but not $-2 v_w \cdot c​$. However, there are two terms with negative signs in the top expansion. A trick that applies here is to just make them equal and hope things to work out -- we solve for $\mu​$:
 
 $$
 -2 v_w \cdot c = - cB^{-1}\mu - \mu^TB^{-1}c
@@ -143,11 +145,39 @@ $$
 v_w = \sum_{j=1}^m \alpha_{w,j}A_j + \eta_w
 $$
 
-where at most k of the coefficients $\alpha​$ are nonzero.  The goal is to minimize the reconstruction error term $\sum\_w \eta\_w​$.
+where at most k of the coefficients $\alpha$ are nonzero.  The goal is to minimize the reconstruction error term $\sum\_w \eta\_w$.
 
 $$
 \sum_w ||v_w - \sum_{j=1}^m \alpha_{w,j} A_j||_2^2
 $$
+
+### Do Non-linear Sentence Embeddings Conform to this?
+
+Arora et al.'s proof above assumed SIF sentence embeddings. SIF algorithm uses a linear combination of word embeddings to create sentence embeddings. One clear downside of SIF is that since GloVE/Word2Vec word embeddings do not contain order information, SIF sentence embeddings don't have order-information either. 
+
+We can list out the assumptions used in Arora et al.'s model:
+
+1. $p(w \vert c)$ is a log-linear model
+2. Words $w$ in a window are generated independently by $c$.
+3. $p(c)$, the prior of discourse vector $c$ is Gaussian with mean 0 and invertible covariance matrix $\Sigma$.
+
+Each assumption has some flaws. Assumption (1) assumes a very simplistic model on how words are generated from meaning. However, if this assumption is not made, then we have two issues: 1). we immediately lose the concentration of partition function $Z\_c$; 2). the introduction of any extra term besides the dot product, such as bilinear transformation $p(w \vert c) \propto \exp(v\_w^T H c)$, will break how we find $\mu$ for $p(c \vert w)​$. 
+
+Assumption (2) is a very serious offense for syntax in language. Words definitely depend on one another, otherwise we will have no grammar. `The drink is cold`, the choice of `is` is clearly influenced by the plurality of the subject. However, if we don't have this assumption, then we won't get equation:
+
+$$
+\begin{align}
+ p(w_1,...,w_n|c) \propto \prod_{i=1}^n p(w_i|c)
+\end{align}
+$$
+
+Instead, what we get is:
+$$
+ p(w_1,...,w_n|c) \propto \prod_{i=1}^n p(w_i|c, w_{<i})
+$$
+This will not enable us to reuse the $p(w\vert c)$ expression we derived before, breaking the equality in Equation (1). 
+
+Assumption (3) seems least objectionable, but people might hope that discourse or meaning of sentence is  a mixture of Gaussian (multimodal). 
 
 ### Relations to Language Modeling
 
