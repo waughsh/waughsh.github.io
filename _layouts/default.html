@@ -65,13 +65,14 @@
     <!-- jax: ["input/TeX", "output/PreviewHTML"] switch to preview format -->
     <script type="text/x-mathjax-config"> 
     MathJax.Hub.Config({
+      messageStyle: "none",
+      extensions: ["tex2jax.js"],
       jax: ["input/TeX", "output/PreviewHTML"], 
       tex2jax: {
         inlineMath: [['$','$'], ['\\(','\\)']],
         displayMath: [['$$','$$']],
         processEscapes: true,
         skipTags: ["script","noscript","style","textarea"],
-        preferredFont: "TeX"
       }
     });
     </script>
