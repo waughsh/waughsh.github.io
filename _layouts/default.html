@@ -61,18 +61,17 @@
       }
     });
     </script> -->
+
+    <!-- jax: ["input/TeX", "output/PreviewHTML"] switch to preview format -->
     <script type="text/x-mathjax-config"> 
     MathJax.Hub.Config({
+      jax: ["input/TeX", "output/PreviewHTML"], 
       tex2jax: {
         inlineMath: [['$','$'], ['\\(','\\)']],
         displayMath: [['$$','$$']],
         processEscapes: true,
         skipTags: ["script","noscript","style","textarea"],
-        preferredFont: "TeX",
-        scale: 90,
-        EqnChunkFactor: 1,
-        EqnChunk: 1,
-        EqnChunkDelay: 10
+        preferredFont: "TeX"
       }
     });
     </script>
