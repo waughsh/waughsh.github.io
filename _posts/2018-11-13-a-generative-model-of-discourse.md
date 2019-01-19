@@ -139,7 +139,7 @@ The paper tried to fit GloVe embeddings using linear transformation and use SIF[
 
 Intuitively, Theorem 1 dictates that a word has a **linear relationship** (fulfilled by matrix $A​$) to the average of all the context vectors this word appears in: $v\_w = A \sum_s c_s​$. This relationship is fully specified by $\Sigma​$, the covariance of discourse random vector $c​$. Theorem 2 of the paper can be interpreted as: $v\_w \approx \alpha v\_{s\_1} + \beta v\_{s\_2}​$, a linear combination of 2 senses (each sense is represented as a vector). We can see the parallel between this linear decomposition and the transformed average of all context that word $w​$ appears in. The proof of Theorem 2 essentially expresses that if there are 2 senses for a given word, then with high probability, $\alpha​$% of the context vectors should be similar to each other as they are all this word expressed in sense 1, $\beta​$% of the context vectors should be similar/grouped together as they are all expressed as sense 2.
 
-Since we do not observe the frequency ($\alpha$, $\beta$), nor do we know how many senses are in there, Arora proposed to discover senses using **sparse coding**[^6], finding a set of unit vectors $A\_1, ...,A\_m$, that for any word $v\_w$, it can be expressed by a small number of these unit vectors. These unit vectors are referred as the **Atoms of Discourse**.
+Since we do not observe the frequency ($\alpha​$, $\beta​$), nor do we know how many senses are in there, Arora proposed to discover senses using **sparse coding**[^6], finding a set of unit vectors $A\_1, ...,A\_m​$, that for any word $v\_w​$, it can be expressed by a small number of these unit vectors. These unit vectors are referred as the **Atoms of Discourse**.
 
 Sparse coding objective and description can be found in the paper, overall, given a set of word vectors, two integers k, m with k << m, find a set of unit vectors $A\_1, ...,A\_m​$ such that:
 
@@ -147,7 +147,7 @@ $$
 v_w = \sum_{j=1}^m \alpha_{w,j}A_j + \eta_w
 $$
 
-where at most k of the coefficients $\alpha$ are nonzero.  The goal is to minimize the reconstruction error term $\sum\_w \eta\_w$.
+where at most k of the coefficients $\alpha​$ are nonzero.  The goal is to minimize the reconstruction error term $\sum\_w \eta\_w​$.
 
 $$
 \sum_w ||v_w - \sum_{j=1}^m \alpha_{w,j} A_j||_2^2
@@ -204,12 +204,6 @@ BERT objective, using context to predict the prescence of a word seems quite sim
 DisSent is very similar to BERT due to the nature of predicting word using context, even though it is narrow in scope (only predicting a small number of words).
 
 There is one last type of sentence embedding objective that has not been thoughly investigated -- sequence auto-encoding. Sequence auto-encoding objective compresses the whole sequence into a context representation, and the model is required to reconstruct each word from this context representation[^12]. I have not seen many paper on this objective, but maybe it is worth a shot given its approximity to Arora et al.'s proposal model.
-
-### Word Recovering Through Context
-
-Theorem 1 can be operationalized as **"can a word's vector be recovered from its context"**? We might be able to use it as a test for sentence embedding models. 
-
- 
 
 ### Closing Thoughts
 
