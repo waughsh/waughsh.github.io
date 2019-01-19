@@ -173,17 +173,32 @@ $$
 
 Instead, what we get is:
 $$
- p(w_1,...,w_n|c) \propto \prod_{i=1}^n p(w_i|c, w_{<i})
+p(w_1,...,w_n|c) \propto \prod_{i=1}^n p(w_i|c, w_{<i})
 $$
 This will not enable us to reuse the $p(w\vert c)$ expression we derived before, breaking the equality in Equation (1). 
 
-Assumption (3) seems least objectionable, but people might hope that discourse or meaning of sentence is  a mixture of Gaussian (multimodal). 
+Assumption (3) seems least objectionable, but people might hope that discourse or meaning of sentence is  a mixture of Gaussian (multimodal), then the prior of $c$ cannot be zero-centered. This will also have ripple effect of finding out the expectation of $p(c \vert w)$. 
 
-### Relations to Language Modeling
+So what does Theorem 1 really provide for us? Well, it obviously directly leads to Theorem 2, word embeddings under these assumptions are additive combination of senses. Also, learning matrix $A$ can find a semantic meaning for $u$, the averaged context vectors. Arora et al. described an algorithm that is referenced from Reisinger and Mooney (2010)[^7]: compute $c\_1, ..., c\_m$, for a word $w$ appears in $m$ contexts. Cluster these vectors and average them. The cluster center originally are not near meaningful words that suggest the sense this cluster tries to represent, but by applying $A​$ to the cluster center, we obtain meaningful nearest words again:
 
+<p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-table1.png?raw=true" style="width:50%"></p>
 
+A few differences between $c$ and what we normally refer as sentence embedding: 
 
-### Implicit Solutions 
+1. $c$ is better viewed as a SIF-averaged fixed-window span of words, but this is not a problem due to large window size (20 words).
+2. The equality is in expectation, so $A​$ can only be applied to averaged of multiple context vectors $c​$.
+
+### How about Sentence Embedding Training Objectives?
+
+Well, we want the theory to have suggestive power for reality. Many sentence embedding models have been proposed and many of them have different objectives: InferSent, DisSent[^8] trained on a specific semantic task (predicting inference or discourse relation); OpenAI GPT[^9] trains with language modeling; BERT[^10] trains with word cloze task (using context to predict center word).
+
+From a very high-level view, Theorem 1 suggests that a word can still be "recovered" through applying a linear transformation to the averaged context it belongs to. This is very different from the language-modeling objective:
+$$
+p(x_1,...,x_n) = \prod_{t=1}^n p(x_t | x_{<t})
+$$
+Language modeling is focusing on predicting next word. It is quite different from this model. However, I do 
+
+### Closing Thoughts
 
 Unwittingly at first, Word2Vec is quickly shown to be an implicit solution to a non-convex co-occurence matrix decomposition. GloVE and other word embedding methods followed the lead and grounded these methods in theory. Are sentence embedding models, let it be InferSent, DisSent, ELMo, BERT, implicit solutions to a more principled discourse model? 
 
@@ -193,4 +208,9 @@ Unwittingly at first, Word2Vec is quickly shown to be an implicit solution to a 
 [^4]: This is proven in A Latent Variable Model Approach to PMI-based Word Embeddings, Lemma 2.1. They proved a concentration bound of this partition function under the Bayesian priors specified in the model of Figure 1. It seems to be a general bound linked to the self-normalizing property of log-linear models.
 [^5]: SIF refers to Arora's other paper: A Simple but Tough-to-Beat Baseline for Sentence Embeddings. Basically it's a  additive summation of word embeddings in a sentence re-weighted by the frequency of the word in corpus.
 [^6]: http://ufldl.stanford.edu/wiki/index.php/Sparse_Coding
+
+[^7]: Multi-Prototype Vector-Space Models of Word Meaning
+[^8]: InferSent: Supervised Learning of Universal Sentence Representations from Natural Language Inference Data; DisSent: Sentence Representation Learning from Explicit Discourse Relations.
+[^9]: Improving Language Understanding by Generative Pre-Training
+[^10]: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
 
