@@ -58,7 +58,7 @@ For any word, if we compute the corresponding vector $u​$, the word embedding 
 
 (**Optional**)
 
-The proof stands as long as the generative model in Figure 1 holds. We set to show that $\mathbb{E}(c_s | w \in s) = \mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)$. By "iterated expectation" or "law of total expectation", we can expand the left-hand side (LHS) as:
+The proof stands as long as the generative model in Figure 1 holds. We set to show that $v\_w \approx A \mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)$. By "iterated expectation" or "law of total expectation", we can expand the left-hand side (LHS) as:
 $$
 \begin{equation}
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
@@ -128,7 +128,7 @@ Therefore, we know that the matrix $A$ that we set out to find is now solvable b
 
 Now we have an analytic form of $A​$, it seems that there are two ways to finding what $A​$ is. The first way is to directly estimate $c​$'s prior distribution in the hopes to getting $\Sigma​$. The problem is that $p(c) = \sum_w p(c \vert w)p(w)​$. We can easily compute $c|w​$ but it's not very easy for us to compute $p(c)​$. 
 
-Then we also know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)​$, and $A = ​$
+Then we also know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)$, and $A =  n B^{-1}B$, if we can somehow estimate $B$, we can also compute $A$. Let's take a closer look at $c|w$. The mean $B^{-1} v\_w$ is word depdnent, but the covariance is not. This means if we want to find this distribution $c|w$ for any word, then we need to: for every word $w$, fitting the posterior $c|w​$ with a multivariate Gaussian pdf, and also hold the covariance matrix constant across all these pdfs.
 
 If we suppose that $u​$ is the averaged discourse vectors for word $w​$, then iterating through the vocabulary, we should be able to find matrix $A​$ by solving the following optimization:
 $$
