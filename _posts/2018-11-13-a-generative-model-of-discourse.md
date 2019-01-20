@@ -205,6 +205,10 @@ DisSent is very similar to BERT due to the nature of predicting word using conte
 
 There is one last type of sentence embedding objective that has not been thoughly investigated -- sequence auto-encoding. Sequence auto-encoding objective compresses the whole sequence into a context representation, and the model is required to reconstruct each word from this context representation[^12]. I have not seen many paper on this objective, but maybe it is worth a shot given its approximity to Arora et al.'s proposal model.
 
+### Word Recovering Through Context
+
+Theorem 1 can be operationalized as **"can a word's vector be recovered from its context"**? We might be able to use it as a test for sentence embedding models. 
+
 ### Closing Thoughts
 
 Unwittingly at first, Word2Vec is quickly shown to be an implicit solution to a non-convex co-occurence matrix decomposition. GloVE and other word embedding methods followed the lead and grounded these methods in theory. Are sentence embedding models, let it be InferSent, DisSent, ELMo, BERT, implicit solutions to a more principled discourse model? So far, we are still expecting great work and interesting answers.
