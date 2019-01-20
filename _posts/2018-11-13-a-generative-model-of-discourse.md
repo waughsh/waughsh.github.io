@@ -132,7 +132,7 @@ $$
 \arg\min_A \sum_w \| A u_w - v_w \|_2^2
 $$
 
-The paper tried to fit GloVe embeddings using linear transformation and use SIF[^5] to generate context vector $c\_w$. As we can see the practical fit is good in Table 2.
+The paper tried to fit GloVe embeddings using linear transformation and use SIF[^5] to generate context vector $c\_w​$. As we can see the practical fit is good in Table 2.
 
 <p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-table2.png?raw=true" style="width:50%"> <br> <b>Figure 3</b> </p>
 
@@ -213,6 +213,10 @@ Theorem 1 can be operationalized as **"can a word's vector be recovered from its
 ### Closing Thoughts
 
 Unwittingly at first, Word2Vec is quickly shown to be an implicit solution to a non-convex co-occurence matrix decomposition. GloVE and other word embedding methods followed the lead and grounded these methods in theory. Are sentence embedding models, let it be InferSent, DisSent, ELMo, BERT, implicit solutions to a more principled discourse model? So far, we are still expecting great work and interesting answers.
+
+### Acknowledgement 
+
+Special thanks to Jaime Roquero who discussed this paper in very detailed manner with me, and pointed out an algebra error I made in an earlier version of this draft.
 
 [^1]: In the scope of this post, we can assume it's an embedding. This is a very narrow interpretation that is ignoring decades of linguistic work on sentence representations. Interested readers can take a look at Kemp's Discourse Representation Theory framework.
 [^2]: In most of Arora et al.'s work, "sentence meaning", "discourse", and "context" are used almost interchangeably. They all refer to a vector representation of a span of words, usually within a fixed window. 
