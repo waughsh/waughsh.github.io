@@ -85,7 +85,7 @@ Then, all we need to do is to rearrange the terms in $p(c \vert w)​$ to appear
 $$
 \begin{align*}
 p(c|w) &\propto \exp(-\frac{1}{2} (c-\mu)^T B^{-1} (c-\mu)) \\
-&= \exp(-\frac{1}{2}(c^T B^{-1} c - cB^{-1}\mu - \mu^TB^{-1}c + \mu^TB^{-1}\mu))\\
+&= \exp(-\frac{1}{2}(c^T B^{-1} c - c^TB^{-1}\mu - \mu^TB^{-1}c + \mu^TB^{-1}\mu))\\
 p(c|w) &\propto \frac{1}{Z} \exp(v_w \cdot c - c^T(\frac{1}{2} \Sigma^{-1} + I)c) \\
 &= \frac{1}{Z} \exp(-\frac{1}{2}(-2 v_w \cdot c + c^TB^{-1}c))
 \end{align*}
@@ -94,10 +94,11 @@ $$
 Now we have two expressions of $p(c \vert w)​$. We can match the terms between two equations, one term $c^TB^{-1}c​$ already appears in both, but not $-2 v_w \cdot c​$. However, there are two terms with negative signs in the top expansion. A trick that applies here is to just make them equal and hope things to work out -- we solve for $\mu​$:
 
 $$
--2 v_w \cdot c = - cB^{-1}\mu - \mu^TB^{-1}c
+-2 v_w \cdot c = - c^TB^{-1}\mu - \mu^TB^{-1}c \\
+-2 v_w \cdot c = -2 \mu^T B^{-1}c
 $$
 
-It is somewhat transparent that on the RHS (right hand side), $B$ needs to disappear since the LHS (left hand side) does not contain any $B$. To do that, $\mu$ should at least contain $B$ so that it cancels out with $B^{-1}$. Also the LHS has $v_w$ while RHS has none. Then the answer should be apparent: $\mu = Bv_w$. If you plug this in, the above equality works, shows that this is our $\mu​$. 
+It is somewhat transparent that on the RHS (right hand side), $B​$ needs to disappear since the LHS (left hand side) does not contain any $B​$. To do that, $\mu​$ should at least contain $B​$ so that it cancels out with $B^{-1}​$. Also the LHS has $v_w​$ while RHS has none. Then the answer should be apparent: $\mu = Bv_w​$. If you plug this in, the above equality works, shows that this is our $\mu​$. 
 
 My stats PhD friend told me, if I saw a pdf in the form of $w^Tx - \frac{1}{2} x^TB^{-1}x​$, then I can actually skip the above algebra and directly "see" this distribution of $x​$ as mean $Bw​$, with variance $B​$. 
 
@@ -123,9 +124,9 @@ Therefore, we know that the matrix $A$ that we set out to find is now solvable b
 
 (**Optional End**)
 
-### Finding Linear Transformation
+### Estimation of A
 
-If we suppose that $u$ is the averaged discourse vectors for word $w$, then iterating through the vocabulary, we should be able to find matrix $A$ by solving the following optimization:
+If we suppose that $u​$ is the averaged discourse vectors for word $w​$, then iterating through the vocabulary, we should be able to find matrix $A​$ by solving the following optimization:
 
 $$
 \arg\min_A \sum_w \| A u_w - v_w \|_2^2
