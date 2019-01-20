@@ -58,7 +58,7 @@ For any word, if we compute the corresponding vector $u​$, the word embedding 
 
 (**Optional**)
 
-The proof stands as long as the generative model in Figure 1 holds. We set to show that $v\_w \approx A \mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)$. By "iterated expectation" or "law of total expectation", we can expand the left-hand side (LHS) as:
+The proof stands as long as the generative model in Figure 1 holds. We set to show that $v\_w \approx A \mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)$. By "iterated expectation" or "law of total expectation", we can expand the $\mathbb{E}[c\_s \vert w \in s]$ as:
 $$
 \begin{equation}
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
@@ -67,7 +67,7 @@ $$
 \end{equation}
 $$
 
-The following step is to find the probability density function (pdf) of $c \vert w$: $p(c \vert w)$. In the earlier portion of the paper, we have the following equalities that we can substitute: $Z\_c \approx Z \exp(\|c \|^2)$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)$, $\| c \|^2 = c^Tc = c^T I c$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v\_w)$. We can expand $p(c\vert w)​$ using Bayes rule and substitute these terms in and obtain:
+The following step is to find the probability density function (pdf) of $c \vert w​$: $p(c \vert w)​$. In the earlier portion of the paper, we have the following equalities that we can substitute: $Z\_c \approx Z \exp(\|c \|^2)​$[^4], the probability density function of a multivariate normal distribution $c \sim (0, \Sigma)​$ is $p(c) = \exp(-\frac{1}{2} c^T \Sigma^{-1}c)​$, $\| c \|^2 = c^Tc = c^T I c​$, and the log-linear model we assumed: $p(w \vert c) = \exp(c \cdot v\_w)​$. We can expand $p(c\vert w)​$ using Bayes rule and substitute these terms in and obtain:
 
 $$
 \begin{align*}
