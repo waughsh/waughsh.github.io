@@ -80,7 +80,7 @@ After obtaining the probability density function of $c \vert w$, we can think ab
 
 First, we ignore the covariance determinant term as it is a constant and in Arora's setting, the covariance matrix is invertible -- "if the word vectors as random variables are isotropic to some extent, it will make the covariance matrix identifiable" (identifiable = invertible). The assumption "isotropic word embedding" here means that word embedding dimensions should not be correlated with each other.
 
-Then, all we need to do is to rearrange the terms in $p(c \vert w)​$ to appear in the form of $\exp(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu))​$. By doing so, we will be able to find our $\mu​$, the expectation of this pdf. Since the form $c^T(\frac{1}{2} \Sigma^{-1} + I)c​$ looks very similar to the quadratic form that we need, we can let $B^{-1} = \frac{1}{2} \Sigma^{-1} + I​$ and let $B​$ be our new covariance matrix for $c \vert w​$. We can work out the equations from both sides. We let $\mu​$ be the mean we want and solve for it:
+Then, all we need to do is to rearrange the terms in $p(c \vert w)$ to appear in the form of $\exp(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu))$. By doing so, we will be able to find our $\mu$, the expectation of this pdf. Since the form $\frac{1}{2} c^T( \Sigma^{-1} + 2I)c$ looks very similar to the quadratic form that we need, we can let $B^{-1} = \Sigma^{-1} + 2I$ and let $B$ be our new covariance matrix for $c \vert w$. We can work out the equations from both sides. We let $\mu$ be the mean we want and solve for it:
 
 $$
 \begin{align*}
@@ -111,7 +111,7 @@ p(c|w_1, ..., w_n) \propto p(w_1,...,w_n|c) p(c) \propto p(c) \prod_{i=1}^n p(w_
 = \frac{1}{Z^n} \exp(\sum_{i=1}^n v_{w_i}^Tc - \frac{1}{2} c^T(\Sigma^{-1} + 2nI)c)
 $$
 
-<p>The generation of words are independent with each other conditioned on $c​$. We already know the expression of $p(w \vert c)​$. So the above equation evaluates to a form that we have already worked out before. We can skip the algebra and know that $\mathbb{E}[c \vert w_1, ..., w_n] \approx (\Sigma^{-1} + 2nI)^{-1} \sum_{i=1}^n v\_{w_i}​$.</p>
+<p>The generation of words are independent with each other conditioned on $c​$. We already know the expression of $p(w \vert c)​$. So the above equation evaluates to a form that we have already worked out before. We can skip the algebra and know that $\mathbb{E}[c \vert w_1, ..., w_n] \approx (\Sigma^{-1} + 2nI)^{-1} \sum_{i=1}^n v_{w_i}​$.</p>
 
 If you still recall the LHS and RHS of the Equation (1), then what we have left to conclude the proof is to plug  what we have derived into the LHS and RHS. Feel free to refer to the paper since it offers a cleaner/shorter presentation.
 
@@ -126,8 +126,11 @@ Therefore, we know that the matrix $A$ that we set out to find is now solvable b
 
 ### Estimation of A
 
-If we suppose that $u​$ is the averaged discourse vectors for word $w​$, then iterating through the vocabulary, we should be able to find matrix $A​$ by solving the following optimization:
+Now we have an analytic form of $A​$, it seems that there are two ways to finding what $A​$ is. The first way is to directly estimate $c​$'s prior distribution in the hopes to getting $\Sigma​$. The problem is that $p(c) = \sum_w p(c \vert w)p(w)​$. We can easily compute $c|w​$ but it's not very easy for us to compute $p(c)​$. 
 
+Then we also know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)​$, and $A = ​$
+
+If we suppose that $u​$ is the averaged discourse vectors for word $w​$, then iterating through the vocabulary, we should be able to find matrix $A​$ by solving the following optimization:
 $$
 \arg\min_A \sum_w \| A u_w - v_w \|_2^2
 $$
@@ -182,7 +185,7 @@ This will not enable us to reuse the $p(w\vert c)$ expression that we derived, b
 
 Assumption (3) seems least objectionable, but people might hope that discourse or meaning vector of a sentence is a mixture of Gaussian (multimodal). This will also have a ripple effect on how we can analytically solve for the expectation of $p(c \vert w)$. 
 
-So what does Theorem 1 really provide for us? Well, it obviously leads to Theorem 2, word embeddings under these assumptions are additive combination of senses. Also, learning matrix $A$ can find a semantic meaning for $u$, the averaged context vectors. Arora et al. described an algorithm that is referenced from Reisinger and Mooney (2010)[^7]: compute $c\_1, ..., c\_m$, for a word $w$ appears in $m$ contexts. Cluster these vectors and average them. The cluster center originally are not near meaningful words that suggest the sense this cluster tries to represent, but by applying $A$ to the cluster center, we obtain meaningful nearest words again:
+So what does Theorem 1 really provide for us? Well, it obviously leads to Theorem 2, word embeddings under these assumptions are additive combination of senses. Also, learning matrix $A​$ can find a semantic meaning for $u​$, the averaged context vectors. Arora et al. described an algorithm that is referenced from Reisinger and Mooney (2010)[^7]: compute $c\_1, ..., c\_m​$, for a word $w​$ appears in $m​$ contexts. Cluster these vectors and average them. The cluster center originally are not near meaningful words that suggest the sense this cluster tries to represent, but by applying $A​$ to the cluster center, we obtain meaningful nearest words again:
 
 <p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-table1.png?raw=true" style="width:50%"> <br> <b>Figure 4</b> </p>
 
