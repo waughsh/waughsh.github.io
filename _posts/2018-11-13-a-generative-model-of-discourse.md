@@ -127,11 +127,11 @@ Therefore, we know that the matrix $A$ that we set out to find is now solvable b
 
 ### Estimation of Linear Transformation
 
-Now we have an analytic form of $A​$, it seems that there are two ways to finding what $A​$ is. The first way is to directly estimate $c​$'s prior distribution in the hopes to getting $\Sigma​$. The problem is that $p(c) = \sum_w p(c \vert w)p(w)​$. We can easily compute $c|w​$ but it's not very easy for us to compute $p(c)​$. 
+Now we have an analytic form of $A$, it seems that there are two ways to finding what $A$ is. The first way is to directly estimate $c$'s prior distribution in the hopes to getting $\Sigma$. The problem is that $p(c) = \sum\_w p(c \vert w)p(w)$. We can easily compute $c|w$ but it's not very easy for us to compute $p(c)$. 
 
-Then we also know that $c \vert w \sim \mathcal{N}(B^{-1}v\_w, B)$, and $A =  n B^{-1}B$, if we can somehow estimate $B$, we can also compute $A$. Let's take a closer look at $c|w$. The mean $B^{-1} v\_w$ is word depdnent, but the covariance is not. This means if we want to find this distribution $c|w$ for any word, then we need to: for every word $w$, fit the posterior $c|w$ with a multivariate Gaussian pdf, and share the same covariance matrix across all these pdfs. This seems possible but computing matrix inverse: $ B^{-1}$ is expensive ($B$ is a 300 x 300 matrix, considering a 300d word vector).
+Then we also know that $c \vert w \sim \mathcal{N}(B^{-1}v\_w, B)$, and $A =  n B^{-1}B$, if we can somehow estimate $B$, we can also compute $A$. Let's take a closer look at $c \vert w$. The mean $B^{-1} v\_w$ is word depdnent, but the covariance is not. This means if we want to find this distribution $c|w$ for any word, then we need to: for every word $w$, fit the posterior $c \vert w$ with a multivariate Gaussian pdf, and share the same covariance matrix across all these pdfs. This seems possible but computing matrix inverse: $ B^{-1}$ is expensive ($B$ is a 300 x 300 matrix, considering a 300d word vector).
 
-The last choice is to do monte carlo estimation on the Theorem 1's original equation: $v\_w \approx A \mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)$, replace the expectation with sampling over window $s$ and sampling over word $w$, and find $A$ as a linear regression problem. This is also the method the original paper has chosen.
+The last choice is to do monte carlo estimation on the Theorem 1's original equation: $v\_w \approx A \mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)​$, replace the expectation with sampling over window $s​$ and sampling over word $w​$, and find $A​$ as a linear regression problem. This is also the method the original paper has chosen.
 
 If we suppose that $u​$ is the averaged discourse vectors for word $w​$, then iterating through the vocabulary, we should be able to find matrix $A​$ by solving the following optimization:
 $$
@@ -170,7 +170,7 @@ We can list out the assumptions used in Arora et al.'s model:
 2. Words $w$ in a window are generated independently by $c$.
 3. $p(c)$, the prior of discourse vector $c$ is Gaussian with mean 0 and invertible covariance matrix $\Sigma$.
 
-Each assumption has some flaws. Assumption (1) assumes a very simplistic model on how words are generated from meaning. However, if this assumption is not made, we will have two problems: 1). we immediately lose the concentration of the partition function $Z\_c$; 2). the introduction of any extra term besides the dot product, even bilinear transformation $p(w \vert c) \propto \exp(v\_w^T H c)$, will break how we solve $\mu$ for $p(c \vert w)$. 
+Each assumption has some flaws. Assumption (1) assumes a very simplistic model on how words are generated from meaning. However, if this assumption is not made, we will have two problems: 1). we immediately lose the concentration of the partition function $Z\_c​$; 2). the introduction of any extra term besides the dot product, even bilinear transformation $p(w \vert c) \propto \exp(v\_w^T H c)​$, will break how we solve $\mu​$ for $p(c \vert w)​$. 
 
 Assumption (2) is a very serious offense for syntax in language. Words definitely depend on one another -- grammatical structure naturally emerges from word-to-word dependencies. `The drink is cold`, the choice of `is` is clearly influenced by the plurality of the subject. However, if we drop this assumption, we won't be able to get the following factorization:
 
