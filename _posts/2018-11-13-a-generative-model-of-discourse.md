@@ -58,7 +58,7 @@ For any word, if we compute the corresponding vector $u​$, the word embedding 
 
 (**Optional**)
 
-The proof stands as long as the generative model in Figure 1 holds. We set to show that $v\_w \approx A \mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)$. By "iterated expectation" or "law of total expectation", we can expand the $\mathbb{E}[c\_s \vert w \in s]$ as:
+The proof stands as long as the generative model in Figure 1 holds. We set to show that $v\_w \approx A \mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)​$. By "iterated expectation" or "law of total expectation", we can expand the $\mathbb{E}[c\_s \vert w \in s]​$ as:
 $$
 \begin{equation}
 \mathbb{E}[c_s | w \in s] = \mathbb{E}[\mathbb{E}[c_s | s = w_1...w...w_n | w \in s]]
@@ -76,7 +76,7 @@ p(c|w) &\propto p(w|c)p(c) \\
 \end{align*}
 $$
 
-After obtaining the probability density function of $c \vert w$, we can think about what kind of random variable this pdf suggests, because eventually we want to know what is $\mathbb{E}(c \vert w)$, the left hand side of equation (1). Since there is a covariance matrix inverse $\Sigma^{-1}$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)$, we need to know what is the mean of this new distribution.
+After obtaining the probability density function of $c \vert w​$, we can think about what kind of random variable this pdf suggests, because eventually we want to know what is $\mathbb{E}(c \vert w)​$, the left hand side of equation (1). Since there is a covariance matrix inverse $\Sigma^{-1}​$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)​$, we need to know what is the mean of this new distribution.
 
 First, we ignore the covariance determinant term as it is a constant and in Arora's setting, the covariance matrix is invertible -- "if the word vectors as random variables are isotropic to some extent, it will make the covariance matrix identifiable" (identifiable = invertible). The assumption "isotropic word embedding" here means that word embedding dimensions should not be correlated with each other.
 
@@ -128,7 +128,9 @@ Therefore, we know that the matrix $A$ that we set out to find is now solvable b
 
 Now we have an analytic form of $A​$, it seems that there are two ways to finding what $A​$ is. The first way is to directly estimate $c​$'s prior distribution in the hopes to getting $\Sigma​$. The problem is that $p(c) = \sum_w p(c \vert w)p(w)​$. We can easily compute $c|w​$ but it's not very easy for us to compute $p(c)​$. 
 
-Then we also know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)$, and $A =  n B^{-1}B$, if we can somehow estimate $B$, we can also compute $A$. Let's take a closer look at $c|w$. The mean $B^{-1} v\_w$ is word depdnent, but the covariance is not. This means if we want to find this distribution $c|w$ for any word, then we need to: for every word $w$, fitting the posterior $c|w​$ with a multivariate Gaussian pdf, and also hold the covariance matrix constant across all these pdfs.
+Then we also know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)$, and $A =  n B^{-1}B$, if we can somehow estimate $B$, we can also compute $A$. Let's take a closer look at $c|w$. The mean $B^{-1} v\_w$ is word depdnent, but the covariance is not. This means if we want to find this distribution $c|w$ for any word, then we need to: for every word $w$, fit the posterior $c|w$ with a multivariate Gaussian pdf, and share the same covariance matrix across all these pdfs. This seems possible but computing matrix inverse: $ B^{-1}$ is expensive ($B$ is a 300 x 300 matrix, considering a 300d word vector).
+
+The last choice is to do monte carlo estimation on the Theorem 1's original equation: $v\_w \approx A \mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)$, replace the expectation with sampling over window $s$ and sampling over word $w$, and find $A$ as a linear regression problem. This is also the method the original paper has chosen.
 
 If we suppose that $u​$ is the averaged discourse vectors for word $w​$, then iterating through the vocabulary, we should be able to find matrix $A​$ by solving the following optimization:
 $$
@@ -183,7 +185,7 @@ p(w_1,...,w_n|c) \propto \prod_{i=1}^n p(w_i|c, w_{<i})
 $$
 This will not enable us to reuse the $p(w\vert c)$ expression that we derived, breaking the equality in Equation (1). 
 
-Assumption (3) seems least objectionable, but people might hope that discourse or meaning vector of a sentence is a mixture of Gaussian (multimodal). This will also have a ripple effect on how we can analytically solve for the expectation of $p(c \vert w)$. 
+Assumption (3) dictates a Gaussian random walk model, which seems least objectionable. The discussion of this assumption is left for future posts. 
 
 So what does Theorem 1 really provide for us? Well, it obviously leads to Theorem 2, word embeddings under these assumptions are additive combination of senses. Also, learning matrix $A​$ can find a semantic meaning for $u​$, the averaged context vectors. Arora et al. described an algorithm that is referenced from Reisinger and Mooney (2010)[^7]: compute $c\_1, ..., c\_m​$, for a word $w​$ appears in $m​$ contexts. Cluster these vectors and average them. The cluster center originally are not near meaningful words that suggest the sense this cluster tries to represent, but by applying $A​$ to the cluster center, we obtain meaningful nearest words again:
 
