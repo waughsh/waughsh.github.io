@@ -7,10 +7,6 @@ title: A Generative Model of Discourse
 ---
 ## A Generative Model of Discourse
 
-Note: to placate people who are well-versed in linguistics, I use "discourse" to refer to the meaning representation of a sentence. 
-
-TLDR: This is a post based on Linear Algebraic Structure of Word Senses, with Applications to Polysemy ([link](https://arxiv.org/pdf/1601.03764.pdf)).
-
 ### Short Preface
 
 There has been a lot interests on sentence-level representation learning. Similar to the explosion of word embedding, sentence embedding has captured a lot of attention with new papers being produced on ArXiv like grass sprouting in Spring. 
