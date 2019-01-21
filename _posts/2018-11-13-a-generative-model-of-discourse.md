@@ -13,7 +13,7 @@ There has been a lot interests on sentence-level representation learning. Simila
 
 This article could easily be a lengthy linguistics paper, and such one is very needed for the current situation. Based on my very limited education in linguistics, I do not believe linguistis have an agreed upon set of "properties" that a sentence representation[^1] need to capture, nor do I believe adding more of such properties exhausitvely will finally have enough granularity to sift gold from sand -- find the most ideal sentence representation.
 
-This post tries to take a closer look at the seminal work produced by Sanjeev Arora and his students, who took a principled approach to computationally infer the meaning representation from words, and then to sentences.
+This post tries to take a closer look at the interesting work produced by Sanjeev Arora and his students: Linear Algebraic Structure of Word Senses, with Applications to Polysemy, that took a principled approach to computationally infer the meaning representation from words, and then to sentences.
 
 ### A Generative Model of Sentence
 
