@@ -127,7 +127,7 @@ Therefore, we know that the matrix $A$ that we set out to find is now solvable b
 
 ### Estimation of Linear Transformation
 
-Now we have an analytic form of $A​$, it seems that there are two ways to finding what $A​$ is. The first way is to directly estimate $c​$'s prior distribution in the hopes to getting $\Sigma​$. The problem is that $p(c) = \sum\_w p(c \vert w)p(w)​$. We can easily compute $c|w​$ but it's not very easy for us to compute $p(c)​$. 
+<p>Now we have an analytic form of $A$, it seems that there are two ways to finding what $A$ is. The first way is to directly estimate $c$'s prior distribution in the hopes to getting $\Sigma$. The problem is that $p(c) = \sum_w p(c \vert w)p(w)$. We can easily compute $c|w$ but it's not very easy for us to compute $p(c)$. </p>
 
 <p>Then we also know that $c \vert w \sim \mathcal{N}(B^{-1}v_w, B)$, and $A =  n B^{-1}B$, if we can somehow estimate $B$, we can also compute $A$. Let's take a closer look at $c \vert w$. The mean $B^{-1} v_w$ is word depdnent, but the covariance is not. This means if we want to find this distribution $c|w$ for any word, then we need to: for every word $w$, fit the posterior $c \vert w$ with a multivariate Gaussian pdf, and share the same covariance matrix across all these pdfs. This seems possible but computing matrix inverse: $ B^{-1}$ is expensive ($B$ is a 300 x 300 matrix, considering a 300d word vector).</p>
 
