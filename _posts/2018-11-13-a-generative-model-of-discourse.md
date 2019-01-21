@@ -2,7 +2,7 @@
 published: true
 layout: post
 draft: true
-visible: 0
+visible: 1
 title: A Generative Model of Discourse
 ---
 ## A Generative Model of Discourse
@@ -204,7 +204,7 @@ A cursory look at the graphical model of Arora's model and language model remind
 
 <p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-figA.png?raw=true" style="width:50%"> <br> <b>Figure 5</b> </p>
 
-When there is a hidden variable (confounding variable) $c$ that governs the behavior of $a$ and $b$, without knowing the existence of $c$, we (the algorithm) can often make the mistake of inferring a correlational relationship between variable $a$ and $b​$. Does the left figure look very much like a language model, and the right figure very similar to what Arora et al. has proposed? This is not to suggest that there is no dependence between words -- there clearly is, but modeling language well by conditioning on previous words should not exclude us from hypothesizing a different kind of generative model.
+When there is a hidden variable (confounding variable) $c​$ that governs the behavior of $a​$ and $b​$, without knowing the existence of $c​$, we (the algorithm) can often make the mistake of inferring a correlational relationship between variable $a​$ and $b​$. Does the left figure look very much like a language model, and the right figure very similar to what Arora et al. has proposed? This is not to suggest that there is no dependence between words -- there clearly is, but modeling language well by conditioning on previous words should not exclude us from hypothesizing a different kind of generative model.
 
 BERT objective, using context to predict the prescence of a word seems quite similar to what Theorem 1 seems to suggest, allowing a word to be recovered through its context. However BERT does mask the word itself (as it makes sense), and the prediction happens on each sentence, instead of averaged context.
 
@@ -215,6 +215,8 @@ There is one last type of sentence embedding objective that has not been thoughl
 ### Word Recovering Through Context
 
 Theorem 1 can be operationalized as **"can a word's vector be recovered from its context"**? We might be able to use it as a test for sentence embedding models. 
+
+(to be continued)
 
 ### Closing Thoughts
 
