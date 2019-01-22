@@ -7,9 +7,13 @@ published: true
 
 
 
+### A Disambiguation Page of Allen Nie
+
+
+
 <img src="https://github.com/windweller/windweller.github.io/blob/master/images/profile_pic.JPG?raw=true" style="width:50%">
 
-### A Disambiguation Page of Allen Nie
+
 
 Three Stanford departments I've been affiliated with:
 
@@ -39,7 +43,7 @@ I'm constantly working on new projects and seeking to connect with people! Drop 
 
 ### Publications
 
-- **DeepTag: inferring diagnoses from veterinary clinical notes.**, **A Nie**, A Zehnder, RL Page, AL Pineda, MA Rivas, CD Bustamante, J Zou., (2018). Nature (npj) Digital Medicine. To appear. \[[link](https://arxiv.org/abs/1806.10722)\] \[[code](http://github.com/windweller/deeptag)\] \[[demo](http://anie.me/demo/deepvet)\]
+- **DeepTag: inferring diagnoses from veterinary clinical notes.**, **A Nie**, A Zehnder, RL Page, AL Pineda, MA Rivas, CD Bustamante, J Zou., (2018). Nature (npj) Digital Medicine 1, Article: 60. \[[link](https://www.nature.com/articles/s41746-018-0067-8)\] \[[code](http://github.com/windweller/deeptag)\] \[[demo](http://anie.me/demo/deepvet)\]
 - **DisSent: Sentence Representation Learning from Explicit Discourse Relations**. **Nie, A.**, Bennett, E.D., Goodman, N.D., (2017). arXiv preprint. \[[link](https://arxiv.org/abs/1710.04334)\] \[[code](https://github.com/windweller/disextract)\]
 - **Data Noising as Smoothing in Neural Network Sequence Models**. Ziang, X., Sida W., Jiwei L., Levy, D., **Nie A.**, Jurafsky, Dan & Ng, Andrew, (2016). 5th International Conference on Learning Representations (ICLR). Toulon, France. (Oral at BayLearn 2016) \[[link](https://arxiv.org/abs/1703.02573)\]
 - **Representations of Time Affect Willingness to Wait for Future Rewards**. Thorstad, R., **Nie, A.**, & Wolff, P. (2015). 37th Annual Conference of the Cognitive Science Society. Pasadena, California. \[[link](http://psychology.emory.edu/cognition/wolff/papers/ThorstadNieWolff2015.pdf)\]
