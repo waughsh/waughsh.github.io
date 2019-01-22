@@ -38,7 +38,7 @@ I'm constantly working on new projects and seeking to connect with people! Drop 
 
 ### Contact me
 
-[anie@stanford.edu](mailto:anie@stanford.edu)
+[aimingnie@gmail.com](mailto:aimingnie@gmail.com)
 
 
 ### Publications
