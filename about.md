@@ -11,7 +11,7 @@ published: true
 
 
 
-<img src="https://github.com/windweller/windweller.github.io/blob/master/images/profile_pic.JPG?raw=true" style="width:50%">
+<p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/profile_pic.JPG?raw=true" style="width:50%"></p>
 
 
 
