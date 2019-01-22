@@ -7,7 +7,7 @@ published: true
 
 
 
-![small_vacation_photo1.png]({{site.baseurl}}/images/profile_pic.JPG)
+<img src="https://github.com/windweller/windweller.github.io/blob/master/images/profile_pic.JPG?raw=true" style="width:50%">
 
 ### A Disambiguation Page of Allen Nie
 
