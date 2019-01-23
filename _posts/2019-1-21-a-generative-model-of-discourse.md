@@ -11,9 +11,11 @@ title: A Generative Model of Discourse
 
 There has been a lot interests on sentence-level representation learning. Similar to the explosion of word embedding, sentence embedding has captured a lot of attention with new papers being produced on ArXiv like grass sprouting in Spring. 
 
-This article could easily be a lengthy linguistics paper, and such one is very needed for the current situation. Based on my very limited education in linguistics, I do not believe linguistis have an agreed upon set of "properties" that a sentence representation[^1] need to capture, nor do I believe adding more of such properties exhausitvely will finally have enough granularity to sift gold from sand -- find the most ideal sentence representation.
+This article could easily be a lengthy linguistics paper, and such one is very needed for the current situation. Based on my very limited education in linguistics, I do not believe linguistis have an agreed upon set of "properties" that a sentence representation[^1] need to capture to be the most ideal meaning representation of a sentence. As this is still an ongoing area of research, I am very excited to see more linguistic theories on discourse and how to better understand sentential relations.
 
-This post tries to take a closer look at the interesting work produced by Sanjeev Arora and his students: Linear Algebraic Structure of Word Senses, with Applications to Polysemy, that took a principled approach to computationally infer the meaning representation from words, and then to sentences.
+This post tries to take a closer look at the principled work produced by Sanjeev Arora and his students: Linear Algebraic Structure of Word Senses, with Applications to Polysemy, that took a principled approach to computationally infer the meaning representation from words, and then to sentences.
+
+Based on their principled framework, I examined if there is a statistical test that asks this question: **"can a word be recovered from its context?"** that can be used to provide a quantitative measure of sentence embedding quality. The experiments are conducted in the later sections.
 
 ### A Generative Model of Sentence
 
@@ -45,12 +47,12 @@ $$
 u = \frac{1}{k} \sum_{s \in \{s_1, ..., s_k\}} \frac{1}{n} \sum_{w_i \in s} v_{w_i}
 $$
 
-To even make this statement simpler, assume the above figure represents a tensor $S \in \mathcal{R}^{n \times k \times d}​$, we can easily run the following Numpy operation to obtain $u​$: `u = np.mean(np.mean(S, axis=0), axis=1)`. After knowing how $u​$ is computed, then we can understand Theorem 1:
+To even make this statement simpler, assume the above figure represents a tensor $S \in \mathcal{R}^{n \times k \times d}$, we can easily run the following Numpy operation to obtain $u$: `u = np.mean(np.mean(S, axis=0), axis=1)`. After knowing how $u$ is computed, then we can understand Theorem 1:
 $$
 v_w = A u
 $$
 
-For any word, if we compute the corresponding vector $u​$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A​$. I provide some algebra walk through the proof of Theorem 1 in the paper. Readers who find it elementary or advanced can skip this block straight to the next section. 
+For any word, if we compute the corresponding vector $u$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A​$. I provide some algebra walk through the proof of Theorem 1 in the paper. Readers who find it elementary or advanced can skip this block straight to the next section. 
 
 (**Optional**)
 
@@ -73,11 +75,11 @@ p(c|w) &\propto p(w|c)p(c) \\
 \end{align*}
 $$
 
-After obtaining the probability density function of $c \vert w​$, we can think about what kind of random variable this pdf suggests, because eventually we want to know what is $\mathbb{E}(c \vert w)​$, the left hand side of equation (1). Since there is a covariance matrix inverse $\Sigma^{-1}​$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)​$, we need to know what is the mean of this new distribution.
+After obtaining the probability density function of $c \vert w$, we can think about what kind of random variable this pdf suggests, because eventually we want to know what is $\mathbb{E}(c \vert w)$, the left hand side of equation (1). Since there is a covariance matrix inverse $\Sigma^{-1}$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)$, we need to know what is the mean of this new distribution.
 
 First, we ignore the covariance determinant term as it is a constant and in Arora's setting, the covariance matrix is invertible -- "if the word vectors as random variables are isotropic to some extent, it will make the covariance matrix identifiable" (identifiable = invertible). The assumption "isotropic word embedding" here means that word embedding dimensions should not be correlated with each other.
 
-Then, all we need to do is to rearrange the terms in $p(c \vert w)$ to appear in the form of $\exp(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu))$. By doing so, we will be able to find our $\mu$, the expectation of this pdf. Since the form $\frac{1}{2} c^T( \Sigma^{-1} + 2I)c$ looks very similar to the quadratic form that we need, we can let $B^{-1} = \Sigma^{-1} + 2I$ and let $B$ be our new covariance matrix for $c \vert w$. We can work out the equations from both sides. We let $\mu$ be the mean we want and solve for it:
+Then, all we need to do is to rearrange the terms in $p(c \vert w)$ to appear in the form of $\exp(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu))$. By doing so, we will be able to find our $\mu$, the expectation of this pdf. Since the form $\frac{1}{2} c^T( \Sigma^{-1} + 2I)c$ looks very similar to the quadratic form that we need, we can let $B^{-1} = \Sigma^{-1} + 2I$ and let $B$ be our new covariance matrix for $c \vert w$. We can work out the equations from both sides. We let $\mu​$ be the mean we want and solve for it:
 
 $$
 \begin{align*}
@@ -88,14 +90,14 @@ p(c|w) &\propto \frac{1}{Z} \exp(v_w \cdot c - c^T(\frac{1}{2} \Sigma^{-1} + I)c
 \end{align*}
 $$
 
-Now we have two expressions of $p(c \vert w)​$. We can match the terms between two equations, one term $c^TB^{-1}c​$ already appears in both, but not $-2 v_w \cdot c​$. However, there are two terms with negative signs in the top expansion. A trick that applies here is to just make them equal and hope things to work out -- we solve for $\mu​$:
+Now we have two expressions of $p(c \vert w)$. We can match the terms between two equations, one term $c^TB^{-1}c$ already appears in both, but not $-2 v_w \cdot c$. However, there are two terms with negative signs in the top expansion. A trick that applies here is to just make them equal and hope things to work out -- we solve for $\mu​$:
 
 $$
 -2 v_w \cdot c = - c^TB^{-1}\mu - \mu^TB^{-1}c \\
 -2 v_w \cdot c = -2 \mu^T B^{-1}c
 $$
 
-It is somewhat transparent that on the RHS (right hand side), $B​$ needs to disappear since the LHS (left hand side) does not contain any $B​$. To do that, $\mu​$ should at least contain $B​$ so that it cancels out with $B^{-1}​$. Also the LHS has $v_w​$ while RHS has none. Then the answer should be apparent: $\mu = Bv_w​$. If you plug this in, the above equality works, shows that this is our $\mu​$. 
+It is somewhat transparent that on the RHS (right hand side), $B$ needs to disappear since the LHS (left hand side) does not contain any $B$. To do that, $\mu$ should at least contain $B$ so that it cancels out with $B^{-1}$. Also the LHS has $v_w$ while RHS has none. Then the answer should be apparent: $\mu = Bv_w$. If you plug this in, the above equality works, shows that this is our $\mu$. 
 
 My stats PhD friend told me, if I saw a pdf in the form of $w^Tx - \frac{1}{2} x^TB^{-1}x​$, then I can actually skip the above algebra and directly "see" this distribution of $x​$ as mean $Bw​$, with variance $B​$. 
 
@@ -129,7 +131,7 @@ Therefore, we know that the matrix $A$ that we set out to find is now solvable b
 
 The last choice is to do monte carlo estimation on the Theorem 1's original equation: $v\_w \approx A \mathbb{E}(\frac{1}{n} \sum_{w_i \in s} v\_{w_i} \vert w \in s)​$, replace the expectation with sampling over window $s​$ and sampling over word $w​$, and find $A​$ as a linear regression problem. This is also the method the original paper has chosen.
 
-If we suppose that $u​$ is the averaged discourse vectors for word $w​$, then iterating through the vocabulary, we should be able to find matrix $A​$ by solving the following optimization:
+If we suppose that $u$ is the averaged discourse vectors for word $w$, then iterating through the vocabulary, we should be able to find matrix $A$ by solving the following optimization:
 $$
 \arg\min_A \sum_w \| A u_w - v_w \|_2^2
 $$
@@ -166,7 +168,7 @@ We can list out the assumptions used in Arora et al.'s model:
 2. Words $w$ in a window are generated independently by $c$.
 3. $p(c)$, the prior of discourse vector $c$ is Gaussian with mean 0 and invertible covariance matrix $\Sigma$.
 
-Each assumption has some flaws. Assumption (1) assumes a very simplistic model on how words are generated from meaning. However, if this assumption is not made, we will have two problems: 1). we immediately lose the concentration of the partition function $Z\_c​$; 2). the introduction of any extra term besides the dot product, even bilinear transformation $p(w \vert c) \propto \exp(v\_w^T H c)​$, will break how we solve $\mu​$ for $p(c \vert w)​$. 
+Each assumption has some flaws. Assumption (1) assumes a very simplistic model on how words are generated from meaning. By extending to a more complex model, such as bilinear transformation: $p(w \vert c) \propto \exp(v\_w^T H c)$, we gain more expressivity and we still have an analytical expression of $c\vert w$, however we might lose the concentration of the partition function $Z\_c$.
 
 Assumption (2) is a very serious offense for syntax in language. Words definitely depend on one another -- grammatical structure naturally emerges from word-to-word dependencies. `The drink is cold`, the choice of `is` is clearly influenced by the plurality of the subject. However, if we drop this assumption, we won't be able to get the following factorization:
 
@@ -200,7 +202,9 @@ A cursory look at the graphical model of Arora's model and language model remind
 
 <p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-figA.png?raw=true" style="width:50%"> <br> <b>Figure 5</b> </p>
 
-When there is a hidden variable (confounding variable) $c​$ that governs the behavior of $a​$ and $b​$, without knowing the existence of $c​$, we (the algorithm) can often make the mistake of inferring a correlational relationship between variable $a​$ and $b​$. Does the left figure look very much like a language model, and the right figure very similar to what Arora et al. has proposed? This is not to suggest that there is no dependence between words -- there clearly is, but modeling language well by conditioning on previous words should not exclude us from hypothesizing a different kind of generative model.
+When there is a hidden variable (confounding variable) $c$ that governs the behavior of $a$ and $b$, without knowing the existence of $c$, we (the algorithm) can often make the mistake of inferring a correlational relationship between variable $a$ and $b$. Does the left figure look quite similar to a language model, and the right figure similar to what Arora et al. has proposed? This is not to suggest that there is no dependence between words -- there clearly is, but modeling language well by conditioning on previous words should not exclude us from hypothesizing a different kind of generative model.
+
+<p> The language modeling objective is a decomposition of joint probability over words $p(x_1,...,x_n)$, and the decomposition itself does not include any structural bias. However, what I suggest is to model the joint probability of $p(c, x_1, ..., x_n)$, with the inclusion of an additional random variable. </p>
 
 BERT objective, using context to predict the prescence of a word seems quite similar to what Theorem 1 seems to suggest, allowing a word to be recovered through its context. However BERT does mask the word itself (as it makes sense), and the prediction happens on each sentence, instead of averaged context.
 
@@ -210,7 +214,11 @@ There is one last type of sentence embedding objective that has not been thoughl
 
 ### Word Recovering Through Context
 
-Theorem 1 can be operationalized as **"can a word's vector be recovered from its context"**? We might be able to use it as a test for sentence embedding models. 
+On a high-level, Theorem 1 can inspire a statistical test: **"can a word be recovered from its context?"**. Obviously sentence embddings, unlike word embeddings, should capture both semantic and syntactic information, and word recover test can only measure the former, but it is an objective, task-agnostic measure of the quality of sentence embedding.
+
+This test can also be re-written as a lower bound on mutual information:
+
+
 
 (to be continued)
 
