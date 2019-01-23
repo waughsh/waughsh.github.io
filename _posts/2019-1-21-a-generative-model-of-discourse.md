@@ -9,13 +9,13 @@ title: A Generative Model of Discourse
 
 ### Short Preface
 
-There has been a lot interests on sentence-level representation learning. Similar to the explosion of word embedding, sentence embedding has captured a lot of attention with new papers being produced on ArXiv like grass sprouting in Spring. 
+There has been a lot interests on sentence representation learning, similar to the explosion of word embedding.
 
-This article could easily be a lengthy linguistics paper, and such one is very needed for the current situation. Based on my very limited education in linguistics, I do not believe linguistis have an agreed upon set of "properties" that a sentence representation[^1] need to capture to be the most ideal meaning representation of a sentence. As this is still an ongoing area of research, I am very excited to see more linguistic theories on discourse and how to better understand sentential relations.
+Based on my limited education in linguistics, I do not believe linguistis have an agreed upon and exhaustive set of "properties" that a sentence representation[^1] needs to capture. As this is still an ongoing area of research, I am very excited to see more linguistic theories on discourse and how to better understand sentential relations.
 
-This post tries to take a closer look at the principled work produced by Sanjeev Arora and his students: Linear Algebraic Structure of Word Senses, with Applications to Polysemy, that took a principled approach to computationally infer the meaning representation from words, and then to sentences.
+This post tries to take a closer look at the principled work produced by Sanjeev Arora and his students: Linear Algebraic Structure of Word Senses, with Applications to Polysemy, that took a generative approach to computationally infer the distribution of sentence representation as a random vector.
 
-Based on their principled framework, I examined if a statistical test that asks this question: **"can a word be recovered from its context?"** that can be used to provide a quantitative measure of sentence embedding quality. The experiments are conducted in the later sections.
+Inspired by their theorem, I examined if a statistical test that asks this question: **"can a word be recovered from its context?"** can be used to provide a quantitative measure of sentence embedding quality. The experiments are conducted in the later sections.
 
 ### A Generative Model of Sentence
 
