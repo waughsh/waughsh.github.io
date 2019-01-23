@@ -15,7 +15,7 @@ This article could easily be a lengthy linguistics paper, and such one is very n
 
 This post tries to take a closer look at the principled work produced by Sanjeev Arora and his students: Linear Algebraic Structure of Word Senses, with Applications to Polysemy, that took a principled approach to computationally infer the meaning representation from words, and then to sentences.
 
-Based on their principled framework, I examined if there is a statistical test that asks this question: **"can a word be recovered from its context?"** that can be used to provide a quantitative measure of sentence embedding quality. The experiments are conducted in the later sections.
+Based on their principled framework, I examined if a statistical test that asks this question: **"can a word be recovered from its context?"** that can be used to provide a quantitative measure of sentence embedding quality. The experiments are conducted in the later sections.
 
 ### A Generative Model of Sentence
 
@@ -166,7 +166,7 @@ We can list out the assumptions used in Arora et al.'s model:
 
 1. $p(w \vert c)​$ is a log-linear model
 2. Words $w$ in a window are generated independently by $c$.
-3. $p(c)$, the prior of discourse vector $c$ is Gaussian with mean 0 and invertible covariance matrix $\Sigma$.
+3. $p(c)​$, the prior of discourse vector $c​$ is Gaussian with mean 0 and invertible covariance matrix $\Sigma​$.
 
 Each assumption has some flaws. Assumption (1) assumes a very simplistic model on how words are generated from meaning. By extending to a more complex model, such as bilinear transformation: $p(w \vert c) \propto \exp(v\_w^T H c)$, we gain more expressivity and we still have an analytical expression of $c\vert w$, however we might lose the concentration of the partition function $Z\_c$.
 
@@ -215,8 +215,6 @@ There is one last type of sentence embedding objective that has not been thoughl
 ### Word Recovering Through Context
 
 On a high-level, Theorem 1 can inspire a statistical test: **"can a word be recovered from its context?"**. Obviously sentence embddings, unlike word embeddings, should capture both semantic and syntactic information, and word recover test can only measure the former, but it is an objective, task-agnostic measure of the quality of sentence embedding.
-
-This test can also be re-written as a lower bound on mutual information:
 
 
 
