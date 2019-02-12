@@ -11,13 +11,11 @@ In the second post, we will focus on this paper:
 
 > Ribeiro, Marco Tulio, Sameer Singh, and Carlos Guestrin. "[Semantically equivalent adversarial rules for debugging nlp models](http://aclweb.org/anthology/P18-1079)." *Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)*. Vol. 1. 2018.
 
-Robustness is a central concern in engineering. We want our suspension bridges to stand against strong wind and not repeat the collapse of Tacoma Narrows Bridge [[video](https://commons.wikimedia.org/w/index.php?title=File%3ATacoma_Narrows_Bridge_destruction.ogv)]. We want our nuclear reactors to always be fault tolerant so Fukushima Daiichi incident [[link](https://en.wikipedia.org/wiki/Fukushima_Daiichi_nuclear_disaster)]. 
+Robustness is a central concern in engineering. We want our suspension bridges to stand against strong wind and not repeat the collapse of Tacoma Narrows Bridge [[video](https://commons.wikimedia.org/w/index.php?title=File%3ATacoma_Narrows_Bridge_destruction.ogv)]. We want our nuclear reactors to always be fault tolerant so that Fukushima Daiichi incident will never happen again [[link](https://en.wikipedia.org/wiki/Fukushima_Daiichi_nuclear_disaster)].
 
 When we increasingly become reliant on a type of technology -- suspension bridges, nuclear power, or in this case: NLP models, we must raise the level of trust we can have in this technology. Robustness is precisely the requirement we need to place on such systems.
 
-![Tacoma Narrows Bridge](https://upload.wikimedia.org/wikipedia/en/2/2e/Image-Tacoma_Narrows_Bridge1.gif)
-
-
+<p style="text-align: center"><img src="https://upload.wikimedia.org/wikipedia/en/2/2e/Image-Tacoma_Narrows_Bridge1.gif" style="width:50%"></p>
 
 Early work from Jia & Liang (2017)[^1] shows that NLP models are not immune to small negligible-by-human perturbation in text -- a simple addition or deletion can break the model and force it to produce nonsensical answers. Other work such as Belinkov & Bisk [^2], Ebrahimi et al.[^3] showed a systematic perturbation that is to simply drop or replace a character is sufficient to break a model. Introducing noise to sequence data is not always bad: ealier work done by Xie et al.[^4] shows that training machine translation or language model with word/character-level perturbation (noising) actually improves performance.
 
