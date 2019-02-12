@@ -1,7 +1,7 @@
 ---
 published: true
 layout: post
-draft: false
+draft: true
 visible: 0
 title: Reading Group Blog -- Semantically Equivalent Adversarial Rules for Debugging NLP Models
 ---
