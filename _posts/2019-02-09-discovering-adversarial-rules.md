@@ -3,10 +3,8 @@ published: true
 layout: post
 draft: true
 visible: 0
-title: Reading Group Blog -- Semantically Equivalent Adversarial Rules for Debugging NLP Models
+title: Reading Group Blog -- Semantically Equivalent Adversarial Rules for Debugging NLP Models (ACL 2018)
 ---
-# Reading Group Blog -- Semantically Equivalent Adversarial Rules for Debugging NLP Models (ACL 2018)
-
 Allen Nie 02/12/2019
 
 In the second post, we will focus on this paper:
