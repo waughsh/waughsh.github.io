@@ -37,7 +37,7 @@ In this paper, semantic equivalence is measured by paraphrasing likelihood, defi
 
 <p style="text-align: center"> <img src="https://github.com/windweller/windweller.github.io/blob/master/images/pivot-gen.png?raw=true" style="width: 20%"> <img src="https://github.com/windweller/windweller.github.io/blob/master/images/multipivot-gen.png?raw=true" style="width: 30%"> </p>
 
-The pivot scheme is depicted by the generative model on the left, which assumes conditional independence between $e_1$ and $e_2$ given $f$: $p(e_2 \vert e_1, f) = p(e_2 \vert f)$ . Multipivot is depicted by the model on the right: it translates one English sentence into multiple French sentences.
+The pivot scheme is depicted by the generative model on the left, which assumes conditional independence between $e_1$ and $e_2$ given $f$: $p(e_2 \vert e_1, f) = p(e_2 \vert f)$ . Multipivot is depicted by the model on the right: it translates one English sentence into multiple French sentences, and translate back to generate the parphrase. The back-translation of multipivoting can be a simple decoder average -- each decoder takes a French string, and the overall output probability for the next English token is the weighted sum of the probability of every decoder.
 
 
 
