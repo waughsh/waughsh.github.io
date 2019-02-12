@@ -28,16 +28,26 @@ However, it is hard to call these perturbed examples "adversarial examples" in t
 In our discussion, John Hewitt [[blog](https://nlp.stanford.edu/~johnhew/)] points out that from a linguistic point of view, it is very difficult to define "semantic equivalence" because we don't have a precise and absolute definition of "meaning". This is to say that two sentences might generate the same effect for a particular task, but does not need to be synonymous. A more nuanced discussion of paraphrases in English can be found in *What Is a Paraphrase?* [[link](https://www.mitpressjournals.org/doi/pdf/10.1162/COLI_a_00166)] by Bhagat & Hovy (2012). In this paper, semantic equivalence is operationalized as what humans (MTurkers)  judged to be equivalent. 
 
 Ribeiro et al. argues that only a sequence that satisfies both conditions is a true adversarial example in text.  They translate this criteria into a conjunctive form using an indicator function:
+
 $$
 \text{SEA}(x, x') = \unicode{x1D7D9}[\text{SemEq}(x, x') \wedge f(x) \not= f(x')]
 $$
 
+In this paper, semantic equivalence is measured by paraphrasing likelihood, defined in multilingual multipivot paraphrasing paper from Lapata et al. (2017)[^6]. Pivoting is a technique in statistical machine translation proposed by Bannard and Callison-Burch (2005)[^7]: if two English strings $e_1$ and $e_2$ can be translated into the same French string $f$, then they can be assumed to have the same meaning.
 
-[^1]: Jia, Robin, and Percy Liang. "Adversarial examples for evaluating reading comprehension systems." *arXiv preprint arXiv:1707.07328* (2017). https://arxiv.org/abs/1707.07328
-[^2]:  Belinkov, Yonatan, and Yonatan Bisk. "Synthetic and natural noise both break neural machine translation." *arXiv preprint arXiv:1711.02173*(2017). https://arxiv.org/abs/1711.02173
-[^3]:Ebrahimi, Javid, et al. "HotFlip: White-Box Adversarial Examples for Text Classification." *arXiv preprint arXiv:1712.06751* (2017). https://arxiv.org/abs/1712.06751
-[^4]: Xie, Ziang, et al. "Data noising as smoothing in neural network language models." *arXiv preprint arXiv:1703.02573* (2017). https://arxiv.org/abs/1703.02573
-[^5]:Goodfellow, Ian J., Jonathon Shlens, and Christian Szegedy. "Explaining and harnessing adversarial examples (2014)." *arXiv preprint arXiv:1412.6572*. https://arxiv.org/abs/1412.6572
+
+
+[^1]: Jia, Robin, and Percy Liang. "Adversarial examples for evaluating reading comprehension systems." *arXiv preprint arXiv:1707.07328* (2017). 
+[^2]:  Belinkov, Yonatan, and Yonatan Bisk. "Synthetic and natural noise both break neural machine translation." *arXiv preprint arXiv:1711.02173*(2017). 
+[^3]:Ebrahimi, Javid, et al. "HotFlip: White-Box Adversarial Examples for Text Classification." *arXiv preprint arXiv:1712.06751* (2017). 
+[^4]: Xie, Ziang, et al. "Data noising as smoothing in neural network language models." *arXiv preprint arXiv:1703.02573* (2017). 
+[^5]:Goodfellow, Ian J., Jonathon Shlens, and Christian Szegedy. "Explaining and harnessing adversarial examples (2014)." *arXiv preprint arXiv:1412.6572*.
+[^6]:Mallinson, Jonathan, Rico Sennrich, and Mirella Lapata. "Paraphrasing revisited with neural machine translation." *Proceedings of the 15th Conference of the European Chapter of the Association for Computational Linguistics: Volume 1, Long Papers*. Vol. 1. 2017.
+[^7]:Colin Bannard and Chris Callison-Burch. 2005. Paraphrasing with bilingual parallel corpora. In Proceedings of the 43rd Annual Meeting of the Association for Computational Linguistics, pages 597–604, Ann Arbor, Michigan.
+
+
+
+
 
 
 
