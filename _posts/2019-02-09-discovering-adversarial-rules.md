@@ -27,17 +27,34 @@ However, it is hard to call these perturbed examples "adversarial examples" in t
 
 In our discussion, John Hewitt [[blog](https://nlp.stanford.edu/~johnhew/)] points out that from a linguistic point of view, it is very difficult to define "semantic equivalence" because we don't have a precise and absolute definition of "meaning". This is to say that two sentences might generate the same effect for a particular task, but does not need to be synonymous. A more nuanced discussion of paraphrases in English can be found in *What Is a Paraphrase?* [[link](https://www.mitpressjournals.org/doi/pdf/10.1162/COLI_a_00166)] by Bhagat & Hovy (2012). In this paper, semantic equivalence is operationalized as what humans (MTurkers)  judged to be equivalent. 
 
+### Semantically Equivalent Adversaries (SEAs)
+
 Ribeiro et al. argues that only a sequence that satisfies both conditions is a true adversarial example in text.  They translate this criteria into a conjunctive form using an indicator function:
 
 $$
-\text{SEA}(x, x') = \unicode{x1D7D9}[\text{SemEq}(x, x') \wedge f(x) \not= f(x')]
+\text{SEA}(x, x') = \unicode{x1D7D9}[\text{SemEq}(x, x') \wedge f(x) \not= f(x')] \label{1}
 $$
 
-In this paper, semantic equivalence is measured by paraphrasing likelihood, defined in multilingual multipivot paraphrasing paper from Lapata et al. (2017)[^6]. Pivoting is a technique in statistical machine translation proposed by Bannard and Callison-Burch (2005)[^7]: if two English strings $e_1$ and $e_2$ can be translated into the same French string $f$, then they can be assumed to have the same meaning.
+In this paper, semantic equivalence is measured by paraphrasing likelihood, defined in multilingual multipivot paraphrasing paper from Lapata et al. (2017)[^6]. Pivoting is a technique in statistical machine translation proposed by Bannard and Callison-Burch (2005)[^7]: if two English strings $e_1$ and $e_2$ can be translated into the same French string $f​$, then they can be assumed to have the same meaning.
 
 <p style="text-align: center"> <img src="https://github.com/windweller/windweller.github.io/blob/master/images/pivot-gen.png?raw=true" style="width: 20%"> <img src="https://github.com/windweller/windweller.github.io/blob/master/images/multipivot-gen.png?raw=true" style="width: 30%"> </p>
 
-The pivot scheme is depicted by the generative model on the left, which assumes conditional independence between $e_1$ and $e_2$ given $f$: $p(e_2 \vert e_1, f) = p(e_2 \vert f)$ . Multipivot is depicted by the model on the right: it translates one English sentence into multiple French sentences, and translate back to generate the parphrase. The back-translation of multipivoting can be a simple decoder average -- each decoder takes a French string, and the overall output probability for the next English token is the weighted sum of the probability of every decoder.
+The pivot scheme is depicted by the generative model on the left, which assumes conditional independence between $e_1​$ and $e_2​$ given $f​$: $p(e_2 \vert e_1, f) = p(e_2 \vert f)​$ . Multipivot is depicted by the model on the right: it translates one English sentence into multiple French sentences, and translate back to generate the parphrase. The back-translation of multipivoting can be a simple decoder average -- each decoder takes a French string, and the overall output probability for the next English token is the weighted sum of the probability of every decoder.
+
+#### Paraphrase Probability Reweighting
+
+Even if we can measure the probability of a paraphrase $x'$ given $x$, the probability is not comparable across different sentences, i.e., $p(x' \vert x)$ is not comparable to $p(z' \vert z)$ because they have different normalization constant. In order to compute a semantic score $S(x, x')​$ that is comparable between sentences, Ribeiro proposed to compute the ratio between the probability of generating paraphrase and the probability of generating itself. The self-generation probability can potentially scale up the low probability of generated paraphrases, considering if the original sentence is difficult to generate, then the paraphrases might be difficult to generate as well.
+
+$$
+S(x, x') = \min(1, \frac{p(x'|x)}{p(x|x)}) \\
+\text{SemEq}(x, x') = \unicode{x1D7D9}[S(x, x') \geq \tau]
+$$
+
+Then a simple schema to generate adversarial sentences that satisfy the Equation 1 is: ask the paraphrase model to generate paraphrases of a sentence $x$. Try these paraphrases if they can change the model prediction: $f(x') \not = f(x)$. 
+
+### Semantically Equivalent Adversarial Rules (SEARs)
+
+SEAs are paraphrases that are generated for each text sequence. In this step, authors lay out steps to convert these local SEAs to global rules (SEARs). 
 
 
 
