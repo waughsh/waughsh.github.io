@@ -70,11 +70,13 @@ Since this process is applied for every pair of $(x, x')$, and if we assume huma
 2. **High adversary count**: rule $r$ must also generate paraphrases that will alter the prediction of the model. Additionally, the semantic similarity should be high between paraphrases. This can be measured by $\sum\_{x \in X} S(x, r(x)) \text{SEA}(x, r(x))$. 
 3. **Non-redundancy**: rules should be diverse and cover as many $x$ as possible.
 
-To satisfy criteria 2 and 3, Ribeiro et al. proposed a submodular optimization objective:
+To satisfy criteria 2 and 3, Ribeiro et al. proposed a submodular optimization objective, which can be solved with a greedy algorithm with a theoretical guarantee to a constant factor off of the optimum.
 
 $$
 \max_{R, |R| <B} \sum_{x \in X} \max_{r \in R} S(x, r(x)) \text{SEA}(x, r(x))
 $$
+
+The overall algorithm is described below:
 
 
 
