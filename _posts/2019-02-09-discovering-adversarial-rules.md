@@ -23,7 +23,7 @@ However, it is hard to call these perturbed examples "adversarial examples" in t
 
 **Semantic equivalence** of two sentences: $\text{SemEq}(x, x')​$
 
-**Perturbed label prediction**:  $f(x) \not= f(x')$
+**Perturbed label prediction**:  $f(x) \not= f(x')​$
 
 In our discussion, John Hewitt [[blog](https://nlp.stanford.edu/~johnhew/)] points out that from a linguistic point of view, it is very difficult to define "semantic equivalence" because we don't have a precise and absolute definition of "meaning". This is to say that two sentences might generate the same effect for a particular task, but does not need to be synonymous. A more nuanced discussion of paraphrases in English can be found in *What Is a Paraphrase?* [[link](https://www.mitpressjournals.org/doi/pdf/10.1162/COLI_a_00166)] by Bhagat & Hovy (2012). In this paper, semantic equivalence is operationalized as what humans (MTurkers)  judged to be equivalent. 
 
@@ -68,7 +68,7 @@ Since this process is applied for every pair of $(x, x')$, and if we assume huma
 
 1. **High probability of producing semantically equivalent sentences**: this is measured by a population statistic $E\_{x \sim p(x)}[\text{SemEq(x, r(x))}] \geq 1 - \delta$. Simply put, by applying this rules, most $x$ in the corpus can be translated to semantically equivalent paraphrases. In the paper, $\delta = 0.1$.
 2. **High adversary count**: rule $r$ must also generate paraphrases that will alter the prediction of the model. Additionally, the semantic similarity should be high between paraphrases. This can be measured by $\sum\_{x \in X} S(x, r(x)) \text{SEA}(x, r(x))$. 
-3. **Non-redundancy**: rules should be diverse and cover as many $x$ as possible.
+3. **Non-redundancy**: rules should be diverse and cover as many $x​$ as possible.
 
 To satisfy criteria 2 and 3, Ribeiro et al. proposed a submodular optimization objective, which can be solved with a greedy algorithm with a theoretical guarantee to a constant factor off of the optimum.
 
@@ -77,6 +77,24 @@ $$
 $$
 
 The overall algorithm is described below:
+
+<p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/semadv-algorithm1.png?raw=true" style="width:50%"> </p>
+
+### Experiment and Validation
+
+The key metric Ribeiro et al. measure is the percentapge of **Flips**, defined as in the validation set, how many instances are  predicted correctly on the validation data, but predicted incorrectly after the application of the rule. 
+
+**The comment on this metric during discussion is that it does not indicate how many examples are there that are affected by this rule.** For example, a rule that changes "color" to "colour" might have a **Flips** rate of 2.2% in VQA dataset, but this might only be that in the validation set of VQA, only 2.2% of instances contain the word **color**, so this rule has a 100% rate of success at generating adversarial examples.
+
+The paper shows some really good discrete rules that can generate adversarial text examples:
+
+<p style="text-align: center"> <img src="https://github.com/windweller/windweller.github.io/blob/master/images/semadv-sear-1.png?raw=true" style="width: 50%"> <img src="https://github.com/windweller/windweller.github.io/blob/master/images/semadv-sear-2.png?raw=true" style="width: 50%"> </p>
+
+
+
+### Human-in-the-loop
+
+Ribeiro et al. tested on both human and experts.
 
 
 
