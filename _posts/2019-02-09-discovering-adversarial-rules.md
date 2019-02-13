@@ -19,7 +19,7 @@ When we increasingly become reliant on a type of technology -- suspension bridge
 
 Early work from Jia & Liang (2017)[^1] shows that NLP models are not immune to small negligible-by-human perturbation in text -- a simple addition or deletion can break the model and force it to produce nonsensical answers. Other work such as Belinkov & Bisk [^2], Ebrahimi et al.[^3] showed a systematic perturbation that is to simply drop or replace a character is sufficient to break a model. Introducing noise to sequence data is not always bad: ealier work done by Xie et al.[^4] shows that training machine translation or language model with word/character-level perturbation (noising) actually improves performance.
 
-However, it is hard to call these perturbed examples "adversarial examples" in the original conception of Ian Goodfellow[^5].  This paper proposed two definitions of adversarial examples in text:
+However, it is hard to call these perturbed examples "adversarial examples" in the original conception of Ian Goodfellow[^5].  This paper proposed a way to define an adversarial examples in text through two properties:
 
 **Semantic equivalence** of two sentences: $\text{SemEq}(x, x')​$
 
@@ -29,7 +29,7 @@ In our discussion, John Hewitt [[blog](https://nlp.stanford.edu/~johnhew/)] poin
 
 ### Semantically Equivalent Adversaries (SEAs)
 
-Ribeiro et al. argues that only a sequence that satisfies both conditions is a true adversarial example in text.  They translate this criteria into a conjunctive form using an indicator function:
+Ribeiro et al. argue that only a sequence that satisfies both conditions is a true adversarial example in text.  They translate this criteria into a conjunctive form using an indicator function:
 
 $$
 \text{SEA}(x, x') = \unicode{x1D7D9}[\text{SemEq}(x, x') \wedge f(x) \not= f(x')] \label{1}
@@ -39,22 +39,46 @@ In this paper, semantic equivalence is measured by paraphrasing likelihood, defi
 
 <p style="text-align: center"> <img src="https://github.com/windweller/windweller.github.io/blob/master/images/pivot-gen.png?raw=true" style="width: 20%"> <img src="https://github.com/windweller/windweller.github.io/blob/master/images/multipivot-gen.png?raw=true" style="width: 30%"> </p>
 
-The pivot scheme is depicted by the generative model on the left, which assumes conditional independence between $e_1​$ and $e_2​$ given $f​$: $p(e_2 \vert e_1, f) = p(e_2 \vert f)​$ . Multipivot is depicted by the model on the right: it translates one English sentence into multiple French sentences, and translate back to generate the parphrase. The back-translation of multipivoting can be a simple decoder average -- each decoder takes a French string, and the overall output probability for the next English token is the weighted sum of the probability of every decoder.
+The pivot scheme is depicted by the generative model on the left, which assumes conditional independence between $e_1$ and $e_2$ given $f$: $p(e_2 \vert e_1, f) = p(e_2 \vert f)$ . Multipivot is depicted by the model on the right: it translates one English sentence into multiple French sentences, and translate back to generate the parphrase. The back-translation of multipivoting can be a simple decoder average -- each decoder takes a French string, and the overall output probability for the next English token is the weighted sum of the probability of every decoder.
 
 #### Paraphrase Probability Reweighting
 
-Even if we can measure the probability of a paraphrase $x'$ given $x$, the probability is not comparable across different sentences, i.e., $p(x' \vert x)$ is not comparable to $p(z' \vert z)$ because they have different normalization constant. In order to compute a semantic score $S(x, x')​$ that is comparable between sentences, Ribeiro proposed to compute the ratio between the probability of generating paraphrase and the probability of generating itself. The self-generation probability can potentially scale up the low probability of generated paraphrases, considering if the original sentence is difficult to generate, then the paraphrases might be difficult to generate as well.
+Even if we can measure the probability of a paraphrase $x'$ given $x$, the probability is not comparable across different sentences, i.e., $p(x' \vert x)$ is not comparable to $p(z' \vert z)$ because they have different normalization constant. In order to compute a semantic score $S(x, x')$ that is comparable between sentences, Ribeiro proposed to compute the ratio between the probability of generating paraphrase and the probability of generating itself. The self-generation probability can potentially scale up the low probability of generated paraphrases: if the original sentence is difficult to generate, then the paraphrases might be difficult to generate as well.
 
 $$
 S(x, x') = \min(1, \frac{p(x'|x)}{p(x|x)}) \\
 \text{SemEq}(x, x') = \unicode{x1D7D9}[S(x, x') \geq \tau]
 $$
 
-Then a simple schema to generate adversarial sentences that satisfy the Equation 1 is: ask the paraphrase model to generate paraphrases of a sentence $x$. Try these paraphrases if they can change the model prediction: $f(x') \not = f(x)$. 
+A simple schema to generate adversarial sentences that satisfy the Equation 1 is: ask the paraphrase model to generate paraphrases of a sentence $x$. Try these paraphrases if they can change the model prediction: $f(x') \not = f(x)​$. 
 
 ### Semantically Equivalent Adversarial Rules (SEARs)
 
-SEAs are paraphrases that are generated for each text sequence. In this step, authors lay out steps to convert these local SEAs to global rules (SEARs). 
+SEAs are paraphrases that are generated for each text sequence. In this step, authors lay out steps to convert these local SEAs to global rules (SEARs). The rule defined in this paper is a simple discrete transformation $r = (a \rightarrow c)$. The example for $r = (movie  \rightarrow film)$ can be $r$("Great movie!")  = "Great film!".
+
+Given a pair of text $(x, x')$ where $\text{SEA}(x, x') = 1$, Ribeiro et al. select the minimal contiguous span of text that turn $x$ into $x'$, include the immediate context (one word before and/or after the span), and annotate the sequence with POS (Part of Speech) tags. The last step is to generate the product of combinations between raw words and their POS tags. A step-wise example is the follow:
+
+Step 1: (What -> Which)
+
+Step 2: (What color -> Which color)
+
+Step 3: (What color -> Which color), (What NOUN -> Which NOUN), (WP color -> Which color), (What color -> WP color)
+
+Since this process is applied for every pair of $(x, x')$, and if we assume humans are only willing to go through $B$ rules, then Ribeiro et al. propose to filter the candidates such that $|R| \leq B$. The criteria would be: 
+
+1. **High probability of producing semantically equivalent sentences**: this is measured by a population statistic $E\_{x \sim p(x)}[\text{SemEq(x, r(x))}] \geq 1 - \delta$. Simply put, by applying this rules, most $x$ in the corpus can be translated to semantically equivalent paraphrases. In the paper, $\delta = 0.1$.
+2. **High adversary count**: rule $r$ must also generate paraphrases that will alter the prediction of the model. Additionally, the semantic similarity should be high between paraphrases. This can be measured by $\sum\_{x \in X} S(x, r(x)) \text{SEA}(x, r(x))$. 
+3. **Non-redundancy**: rules should be diverse and cover as many $x$ as possible.
+
+To satisfy criteria 2 and 3, Ribeiro et al. proposed a submodular optimization objective:
+
+$$
+\max_{R, |R| <B} \sum_{x \in X} \max_{r \in R} S(x, r(x)) \text{SEA}(x, r(x))
+$$
+
+
+
+## Wrap up
 
 
 
