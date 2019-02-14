@@ -47,7 +47,8 @@ Even if we can measure the probability of a paraphrase $x'$ given $x$, the proba
 
 If a sentence has many high-quality paraphrases around it, then they all share the probability mass, making the probability of each one rather low. If a sentence has only one high-quality paraphrase and the rest are much worse, this high-quality paraphrase will have a much higher probability.
 
-In order to compute a semantic score $S(x, x')$ that is comparable between sentences, Ribeiro proposed to compute the ratio between the probability of generating paraphrase and the probability of generating itself:
+In order to compute a semantic score $S(x, x')​$ that is comparable between sentences, Ribeiro proposed to compute the ratio between the probability of generating paraphrase and the probability of generating itself:
+
 $$
 S(x, x') = \min(1, \frac{p(x'|x)}{p(x|x)}) \\
 \text{SemEq}(x, x') = \unicode{x1D7D9}[S(x, x') \geq \tau]
