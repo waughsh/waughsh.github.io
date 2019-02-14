@@ -25,7 +25,7 @@ However, it is hard to call these perturbed examples "adversarial examples" in t
 
 **Perturbed label prediction**:  $f(x) \not= f(x')​$
 
-In our discussion, John Hewitt [[blog](https://nlp.stanford.edu/~johnhew/)] points out that from a linguistic point of view, it is very difficult to define "semantic equivalence" because we don't have a precise and absolute definition of "meaning". This is to say that two sentences might generate the same effect for a particular task, but does not need to be synonymous. A more nuanced discussion of paraphrases in English can be found in *What Is a Paraphrase?* [[link](https://www.mitpressjournals.org/doi/pdf/10.1162/COLI_a_00166)] by Bhagat & Hovy (2012). In this paper, semantic equivalence is operationalized as what humans (MTurkers)  judged to be equivalent. 
+In our discussion, people point out that from a linguistic point of view, it is very difficult to define "semantic equivalence" because we don't have a precise and absolute definition of "meaning". This is to say that even though two sentences might elicit the same effect for a particular task, they do not need to be synonymous. A more nuanced discussion of paraphrases in English can be found in *What Is a Paraphrase?* [[link](https://www.mitpressjournals.org/doi/pdf/10.1162/COLI_a_00166)] by Bhagat & Hovy (2012). In this paper, semantic equivalence is operationalized as what humans (MTurkers)  judged to be "equivalent".
 
 ### Semantically Equivalent Adversaries (SEAs)
 
@@ -43,8 +43,11 @@ The pivot scheme is depicted by the generative model on the left, which assumes 
 
 #### Paraphrase Probability Reweighting
 
-Even if we can measure the probability of a paraphrase $x'$ given $x$, the probability is not comparable across different sentences, i.e., $p(x' \vert x)$ is not comparable to $p(z' \vert z)$ because they have different normalization constant. In order to compute a semantic score $S(x, x')$ that is comparable between sentences, Ribeiro proposed to compute the ratio between the probability of generating paraphrase and the probability of generating itself. The self-generation probability can potentially scale up the low probability of generated paraphrases: if the original sentence is difficult to generate, then the paraphrases might be difficult to generate as well.
+Even if we can measure the probability of a paraphrase $x'$ given $x$, the probability is not comparable across different sentences, i.e., $p(x' \vert x)$ is not comparable to $p(z' \vert z)$ because they have different normalization constant. 
 
+If a sentence has many high-quality paraphrases around it, then they all share the probability mass, making the probability of each one rather low. If a sentence has only one high-quality paraphrase and the rest are much worse, this high-quality paraphrase will have a much higher probability.
+
+In order to compute a semantic score $S(x, x')$ that is comparable between sentences, Ribeiro proposed to compute the ratio between the probability of generating paraphrase and the probability of generating itself:
 $$
 S(x, x') = \min(1, \frac{p(x'|x)}{p(x|x)}) \\
 \text{SemEq}(x, x') = \unicode{x1D7D9}[S(x, x') \geq \tau]
