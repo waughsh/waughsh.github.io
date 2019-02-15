@@ -11,9 +11,9 @@ In the second post, we will focus on this paper:
 
 > Ribeiro, Marco Tulio, Sameer Singh, and Carlos Guestrin. "[Semantically equivalent adversarial rules for debugging nlp models](http://aclweb.org/anthology/P18-1079)." *Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)*. Vol. 1. 2018.
 
-Robustness is a central concern in engineering. We want our suspension bridges to stand against strong wind and not repeat the collapse of Tacoma Narrows Bridge [[video](https://commons.wikimedia.org/w/index.php?title=File%3ATacoma_Narrows_Bridge_destruction.ogv)]. We want our nuclear reactors to always be fault tolerant so that Fukushima Daiichi incident will never happen again [[link](https://en.wikipedia.org/wiki/Fukushima_Daiichi_nuclear_disaster)].
+Robustness is a central concern in engineering. Our suspension bridges need to stand against strong wind and so it won't collapse like the Tacoma Narrows Bridge [[video](https://commons.wikimedia.org/w/index.php?title=File%3ATacoma_Narrows_Bridge_destruction.ogv)]. Our nuclear reactors need to be highly fault tolerant so that Fukushima Daiichi incident won't happen in the future [[link](https://en.wikipedia.org/wiki/Fukushima_Daiichi_nuclear_disaster)].
 
-When we increasingly become reliant on a type of technology -- suspension bridges, nuclear power, or in this case: NLP models, we must raise the level of trust we can have in this technology. Robustness is precisely the requirement we need to place on such systems.
+When we increasingly become reliant on a type of technology -- suspension bridges, nuclear power, or in this case: NLP models, we must raise the level of trust we have in this technology. Robustness is precisely the requirement we need to place on such systems.
 
 <p style="text-align: center"><img src="https://upload.wikimedia.org/wikipedia/en/2/2e/Image-Tacoma_Narrows_Bridge1.gif" style="width:50%"></p>
 
@@ -47,7 +47,7 @@ Even if we can measure the probability of a paraphrase $x'$ given $x$, the proba
 
 If a sentence has many high-quality paraphrases around it, then they all share the probability mass, making the probability of each one rather low. If a sentence has only one high-quality paraphrase and the rest are much worse, this high-quality paraphrase will have a much higher probability.
 
-In order to compute a semantic score $S(x, x')​$ that is comparable between sentences, Ribeiro proposed to compute the ratio between the probability of generating paraphrase and the probability of generating itself:
+In order to compute a semantic score $S(x, x')$ that is comparable between sentences, Ribeiro proposed to compute the ratio between the probability of generating paraphrase and the probability of generating itself:
 
 $$
 S(x, x') = \min(1, \frac{p(x'|x)}{p(x|x)}) \\
