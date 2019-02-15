@@ -120,9 +120,9 @@ Finally, the paper shows to fix those bugs, they can simply perturb the training
 
 This paper uses paraphrasing models as a way to measure semantic similarity and generating semantically equivalent sentences. As is mentioned in text, machine translation based paraphrasing perturbs the sentence only locally, while humans generate semantically equivalent adversaries with more significant perturbations. 
 
-Another obvious limitation is that gradient-based adversarial example generation is directional and precise, while method proposed by this paper seems to be simple trial-and-error (keep generating paraphrases until one paraphrase perturbs the model prediction). 
+Another obvious limitation is that gradient-based adversarial example generation is directional and precise, while method proposed by this paper seems to be simple trial-and-error approach (keep generating paraphrases until one paraphrase perturbs the model prediction). 
 
-The final limitation is that after careful human evaluation, the pipeline can only generate 4 rules for VQA and 16 rules for sentiment -- a rather small yield compared to the effort spent at generating these rules.
+The final limitation is that after careful human evaluation, the pipeline can only generate 4 rules for VQA and 16 rules for sentiment -- a rather small yield compared to the effort spent at generating these rules. In their defense, these rules do cover more than 10% of the validation set, a nontrivial coverage.
 
 This paper provides a clear framework and proposed clear properties that adversarial text examples should abide. This definition is very compatible with adversarial examples in computer vision. However, only covers a specific type of adversarial examples. An obvious adversarial example not covered by this method would be operations such as adding or deleting sentences, which is important at attacking QA models.
 
