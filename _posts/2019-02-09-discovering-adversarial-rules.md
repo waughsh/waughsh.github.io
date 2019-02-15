@@ -25,7 +25,7 @@ However, it is hard to call these perturbed examples "adversarial examples" in t
 
 **Perturbed label prediction**:  $f(x) \not= f(x')​$
 
-In our discussion, people point out that from a linguistic point of view, it is very difficult to define "semantic equivalence" because we don't have a precise and absolute definition of "meaning". This is to say that even though two sentences might elicit the same effect for a particular task, they do not need to be synonymous. A more nuanced discussion of paraphrases in English can be found in *What Is a Paraphrase?* [[link](https://www.mitpressjournals.org/doi/pdf/10.1162/COLI_a_00166)] by Bhagat & Hovy (2012). In this paper, semantic equivalence is operationalized as what humans (MTurkers)  judged to be "equivalent".
+In our discussion, people point out that from a linguistic point of view, it is very difficult to define "semantic equivalence" because we don't have a precise and objective definition of "meaning". This is to say that even though two sentences might elicit the same effect for a particular task, they do not need to be synonymous. A more nuanced discussion of paraphrases in English can be found in *What Is a Paraphrase?* [[link](https://www.mitpressjournals.org/doi/pdf/10.1162/COLI_a_00166)] by Bhagat & Hovy (2012). In this paper, semantic equivalence is operationalized as what humans (MTurkers)  judged to be "equivalent".
 
 ### Semantically Equivalent Adversaries (SEAs)
 
