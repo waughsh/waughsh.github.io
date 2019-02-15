@@ -124,7 +124,7 @@ Another obvious limitation is that gradient-based adversarial example generation
 
 The final limitation is that after careful human evaluation, the pipeline can only generate 4 rules for VQA and 16 rules for sentiment -- a rather small yield compared to the effort spent at generating these rules. In their defense, these rules do cover more than 10% of the validation set, a nontrivial coverage.
 
-This paper provides a clear framework and proposed clear properties that adversarial text examples should abide. This definition is very compatible with adversarial examples in computer vision. However, only covers a specific type of adversarial examples. An obvious adversarial example not covered by this method would be operations such as adding or deleting sentences, which is important at attacking QA models.
+This paper provides a clear framework and proposes clear properties that adversarial text examples should abide. This definition is very compatible with adversarial examples in computer vision. However, this framework only covers a specific type of adversarial examples. An obvious adversarial example not covered by this method would be operations such as adding or deleting sentences, which is important at attacking QA models.
 
 [^1]: Jia, Robin, and Percy Liang. "Adversarial examples for evaluating reading comprehension systems." *arXiv preprint arXiv:1707.07328* (2017). 
 [^2]:  Belinkov, Yonatan, and Yonatan Bisk. "Synthetic and natural noise both break neural machine translation." *arXiv preprint arXiv:1711.02173*(2017). 
