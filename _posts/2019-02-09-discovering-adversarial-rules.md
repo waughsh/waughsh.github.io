@@ -35,7 +35,7 @@ $$
 \text{SEA}(x, x') = \unicode{x1D7D9}[\text{SemEq}(x, x') \wedge f(x) \not= f(x')] \label{1}
 $$
 
-In this paper, semantic equivalence is measured by paraphrasing likelihood, defined in multilingual multipivot paraphrasing paper from Lapata et al. (2017)[^6]. Pivoting is a technique in statistical machine translation proposed by Bannard and Callison-Burch (2005)[^7]: if two English strings $e_1$ and $e_2$ can be translated into the same French string $f​$, then they can be assumed to have the same meaning.
+In this paper, semantic equivalence is measured by the likelihood of paraphrasing, defined in multilingual multipivot paraphrasing paper from Lapata et al. (2017)[^6]. Pivoting is a technique in statistical machine translation proposed by Bannard and Callison-Burch (2005)[^7]: if two English strings $e_1$ and $e_2$ can be translated into the same French string $f$, then they can be assumed to have the same meaning.
 
 <p style="text-align: center"> <img src="https://github.com/windweller/windweller.github.io/blob/master/images/pivot-gen.png?raw=true" style="width: 20%"> <img src="https://github.com/windweller/windweller.github.io/blob/master/images/multipivot-gen.png?raw=true" style="width: 30%"> </p>
 
