@@ -51,7 +51,7 @@ $$
 
 Note in the denominator, all sentences being generated (including generating the original sentence) share the probability mass. If a sentence has many easy-to-generate paraphrases, then $p(x \vert x)​$ will be small, as well as all other $p(x' \vert x)​$. Dividing $p(x' \vert x)​$ by $p(x \vert x)​$ will get a large value (closer to 1). As for a sentence that is difficult to paraphrase, $p(x \vert x)​$ should be rather large compared to $p(x' \vert x)​$, then this ratio will provide a much smaller value.  
 
-In order to compute a semantic score $S(x, x')$ that is comparable between sentences, Ribeiro proposed to compute the ratio between the probability of generating paraphrase and the probability of generating itself:
+Based on this intuition, Ribeiro et al. proposed to compute a semantic score $S(x, x')$ as a measure of the paraphrasing quality:
 
 $$
 S(x, x') = \min(1, \frac{p(x'|x)}{p(x|x)}) \\
