@@ -43,9 +43,13 @@ The pivot scheme is depicted by the generative model on the left, which assumes 
 
 #### Paraphrase Probability Reweighting
 
-Even if we can measure the probability of a paraphrase $x'$ given $x$, the probability is not comparable across different sentences, i.e., $p(x' \vert x)$ is not comparable to $p(z' \vert z)$ because they have different normalization constant. 
+Assuming the unnormalized logit outputted by the model is $\phi(x'|x)$, and suppose $\prod\_x$ is the set of paraphrases that the model could generate given $x$, then the probability of a particular paraphrase can be written as below:
 
-If a sentence has many high-quality paraphrases around it, then they all share the probability mass, making the probability of each one rather low. If a sentence has only one high-quality paraphrase and the rest are much worse, this high-quality paraphrase will have a much higher probability.
+$$
+p(x'|x) = \frac{\phi(x'|x)}{\sum_{i \in \prod_x} \phi(i|x)} \\
+$$
+
+Note in the denominator, all sentences being generated (including generating the original sentence) share the probability mass. If a sentence has many easy-to-generate paraphrases, then $p(x \vert x)​$ will be small, as well as all other $p(x' \vert x)​$. Dividing $p(x' \vert x)​$ by $p(x \vert x)​$ will get a large value (closer to 1). As for a sentence that is difficult to paraphrase, $p(x \vert x)​$ should be rather large compared to $p(x' \vert x)​$, then this ratio will provide a much smaller value.  
 
 In order to compute a semantic score $S(x, x')$ that is comparable between sentences, Ribeiro proposed to compute the ratio between the probability of generating paraphrase and the probability of generating itself:
 
@@ -120,9 +124,9 @@ Finally, the paper shows to fix those bugs, they can simply perturb the training
 
 This paper uses paraphrasing models as a way to measure semantic similarity and generating semantically equivalent sentences. As is mentioned in text, machine translation based paraphrasing perturbs the sentence only locally, while humans generate semantically equivalent adversaries with more significant perturbations. 
 
-Another obvious limitation is that gradient-based adversarial example generation is directional and precise, while method proposed by this paper seems to be simple trial-and-error approach (keep generating paraphrases until one paraphrase perturbs the model prediction). 
+Another limitation is that gradient-based adversarial example generation is directional and precise, while method proposed by this paper seems to be simple trial-and-error approach (keep generating paraphrases until one paraphrase perturbs the model prediction). 
 
-The final limitation is that after careful human evaluation, the pipeline can only generate 4 rules for VQA and 16 rules for sentiment -- a rather small yield compared to the effort spent at generating these rules. In their defense, these rules do cover more than 10% of the validation set, a nontrivial coverage.
+After careful human evaluation, only 4 rules for VQA and 16 rules for sentimen are accepted by humans as acceptable rules -- a rather small yield compared to the effort spent at generating these rules. In the algorithm's defense, these rules do cover more than 10% of the validation set, a nontrivial coverage.
 
 This paper provides a clear framework and proposes clear properties that adversarial text examples should abide. This definition is very compatible with adversarial examples in computer vision. However, this framework only covers a specific type of adversarial examples. An obvious adversarial example not covered by this method would be operations such as adding or deleting sentences, which is important at attacking QA models.
 
