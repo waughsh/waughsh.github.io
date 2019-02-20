@@ -224,7 +224,7 @@ For BERT, we select the `[CLS]` token position as the embedding of the sentence 
 
 <p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-recovery.png?raw=true" style="width:80%"></p>
 
-The y-axis plots the cosine distance between $Ax$ and $x$ on the test set. Unfortunately this is not the result I was expecting, at least not according to the theorem and experiment reported by the paper. 
+The y-axis plots the cosine distance between $Ax$ and $x$ on the test set, and x-axis shows the number of epochs during training. Unfortunately this is not the result I was expecting, at least not according to the theorem and experiment reported by the paper. 
 
 There are a few key differences between my experiment here and the paper:
 
