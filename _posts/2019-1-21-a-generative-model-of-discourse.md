@@ -47,12 +47,12 @@ $$
 u = \frac{1}{k} \sum_{s \in \{s_1, ..., s_k\}} \frac{1}{n} \sum_{w_i \in s} v_{w_i}
 $$
 
-To even make this statement simpler, assume the above figure represents a tensor $S \in \mathcal{R}^{n \times k \times d}$, we can easily run the following Numpy operation to obtain $u$: `u = np.mean(np.mean(S, axis=0), axis=1)`. After knowing how $u$ is computed, then we can understand Theorem 1:
+To even make this statement simpler, assume the above figure represents a tensor $S \in \mathcal{R}^{n \times k \times d}$, we can easily run the following Numpy operation to obtain $u$: `u = np.mean(np.mean(S, axis=0), axis=1)`. After knowing how $u​$ is computed, then we can understand Theorem 1:
 $$
 v_w = A u
 $$
 
-For any word, if we compute the corresponding vector $u$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A​$. I provide some algebra walk through the proof of Theorem 1 in the paper. Readers who find it elementary or advanced can skip this block straight to the next section. 
+For any word, if we compute the corresponding vector $u$, the word embedding of this word can be obtained through a linear transformation (matrix multiplication) by a fixed matrix $A$. I provide some algebra walk through the proof of Theorem 1 in the paper. Readers who find it elementary or advanced can skip this block straight to the next section. 
 
 (**Optional**)
 
@@ -75,7 +75,7 @@ p(c|w) &\propto p(w|c)p(c) \\
 \end{align*}
 $$
 
-After obtaining the probability density function of $c \vert w$, we can think about what kind of random variable this pdf suggests, because eventually we want to know what is $\mathbb{E}(c \vert w)$, the left hand side of equation (1). Since there is a covariance matrix inverse $\Sigma^{-1}$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)$, we need to know what is the mean of this new distribution.
+After obtaining the probability density function of $c \vert w$, we can think about what kind of random variable this pdf suggests, because eventually we want to know what is $\mathbb{E}(c \vert w)$, the left hand side of equation (1). Since there is a covariance matrix inverse $\Sigma^{-1}$ invovled, we can try to re-arrange the terms to make it look more like a multivariate Gaussian distribution. Since we do want to know $\mathbb{E}(c \vert w)​$, we need to know what is the mean of this new distribution.
 
 First, we ignore the covariance determinant term as it is a constant and in Arora's setting, the covariance matrix is invertible -- "if the word vectors as random variables are isotropic to some extent, it will make the covariance matrix identifiable" (identifiable = invertible). The assumption "isotropic word embedding" here means that word embedding dimensions should not be correlated with each other.
 
@@ -168,7 +168,7 @@ We can list out the assumptions used in Arora et al.'s model:
 2. Words $w$ in a window are generated independently by $c$.
 3. $p(c)​$, the prior of discourse vector $c​$ is Gaussian with mean 0 and invertible covariance matrix $\Sigma​$.
 
-Each assumption has some flaws. Assumption (1) assumes a very simplistic model on how words are generated from meaning. By extending to a more complex model, such as bilinear transformation: $p(w \vert c) \propto \exp(v\_w^T H c)$, we gain more expressivity and we still have an analytical expression of $c\vert w$, however we might lose the concentration of the partition function $Z\_c$.
+Each assumption has some flaws. Assumption (1) assumes a very simplistic model on how words are generated from meaning. By extending to a more complex model, such as bilinear transformation: $p(w \vert c) \propto \exp(v\_w^T H c)$, we gain more expressivity and we still have an analytical expression of $c\vert w$, however we might lose the concentration of the partition function $Z\_c​$.
 
 Assumption (2) is a very serious offense for syntax in language. Words definitely depend on one another -- grammatical structure naturally emerges from word-to-word dependencies. `The drink is cold`, the choice of `is` is clearly influenced by the plurality of the subject. However, if we drop this assumption, we won't be able to get the following factorization:
 
@@ -202,7 +202,7 @@ A cursory look at the graphical model of Arora's model and language model remind
 
 <p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-figA.png?raw=true" style="width:50%"> <br> <b>Figure 5</b> </p>
 
-When there is a hidden variable (confounding variable) $c​$ that governs the behavior of $a​$ and $b​$, without knowing the existence of $c​$, we (the algorithm) can often make the mistake of inferring a correlational relationship between variable $a​$ and $b​$. Does the left figure look quite similar to a language model, and the right figure similar to what Arora et al. has proposed? This is not to suggest that there is no dependence between words -- there clearly is, but modeling language well by conditioning on previous words should not exclude us from hypothesizing a different kind of generative model.
+When there is a hidden variable (confounding variable) $c$ that governs the behavior of $a$ and $b$, without knowing the existence of $c$, we (the algorithm) can often make the mistake of inferring a correlational relationship between variable $a$ and $b$. Does the left figure look quite similar to a language model, and the right figure similar to what Arora et al. has proposed? This is not to suggest that there is no dependence between words -- there clearly is, but modeling language well by conditioning on previous words should not exclude us from hypothesizing a different kind of generative model.
 
 <p> The language modeling objective is a decomposition of joint probability over words $p(x_1,...,x_n)$, and the decomposition itself does not include any structural bias. However, what I suggest is to model the joint probability of $p(c, x_1, ..., x_n)$, with the inclusion of an additional random variable. </p>
 
@@ -214,15 +214,27 @@ There is one last type of sentence embedding objective that has not been thoughl
 
 ### Word Recovering Through Context
 
-On a high-level, Theorem 1 can inspire a statistical test: **"can a word be recovered from its context?"**. Obviously sentence embddings, unlike word embeddings, should capture both semantic and syntactic information, and word recover test can only measure the former, but it is an objective, task-agnostic measure of the quality of sentence embedding.
+On a high-level, Theorem 1 inspires a statistical test: **"can a word be recovered from its context?"**. Obviously sentence embddings, unlike word embeddings, should capture both semantic and syntactic information. Word recover test can only measure the former. However, it is a task-agnostic, global measure of the quality of sentence embedding.
 
+We consider 4 models: BERT, InferSent, DisSent, and SIF (Arora et al.'s original model). We evaluate on News Crawl Shuffled 2011 dataset, which contains roughly 2M sentences from news sources, and is part of the LM1B dataset. BERT uses [SentencePiece](https://github.com/google/sentencepiece)  to tokenize and produces its own subword unit for infrequent words. InferSent, DisSent, and SIF purely relies on GloVe embeddings. Thus, we choose vocabularies that overlap both GloVe and BERT.
 
+Since our testing models are large, we subsample the overlapped vocabulary (12.5%) and construct a training/testing set (1000 words and their corresponding sentence embedding pairs for training, 100 words and their sentence embedding pairs for test) to learn the transformation matrix $A​$. These words jointly appear in >99% of the sentences in the corpus.
 
-(to be continued)
+For BERT, we select the `[CLS]` token position as the embedding of the sentence because it is trained on the next-sentence prediction task, albeit not fine-tuned on other tasks. 
 
-Limitation of this test:
+<p style="text-align: center"><img src="https://github.com/windweller/windweller.github.io/blob/master/images/discourse-recovery.png?raw=true" style="width:80%"></p>
 
-1. This test does not consider fine-tuning procedure used in many procedures
+The y-axis plots the cosine distance between $Ax$ and $x$ on the test set. Unfortunately this is not the result I was expecting, at least not according to the theorem and experiment reported by the paper. 
+
+There are a few key differences between my experiment here and the paper:
+
+1. I only sampled 1000 high frequency words. The paper probabily fitted for all vocabulary.
+2. I evaluated on a test holdout set. The paper did not explicitly comment on this matter.
+3. I use the entire sentence to construct context embedding (throw away sentences that are longer than 30 words), while the paper used a simple window around the word.
+
+BERT embedding has a much higher dimension (768-dim) compared to SIF embedding (300-dim), but it performed much worse than SIF embedding. The idea that BERT is simply averaging word vectors does not hold up under this test.
+
+InferSent and DisSent (4096-dim) both did very well generalizing to the test set words. This test might still be flawed and it's possible and would appreciate different inputs. 
 
 ### Closing Thoughts
 
