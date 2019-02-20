@@ -216,7 +216,7 @@ There is one last type of sentence embedding objective that has not been thoughl
 
 On a high-level, Theorem 1 inspires a statistical test: **"can a word be recovered from its context?"**. Obviously sentence embddings, unlike word embeddings, should capture both semantic and syntactic information. Word recover test can only measure the former. However, it is a task-agnostic, global measure of the quality of sentence embedding.
 
-We consider 4 models: BERT, InferSent, DisSent, and SIF (Arora et al.'s original model). We evaluate on News Crawl Shuffled 2011 dataset, which contains roughly 2M sentences from news sources, and is part of the LM1B dataset. BERT uses [SentencePiece](https://github.com/google/sentencepiece)  to tokenize and produces its own subword unit for infrequent words. InferSent, DisSent, and SIF purely relies on GloVe embeddings. Thus, we choose vocabularies that overlap both GloVe and BERT.
+We consider 4 models: BERT, InferSent[^8], DisSent[^14], and SIF (Arora et al.'s original model). We evaluate on News Crawl Shuffled 2011 dataset, which contains roughly 2M sentences from news sources, and is part of the LM1B dataset. BERT uses [SentencePiece](https://github.com/google/sentencepiece)  to tokenize and produces its own subword unit for infrequent words. InferSent, DisSent, and SIF purely relies on GloVe embeddings. Thus, we choose vocabularies that overlap both GloVe and BERT.
 
 Since our testing models are large, we subsample the overlapped vocabulary (12.5%) and construct a training/testing set (1000 words and their corresponding sentence embedding pairs for training, 100 words and their sentence embedding pairs for test) to learn the transformation matrix $A​$. These words jointly appear in >99% of the sentences in the corpus.
 
@@ -257,4 +257,5 @@ Special thanks to Jaime Roquero who discussed this paper in very detailed manner
 [^10]: Deep contextualized word representations
 [^11]: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
 [^12]: https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html
+[^13]:DisSent: Sentence Representation Learning from Explicit Discourse Relations. https://arxiv.org/abs/1710.04334
 
