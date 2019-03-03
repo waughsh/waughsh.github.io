@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 title: A Brief History of RNN Encoder Decoder
 layout: post
 ---
