@@ -232,7 +232,7 @@ There are a few key differences between my experiment here and the paper:
 2. I evaluated on a test holdout set. The paper did not explicitly comment on this matter.
 3. I use the entire sentence to construct context embedding (throw away sentences that are longer than 30 words), while the paper used a simple window around the word.
 
-BERT embedding has a much higher dimension (768-dim) compared to SIF embedding (300-dim), but it performed much worse than SIF embedding. The idea that BERT is simply averaging word vectors does not hold up under this test.
+BERT embedding has a much higher dimension (768-dim) compared to SIF embedding (300-dim), but it performed much worse than SIF embedding. The idea that BERT is simply averaging word vectors does not hold up under this test, but since BERT also mixes in positional embeddings, it complicates any simple analysis like this.
 
 InferSent and DisSent (4096-dim) both did very well generalizing to the test set words. This test might still be flawed and it's possible and would appreciate different inputs. 
 
