@@ -228,8 +228,8 @@ The y-axis plots the cosine distance between $Ax$ and $x$ on the test set, and x
 
 There are a few key differences between my experiment here and the paper:
 
-1. I only sampled 1000 high frequency words. The paper probabily fitted for all vocabulary.
-2. I evaluated on a test holdout set. The paper did not explicitly comment on this matter.
+1. I only sampled 1000 high frequency words. The paper probabily fitted for all vocabulary (global fit).
+2. Data source is very different. Wikipedia allows words that have different senses to be talked about in very different context ("crane" will be talked as if it's an animal or a heavy lifting machine). This is a special artifact of the Wikipedia.
 3. I use the entire sentence to construct context embedding (throw away sentences that are longer than 30 words), while the paper used a simple window around the word.
 
 BERT embedding has a much higher dimension (768-dim) compared to SIF embedding (300-dim), but it performed much worse than SIF embedding. The idea that BERT is simply averaging word vectors does not hold up under this test, but since BERT also mixes in positional embeddings, it complicates any simple analysis like this.
