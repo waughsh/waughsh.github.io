@@ -252,7 +252,7 @@
       $("#submitButtonRow").append(spinning_wheel_html);
 
       $.ajax({
-          url: 'http://18.222.239.24/api/predict',  //real server address: http://18.222.239.24
+          url: 'https://cors-anywhere.herokuapp.com/http://18.222.239.24/api/predict',  //real server address: http://18.222.239.24
           type: 'POST',
           data: JSON.stringify(inp),
           contentType: 'application/json; charset=utf-8',
@@ -292,7 +292,7 @@
               console.log(this.id);
 
               $.ajax({
-                  url: 'http://18.222.239.24/api/interp',  //real server address: http://18.222.239.24
+                  url: 'https://cors-anywhere.herokuapp.com/http://18.222.239.24/api/interp',  //real server address: http://18.222.239.24
                   type: 'POST',
                   data: JSON.stringify(inp),
                   contentType: 'application/json; charset=utf-8',
