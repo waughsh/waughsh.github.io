@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>DeepVet: Automatically Inferring Disease Codes on Veterinary Clinical Record</title>
+    <title>DeepVet: Automating Veterinary Disease Coding</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -21,7 +21,7 @@
     <!-- Plugin CSS -->
 
     <!-- Custom styles for this template -->
-    <link href="/assets/css/new-age.css" rel="stylesheet">
+    <link href="stylesheets/new-age.css" rel="stylesheet">
 
   </head>
 
@@ -116,11 +116,18 @@
           <p class="text-muted">In order to better understand how DeepVet predicts diagnosis codes from clinical notes, we implement a simple saliency-based interpretation method</p>
             <hr>
         </div>
-        <div class="col-5 justify-content-around mx-auto">
+        <div class="col-5 justify-content-around mx-auto" >
+
+          <div class="row" style="margin-bottom: 1rem" id="top-level-field">
+             <span class="badge badge-danger clickable labels" id="473010000">Hypersensitivity condition</span>
+          </div>
+
+          <div id="interp_result">
           <p>$PET_NAME$, a 2 year old male neutered boxer , presented to CSU dermatology service for a recheck of <span class="highlight">allergic dermatitis</span> .
             It was reported that $PET_NAME$ 's  <span class="highlight">pruritus</span> is relatively seasonal , worse in the spring and summer , but does not completely go away
             in the winter . $PET_NAME$'s main problem  <span class="highlight">areas</span> were his  <span class="highlight">paws</span> and his muzzle .
           </p>
+          </div>
         </div>
       </div>
     </section>
@@ -128,7 +135,7 @@
     <section class="bg-gray">
       <div class="row">
         <div class="col-4 justify-content-around ml-auto">
-          <img src="/assets/img/best-abstainsion-2.jpg" class="img-fluid" alt="">
+          <img src="img/best-abstainsion-2.jpg" class="img-fluid" alt="">
         </div>
          <div class="section-heading text-left col-4 mx-auto">
           <h3>Automatic Abstention</h3>
@@ -152,7 +159,7 @@
           <p>
             <b>Large-scale Generative Modeling to Improve Automated Veterinary Disease Coding.</b> <br>
           Yuhui Zhang, Allen Nie, and James Zou. <br>
-            <b>NeurIPS Machine Learning for Health Workshop (2018).</b>
+            <b>NeurISP Machine Learning for Health Workshop (2018).</b>
           </p> <br>
           <p> <b> DeepTag: inferring diagnoses from veterinary clinical notes. </b> <br>
             Allen Nie, Ashley Zehnder, Rodney L. Page, Yuhui Zhang, Arturo Lopez Pineda, Manuel A. Rivas, Carlos D. Bustamante, and James Zou. <br>
@@ -215,7 +222,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="/assets/js/new-age.min.js"></script>
+  <script src="js/new-age.min.js"></script>
   <script type="text/javascript">
 
     // Example selection
@@ -236,7 +243,6 @@
 
     var spinning_wheel_html = "<div class=\"spinner-border text-danger ml-3\" role=\"status\" id=\"spinWheel\"><span class=\"sr-only\">Loading...</span></div>";
 
-
     // Submission
     $("#submitButton").click(function() {
       var text = $("#clinicalNotes").val();
@@ -246,44 +252,66 @@
       $("#submitButtonRow").append(spinning_wheel_html);
 
       $.ajax({
-          url: 'https://cors-anywhere.herokuapp.com/http://18.222.239.24/api/predict',  //real server address: http://18.222.239.24
+          url: 'http://18.222.239.24/api/predict',  //real server address: http://18.222.239.24
           type: 'POST',
           data: JSON.stringify(inp),
           contentType: 'application/json; charset=utf-8',
           dataType: 'json',
           async: true,
           success: function(msg) {
-
               //also remove spin wheel
-              $("#spinWheel").remove()
+              $("#spinWheel").remove();
 
               //first we reset
               if ($("#predictionResult").children().length > 0) {
                   $("#predictionResult").empty()
               }
-
               // we then append result
               $("#predictionResult").append(msg['output_html']);
-              console.log(msg);
+              // console.log(msg);
+
+              // display top level label names
+              $("#top-level-field").empty();
+
+              var i;
+              for (i=0; i < msg['top_level_ids'].length; i++) {
+                  $("#top-level-field").append(
+                      '<span class="badge badge-secondary clickable labels" id="'+ msg['top_level_ids'][i] + '">' + msg['top_level_names'][i] + '</span>'
+                  )
+              }
+
+              // then for interpretation, we clean the text, and display the pasted text
+              $("#interp_result").empty().append('<p>' + msg['inputtext'] + '</p>');
+
+
+            $(".clickable, .labels").click(function() {
+              // need to send "this.id" back to server!
+              var inp = {note_body: $("#interp_result").text(),
+                         label_id: this.id};
+
+              console.log(this.id);
+
+              $.ajax({
+                  url: 'http://18.222.239.24/api/interp',  //real server address: http://18.222.239.24
+                  type: 'POST',
+                  data: JSON.stringify(inp),
+                  contentType: 'application/json; charset=utf-8',
+                  dataType: 'json',
+                  async: true,
+                  success: function(msg) {
+                      // console.log(msg['output_html'])
+                      $("#interp_result").empty().append('<p>' + msg['output_html'] + '</p>');
+                      // TODO: add color switching for the button...
+                  }
+              });
+
+          });
+
           }
       });
     });
-  </script>
 
-    <!-- Google Analytics -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-71352903-1', 'auto');
-    ga('send', 'pageview', {
-      'page': 'http://anie.me/demo/deepvet',
-      'title': 'DeepVet Demo'
-    });
   </script>
-  <!-- End Google Analytics -->
 
   </body>
 
