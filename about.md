@@ -43,6 +43,7 @@ I'm constantly working on new projects and seeking to connect with people! Drop 
 
 ### Publications
 
+- **VetTag: VetTag: improving automated veterinary diagnosis coding via large-scale language modeling.**, Y. Zhang, **A Nie**, A Zehnder, J Zou., (2019). Nature (npj) Digital Medicine 2, Article: 35. \[[link](https://www.nature.com/articles/s41746-019-0113-1)\] \[[demo](http://anie.me/demo/deepvet)\]
 - **DeepTag: inferring diagnoses from veterinary clinical notes.**, **A Nie**, A Zehnder, RL Page, AL Pineda, MA Rivas, CD Bustamante, J Zou., (2018). Nature (npj) Digital Medicine 1, Article: 60. \[[link](https://www.nature.com/articles/s41746-018-0067-8)\] \[[code](http://github.com/windweller/deeptag)\] \[[demo](http://anie.me/demo/deepvet)\]
 - **DisSent: Sentence Representation Learning from Explicit Discourse Relations**. **Nie, A.**, Bennett, E.D., Goodman, N.D., (2017). To appear, ACL 2019. \[[link](https://arxiv.org/abs/1710.04334)\] \[[code](https://github.com/windweller/disextract)\]
 - **Data Noising as Smoothing in Neural Network Sequence Models**. Ziang, X., Sida W., Jiwei L., Levy, D., **Nie A.**, Jurafsky, Dan & Ng, Andrew, (2016). 5th International Conference on Learning Representations (ICLR). Toulon, France. (Oral at BayLearn 2016) \[[link](https://arxiv.org/abs/1703.02573)\]
