@@ -7,7 +7,7 @@ published: true
 
 
 
-### A Disambiguation Page of Allen Nie
+### Sheldon Waugh, MSc, PHd
 
 
 
@@ -15,46 +15,45 @@ published: true
 
 
 
-Three Stanford departments I've been affiliated with:
+I currently work on implementing One-Health data-driven solutions on surveillance databases including incorporating spatial resolution and developing advanced data management methodologies and techniques within animal disease surveillance programs in Central Asia and with the United States Army’s Veterinary Service.
 
-1. Computer Science Department (anie@cs.stanford.edu)
-2. Symbolic Systems Program (anie@stanford.edu)
-3. Department of Biomedical Data Science (BDS)
+My current primary research goal, is to develop and/or improve the accuracy of surveillance, spatial and genomic public health databases in semi-developing and/or developed countries, through the integration of other large heterogeneous and/or unstructured datasets. This will be done by creating health modeling programs and subroutines that will collect, compile and integrate useful health data to:
 
-I earned my master of science degree from Symbolic Systems Program at Stanford University. My main area of focus is Natural Language Processing, but I work in other areas such as deep reinforcement learning, applied machine learning, information theory as well.
+-Observe and predict the burden of disease within companion animals groups, using surveillance data
+-Determine and predict spread and distribution of vector-borne infectious diseases.
+-Allow easier access to more accurate and realistic ecological data. 
 
-In 2016, I spent my first year working in Andrew Ng's [Stanford Machine Learning Group](https://stanfordmlgroup.github.io/) with Ziang Xie. The project centered around recurrent neural network regularizations and data augmentation. I became affiliated with Computer Science Department and received my CS email address during this time. 
+Additionally, I’ve focused on developing tailored ‘Big data’ approaches that can facilitate the analysis of multi-dimensional heterogenous data such as metagenomic, expression and phylogenetic data combined with clinical metadata to explore system biology approaches investigating various comorbidities associated with zoonoses.
 
-In 2017 Summer, I worked with Noah Goodman in [CocoLab](https://cocolab.stanford.edu/) on using discourse markers to automatically construct supervised learning datasets. In the summer, I was a machine learning intern at a fast growing startup [Cresta AI](https://www.cresta.ai/) working with Zayd Enum (founder and Stanford EE PhD in Sebastian Thrun's group) and Russell Stewart (co-founder and Stanford CS PhD in Stefano Ermon's group).
+In 2017 -2018, I joined Jason Blackburn's Spatial Epidemiology & Ecology Research Laboratory (SEER Lab). The SEER Lab is an interdisciplinary research laboratory jointly housed in the Emerging Pathogens Institute and the Department of Geography at the University of Florida. SEER Lab is focused on questions addressing the ecology and spatio-temporal patterns of diseases. SEER Lab research is focused primarily on bacterial zoonoses, those bacterial diseases that affect both animals and humans.
 
-In 2017 Winter, I accepted an offer to become a full-time research engineer at Stanford Biomedical Data Science Department in Medical School working with [James Zou](https://sites.google.com/site/jamesyzou/home). James Zou's primary area of focus is mathematical modeling of genetics, but he also worked on NLP fairness and medical AI problems. 
+Currently, I work at the Army Pulbic Health Center as an Epidemiologist for the One-Health Division, in the Veterinary Service and Public Health Sanitation Directorate. The current projects I have been focusing on are:
 
-In 2018 Spring, I worked on a medical AI project that learns to automatically infer diagnostic codes in veterinary EHR. I presented this work at WeCNLP Summit later in the Fall.
+Global Privately and Government-owned Worldwide Surveillance System (GPAWSS)
+Chief scientist and co-project manager for GPAWSS. GPAWSS is a surveillance platform designed toprovide surveillance data to inform commanders and VCOs of the distribution, frequency, and incidenceof various companion animal diseases. The platform uses multiple heterogeneous data streams includ-ing:  Remote Online Veternary Record (ROVR) EHR data, laboratory data, and data from a civiliancorporate companion animal practice. Data in GPAWSS is managed by the One-Health Division andis displayed on an interactive, web-based platform (Tableau and R-Shiny) tracking disease frequencyand incidence globally. GPAWSS also has outbreak detection capabilities.
 
-In 2019, I accepted an offer to become a Stanford CS PhD student focusing on Artificial Intelligence.
+Modernizing the Data infrastructure of the Veterinary Services and Public Health Sanitation Directorate (VSPHS)
+The VSPHS is currently at a crossroads in terms of the organization of data in a manner that allows forincreased collaboration with outside organizations and encourages creativity and the discovery of noveldata sources and research methods. i) The project intends to: Establish a data etiquette protocol withinthe VSPHS in order to establish a data standardization protocol, simplifying future data integrationwith  outside  organizations  ii)  Restructure  the  data  storage  structure  of  the  directorate,  establishingstandardized databases, per division and housing them within the Army Engineer Research and Development Center (AERDC) DoD Supercomputing Resource Center’s data infrastructure (DSRC). TheAERDC’s Data Lake structures allows for the positive control of potentially all of the directorate’s datain a single source that can be updated at one point, decreasing areas of inaccessible and siloed data. My exapansive experience with data cleaning, restructuring and manipulation techniques allows me tolead this project for the directorate in terms of methodology, collaboration and planning.
 
 I'm constantly working on new projects and seeking to connect with people! Drop me an email if you want to talk about research or academic/industry life!
 
 
 ### Contact me
 
-[aimingnie@gmail.com](mailto:aimingnie@gmail.com)
+[waughsh@gmail.com](mailto:waughsh@gmail.com)
 
 
 ### Publications
 
-- **Learning to Explain: Answering Why-Questions via Rephrasing.**, **Nie, A.**, Bennett, E.D. and Goodman, N.D., 2019. Proceedings of the 1st Workshop NLP for Conversational AI. Florence, Italy. Association for Computational Linguistics.
-- **VetTag: improving automated veterinary diagnosis coding via large-scale language modeling.**, Y. Zhang, **A Nie**, A Zehnder, J Zou., (2019). Nature (npj) Digital Medicine 2, Article: 35. \[[link](https://www.nature.com/articles/s41746-019-0113-1)\] \[[demo](http://anie.me/demo/deepvet)\]
-- **DeepTag: inferring diagnoses from veterinary clinical notes.**, **A Nie**, A Zehnder, RL Page, AL Pineda, MA Rivas, CD Bustamante, J Zou., (2018). Nature (npj) Digital Medicine 1, Article: 60. \[[link](https://www.nature.com/articles/s41746-018-0067-8)\] \[[code](http://github.com/windweller/deeptag)\] \[[demo](http://anie.me/demo/deepvet)\]
-- **DisSent: Sentence Representation Learning from Explicit Discourse Relations**. **Nie, A.**, Bennett, E.D., Goodman, N.D., (2017). Accepted in ACL 2019. \[[link](https://arxiv.org/abs/1710.04334)\] \[[code](https://github.com/windweller/disextract)\]
-- **Data Noising as Smoothing in Neural Network Sequence Models**. Ziang, X., Sida W., Jiwei L., Levy, D., **Nie A.**, Jurafsky, Dan & Ng, Andrew, (2016). 5th International Conference on Learning Representations (ICLR). Toulon, France. (Oral at BayLearn 2016) \[[link](https://arxiv.org/abs/1703.02573)\]
-- **Representations of Time Affect Willingness to Wait for Future Rewards**. Thorstad, R., **Nie, A.**, & Wolff, P. (2015). 37th Annual Conference of the Cognitive Science Society. Pasadena, California. \[[link](http://psychology.emory.edu/cognition/wolff/papers/ThorstadNieWolff2015.pdf)\]
-- **Computational Exploration to Linguistic Structures of Future, Classification and Categorization**. **Nie, A.**, Sheppard, J., Choi, J., Copley, B., Wolff, P., (2015). The North American Chapter of the Association for Computational Linguistics: Human Language Technologies. Denver, Colorado. \[[link](http://www.aclweb.org/anthology/N15-2#page=178)\]
+Ball, J. D., Fe Agana, D.,**Waugh, S.**, Wang, K., James, T. G.,  Nicolette, G. (2019).  Systematically collected  information  at  encounters  with  HIV-positive  students:   A  review  of  10  years  of  electronic medical records.  Journal of American College Health, 1-5.  PMID: 30681932
+Spatial-Genomic Association of Co-Circulating Brucella Strains in Southern Kazakhstan:  PhylogeneticInferences Using MLVA Data, **Waugh, S**.(Submitted)
+Brucellosis Transmission Between Humans and Domesticated Livestock in Southern Kazakhstan:  Inferences through MLVA Typing, **Waugh, S**.(Submitted)
+Visualizing the Occurrence of Zoonotic Diseases among Military Associated Canines, **Waugh, S**.(Submitted)
+Jennifer C. Dennis, Tyler Culpepper, Carmelo Nieves, Jr., Cassie C. Rowe, Alyssa M. Burns, CarleyT.  Rusch,  Ashton  Federico,  Maria  Ukhanova, **Waugh, S.**,  Volker  Mai,  Mary  C.  Christman,  BobbiLangkamp-Henken,  Probiotics  (Lactobacillus  gasseri  KS-13,  Bifidobacterium  bifidum  G9-1,  and  Bi-fidobacterium  longum  MM-2)  improve  rhinoconjunctivitis-specific  quality  of  life  in  individuals  withseasonal allergies:  a double-blind, placebo-controlled, randomized trial.  Am J Clin Nutr 105, 758767(2017).  PMID: 28228426
+**Waugh, S.** App.:  Gut Microbiota Differences in Children From Distinct Socioeconomic Levels Livingin the Same Urban Area in Brazil.  Journal of Pediatric Gastroenterology and Nutrition (2016).  PMID:28644365
+Oliveira, F.P. de, Mendes, R.H., Dobbler, P.T., Mai, V., Pylro, V.S.,**Waugh, S.**, Vairo, F., Refosco,L.F., Roesch, L.F.W., and Schwartz, I.V.D. (2016).  Phenylketonuria and Gut Microbiota: A ControlledStudy Based on Next-Generation Sequencing.  PLOS ONE 11, e0157513.  PMID: 27336782
+Dahl, W. J., Ford, A.L., Ukhanova, M., Radford, A., Christman, M.C.,**Waugh, S.**, Mai, V. Resistant potato starches (type 4 RS) exhibit varying effects on laxation with and without phylum level changesin microbiota:  A randomised trial in young adults.  Journal of Functional Foods 23, 111 (2016).
+**Waugh, S.** Apropos:  Plasmodium knowlesi malaria an emerging public health problem in Hulu Se-langor, Selangor, Malaysia (20092013):  epidemiologic and entomologic analysis.  Parasites   Vectors 8,79 (2015).  PMID: 25651916Mai, V.,Waugh, S., Byrd, D., Simpson, D.  Ukhanova, M. Novel encapsulation improves recovery ofprobiotic strains in fecal samples of human volunteers.  Appl Microbiol Biotechnol 17 (2016).  PMID:27796434
+**Waugh, S.**, Varma, D., Striley, C., Cottler, L. Comparing Spatial Techniques to Visualize HypertensionSpread and Risk Factors for Hypertension Using Self-report from Community Participants.  AppliedGeography (2015).  (Submitted)
 
 
-### Teaching
-
-(assistant)
-- 2018 Spring: CS224U Natural Language Understanding
-- 2017 Spring: CS224S Spoken Language Processing
-- 2016 Winter: CS224N Natural Language Processing
