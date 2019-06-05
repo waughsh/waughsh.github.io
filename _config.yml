@@ -4,10 +4,10 @@
 # to test locally: jekyll serve --baseurl ''
 
 # Name of your site (displayed in the header)
-name: Allen Nie
+name: Sheldon G Waugh
 
 # Short bio or description (displayed in the header)
-description: "A blog for NLP, ML, and Programming"
+description: "A blog for Veterinary Infrormatics, Bioinformatics and ML techniques"
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: http://anie.me/images/squared_logo.png
@@ -35,20 +35,20 @@ footer-links:
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts
 # You can find your shortname on the Settings page of your Disqus account
-disqus: windweller
+disqus: 
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics: UA-71352903-1
+google_analytics: UA-141521573-1
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url: http://anie.me
+url: http://waughsh.github.io
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
-baseurl: "http://anie.me"
+baseurl: "http://waughsh.github.io"
 
 #
 # !! You don't need to change any of the configuration flags below !!
