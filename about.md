@@ -19,9 +19,9 @@ I currently work on implementing One-Health data-driven solutions on surveillanc
 
 My current primary research goal, is to develop and/or improve the accuracy of surveillance, spatial and genomic public health databases in semi-developing and/or developed countries, through the integration of other large heterogeneous and/or unstructured datasets. This will be done by creating health modeling programs and subroutines that will collect, compile and integrate useful health data to:
 
--Observe and predict the burden of disease within companion animals groups, using surveillance data
--Determine and predict spread and distribution of vector-borne infectious diseases.
--Allow easier access to more accurate and realistic ecological data. 
+- Observe and predict the burden of disease within companion animals groups, using surveillance data
+- Determine and predict spread and distribution of vector-borne infectious diseases.
+- Allow easier access to more accurate and realistic ecological data. 
 
 Additionally, I’ve focused on developing tailored ‘Big data’ approaches that can facilitate the analysis of multi-dimensional heterogenous data such as metagenomic, expression and phylogenetic data combined with clinical metadata to explore system biology approaches investigating various comorbidities associated with zoonoses.
 
