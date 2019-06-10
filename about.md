@@ -7,7 +7,7 @@ published: true
 
 
 
-### Sheldon Waugh, MSc, PHd
+### Sheldon Waugh, MSc, PhD
 
 
 
