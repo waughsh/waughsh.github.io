@@ -21,7 +21,7 @@ My current primary research goal, is to develop and/or improve the accuracy of s
 
 - Observe and predict the burden of disease within companion animals groups, using surveillance data
 - Determine and predict spread and distribution of zoonotic and vector-borne infectious diseases.
-- Allow easier access to more accurate and realistic ecological data. 
+- Allow easier access to more accurate and realistic ecological data.
 
 Additionally, I’ve focused on developing tailored ‘Big data’ approaches that can facilitate the analysis of multi-dimensional heterogenous data such as metagenomic, expression and phylogenetic data combined with clinical metadata to explore system biology approaches investigating various comorbidities associated with zoonoses.
 
