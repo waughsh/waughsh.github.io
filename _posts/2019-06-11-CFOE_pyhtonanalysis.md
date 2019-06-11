@@ -1,3 +1,8 @@
+---
+published: true
+title: Calculating and Comparing Product Production Time for VS One-Health Products
+layout: post
+---
 
 <center> <h1> Calculating and Comparing Product Production Time for VS One-Health Products</h1> </center>
 <b>Sheldon Waugh MSc, PhD<br>
