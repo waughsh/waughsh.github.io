@@ -7,7 +7,7 @@ published: true
 
 
 
-### Sheldon Waugh, MSc, PHd
+### Sheldon Waugh, MSc, PhD
 
 
 
@@ -19,9 +19,9 @@ I currently work on implementing One-Health data-driven solutions on surveillanc
 
 My current primary research goal, is to develop and/or improve the accuracy of surveillance, spatial and genomic public health databases in semi-developing and/or developed countries, through the integration of other large heterogeneous and/or unstructured datasets. This will be done by creating health modeling programs and subroutines that will collect, compile and integrate useful health data to:
 
--Observe and predict the burden of disease within companion animals groups, using surveillance data
--Determine and predict spread and distribution of vector-borne infectious diseases.
--Allow easier access to more accurate and realistic ecological data. 
+- Observe and predict the burden of disease within companion animals groups, using surveillance data
+- Determine and predict spread and distribution of zoonotic and vector-borne infectious diseases.
+- Allow easier access to more accurate and realistic ecological data. 
 
 Additionally, I’ve focused on developing tailored ‘Big data’ approaches that can facilitate the analysis of multi-dimensional heterogenous data such as metagenomic, expression and phylogenetic data combined with clinical metadata to explore system biology approaches investigating various comorbidities associated with zoonoses.
 
@@ -30,7 +30,7 @@ In 2017 -2018, I joined Jason Blackburn's Spatial Epidemiology & Ecology Researc
 Currently, I work at the Army Pulbic Health Center as an Epidemiologist for the One-Health Division, in the Veterinary Service and Public Health Sanitation Directorate. The current projects I have been focusing on are:
 
 - **Global Privately and Government-owned Worldwide Surveillance System (GPAWSS)**
-  - Chief scientist and co-project manager for GPAWSS. GPAWSS is a surveillance platform designed toprovide surveillance data to inform commanders and VCOs of the distribution, frequency, and incidenceof various companion animal diseases. The platform uses multiple heterogeneous data streams includ-ing:  Remote Online Veternary Record (ROVR) EHR data, laboratory data, and data from a civiliancorporate companion animal practice. Data in GPAWSS is managed by the One-Health Division andis displayed on an interactive, web-based platform (Tableau and R-Shiny) tracking disease frequencyand incidence globally. GPAWSS also has outbreak detection capabilities.
+  - Chief scientist and co-project manager for GPAWSS. GPAWSS is a surveillance platform designed to provide surveillance data to inform commanders and VCOs of the distribution, frequency, and incidence of various companion animal diseases. The platform uses multiple heterogeneous data streams including:  Remote Online Veternary Record (ROVR) EHR data, laboratory data, and data from a civilian corporate companion animal practice. Data in GPAWSS is managed by the One-Health Division and is displayed on an interactive, web-based platform (Tableau and R-Shiny) tracking disease frequency and incidence globally. GPAWSS also has outbreak detection capabilities.
 
 - **Modernizing the Data infrastructure of the Veterinary Services and Public Health Sanitation Directorate (VSPHS)**
   - The VSPHS is currently at a crossroads in terms of the organization of data in a manner that allows forincreased collaboration with outside organizations and encourages creativity and the discovery of noveldata sources and research methods. i) The project intends to: Establish a data etiquette protocol withinthe VSPHS in order to establish a data standardization protocol, simplifying future data integrationwith  outside  organizations  ii)  Restructure  the  data  storage  structure  of  the  directorate,  establishingstandardized databases, per division and housing them within the Army Engineer Research and Development Center (AERDC) DoD Supercomputing Resource Center’s data infrastructure (DSRC). TheAERDC’s Data Lake structures allows for the positive control of potentially all of the directorate’s datain a single source that can be updated at one point, decreasing areas of inaccessible and siloed data. My exapansive experience with data cleaning, restructuring and manipulation techniques allows me tolead this project for the directorate in terms of methodology, collaboration and planning.
