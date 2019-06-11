@@ -11,10 +11,6 @@ published: true
 
 
 
-<p style="text-align: center"><img src="" style="width:50%"></p>
-
-
-
 I currently work on implementing One-Health data-driven solutions on surveillance databases including incorporating spatial resolution and developing advanced data management methodologies and techniques within animal disease surveillance programs in Central Asia and with the United States Army’s Veterinary Service.
 
 My current primary research goal, is to develop and/or improve the accuracy of surveillance, spatial and genomic public health databases in semi-developing and/or developed countries, through the integration of other large heterogeneous and/or unstructured datasets. This will be done by creating health modeling programs and subroutines that will collect, compile and integrate useful health data to:
