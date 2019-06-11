@@ -5,6 +5,10 @@ layout: post
 ---
 
 ### This Python notebook is a workable and scalable example on how to make a notebook that cleans and analyzes data in a transparent way.
+#### This notebook serves as an abbreviated project and due to formatting errors.
+#### Please utilize the follwoing badge to view the notebook in binder. 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/waughsh/CFOE-Time-Analysis/master?filepath=CFOE_pyhtonanalysis.ipynb)
+
 We have an excel workbook that details the progress of all One-Health/Veterinary Services products to include posters, brochures and newsletters. 
 Taking a look at the initial structure of this spreadsheet, we have missing dates or progress for certain products. This may be due to certain products not needing certain levels of approval. It may be advantageous for us to split the data by product and then look at the time related to each product.<br>
 For my sanity, I will be getting rid of the incomplete records.
