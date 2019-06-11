@@ -6,7 +6,7 @@ author: waughsh
 comments: true
 categories: [Uncategorized]
 ---
-<img class="alignnone size-full wp-image-17" src="https://waughsh.files.wordpress.com/2011/01/img_20151003_170825.jpg" alt="IMG_20151003_170825" width="3200" height="2368" />
+<img class="alignnone size-full wp-image-17" src="https://waughsh.files.wordpress.com/2011/01/img_20151003_170825.jpg" alt="IMG_20151003_170825" width="450" height="300" />
 
 I finally have to get this site off the ground, so I'll get started by getting my first post under my belt.
 
