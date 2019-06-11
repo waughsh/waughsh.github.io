@@ -1159,7 +1159,7 @@ for i, v in enumerate(performance):
 plt.show()
 ```
 
-<img class="alignnone size-full wp-image-17" src="https://waughr.us/images/output_17_0.png" width="450" height="300" />
+![](https://waughr.us/images/output_17_0.png)
 
 
 Now let's take a look at the Newsletters...
@@ -1185,7 +1185,7 @@ plt.show()
 ```
 
 
-<img class="alignnone size-full wp-image-17" src="https://waughr.us/images/output_19_0.png" width="450" height="300" />
+![](https://waughr.us/images/output_19_0.png)
 
 
 # Discussion
