@@ -4,13 +4,6 @@ title: Calculating and Comparing Product Production Time for VS One-Health Produ
 layout: post
 ---
 
-<center> <h1> Calculating and Comparing Product Production Time for VS One-Health Products</h1> </center>
-<b>Sheldon Waugh MSc, PhD<br>
-Epidemiologist<br>
-One-Health Division<br> 
-Veterinary Services and Public Health Sanitation Directorate<br>
-US Army Public Health Center<br>
-
 ### This Python notebook is a workable and scalable example on how to make a notebook that cleans and analyzes data in a transparent way.
 We have an excel workbook that details the progress of all One-Health/Veterinary Services products to include posters, brochures and newsletters. 
 Taking a look at the initial structure of this spreadsheet, we have missing dates or progress for certain products. This may be due to certain products not needing certain levels of approval. It may be advantageous for us to split the data by product and then look at the time related to each product.<br>
