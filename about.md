@@ -9,7 +9,7 @@ published: true
 
 ### Sheldon Waugh, MSc, PhD
 
-<img class="alignnone size-full wp-image-17" src="https://waughsh.files.wordpress.com/2011/01/img_20151003_170825.jpg" alt="IMG_20151003_170825" width="450" height="300" />
+<img class="alignnone size-full wp-image-17" src="https://waughsh.files.wordpress.com/2019/06/profile_pic.jpg" alt="IMG_20151003_170825" width="450" height="300" />
 
 
 I currently work on implementing One-Health data-driven solutions on surveillance databases including incorporating spatial resolution and developing advanced data management methodologies and techniques within animal disease surveillance programs in Central Asia and with the United States Army’s Veterinary Service.
