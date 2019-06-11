@@ -1,6 +1,4 @@
 
-<img src="P:\shared\LOGOS\U.S. Army Public Health Center\Horizontal\APHC_Horizntl_Black_web.png" alt="Army Public Health Center"/><img src="H:\One_Health\Small APHC Culture_of_Quality.jpg" alt="Army Public Health Center" width="300"/>
-
 <center> <h1> Calculating and Comparing Product Production Time for VS One-Health Products</h1> </center>
 <b>Sheldon Waugh MSc, PhD<br>
 Epidemiologist<br>
@@ -1161,8 +1159,7 @@ for i, v in enumerate(performance):
 plt.show()
 ```
 
-
-![png](output_17_0.png)
+<img class="alignnone size-full wp-image-17" src="https://waughr.us/images/output_17_0.png" width="450" height="300" />
 
 
 Now let's take a look at the Newsletters...
@@ -1188,7 +1185,7 @@ plt.show()
 ```
 
 
-![png](output_19_0.png)
+<img class="alignnone size-full wp-image-17" src="https://waughr.us/images/output_19_0.png" width="450" height="300" />
 
 
 # Discussion
