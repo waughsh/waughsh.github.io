@@ -1,10 +1,8 @@
 ---
 layout: page
 title: CV
-date: 2016-04-15 02:39
-author: waughsh
-comments: true
-categories: []
+permalink: /cv/
+published: true
 ---
 Check out my current CV, by following the link below!
 
