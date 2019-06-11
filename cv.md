@@ -6,4 +6,4 @@ published: true
 ---
 Check out my current CV, by following the link below!
 
-<a title="CVWaugh_asof042918_final_PHD" href="https://waughsh.files.wordpress.com/2018/04/cvwaugh_asof042918_final_phd.pdf">CVWaugh_asof042918_final_PHD</a>
+<a title="CVWaugh_asof042918_final_PHD" href="https://waughr.us/images/Waugh_MODCV_061119.pdf">My CV as of 11 June 2019</a>
