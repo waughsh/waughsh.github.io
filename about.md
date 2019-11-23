@@ -41,7 +41,9 @@ I'm constantly working on new projects and seeking to connect with people! Drop 
 
 
 ### Publications
-
+- Wijayabahu, A.T.,**Waugh, S.**, Ukhanova, M. and Mai, V., 2019. Dietary raisin intake has limited effect on gut microbiota composition in adult volunteers. Nutrition journal, 18(1), p.14. PMID: 30845997
+- Tagliamonte, M. S.,**Waugh, S.**, Prosperi, M., & Mai, V. (2019, September). An Integrated Approach for Efficient Multi-Omics Joint Analysis. In Proceedings of the 10th ACM International Conference on Bioinformatics, Computational Biology and Health Informatics (pp. 619-625). ACM. PMID: 31588431
+- **Waugh, S.**, and Mullaney, S. "Progress towards Companion Animal Zoonotic Disease Surveillance in the US Army." Online Journal of Public Health Informatics 11.1 (2019). PMCID: PMC6606092
 - Ball, J. D., Fe Agana, D.,**Waugh, S.**, Wang, K., James, T. G.,  Nicolette, G. (2019).  Systematically collected  information  at  encounters  with  HIV-positive  students:   A  review  of  10  years  of  electronic medical records.  Journal of American College Health, 1-5.  PMID: 30681932
 - Spatial-Genomic Association of Co-Circulating Brucella Strains in Southern Kazakhstan:  PhylogeneticInferences Using MLVA Data, **Waugh, S**.(Submitted)
 - Brucellosis Transmission Between Humans and Domesticated Livestock in Southern Kazakhstan:  Inferences through MLVA Typing, **Waugh, S**.(Submitted)
