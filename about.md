@@ -26,7 +26,7 @@ In 2017 -2018, I joined Jason Blackburn's Spatial Epidemiology & Ecology Researc
 
 Currently, I work at the Army Pulbic Health Center as an Epidemiologist for the One-Health Division, in the Veterinary Service and Public Health Sanitation Directorate. The current projects I have been focusing on are:
 
-- **Global Privately and Government-owned Worldwide Surveillance System (GPAWSS)**
+- **Government and Privately-owned Animal Worldwide Surveillance System (GPAWSS)**
   - Chief scientist and co-project manager for GPAWSS. GPAWSS is a surveillance platform designed to provide surveillance data to inform commanders and VCOs of the distribution, frequency, and incidence of various companion animal diseases. The platform uses multiple heterogeneous data streams including:  Remote Online Veternary Record (ROVR) EHR data, laboratory data, and data from a civilian corporate companion animal practice. Data in GPAWSS is managed by the One-Health Division and is displayed on an interactive, web-based platform (Tableau and R-Shiny) tracking disease frequency and incidence globally. GPAWSS also has outbreak detection capabilities.
 
 - **Modernizing the Data infrastructure of the Veterinary Services and Public Health Sanitation Directorate (VSPHS)**
