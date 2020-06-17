@@ -24,7 +24,7 @@ Additionally, I’ve focused on developing tailored ‘Big data’ approaches th
 
 In 2017 -2018, I joined Jason Blackburn's Spatial Epidemiology & Ecology Research Laboratory (SEER Lab). The SEER Lab is an interdisciplinary research laboratory jointly housed in the Emerging Pathogens Institute and the Department of Geography at the University of Florida. SEER Lab is focused on questions addressing the ecology and spatio-temporal patterns of diseases. SEER Lab research is focused primarily on bacterial zoonoses, those bacterial diseases that affect both animals and humans.
 
-Currently, I work at the Army Pulbic Health Center as an Epidemiologist for the One-Health Division, in the Veterinary Service and Public Health Sanitation Directorate. The current projects I have been focusing on are:
+Currently, I work at the Army Public Health Center as an Epidemiologist for the One-Health Division, in the Veterinary Service and Public Health Sanitation Directorate. The current projects I have been focusing on are:
 
 - **Government and Privately-owned Animal Worldwide Surveillance System (GPAWSS)**
   - Chief scientist and co-project manager for GPAWSS. GPAWSS is a surveillance platform designed to provide surveillance data to inform commanders and VCOs of the distribution, frequency, and incidence of various companion animal diseases. The platform uses multiple heterogeneous data streams including:  Remote Online Veternary Record (ROVR) EHR data, laboratory data, and data from a civilian corporate companion animal practice. Data in GPAWSS is managed by the One-Health Division and is displayed on an interactive, web-based platform (Tableau and R-Shiny) tracking disease frequency and incidence globally. GPAWSS also has outbreak detection capabilities.
