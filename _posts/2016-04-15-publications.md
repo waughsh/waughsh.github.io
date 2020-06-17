@@ -8,6 +8,14 @@ categories: []
 ---
 (In Chronological Order)
 
+Wijayabahu, A.T., <strong>Waugh, S.</strong>, Ukhanova, M. and Mai, V., 2019. Dietary raisin intake has limited effect on gut microbiota composition in adult volunteers. Nutrition journal, 18(1), p.14. PMID: 30845997
+
+Tagliamonte, M. S., <strong>Waugh, S.</strong>, Prosperi, M., & Mai, V. (2019, September). An Integrated Approach for Efficient Multi-Omics Joint Analysis. In Proceedings of the 10th ACM International Conference on Bioinformatics, Computational Biology and Health Informatics (pp. 619-625). ACM. PMID: 31588431
+
+<strong>Waugh, S.</strong>, and Mullaney, S. "Progress towards Companion Animal Zoonotic Disease Surveillance in the US Army." Online Journal of Public Health Informatics 11.1 (2019). PMCID: PMC6606092
+
+Ball, J. D., Fe Agana, D., <strong>Waugh, S.</strong>, Wang, K., James, T. G.,  Nicolette, G. (2019).  Systematically collected  information  at  encounters  with  HIV-positive  students:   A  review  of  10  years  of  electronic medical records.  Journal of American College Health, 1-5.  PMID: 30681932
+
 Jennifer C. Dennis, Tyler Culpepper, Carmelo Nieves, Jr., Cassie C. Rowe, Alyssa M. Burns, Carley T. Rusch, Ashton Federico, Maria Ukhanova, <strong>Sheldon Waugh</strong>, Volker Mai, Mary C. Christman, Bobbi Langkamp-Henken, Probiotics (Lactobacillus gasseri KS-13, Bifidobacterium bifidum G9-1, and Bifidobacterium longum MM-2) improve rhinoconjunctivitis-specific quality of life in individuals with seasonal allergies: a double-blind, placebo-controlled, randomized trial. Am J Clin Nutr 105, 758–767 (2017). PMID: 28228426 <a href="http://ajcn.nutrition.org/content/105/3/758">http://ajcn.nutrition.org/content/105/3/758</a>
 
 <strong>Waugh, S.</strong> App.: Gut Microbiota Differences in Children From Distinct Socioeconomic Levels Living in the Same Urban Area in Brazil. Journal of Pediatric Gastroenterology and Nutrition (2017) PMID: 28644365 <a href="https://insights.ovid.com/pubmed?pmid=28644365">https://insights.ovid.com/pubmed?pmid=28644365</a>
