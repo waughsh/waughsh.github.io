@@ -11,10 +11,14 @@ published: true
 
 <img class="alignnone size-full wp-image-17" src="https://waughsh.files.wordpress.com/2019/06/profile_pic.jpg" alt="IMG_20151003_170825" width="450" height="425" />
 
+**US Census Bureau**
+I currently work at the US Census Bureau as a Data Scientist. I currently provide expertise in the applications of data science (interdisciplinary analytical, statistical, and programming skills) to develop data-driven solutions for difficult business challenges. Works with stakeholders to improve Census business outcomes by leveraging analytic, statistical and programming techniques to collect, analyze and interpret large or complex data sets to develop data-driven solutions. Improves efficiency and/or quality in Census Bureau research and production activities through state of the art data science methods including, but not limited to, machine learning, neural networks, Natural Language Processing, anomaly detection, regression or association analysis, data mining, data matching, big data principles, web scraping, operations research, business analytics, data visualization, predictive analytics (including forecasting), and/or statistical analysis.
 
-I currently work on implementing One-Health data-driven solutions on surveillance databases including incorporating spatial resolution and developing advanced data management methodologies and techniques within animal disease surveillance programs in Central Asia and with the United States Army’s Veterinary Service.
 
-My current primary research goal, is to develop and/or improve the accuracy of surveillance, spatial and genomic public health databases in semi-developing and/or developed countries, through the integration of other large heterogeneous and/or unstructured datasets. This will be done by creating health modeling programs and subroutines that will collect, compile and integrate useful health data to:
+**US Army Public Health Center and One Health**
+I previously worked on implementing One-Health data-driven solutions on surveillance databases including incorporating spatial resolution and developing advanced data management methodologies and techniques within animal disease surveillance programs in Central Asia and with the United States Army’s Veterinary Service.
+
+My primary research goal, at the time, was to develop and/or improve the accuracy of surveillance, spatial and genomic public health databases in semi-developing and/or developed countries, through the integration of other large heterogeneous and/or unstructured datasets. This will be done by creating health modeling programs and subroutines that will collect, compile and integrate useful health data to:
 
 - Observe and predict the burden of disease within companion animals groups, using surveillance data
 - Determine and predict spread and distribution of zoonotic and vector-borne infectious diseases.
