@@ -11,8 +11,22 @@ published: true
 
 <img class="alignnone size-full wp-image-17" src="https://waughsh.files.wordpress.com/2019/06/profile_pic.jpg" alt="IMG_20151003_170825" width="450" height="425" />
 
+**Department of Commerece, Office of the Inspector General**
+
+
+
+
+
 **US Census Bureau**
-I currently work at the US Census Bureau as a Data Scientist. I currently provide expertise in the applications of data science (interdisciplinary analytical, statistical, and programming skills) to develop data-driven solutions for difficult business challenges. Works with stakeholders to improve Census business outcomes by leveraging analytic, statistical and programming techniques to collect, analyze and interpret large or complex data sets to develop data-driven solutions. Improves efficiency and/or quality in Census Bureau research and production activities through state of the art data science methods including, but not limited to, machine learning, neural networks, Natural Language Processing, anomaly detection, regression or association analysis, data mining, data matching, big data principles, web scraping, operations research, business analytics, data visualization, predictive analytics (including forecasting), and/or statistical analysis.
+From 2021 to 2023, I worked at the US Census Bureau as a Data Scientist. I provided expertise in the applications of data science (interdisciplinary analytical, statistical, and programming skills) to develop data-driven solutions for difficult business challenges. One HUGE business challenges was the improvement of the quality of survey data collection among Field Reprsentatives (FRs).
+
+My accomplishments at the US Census Bureau inlcudes
+- Led Audio-related Natural Language Processing project with collaboration with the Field and Social, Economic, and Housing Statistics Division. Coordinated access to Computer Audio Recorded Interview (CARI) Interactive Data Access (CIDA) system to download multiple years of SIPP interview data. Successfully submitted and approved python package Transformers through the Standards Working Group for access of open-source machine learning models through HuggingFace, a AI Repository. 
+- Led and established the development of front facing ESRI Mapper dashboards, maps and tools for the American Housing Survey (AHS) and the National Health Interview Survey (NHIS), an initial and essential part of the Field Quality Monitoring Program, stood up by the Office of Census Analytics (OSCA). 
+- Led and established the development of front facing Tableau dashboards for the American Housing Survey (AHS), an initial and essential part of the Field Quality Monitoring Program (FQM), stood up by OSCA. Assigned senior administrator of OSCA’s Tableau Server, a cloud-based server, responsible for the creation and management the site’s users and groups, creation of projects to organize content on the site, and ability assign permissions to allow users (groups) to access the content. Also responsible for the promotion and certification of content and measurement the use of analytics within their site. 
+- Coordinated and collaborated with personnel primarily focused on data engineering, to develop schemas and tables to calculate metrics for anomaly detection. Utilized the Census Bureau’s Unified Tracking System’s (UTS) data warehouse to extract, transform and load tables for metrics calculations. 
+- Developed extensive documentation of outlier/anomaly detection and metric development in the form of Jupyter Notebooks, providing a clear and robust trail of work from data extraction, data transformation and data analysis and visualization. 
+- Developed and managed a Division-level Red Hat Enterprise Linux server environment, to, automate queries, metric calculations, data uploads and visualizations. Led the collection of server and software requirements. 
 
 
 **US Army Public Health Center and One Health**
@@ -28,7 +42,7 @@ Additionally, I’ve focused on developing tailored ‘Big data’ approaches th
 
 In 2017 -2018, I joined Jason Blackburn's Spatial Epidemiology & Ecology Research Laboratory (SEER Lab). The SEER Lab is an interdisciplinary research laboratory jointly housed in the Emerging Pathogens Institute and the Department of Geography at the University of Florida. SEER Lab is focused on questions addressing the ecology and spatio-temporal patterns of diseases. SEER Lab research is focused primarily on bacterial zoonoses, those bacterial diseases that affect both animals and humans.
 
-Currently, I work at the Army Public Health Center as an Epidemiologist for the One-Health Division, in the Veterinary Service and Public Health Sanitation Directorate. The current projects I have been focusing on are:
+From 2018 to 2021, I worked at the Army Public Health Center as an Epidemiologist for the One-Health Division, in the Veterinary Service and Public Health Sanitation Directorate. The current projects I have been focusing on are:
 
 - **Government and Privately-owned Animal Worldwide Surveillance System (GPAWSS)**
   - Chief scientist and co-project manager for GPAWSS. GPAWSS is a surveillance platform designed to provide surveillance data to inform commanders and VCOs of the distribution, frequency, and incidence of various companion animal diseases. The platform uses multiple heterogeneous data streams including:  Remote Online Veternary Record (ROVR) EHR data, laboratory data, and data from a civilian corporate companion animal practice. Data in GPAWSS is managed by the One-Health Division and is displayed on an interactive, web-based platform (Tableau and R-Shiny) tracking disease frequency and incidence globally. GPAWSS also has outbreak detection capabilities.
@@ -45,6 +59,8 @@ I'm constantly working on new projects and seeking to connect with people! Drop 
 
 
 ### Publications
+- Bayko, H.; Watkins, S.; **Waugh, S.**; Moore, G.; Mullaney, S. Adaptation of the One Health Zoonotic Disease Prioritization Tool for Government- and Privately Owned Companion Animal Zoonotic Disease Surveillance. Zoonotic Dis. 2023, 3, x. https://doi.org/10.3390/xxxxx
+Seal, L., Mullaney, S, **Waugh, S.**. 2022. Leishmaniasis in the United States military veterinary patient population. Journal of the American Veterinary Medical Association. PMID: 34780354
 - Wijayabahu, A.T., **Waugh, S.**, Ukhanova, M. and Mai, V., 2019. Dietary raisin intake has limited effect on gut microbiota composition in adult volunteers. Nutrition journal, 18(1), p.14. PMID: 30845997
 - Tagliamonte, M. S., **Waugh, S.**, Prosperi, M., & Mai, V. (2019, September). An Integrated Approach for Efficient Multi-Omics Joint Analysis. In Proceedings of the 10th ACM International Conference on Bioinformatics, Computational Biology and Health Informatics (pp. 619-625). ACM. PMID: 31588431
 - **Waugh, S.**, and Mullaney, S. "Progress towards Companion Animal Zoonotic Disease Surveillance in the US Army." Online Journal of Public Health Informatics 11.1 (2019). PMCID: PMC6606092
