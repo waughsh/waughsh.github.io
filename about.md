@@ -18,6 +18,7 @@ published: true
 
 
 **US Census Bureau**
+
 From 2021 to 2023, I worked at the US Census Bureau as a Data Scientist. I provided expertise in the applications of data science (interdisciplinary analytical, statistical, and programming skills) to develop data-driven solutions for difficult business challenges. One HUGE business challenges was the improvement of the quality of survey data collection among Field Reprsentatives (FRs).
 
 My accomplishments at the US Census Bureau inlcudes
@@ -30,6 +31,7 @@ My accomplishments at the US Census Bureau inlcudes
 
 
 **US Army Public Health Center and One Health**
+
 I previously worked on implementing One-Health data-driven solutions on surveillance databases including incorporating spatial resolution and developing advanced data management methodologies and techniques within animal disease surveillance programs in Central Asia and with the United States Army’s Veterinary Service.
 
 My primary research goal, at the time, was to develop and/or improve the accuracy of surveillance, spatial and genomic public health databases in semi-developing and/or developed countries, through the integration of other large heterogeneous and/or unstructured datasets. This will be done by creating health modeling programs and subroutines that will collect, compile and integrate useful health data to:
