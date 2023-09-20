@@ -12,6 +12,7 @@ published: true
 <img class="alignnone size-full wp-image-17" src="https://waughsh.files.wordpress.com/2019/06/profile_pic.jpg" alt="IMG_20151003_170825" width="450" height="425" />
 
 **Department of Commerece, Office of the Inspector General (DOC OIG)**
+
 I currently work the DOC OIG. I will be the Chief and principal data scientist for the DOC OIG.
 
 Addtionally I will be:
