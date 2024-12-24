@@ -13,9 +13,9 @@ published: true
 
 **Department of Commerece, Office of the Inspector General (DOC OIG)**
 
-I currently work the DOC OIG. I will be the Chief and principal data scientist for the DOC OIG.
+I currently work the DOC OIG. I am the Chief and principal data scientist for the DOC OIG.
 
-Addtionally I will be:
+Addtionally I:
 - Lead the Data Analytics team in conducting data science research and projects that make informed projections, data-driven decisions, and recommendations based on findings.
 - Drive analytic design/brainstorming sessions with investigators, auditors, and other data analytics professionals that incorporate advance modeling and technical methods to identify fraud, waste, and abuse.
 - Prepare, process, and transform structured and unstructured data and apply advanced scientific, mathematical, and statistical principals and theories to new and existing data sources using open source or proprietary programming languages. Apply data science methods and techniques including statistical analysis, modeling, machine learning, spatial analysis, and Natural Language Processing (NLP).
