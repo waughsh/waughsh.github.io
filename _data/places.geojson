@@ -1,0 +1,38 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.0369, 38.8951]
+      },
+      "properties": {
+        "name": "Washington, D.C.",
+        "description": "The capital of the United States"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4194, 37.7749]
+      },
+      "properties": {
+        "name": "San Francisco",
+        "description": "A vibrant city in California"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.3880, 33.7490]
+      },
+      "properties": {
+        "name": "Atlanta",
+        "description": "The capital of Georgia"
+      }
+    }
+  ]
+}
