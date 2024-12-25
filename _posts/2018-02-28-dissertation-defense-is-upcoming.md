@@ -11,3 +11,26 @@ I will be defending my dissertation titled:
 (See Below)
 
 <img class="alignnone size-full wp-image-198" src="https://waughsh.files.wordpress.com/2018/02/epi-presentation-announcement-poster-waugh_4.png" alt="Epi Presentation Announcement Poster-Waugh_4" width="500" height="600" />
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+  var map = L.map('map').setView([37.8, -96], 4); // Set initial view and zoom
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  fetch('/_images/locations.geojson') // Fetch the GeoJSON data
+    .then(response => response.json())
+    .then(data => {
+      L.geoJSON(data, {
+        onEachFeature: function (feature, layer) {
+          if (feature.properties && feature.properties.name) {
+            layer.bindPopup("<b>" + feature.properties.name + "</b><br>" + feature.properties.description);
+          }
+        }
+      }).addTo(map);
+    });
+</script>
