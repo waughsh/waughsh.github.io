@@ -19,20 +19,24 @@ I will be defending my dissertation titled:
 <div id="map" style="height: 400px;"></div>
 
 <script>
-  var map = L.map('map').setView([37.8, -96], 4); // Set initial view and zoom
+  const map = L.map('map').setView([37.8, -96], 4);
+
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  fetch('https://waughr.us/images/locations.geojson') // Fetch the GeoJSON data
+  fetch('https://www.waughr.us/images/locations.geojson')
     .then(response => response.json())
     .then(data => {
       L.geoJSON(data, {
-        onEachFeature: function (feature, layer) {
+        onEachFeature: function(feature, layer) {
           if (feature.properties && feature.properties.name) {
             layer.bindPopup("<b>" + feature.properties.name + "</b><br>" + feature.properties.description);
           }
         }
       }).addTo(map);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
     });
 </script>
