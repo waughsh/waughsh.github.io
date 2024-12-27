@@ -30,8 +30,8 @@ I will be defending my dissertation titled:
     .then(data => {
       L.geoJSON(data, {
         onEachFeature: function(feature, layer) {
-          if (feature.properties && feature.properties.name) {
-            layer.bindPopup("<b>" + feature.properties.name + "</b><br>" + feature.properties.description);
+          if (feature.properties && feature.properties.Name) {
+            layer.bindPopup("<b>" + feature.properties.Name + "</b><br>" + feature.properties.Time);
           }
         }
       }).addTo(map);
