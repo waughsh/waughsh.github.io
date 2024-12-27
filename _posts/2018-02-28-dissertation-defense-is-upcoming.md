@@ -25,7 +25,7 @@ I will be defending my dissertation titled:
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  fetch('https://www.waughr.us/images/locations.geojson')
+  fetch('https://www.waughr.us/images/40under40.geojson')
     .then(response => response.json())
     .then(data => {
       L.geoJSON(data, {
