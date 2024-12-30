@@ -8,6 +8,9 @@ categories: [Uncategorized]
 ---
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
 I will be defending my dissertation titled:
 <p style="text-align:center;"><span style="text-decoration:underline;"><strong>Investigating Spatial Dynamics of Zoonoses between Animal and Human Populations: a </strong></span><span style="text-decoration:underline;"><strong>One-Health Perspective </strong></span></p>
@@ -28,6 +31,8 @@ I will be defending my dissertation titled:
   fetch('https://www.waughr.us/images/40under40.geojson')
     .then(response => response.json())
     .then(data => {
+      // Cluster the markers
+      const markers = L.markerClusterGroup(); 
       const geojsonLayer = L.geoJSON(data, {
         onEachFeature: function(feature, layer) {
           if (feature.properties && feature.properties.Name) {
@@ -45,16 +50,18 @@ I will be defending my dissertation titled:
             zoomedIn = !zoomedIn; 
           });
         }
-      }).addTo(map);
+      });
+      markers.addLayer(geojsonLayer); 
+      map.addLayer(markers); 
 
-      map.fitBounds(geojsonLayer.getBounds()); 
+      map.fitBounds(markers.getBounds()); 
 
       // Add an image to the top right corner
       L.Control.Watermark = L.Control.extend({
         onAdd: function(map) {
           var img = L.DomUtil.create('img');
-          img.src = 'http://waughr.us/images/4040.png'; // Replace with your image path
-          img.style.width = '50px'; // Adjust size as needed
+          img.src = 'http://waughr.us/images/4040.png'; 
+          img.style.width = '50px'; 
           return img;
         },
         onRemove: function(map) {}
