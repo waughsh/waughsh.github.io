@@ -53,7 +53,7 @@ I will be defending my dissertation titled:
       L.Control.Watermark = L.Control.extend({
         onAdd: function(map) {
           var img = L.DomUtil.create('img');
-          img.src = 'path/to/your/image.png'; // Replace with your image path
+          img.src = 'http://waughr.us/images/image4512.png'; // Replace with your image path
           img.style.width = '100px'; // Adjust size as needed
           return img;
         },
