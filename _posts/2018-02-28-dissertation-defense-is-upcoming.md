@@ -19,7 +19,7 @@ I will be defending my dissertation titled:
 <div id="map" style="height: 400px;"></div>
 
 <script>
-  const map = L.map('map'); // Don't set the initial view here
+  const map = L.map('map'); 
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -34,13 +34,19 @@ I will be defending my dissertation titled:
             layer.bindPopup("<b>" + feature.properties.Name + "</b><br>" + feature.properties.Time);
           }
           layer.on('click', function(e) {
-            map.setView(e.latlng, 10); // Zoom to the clicked point
+            map.setView(e.latlng, 10); 
           });
         }
       }).addTo(map);
 
       // Fit the map bounds to the GeoJSON data
-      map.fitBounds(geojsonLayer.getBounds()); 
+      const initialBounds = geojsonLayer.getBounds();
+      map.fitBounds(initialBounds);
+
+      // Add a control to zoom to the initial extent
+      L.easyButton('fa-globe', function(btn, map) {
+        map.fitBounds(initialBounds);
+      }).addTo(map); 
     })
     .catch(error => {
       console.error('Error fetching data:', error);
