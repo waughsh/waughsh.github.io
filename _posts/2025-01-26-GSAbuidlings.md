@@ -31,7 +31,7 @@ published: true
       const geojsonLayer = L.geoJSON(data, {
         onEachFeature: function(feature, layer) {
           if (feature.properties && feature.properties.City) {
-            layer.bindPopup("<b>" + feature.properties.City + "</b><br>" + feature.properties.County + feature.properties.Address + feature.properties.'Lessor Name' );
+            layer.bindPopup("<b>" + feature.properties.City + "</b><br>" + feature.properties.County + feature.properties.Address);
           }
 
           let zoomedIn = false; 
