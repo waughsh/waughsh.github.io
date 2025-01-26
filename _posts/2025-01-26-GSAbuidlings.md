@@ -26,13 +26,31 @@ published: true
   fetch('https://www.waughr.us/images/GSA_buildings.geojson')
     .then(response => response.json())
     .then(data => {
-      // Cluster the markers
       const markers = L.markerClusterGroup(); 
       const geojsonLayer = L.geoJSON(data, {
         onEachFeature: function(feature, layer) {
-          if (feature.properties && feature.properties.City) {
-            layer.bindPopup("<b>" + feature.properties.City + "</b><br>" + feature.properties.County + feature.properties.Address);
+          if (feature.properties) {
+            // Construct popup content with City, County, and Lessor Name
+            let popupContent = "";
+            if (feature.properties.City) {
+              popupContent += "<b>City:</b> " + feature.properties.City + "<br>";
+            }
+            if (feature.properties.County) {
+              popupContent += "<b>County:</b> " + feature.properties.County + "<br>";
+            }
+            if (feature.properties["Lessor Name"]) { 
+              popupContent += "<b>Lessor Name:</b> " + feature.properties["Lessor Name"];
+            }
+            layer.bindPopup(popupContent);
           }
+
+          // Enable popups on hover
+          layer.on('mouseover', function(e) {
+            layer.openPopup();
+          });
+          layer.on('mouseout', function(e) {
+            layer.closePopup();
+          });
 
           let zoomedIn = false; 
 
@@ -51,7 +69,6 @@ published: true
 
       map.fitBounds(markers.getBounds()); 
 
-      // Add an image to the top right corner
       L.Control.Watermark = L.Control.extend({
         onAdd: function(map) {
           var img = L.DomUtil.create('img');
@@ -68,7 +85,6 @@ published: true
 
       L.control.watermark({ position: 'topright' }).addTo(map);
 
-      // Add the geocoder control with custom zoom behavior and flashing
       const geocoder = L.Control.geocoder({
         defaultMarkGeocode: false
       })
@@ -78,7 +94,7 @@ published: true
 
         let nearestDistance = Infinity;
         let nearestPoint;
-        let nearestPointMarker; // To store the nearest point's marker
+        let nearestPointMarker; 
 
         L.geoJSON(data, {
           onEachFeature: function(feature, layer) {
@@ -86,7 +102,7 @@ published: true
             if (distance < nearestDistance) {
               nearestDistance = distance;
               nearestPoint = layer.getLatLng();
-              nearestPointMarker = layer; // Store the nearest marker
+              nearestPointMarker = layer; 
             }
           }
         });
@@ -95,7 +111,6 @@ published: true
                          nearestDistance > 100000 ? 6 : 
                          nearestDistance > 10000 ? 8 : 12; 
 
-        // Flash the nearest point
         const flashInterval = setInterval(function() {
           nearestPointMarker.setOpacity(nearestPointMarker.getOpacity() === 1 ? 0 : 1);
         }, 500);
