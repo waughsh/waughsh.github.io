@@ -55,8 +55,8 @@ published: true
       L.Control.Watermark = L.Control.extend({
         onAdd: function(map) {
           var img = L.DomUtil.create('img');
-          img.src = 'http://waughr.us/images/4040.png'; 
-          img.style.width = '50px'; 
+          img.src = 'http://waughr.us/images/image4512.png'; 
+          img.style.width = '75px'; 
           return img;
         },
         onRemove: function(map) {}
