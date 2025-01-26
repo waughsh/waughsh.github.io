@@ -56,7 +56,7 @@ published: true
         onAdd: function(map) {
           var img = L.DomUtil.create('img');
           img.src = 'http://waughr.us/images/image4512.png'; 
-          img.style.width = '75px'; 
+          img.style.width = '50px'; 
           return img;
         },
         onRemove: function(map) {}
@@ -68,9 +68,9 @@ published: true
 
       L.control.watermark({ position: 'topright' }).addTo(map);
 
-      // Add the geocoder control with custom zoom behavior
+      // Add the geocoder control with custom zoom behavior and flashing
       const geocoder = L.Control.geocoder({
-        defaultMarkGeocode: false 
+        defaultMarkGeocode: false
       })
       .on('markgeocode', function(e) {
         const result = e.geocode;
@@ -78,12 +78,15 @@ published: true
 
         let nearestDistance = Infinity;
         let nearestPoint;
+        let nearestPointMarker; // To store the nearest point's marker
+
         L.geoJSON(data, {
           onEachFeature: function(feature, layer) {
             const distance = resultLatLng.distanceTo(layer.getLatLng());
             if (distance < nearestDistance) {
               nearestDistance = distance;
               nearestPoint = layer.getLatLng();
+              nearestPointMarker = layer; // Store the nearest marker
             }
           }
         });
@@ -92,8 +95,18 @@ published: true
                          nearestDistance > 100000 ? 6 : 
                          nearestDistance > 10000 ? 8 : 12; 
 
+        // Flash the nearest point
+        const flashInterval = setInterval(function() {
+          nearestPointMarker.setOpacity(nearestPointMarker.getOpacity() === 1 ? 0 : 1);
+        }, 500);
+
+        setTimeout(function() {
+          clearInterval(flashInterval);
+          nearestPointMarker.setOpacity(1);
+        }, 2000); 
+
         map.fitBounds(L.latLngBounds(resultLatLng, nearestPoint), {
-          maxZoom: zoomLevel 
+          maxZoom: zoomLevel
         });
       })
       .addTo(map);
