@@ -3,7 +3,7 @@ layout: post
 title: "GSA Buidlings Map"
 date: 2025-1-26 10:00:00 -0500
 categories: news
-published: false 
+published: true 
 ---
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
