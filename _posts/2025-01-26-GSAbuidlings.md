@@ -23,7 +23,7 @@ published: true
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  fetch('https://www.waughr.us/images/40under40.geojson')
+  fetch('https://www.waughr.us/images/GSA_buildings.geojson')
     .then(response => response.json())
     .then(data => {
       // Cluster the markers
