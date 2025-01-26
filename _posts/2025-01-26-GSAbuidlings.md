@@ -13,10 +13,6 @@ published: true
 <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
-<div style="display: flex; align-items: flex-start;">
-  <img src="https://waughr.us/images/4040-color-vert-RGB.png" alt="Image Description" style="width: 200px; height: auto; margin-right: 20px; float: left;"> 
-
-</div>
 
 <div id="map" style="height: 400px;"></div>
 
@@ -27,7 +23,7 @@ published: true
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  fetch('https://www.waughr.us/images/Maryland_GSA.geojson')
+  fetch('https://www.waughr.us/images/40under40.geojson')
     .then(response => response.json())
     .then(data => {
       // Cluster the markers
@@ -59,7 +55,7 @@ published: true
       L.Control.Watermark = L.Control.extend({
         onAdd: function(map) {
           var img = L.DomUtil.create('img');
-          img.src = 'https://waughr.us/images/4040-color-vert-RGB.png'; 
+          img.src = 'http://waughr.us/images/4040.png'; 
           img.style.width = '50px'; 
           return img;
         },
@@ -71,9 +67,38 @@ published: true
       }
 
       L.control.watermark({ position: 'topright' }).addTo(map);
+
+      // Add the geocoder control with custom zoom behavior
+      const geocoder = L.Control.geocoder({
+        defaultMarkGeocode: false 
+      })
+      .on('markgeocode', function(e) {
+        const result = e.geocode;
+        const resultLatLng = result.center;
+
+        let nearestDistance = Infinity;
+        let nearestPoint;
+        L.geoJSON(data, {
+          onEachFeature: function(feature, layer) {
+            const distance = resultLatLng.distanceTo(layer.getLatLng());
+            if (distance < nearestDistance) {
+              nearestDistance = distance;
+              nearestPoint = layer.getLatLng();
+            }
+          }
+        });
+
+        const zoomLevel = nearestDistance > 500000 ? 4 : 
+                         nearestDistance > 100000 ? 6 : 
+                         nearestDistance > 10000 ? 8 : 12; 
+
+        map.fitBounds(L.latLngBounds(resultLatLng, nearestPoint), {
+          maxZoom: zoomLevel 
+        });
+      })
+      .addTo(map);
     })
     .catch(error => {
       console.error('Error fetching data:', error);
     });
-  L.Control.geocoder().addTo(map);
 </script>
