@@ -5,6 +5,7 @@
 
 # Name of your site (displayed in the header)
 name: Sheldon G Waugh
+title: Sheldon G Waugh
 
 # Short bio or description (displayed in the header)
 description: "Applying data science and analytics to solve challenges in public health, government, and beyond"
@@ -15,7 +16,7 @@ avatar: http://waughr.us/images/image4512.png
 #
 # Flags below are optional
 #
-gems:
+plugins:
   - jekyll-target-blank
 
 # Includes an icon in the footer for each username you enter
@@ -79,7 +80,7 @@ sass:
   style: :expanded # You might prefer to minify using :compressed
 
 # Use the following plug-ins
-gems:
+plugins:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
   - jemoji

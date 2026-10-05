@@ -9,20 +9,22 @@ published: true
 </div>
 
 <div class="posts">
-  {% assign recent_posts = site.posts | where_exp: "post", "post.layout != 'nav_menu_item' and post.published != false" | sort: "date" | reverse %}
-  {% for post in recent_posts limit: 8 %}
-  {% unless post.draft %}
-    <article class="post">
+  {% assign recent_posts = site.posts | sort: "date" | reverse %}
+  {% assign shown = 0 %}
+  {% for post in recent_posts %}
+    {% if post.layout != 'nav_menu_item' and post.published != false and post.draft != true and shown < 8 %}
+      {% assign shown = shown | plus: 1 %}
+      <article class="post">
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+        <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
-      <div class="entry">
-        <!-- {{ post.excerpt }} -->
-        {{ post.content | truncatewords: 50 }}
-      </div>
+        <div class="entry">
+          <!-- {{ post.excerpt }} -->
+          {{ post.content | truncatewords: 50 }}
+        </div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endunless %}
+        <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      </article>
+    {% endif %}
   {% endfor %}
 </div>
