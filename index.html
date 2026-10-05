@@ -3,8 +3,14 @@ layout: default
 published: true
 ---
 
+<div class="posts-intro">
+  <h2>Recent writing</h2>
+  <p>Selected posts, reflections, and research notes.</p>
+</div>
+
 <div class="posts">
-  {% for post in site.posts %}
+  {% assign recent_posts = site.posts | where_exp: "post", "post.layout != 'nav_menu_item' and post.published != false" | sort: "date" | reverse %}
+  {% for post in recent_posts limit: 8 %}
   {% unless post.draft %}
     <article class="post">
 
